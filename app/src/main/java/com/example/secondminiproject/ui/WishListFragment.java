@@ -17,13 +17,12 @@ public class WishListFragment extends Fragment {
 
     private static final String TAG = "WishListFragment";
     private FragmentWishListBinding binding;
-
     private NavController navController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentWishListBinding.inflate(inflater);
 
+        binding = FragmentWishListBinding.inflate(inflater);
         navController = NavHostFragment.findNavController(this);
 
         initBtnWishListMyPage();
@@ -34,11 +33,13 @@ public class WishListFragment extends Fragment {
 
     private void initBtnWishListMyPage() {
         binding.btnWishListMyPage.setOnClickListener(v -> {
-        navController.popBackStack();
+            navController.popBackStack();
         });
     }
 
     private void initBtnWishListProductDetail() {
-        navController.navigate(R.id.action_dest_wish_list_to_dest_product_detail);
+        binding.btnWishListProductDetail.setOnClickListener(v->{
+            navController.navigate(R.id.action_dest_wish_list_to_dest_product_detail);
+        });
     }
 }

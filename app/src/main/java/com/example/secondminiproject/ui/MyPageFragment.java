@@ -21,11 +21,13 @@ public class MyPageFragment extends Fragment {
     private NavController navController;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         navController = NavHostFragment.findNavController(this);
 
-        binding =FragmentMyPageBinding.inflate(inflater);
+        //binding =FragmentMyPageBinding.inflate(inflater);
+        binding = FragmentMyPageBinding.inflate(getLayoutInflater());
+
+        navController = NavHostFragment.findNavController(this);
 
         initBtnReviewList();
         initBtnReservationList();

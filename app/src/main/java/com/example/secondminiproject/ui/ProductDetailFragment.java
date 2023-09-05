@@ -39,7 +39,7 @@ public class ProductDetailFragment extends Fragment {
 
     private void initBtnProductList() {
         binding.btnProductDetailProductList.setOnClickListener(v->{
-            navController.popBackStack();
+            navController.popBackStack(R.id.dest_product_list, false);
         });
     }
 }
