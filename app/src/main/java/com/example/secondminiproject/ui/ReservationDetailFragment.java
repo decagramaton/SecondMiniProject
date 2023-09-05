@@ -27,11 +27,11 @@ public class ReservationDetailFragment extends Fragment {
 
         navController = NavHostFragment.findNavController(this);
 
-        initBtnReservationDetailFragmentMyPage();
+        initBtnReservationDetailReservationList();
         return binding.getRoot();
     }
 
-    private void initBtnReservationDetailFragmentMyPage() {
+    private void initBtnReservationDetailReservationList() {
         binding.btnReservationDetailReservationList.setOnClickListener(v -> {
             navController.popBackStack();
         });
