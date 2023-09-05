@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dest_home">
+
+    <fragment
+        android:id="@+id/dest_home"
+        android:name="com.example.secondminiproject.ui.HomeFragment"
+        android:label="홈화면"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_dest_home_to_dest_product_list"
+            app:destination="@id/dest_product_list" />
+        <action
+            android:id="@+id/action_dest_home_to_dest_login"
+            app:destination="@id/dest_login" />
+        <action
+            android:id="@+id/action_dest_home_to_dest_my_page"
+            app:destination="@id/dest_my_page" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_login"
+        android:name="com.example.secondminiproject.ui.LoginFragment"
+        android:label="로그인"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/dest_my_page"
+        android:name="com.example.secondminiproject.ui.MyPageFragment"
+        android:label="마이페이지"
+        tools:layout="@layout/fragment_my_page" >
+        <action
+            android:id="@+id/action_dest_my_page_to_dest_user_info"
+            app:destination="@id/dest_user_info" />
+        <action
+            android:id="@+id/action_dest_my_page_to_dest_reservation_list"
+            app:destination="@id/dest_reservation_list" />
+        <action
+            android:id="@+id/action_dest_my_page_to_dest_wish_list"
+            app:destination="@id/dest_wish_list" />
+        <action
+            android:id="@+id/action_dest_my_page_to_dest_recent_list"
+            app:destination="@id/dest_recent_list" />
+        <action
+            android:id="@+id/action_dest_my_page_to_dest_review_list"
+            app:destination="@id/dest_review_list" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_user_info"
+        android:name="com.example.secondminiproject.ui.UserInfoFragment"
+        android:label="회원정보"
+        tools:layout="@layout/fragment_user_info" />
+    <fragment
+        android:id="@+id/dest_reservation_list"
+        android:name="com.example.secondminiproject.ui.ReservationListFragment"
+        android:label="예약 목록"
+        tools:layout="@layout/fragment_reservation_list" >
+        <action
+            android:id="@+id/action_dest_reservation_list_to_reservationDetailFragment"
+            app:destination="@id/reservationDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reservationDetailFragment"
+        android:name="com.example.secondminiproject.ui.ReservationDetailFragment"
+        android:label="예약 상세 내역"
+        tools:layout="@layout/fragment_reservation_detail" />
+    <fragment
+        android:id="@+id/dest_wish_list"
+        android:name="com.example.secondminiproject.ui.WishListFragment"
+        android:label="찜 목록"
+        tools:layout="@layout/fragment_wish_list" >
+        <action
+            android:id="@+id/action_dest_wish_list_to_dest_product_detail"
+            app:destination="@id/dest_product_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_recent_list"
+        android:name="com.example.secondminiproject.ui.RecentListFragment"
+        android:label="최근 본 목록"
+        tools:layout="@layout/fragment_recent_list" >
+        <action
+            android:id="@+id/action_dest_recent_list_to_dest_product_detail"
+            app:destination="@id/dest_product_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_review_list"
+        android:name="com.example.secondminiproject.ui.ReviewListFragment"
+        android:label="리뷰 목록"
+        tools:layout="@layout/fragment_review_list" >
+        <action
+            android:id="@+id/action_dest_review_list_to_dest_review_write"
+            app:destination="@id/dest_review_write" />
+        <action
+            android:id="@+id/action_dest_review_list_to_dest_review_update"
+            app:destination="@id/dest_review_update" />
+        <action
+            android:id="@+id/action_dest_review_list_to_dest_product_detail"
+            app:destination="@id/dest_product_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_review_write"
+        android:name="com.example.secondminiproject.ui.ReviewWriteFragment"
+        android:label="리뷰글 작성"
+        tools:layout="@layout/fragment_review_write" />
+    <fragment
+        android:id="@+id/dest_review_update"
+        android:name="com.example.secondminiproject.ui.ReviewUpdateFragment"
+        android:label="리뷰글 수정"
+        tools:layout="@layout/fragment_review_update" />
+    <fragment
+        android:id="@+id/dest_product_list"
+        android:name="com.example.secondminiproject.ui.ProductListFragment"
+        android:label="상품 목록"
+        tools:layout="@layout/fragment_product_list" >
+        <action
+            android:id="@+id/action_dest_product_list_to_dest_product_detail"
+            app:destination="@id/dest_product_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_product_detail"
+        android:name="com.example.secondminiproject.ui.ProductDetailFragment"
+        android:label="상품 상세"
+        tools:layout="@layout/fragment_product_detail" >
+        <action
+            android:id="@+id/action_dest_product_detail_to_dest_payment"
+            app:destination="@id/dest_payment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_payment"
+        android:name="com.example.secondminiproject.ui.PaymentFragment"
+        android:label="결제"
+        tools:layout="@layout/fragment_payment" >
+        <action
+            android:id="@+id/action_dest_payment_to_dest_reservation_list"
+            app:destination="@id/dest_reservation_list" />
+    </fragment>
+</navigation>
