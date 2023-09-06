@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/dest_home"
+        android:title="홈"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_home_24dp"/>
+    <item
+        android:id="@+id/dest_reservation_list"
+        android:title="예약내역"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_luggage_24dp"/>
+    <item
+        android:id="@+id/dest_my_page"
+        android:title="마이페이지"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_person_24dp"/>
+    <item
+        android:id="@+id/dest_wish_list"
+        android:title="찜"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_wish_list_24dp"/>
+</menu>
