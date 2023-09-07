@@ -17,12 +17,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.secondminiproject.MainActivity;
 import com.example.secondminiproject.R;
-import com.example.secondminiproject.databinding.ActivityMainBinding;
 import com.example.secondminiproject.databinding.FragmentHomeBinding;
+import com.example.secondminiproject.datastore.AppKeyValueStore;
 import com.example.secondminiproject.dto.Product;
-import com.example.secondminiproject.recyclerview.ProductAdapter;
 
 import java.util.Random;
 
@@ -52,6 +50,19 @@ public class HomeFragment extends Fragment {
             public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
                 // Step1. Menu Layout 인플레이션화.
                 menuInflater.inflate(R.menu.home_head_menu, menu);
+
+                String mid = AppKeyValueStore.getValue(getContext(), "mid");
+                if(mid == null) {
+                    menu.findItem(R.id.item_home_login).setVisible(true);
+                    menu.findItem(R.id.item_home_logout).setVisible(false);
+                    menu.findItem(R.id.item_home_my_page).setVisible(false);
+                } else {
+                    menu.findItem(R.id.item_home_login).setVisible(false);
+                    menu.findItem(R.id.item_home_logout).setVisible(true);
+                    menu.findItem(R.id.item_home_my_page).setVisible(true);
+                }
+
+
             }
 
             @Override
@@ -63,8 +74,10 @@ public class HomeFragment extends Fragment {
                 } else if (menuItem.getItemId() == R.id.item_home_login) {
                     navController.navigate(R.id.action_dest_home_to_dest_login);
                     return true;
-                } else if (menuItem.getItemId() == R.id.item_home_product_list) {
-                    navController.navigate(R.id.action_dest_home_to_dest_product_list);
+                } else if (menuItem.getItemId() == R.id.item_home_logout) {
+                    AppKeyValueStore.remove(getContext(), "mid");
+                    AppKeyValueStore.remove(getContext(), "mpassword");
+                    getActivity().invalidateMenu();
                     return true;
                 } else if (menuItem.getItemId() == R.id.item_home_my_page) {
                     navController.navigate(R.id.action_dest_home_to_dest_my_page);

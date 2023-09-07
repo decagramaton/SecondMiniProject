@@ -1,4 +1,4 @@
-package com.example.secondminiproject.recyclerview;
+package com.example.secondminiproject.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;

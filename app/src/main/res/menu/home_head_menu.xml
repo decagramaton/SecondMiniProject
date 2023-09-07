@@ -13,10 +13,10 @@
         android:icon="@drawable/ic_login_24dp"
         android:title="로그인" />
     <item
-        android:id="@+id/item_home_product_list"
+        android:id="@+id/item_home_logout"
         app:showAsAction="always"
-        android:icon="@drawable/ic_product_list_24dp"
-        android:title="상품 목록" />
+        android:icon="@drawable/ic_logout_24dp"
+        android:title="로그아웃" />
     <item
         android:id="@+id/item_home_my_page"
         app:showAsAction="always"
