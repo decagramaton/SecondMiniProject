@@ -6,63 +6,112 @@
     android:layout_height="match_parent"
     tools:context=".ui.MyPageFragment">
 
-    <Button
-        android:id="@+id/btn_my_page_review_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="리뷰리스트로"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/btn_my_page_reservation_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
-        android:text="예약 내역으로"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_my_page_review_list" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_my_page_wish_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="찜 목록으로"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_my_page_reservation_list" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:src="@drawable/photo8"/>
 
-    <Button
-        android:id="@+id/btn_my_page_user_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="내 정보로"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_my_page_wish_list" />
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:text="해군3대장님"
+                android:textSize="25dp"
+                android:textStyle="bold"/>
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_my_page_recent_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="최근 내역으로"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_my_page_user_info" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_my_page_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="홈으로 돌아가기"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_my_page_recent_list" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_my_page_review_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="25dp"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:text="리뷰리스트로"
+                android:textColor="@android:color/black"
+                android:backgroundTint="#FFFFFF"/>
+
+            <Button
+                android:id="@+id/btn_my_page_reservation_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="25dp"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:text="예약 내역"
+                android:textColor="@android:color/black"
+                android:backgroundTint="#FFFFFF"/>
+
+            <Button
+                android:id="@+id/btn_my_page_wish_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="25dp"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:text="찜 목록"
+                android:textColor="@android:color/black"
+                android:backgroundTint="#FFFFFF"/>
+
+            <Button
+                android:id="@+id/btn_my_page_user_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="25dp"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:text="회원 정보"
+                android:textColor="@android:color/black"
+                android:backgroundTint="#FFFFFF"/>
+
+            <Button
+                android:id="@+id/btn_my_page_recent_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="25dp"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:text="최근 본 내역"
+                android:textColor="@android:color/black"
+                android:backgroundTint="#FFFFFF"/>
+
+
+
+
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

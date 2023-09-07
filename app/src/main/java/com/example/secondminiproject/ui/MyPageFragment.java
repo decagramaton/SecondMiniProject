@@ -34,18 +34,10 @@ public class MyPageFragment extends Fragment {
         initBtnWishList();
         initBtnUserInfo();
         initBtnRecentList();
-        initBtnHome();
-
-
 
         return binding.getRoot();
     }
 
-    private void initBtnHome() {
-        binding.btnMyPageHome.setOnClickListener(v -> {
-            navController.popBackStack();
-        });
-    }
 
     private void initBtnReviewList() {
         binding.btnMyPageReviewList.setOnClickListener(v -> {
