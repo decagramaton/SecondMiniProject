@@ -25,21 +25,9 @@ public class ProductDetailFragment extends Fragment {
         binding = FragmentProductDetailBinding.inflate(getLayoutInflater());
         navController = NavHostFragment.findNavController(this);
 
-        initBtnPayment();
-        initBtnProductList();
 
         return binding.getRoot();
     }
 
-    private void initBtnPayment() {
-        binding.btnProductDetailPayment.setOnClickListener(v->{
-            navController.navigate(R.id.action_dest_product_detail_to_dest_payment);
-        });
-    }
 
-    private void initBtnProductList() {
-        binding.btnProductDetailProductList.setOnClickListener(v->{
-            navController.popBackStack(R.id.dest_product_list, false);
-        });
-    }
 }
