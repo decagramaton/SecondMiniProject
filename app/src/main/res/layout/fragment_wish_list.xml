@@ -34,6 +34,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView" />
 
+    <Button
+        android:id="@+id/btn_wish_list_product_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="상품목록 가기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_wish_list_my_page" />
+
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"

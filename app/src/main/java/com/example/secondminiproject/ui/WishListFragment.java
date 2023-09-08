@@ -27,8 +27,15 @@ public class WishListFragment extends Fragment {
 
         initBtnWishListMyPage();
         initBtnWishListProductDetail();
+        initBtnWishListProductList();
 
         return binding.getRoot();
+    }
+
+    private void initBtnWishListProductList() {
+        binding.btnWishListProductList.setOnClickListener(v ->{
+            navController.navigate(R.id.action_dest_wish_list_to_dest_product_list);
+        });
     }
 
     private void initBtnWishListMyPage() {

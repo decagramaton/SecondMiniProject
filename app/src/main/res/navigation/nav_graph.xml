@@ -73,6 +73,9 @@
         <action
             android:id="@+id/action_dest_wish_list_to_dest_product_detail"
             app:destination="@id/dest_product_detail" />
+        <action
+            android:id="@+id/action_dest_wish_list_to_dest_product_list"
+            app:destination="@id/dest_product_list" />
     </fragment>
     <fragment
         android:id="@+id/dest_recent_list"
