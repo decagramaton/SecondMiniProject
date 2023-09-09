@@ -25,14 +25,14 @@ public class PaymentFragment extends Fragment {
         binding = FragmentPaymentBinding.inflate(getLayoutInflater());
         navController = NavHostFragment.findNavController(this);
 
-        initBtnProductDetail();
+      /*  initBtnProductDetail();*/
 
         return binding.getRoot();
     }
 
-    private void initBtnProductDetail() {
+    /*private void initBtnProductDetail() {
         binding.btnPaymentProductDetail.setOnClickListener(v->{
             navController.popBackStack();
         });
-    }
+    }*/
 }
