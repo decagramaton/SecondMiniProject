@@ -10,20 +10,10 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="0dp"
         android:background="#ff6f0f"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="26dp">
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="194dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="예약하기"
-            android:textSize="24sp" />
-
-    </com.google.android.material.appbar.AppBarLayout>
+        tools:layout_editor_absoluteX="26dp"/>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
@@ -581,38 +571,9 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/toolbla"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:collapsedTitleTextColor="#ffffff"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/ic_launcher_background"
-                app:layout_collapseMode="parallax" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_launcher_foreground" />
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-
-                app:title="MainActivity" />
-
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
 
 
     </com.google.android.material.appbar.AppBarLayout>
