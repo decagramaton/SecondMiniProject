@@ -30,12 +30,12 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         this.image = itemView.findViewById(R.id.image);
         this.title = itemView.findViewById(R.id.title);
-        this.subTitle = itemView.findViewById(R.id.subTitle);
+        this.subTitle = itemView.findViewById(R.id.subtitle);
         this.content = itemView.findViewById(R.id.content);
         this.price = itemView.findViewById(R.id.price);
         this.rating = itemView.findViewById(R.id.rating);
-        this.ratingScore = itemView.findViewById(R.id.ratingScore);
-        this.ratingCountByProduct = itemView.findViewById(R.id.ratingCountByProduct);
+        this.ratingScore = itemView.findViewById(R.id.rating_score);
+        this.ratingCountByProduct = itemView.findViewById(R.id.rating_count_by_product);
     }
 
     public void setData(Product product){
@@ -45,9 +45,9 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         this.subTitle.setText(product.getSubTitle());
         this.content.setText(product.getContent());
 
-        String currencySimbol = Currency.getInstance("KRW").getSymbol();
+        String currencySymbol = Currency.getInstance("KRW").getSymbol();
         DecimalFormat df = new DecimalFormat("#,###");
-        this.price.setText(currencySimbol + " " + df.format(product.getPrice()));
+        this.price.setText(currencySymbol + " " + df.format(product.getPrice()));
 
         this.rating.setRating(product.getRating());
         this.ratingScore.setText(String.valueOf(product.getRating()));

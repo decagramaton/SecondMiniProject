@@ -60,7 +60,7 @@
                         app:srcCompat="@drawable/ic_chat_24dp" />
 
                     <TextView
-                        android:id="@+id/ratingCountByProduct"
+                        android:id="@+id/rating_count_by_product"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"

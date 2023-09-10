@@ -7,7 +7,7 @@
     tools:context=".ui.HomeFragment" >
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +25,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/image" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

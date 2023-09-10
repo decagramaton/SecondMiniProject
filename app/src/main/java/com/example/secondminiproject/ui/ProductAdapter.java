@@ -23,7 +23,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         // itemVIew - CardView를 인플레이션한 객체
         // inflate를 정적으로 얻는 방법을 사용하여 객체를 얻음
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View itemView = layoutInflater.inflate(R.layout.product_item, parent, false);
+        View itemView = layoutInflater.inflate(R.layout.fragment_product_list2, parent, false);
         ProductViewHolder productViewHolder = new ProductViewHolder(itemView);
 
         return productViewHolder;

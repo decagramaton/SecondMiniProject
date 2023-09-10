@@ -48,35 +48,30 @@ public class ProductListFragment extends Fragment {
     }
 
     private void initRecyclerView() {
-        //수직방향으로 한 라인에 한 개의 viewHolder가 들어가는 레이아웃 설정
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
-                getContext(), LinearLayoutManager.VERTICAL, false
-        );
+        // Step1. 수직방향으로 1라인에 1개의 ViewHolder가 들어가도록 설정
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         binding.recyclerView.setLayoutManager(linearLayoutManager);
-        //두 줄로 리스트 나오게 함
-        /*GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
-        binding.recyclerView.setLayoutManager(layoutManager);*/
 
-        //어댑터 생성
+        // Step2. 어샙터 생성
         ProductAdapter productAdapter = new ProductAdapter();
 
-
-        //데이터 받아와서 어댑터에 설정
+        // Step3. Data를 얻고, Adapter에 설정
+        // 향후, DB 코드로 변환 필요, 지금은 실습을 위해 더미 데이터 생성
         Random random = new Random();
-        for(int i=1; i<=100; i++) {
+        for(int i=1; i<=100; i++){
             Product product = new Product();
             product.setPno(i);
-            product.setTitle("Title" + i);
-            product.setSubTitle("Sub Title" + i);
-            product.setContent("This is the photo" + i + "'s description. this place is beautiful. help me");
-            product.setImage(getResources().getIdentifier("photo" + (random.nextInt(17) + 1), "drawable", getContext().getPackageName()));
-            product.setPrice(1000000 * (random.nextInt(10)+1));
-            product.setRating(random.nextInt(5) + 1);
-            product.setRatingCountByProduct(10 * (random.nextInt(10) + 1));
+            product.setTitle("AirBnB"+i);
+            product.setSubTitle("떠나요"+i);
+            product.setContent("photo"+i+"DB에서 받아와야돼");
+            product.setImage(getResources().getIdentifier("photo"+ (random.nextInt(17)+1), "drawable", "com.example.secondminiproject"));
+            product.setPrice(1000 * (random.nextInt(10)+1));
+            product.setRating(random.nextInt(5)+1);
+            product.setRatingCountByProduct(10 * (random.nextInt(10)+1));
             productAdapter.addProduct(product);
         }
 
-        //리사이클러뷰에 어댑터 설정
+        // Step4. RecyclerView에 Adapter 설정
         binding.recyclerView.setAdapter(productAdapter);
     }
 }

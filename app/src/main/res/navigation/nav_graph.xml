@@ -88,7 +88,7 @@
     </fragment>
     <fragment
         android:id="@+id/dest_review_list"
-        android:name="com.example.secondminiproject.ui.ReviewListFragment"
+        android:name="com.example.secondminiproject.ui.review.ReviewListFragment"
         android:label="리뷰 목록"
         tools:layout="@layout/fragment_review_list" >
         <action
@@ -103,12 +103,12 @@
     </fragment>
     <fragment
         android:id="@+id/dest_review_write"
-        android:name="com.example.secondminiproject.ui.ReviewWriteFragment"
+        android:name="com.example.secondminiproject.ui.review.ReviewWriteFragment"
         android:label="리뷰글 작성"
         tools:layout="@layout/fragment_review_write" />
     <fragment
         android:id="@+id/dest_review_update"
-        android:name="com.example.secondminiproject.ui.ReviewUpdateFragment"
+        android:name="com.example.secondminiproject.ui.review.ReviewUpdateFragment"
         android:label="리뷰글 수정"
         tools:layout="@layout/fragment_review_update" />
     <fragment
