@@ -1,4 +1,4 @@
-package com.example.secondminiproject.ui;
+package com.example.secondminiproject.ui.reservation;
 
 import android.os.Bundle;
 

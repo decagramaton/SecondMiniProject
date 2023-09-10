@@ -4,43 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ReservationListFragment">
+    tools:context=".ui.reservation.ReservationListFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textView8"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-    <Button
-        android:id="@+id/btn_reservation_list_reservation_detail"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="예약상세내역"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="#FF6F0F"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/btn_reservation_list_my_page"
-        android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+
+            app:srcCompat="@drawable/photo1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="고재승"
+            android:textColor="#FFFFFF"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="뒤로가기"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_reservation_list_reservation_detail" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="100dp"
-        android:text="예약상품목록"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
-
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

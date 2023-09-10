@@ -53,7 +53,7 @@
         tools:layout="@layout/fragment_user_info" />
     <fragment
         android:id="@+id/dest_reservation_list"
-        android:name="com.example.secondminiproject.ui.ReservationListFragment"
+        android:name="com.example.secondminiproject.ui.reservation.ReservationListFragment"
         android:label="예약 목록"
         tools:layout="@layout/fragment_reservation_list" >
         <action
@@ -62,7 +62,7 @@
     </fragment>
     <fragment
         android:id="@+id/reservationDetailFragment"
-        android:name="com.example.secondminiproject.ui.ReservationDetailFragment"
+        android:name="com.example.secondminiproject.ui.reservation.ReservationDetailFragment"
         android:label="예약 상세 내역"
         tools:layout="@layout/fragment_reservation_detail" />
     <fragment
