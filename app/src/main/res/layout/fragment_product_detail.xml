@@ -143,15 +143,15 @@
                 android:layout_height="wrap_content">
 
 
-
                 <Button
+                    android:id="@+id/btn_product_detail_payment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#FF6F0F"
-                    android:text="예약하기"
-                    android:layout_marginTop="5dp"
                     android:layout_marginHorizontal="30dp"
-                    android:layout_weight="7"/>
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="7"
+                    android:backgroundTint="#FF6F0F"
+                    android:text="예약하기" />
 
                 <ImageButton
                     android:id="@+id/imageButton"
