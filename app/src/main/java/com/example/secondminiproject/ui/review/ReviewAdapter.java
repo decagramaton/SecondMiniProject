@@ -8,13 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
-import com.example.secondminiproject.dto.ReservationDate;
+import com.example.secondminiproject.dto.Reservation;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewViewHolder> {
-    private List<ReservationDate> reservationDateList = new ArrayList<>();
+    private List<Reservation> reservationList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -32,21 +32,21 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ReviewViewHolder holder, int position) {
         //리스트로부터 데이터를 불러오는것 (position 으로 0 -> 1 - 2 순으로 프로덕트를 가져와서 세팅한다)
-        ReservationDate reservationDate = reservationDateList.get(position);
+        Reservation reservation = reservationList.get(position);
         //홀더에 데이터를 세팅해준다.
-        holder.setData(reservationDate);
+        holder.setData(reservation);
     }
 
-    public void setReservationList(List<ReservationDate> reservationDateList) {
-        this.reservationDateList = reservationDateList;
+    public void setReservationList(List<Reservation> reservationList) {
+        this.reservationList = reservationList;
     }
 
     @Override
     public int getItemCount() {
-        return reservationDateList.size();
+        return reservationList.size();
     }
 
-    public void addReservation(ReservationDate reservationDate){
-        reservationDateList.add(reservationDate);
+    public void addReservation(Reservation reservation){
+        reservationList.add(reservation);
     }
 }

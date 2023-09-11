@@ -1,5 +1,6 @@
 package com.example.secondminiproject.ui.reservation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,13 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.dto.Reservation;
-import com.example.secondminiproject.dto.ReservationDate;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationAdapter extends RecyclerView.Adapter<ReservationViewHolder> {
-    private List<ReservationDate> reservationDateList = new ArrayList<>();
+    private static final String TAG = "ReservationAdapter";
+    private List<Reservation> reservationList = new ArrayList<>();
+
+    private OnItemClickListener onItemClickListener;
 
     @NonNull
     @Override
@@ -25,29 +28,40 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationViewHold
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View dateView = layoutInflater.inflate(R.layout.fragment_reservation_list_date, parent, false);
         //괄호안에 inflater 넣어야함
-        ReservationViewHolder reservationViewHolder = new ReservationViewHolder(dateView);
+        ReservationViewHolder reservationViewHolder = new ReservationViewHolder(dateView,onItemClickListener);
+        Log.i(TAG, "onCreateViewHolder: 이건 언제 시작됨??");
 
         return reservationViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ReservationViewHolder holder, int position) {
+        Log.i(TAG, "onBindViewHolder: 온바인드는?");
         //리스트로부터 데이터를 불러오는것 (position 으로 0 -> 1 - 2 순으로 프로덕트를 가져와서 세팅한다)
-        ReservationDate reservationDate = reservationDateList.get(position);
+        Reservation reservation = reservationList.get(position);
         //홀더에 데이터를 세팅해준다.
-        holder.setData(reservationDate);
+        holder.setData(reservation);
     }
 
-    public void setReservationList(List<ReservationDate> reservationDateList) {
-        this.reservationDateList = reservationDateList;
+    public void setReservationList(List<Reservation> reservationList) {
+        this.reservationList = reservationList;
     }
 
     @Override
     public int getItemCount() {
-        return reservationDateList.size();
+        return reservationList.size();
     }
 
-    public void addReservation(ReservationDate reservationDate){
-        reservationDateList.add(reservationDate);
+    public void addReservation(Reservation reservation){
+        reservationList.add(reservation);
+        Log.i(TAG, "addReservation: add는? ");
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(View itemView, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
     }
 }

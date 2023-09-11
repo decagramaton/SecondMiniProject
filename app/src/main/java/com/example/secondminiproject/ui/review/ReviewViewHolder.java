@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
-import com.example.secondminiproject.dto.ReservationDate;
+import com.example.secondminiproject.dto.Reservation;
 
 public class ReviewViewHolder extends RecyclerView.ViewHolder {
 
@@ -16,12 +16,12 @@ public class ReviewViewHolder extends RecyclerView.ViewHolder {
 
     public ReviewViewHolder(@NonNull View itemView) {
         super(itemView);
-        this.reservation_list_day = itemView.findViewById(R.id.review_title);
+        this.reservation_list_day = itemView.findViewById(R.id.reservation_list_day);
 
     }
 
-    public void setData(ReservationDate reservationDate){
-        this.reservation_list_day.setText(reservationDate.getImsiReservationDate());
+    public void setData(Reservation reservation){
+        this.reservation_list_day.setText(reservation.getImsiReservationDate());
 
        /* String currencySymbol = Currency.getInstance("KRW").getSymbol();
         DecimalFormat df = new DecimalFormat("#,###");

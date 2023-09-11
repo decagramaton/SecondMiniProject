@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentReviewListBinding;
-import com.example.secondminiproject.dto.ReservationDate;
+import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.ui.reservation.ReservationAdapter;
 
 import java.util.Random;
@@ -74,12 +74,12 @@ public class ReviewListFragment extends Fragment {
         //데이터 받아와서 어뎁터에 설정
         Random random = new Random();
         for(int i=1; i <=17; i++){
-            ReservationDate reservationDate = new ReservationDate();
+            Reservation reservation = new Reservation();
 
-            reservationDate.setImsiReservationDate("23.09.08");
+            reservation.setImsiReservationDate("23.09.08");
 
             //productAdapter.addProduct(product);
-            reviewAdapter.addReservation(reservationDate);
+            reviewAdapter.addReservation(reservation);
         }
 
         //리사이클러뷰에 어댑터 설정

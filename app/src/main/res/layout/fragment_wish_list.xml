@@ -4,65 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.WishListFragment"
+    tools:context=".ui.wish.WishListFragment"
     android:id="@+id/WishListFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_wish"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-    <Button
-        android:id="@+id/btn_wish_list_my_page"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="뒤로가기"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_wish_list_product_detail" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@android:drawable/arrow_up_float"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler_view_wish"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btn_wish_list_product_detail"
+        android:id="@+id/btn_to_product_list_imsi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="상품상세로 가기"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        android:layout_marginEnd="4dp"
+        android:text="상품리스트로"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler_view_wish"
+        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton" />
 
     <Button
-        android:id="@+id/btn_wish_list_product_list"
+        android:id="@+id/btn_to_product_detail_imsi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="상품목록 가기"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_wish_list_my_page" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="100dp"
-        android:text="찜 목록"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_wish_list_my_page" />
-
-    <Button
-        android:id="@+id/btn_make_reservation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="예약하기 화면 가기"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_wish_list_product_list" />
-
+        android:text="상품상세"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler_view_wish"
+        app:layout_constraintEnd_toStartOf="@+id/btn_to_product_list_imsi" />
 </androidx.constraintlayout.widget.ConstraintLayout>
