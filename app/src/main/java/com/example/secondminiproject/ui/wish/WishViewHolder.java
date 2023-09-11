@@ -1,5 +1,6 @@
 package com.example.secondminiproject.ui.wish;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.dto.Wish;
 
 public class WishViewHolder extends RecyclerView.ViewHolder {
+    private static final String TAG = "WishViewHolder";
 
     private ImageView wishProductImage;
     private TextView wishProductName;
@@ -19,13 +21,17 @@ public class WishViewHolder extends RecyclerView.ViewHolder {
     private TextView wishProductPrice;
 
 
-    public WishViewHolder(@NonNull View itemView) {
+    public WishViewHolder(@NonNull View itemView, WishAdapter.OnItemClickListener onItemClickListener) {
         super(itemView);
         this.wishProductImage = itemView.findViewById(R.id.wish_product_image);
         this.wishProductName = itemView.findViewById(R.id.wish_product_name);
         this.wishTourDays = itemView.findViewById(R.id.wish_tour_days);
         this.wishProductPrice = itemView.findViewById(R.id.wish_product_price);
 
+        //클릭 이벤트 처리
+        itemView.setOnClickListener(v -> {
+            onItemClickListener.onItemClick(v, getAdapterPosition());//어뎁터 항목번호
+        });
     }
 
     public void setData(Wish wishProduct){

@@ -57,6 +57,10 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationViewHold
         Log.i(TAG, "addReservation: add는? ");
     }
 
+    public Reservation getItem(int position){
+        return reservationList.get(position);
+    }
+
     public interface OnItemClickListener{
         void onItemClick(View itemView, int position);
     }

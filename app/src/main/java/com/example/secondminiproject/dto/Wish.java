@@ -1,6 +1,8 @@
 package com.example.secondminiproject.dto;
 
-public class Wish {
+import java.io.Serializable;
+
+public class Wish implements Serializable {
     private String productName;
     private String tourDays;
     private int productImage;

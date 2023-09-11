@@ -7,6 +7,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,6 +78,20 @@ public class WishListFragment extends Fragment {
 
         //리사이클러뷰에 어댑터 설정
         binding.recyclerViewWish.setAdapter(wishAdapter);
+
+        //항목을 클릭했을때 콜백 객체를 등록
+        wishAdapter.setOnItemClickListener(new WishAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View itemView, int position) {
+                Log.i(TAG, position + "빔 항목 클릭 됨 ");
+                //해당 포지션의 아이템을 boardAdapter을 통해 받아온다.
+                Wish wishProduct = wishAdapter.getItem(position);
+                Bundle args = new Bundle();
+                //Board 객체를 전달해야하기때문에 (Board 객체에는 Serializable 이 임플먼트 되잇어야한다)
+                args.putSerializable("wishProduct", wishProduct);
+                navController.navigate(R.id.action_dest_wish_list_to_dest_product_detail,args);
+            }
+        });
 
     }
 

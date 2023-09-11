@@ -2,9 +2,10 @@ package com.example.secondminiproject.dto;
 
 import android.provider.ContactsContract;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Reservation {
+public class Reservation implements Serializable {
 
     private int reservationNo;
     private int userNo;

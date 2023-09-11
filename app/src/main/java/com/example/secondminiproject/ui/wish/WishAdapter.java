@@ -18,6 +18,8 @@ import java.util.List;
 public class WishAdapter extends RecyclerView.Adapter<WishViewHolder> {
     private List<Wish> wishList = new ArrayList<>();
 
+    private OnItemClickListener onItemClickListener;
+
     @NonNull
     @Override
     //데이터들을 가지고오는거
@@ -26,7 +28,7 @@ public class WishAdapter extends RecyclerView.Adapter<WishViewHolder> {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View wishView = layoutInflater.inflate(R.layout.fragment_wish_card, parent, false);
         //괄호안에 inflater 넣어야함
-        WishViewHolder wishViewHolder = new WishViewHolder(wishView);
+        WishViewHolder wishViewHolder = new WishViewHolder(wishView,onItemClickListener);
 
         return wishViewHolder;
     }
@@ -47,8 +49,19 @@ public class WishAdapter extends RecyclerView.Adapter<WishViewHolder> {
     public int getItemCount() {
         return wishList.size();
     }
+    public Wish getItem(int position){
+        return wishList.get(position);
+    }
 
     public void addWishProduct(Wish wishProduct){
         wishList.add(wishProduct);
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(View itemView, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
     }
 }
