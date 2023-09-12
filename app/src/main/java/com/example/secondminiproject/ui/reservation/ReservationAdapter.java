@@ -29,14 +29,12 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationViewHold
         View dateView = layoutInflater.inflate(R.layout.fragment_reservation_list_date, parent, false);
         //괄호안에 inflater 넣어야함
         ReservationViewHolder reservationViewHolder = new ReservationViewHolder(dateView,onItemClickListener);
-        Log.i(TAG, "onCreateViewHolder: 이건 언제 시작됨??");
 
         return reservationViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ReservationViewHolder holder, int position) {
-        Log.i(TAG, "onBindViewHolder: 온바인드는?");
         //리스트로부터 데이터를 불러오는것 (position 으로 0 -> 1 - 2 순으로 프로덕트를 가져와서 세팅한다)
         Reservation reservation = reservationList.get(position);
         //홀더에 데이터를 세팅해준다.
@@ -54,7 +52,6 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationViewHold
 
     public void addReservation(Reservation reservation){
         reservationList.add(reservation);
-        Log.i(TAG, "addReservation: add는? ");
     }
 
     public Reservation getItem(int position){

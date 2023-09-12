@@ -9,9 +9,9 @@
         android:icon="@drawable/ic_home_24dp"/>
     <item
         android:id="@+id/dest_reservation_list"
-        android:title="예약내역"
+        android:title="상품 목록"
         app:showAsAction="always"
-        android:icon="@drawable/ic_luggage_24dp"/>
+        android:icon="@drawable/ic_airplane_ticket_24dp"/>
     <item
         android:id="@+id/dest_my_page"
         android:title="마이페이지"

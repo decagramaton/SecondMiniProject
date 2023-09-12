@@ -1,19 +1,22 @@
 package com.example.secondminiproject.dto;
 
 import java.util.Date;
+import java.util.List;
 
-public class Product {
+// Product DB DTO + Review DB DTO 통합용 DTO입니다.
+public class Board {
     private int productNo;
     private String productTitle;
     private int productAdultPrice;
     private int productChildPrice;
-    private Date tourStartDate;
-    private Date tourEndDate;
+    private long tourStartDate;
+    private long tourEndDate;
     private String productVehicle;
     private String productVisitPlace;
     private int productReservationNumber;
     private String productContent;
     private String productCategory;
+    List<Review> reviewList;
 
 
     public int getProductNo() {
@@ -48,19 +51,19 @@ public class Product {
         this.productChildPrice = productChildPrice;
     }
 
-    public Date getTourStartDate() {
+    public long getTourStartDate() {
         return tourStartDate;
     }
 
-    public void setTourStartDate(Date tourStartDate) {
+    public void setTourStartDate(long tourStartDate) {
         this.tourStartDate = tourStartDate;
     }
 
-    public Date getTourEndDate() {
+    public long getTourEndDate() {
         return tourEndDate;
     }
 
-    public void setTourEndDate(Date tourEndDate) {
+    public void setTourEndDate(long tourEndDate) {
         this.tourEndDate = tourEndDate;
     }
 
@@ -102,5 +105,13 @@ public class Product {
 
     public void setProductCategory(String productCategory) {
         this.productCategory = productCategory;
+    }
+
+    public List<Review> getReviewList() {
+        return reviewList;
+    }
+
+    public void setReviewList(List<Review> reviewList) {
+        this.reviewList = reviewList;
     }
 }

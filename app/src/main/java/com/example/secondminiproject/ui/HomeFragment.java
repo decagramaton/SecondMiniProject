@@ -10,6 +10,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,9 +21,17 @@ import android.view.ViewGroup;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentHomeBinding;
 import com.example.secondminiproject.datastore.AppKeyValueStore;
+import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.dto.Product;
+import com.example.secondminiproject.service.ProductService;
+import com.example.secondminiproject.service.ServiceProvider;
 
+import java.util.List;
 import java.util.Random;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
@@ -101,24 +110,30 @@ public class HomeFragment extends Fragment {
         ProductAdapter productAdapter = new ProductAdapter();
 
         // Step3. Data를 얻고, Adapter에 설정
-        // 향후, DB 코드로 변환 필요, 지금은 실습을 위해 더미 데이터 생성
-        Random random = new Random();
-        for(int i=1; i<=100; i++){
-            Product product = new Product();
-            product.setPno(i);
-            product.setTitle("Title"+i);
-            product.setSubTitle("SubTitle"+i);
-            product.setContent("photo"+i+" description");
-            product.setImage(getResources().getIdentifier("photo"+ (random.nextInt(17)+1), "drawable", getContext().getPackageName()));
-            product.setPrice(1000 * (random.nextInt(10)+1));
-            product.setRating(random.nextInt(5)+1);
-            product.setRatingCountByProduct(10 * (random.nextInt(10)+1));
-            productAdapter.addProduct(product);
-        }
+        ProductService productService = ServiceProvider.getProductService(getContext());
+        Call<List<Board>> call = productService.getProductList();
+        call.enqueue(new Callback<List<Board>>() {
+            @Override
+            public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
+                Log.i(TAG, "onResponse() ");
+                List<Board> BoardList = response.body();
+
+                productAdapter.setList(BoardList);
+                binding.recyclerView.setAdapter(productAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Board>> call, Throwable t) {
+                Log.i(TAG, "onFailure() ");
+                Log.i(TAG, t.toString());
+            }
+        });
 
         // Step4. RecyclerView에 Adapter 설정
         binding.recyclerView.setAdapter(productAdapter);
     }
+
+
 
 
 

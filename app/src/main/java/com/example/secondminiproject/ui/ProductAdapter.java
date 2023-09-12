@@ -1,5 +1,6 @@
 package com.example.secondminiproject.ui;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,43 +9,46 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
+import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.dto.Product;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
+    private static final String TAG = "ProductAdapter";
 
-    private List<Product> productList = new ArrayList<>();
+    private List<Board> boardList = new ArrayList<>();
 
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // itemVIew - CardView를 인플레이션한 객체
-        // inflate를 정적으로 얻는 방법을 사용하여 객체를 얻음
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View itemView = layoutInflater.inflate(R.layout.fragment_product_list2, parent, false);
         ProductViewHolder productViewHolder = new ProductViewHolder(itemView);
+
+        Log.i(TAG, "ProductViewHolder onCreateViewHolder run");
 
         return productViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        Product product = productList.get(position);
-        holder.setData(product);
+        Board board = boardList.get(position);
+        holder.setData(board);
+        Log.i(TAG, "onBindViewHolder run");
     }
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return boardList.size();
     }
 
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
+    public void setList(List<Board> boardList) {
+        this.boardList = boardList;
     }
 
-    public void addProduct(Product product){
-        this.productList.add(product);
+    public void addProduct(Board board){
+        this.boardList.add(board);
     }
 }
