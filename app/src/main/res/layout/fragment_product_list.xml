@@ -21,17 +21,47 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/imageButton8"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_product_list_jeju_24dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="5dp"
+                    android:text="제주"
+                    android:textAlignment="center"
+                    android:textDirection="firstStrongRtl"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <ImageButton
                     android:id="@+id/image_button1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:src="@android:drawable/btn_star_big_on" />
+                    android:src="@drawable/ic_product_list_japen_24dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:scaleType="fitCenter"
+                    />
 
                 <TextView
                     android:id="@+id/category_text"
@@ -39,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingBottom="5dp"
-                    android:text="바닷가"
+                    android:text="일본"
                     android:textAlignment="center"
                     android:textDirection="firstStrongRtl"
                     android:textStyle="bold" />
@@ -53,10 +83,12 @@
 
                 <ImageButton
                     android:id="@+id/imageButton2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:layout_margin="5dp"
-                    android:src="@android:drawable/btn_star" />
+                    android:src="@drawable/ic_product_list_hongkong_24dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:scaleType="fitCenter"/>
 
                 <TextView
                     android:id="@+id/textView13"
@@ -64,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingBottom="5dp"
-                    android:text="통나무집"
+                    android:text="홍콩"
                     android:textAlignment="center"
                     android:textDirection="firstStrongRtl"
                     android:textStyle="bold" />
@@ -78,10 +110,13 @@
 
                 <ImageButton
                     android:id="@+id/imageButton3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:layout_margin="5dp"
-                    android:src="@android:drawable/btn_star" />
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_product_list_kenya_24dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:scaleType="fitCenter" />
 
                 <TextView
                     android:id="@+id/textView14"
@@ -89,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingBottom="5dp"
-                    android:text="호숫가"
+                    android:text="케냐"
                     android:textAlignment="center"
                     android:textDirection="firstStrongRtl"
                     android:textStyle="bold" />
@@ -103,10 +138,13 @@
 
                 <ImageButton
                     android:id="@+id/imageButton4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:layout_margin="5dp"
-                    android:src="@android:drawable/btn_star" />
+                    android:src="@drawable/ic_product_list_taipei_24dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:scaleType="fitCenter"
+                    />
 
                 <TextView
                     android:id="@+id/textView15"
@@ -114,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingBottom="5dp"
-                    android:text="한적한 시골"
+                    android:text="대만"
                     android:textAlignment="center"
                     android:textDirection="firstStrongRtl"
                     android:textStyle="bold" />
@@ -128,10 +166,12 @@
 
                 <ImageButton
                     android:id="@+id/imageButton5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:layout_margin="5dp"
-                    android:src="@android:drawable/btn_star" />
+                    android:src="@drawable/ic_product_list_mongol_24dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:scaleType="fitCenter" />
 
                 <TextView
                     android:id="@+id/textView16"
@@ -139,7 +179,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingBottom="5dp"
-                    android:text="한옥"
+                    android:text="몽골"
                     android:textAlignment="center"
                     android:textDirection="firstStrongRtl"
                     android:textStyle="bold" />
@@ -153,10 +193,12 @@
 
                 <ImageButton
                     android:id="@+id/imageButton6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:layout_margin="5dp"
-                    android:src="@android:drawable/btn_star" />
+                    android:backgroundTint="#FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_product_list_norway_24dp" />
 
                 <TextView
                     android:id="@+id/textView17"
@@ -164,7 +206,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingBottom="5dp"
-                    android:text="캠핑장"
+                    android:text="노르웨이"
                     android:textAlignment="center"
                     android:textDirection="firstStrongRtl"
                     android:textStyle="bold" />
@@ -178,10 +220,12 @@
 
                 <ImageButton
                     android:id="@+id/imageButton7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:layout_margin="5dp"
-                    android:src="@android:drawable/btn_star" />
+                    android:src="@drawable/ic_product_list_greece_24dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:scaleType="fitCenter" />
 
                 <TextView
                     android:id="@+id/textView18"
@@ -189,32 +233,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingBottom="5dp"
-                    android:text="열대 지역"
-                    android:textAlignment="center"
-                    android:textDirection="firstStrongRtl"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/imageButton8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:src="@android:drawable/btn_star" />
-
-                <TextView
-                    android:id="@+id/textView19"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingBottom="5dp"
-                    android:text="사막"
+                    android:text="그리스"
                     android:textAlignment="center"
                     android:textDirection="firstStrongRtl"
                     android:textStyle="bold" />
