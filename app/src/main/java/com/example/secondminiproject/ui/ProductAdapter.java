@@ -20,7 +20,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
     private List<Board> boardList = new ArrayList<>();
 
-    private ProductAdapter.OnItemClickListener onItemClickListener;
+    private OnItemClickListener onItemClickListener;
 
     @NonNull
     @Override

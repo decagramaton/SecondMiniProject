@@ -1,10 +1,11 @@
 package com.example.secondminiproject.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 // Product DB DTO + Review DB DTO 통합용 DTO입니다.
-public class Board {
+public class Board implements Serializable {
     private int productNo;
     private String productTitle;
     private int productAdultPrice;
