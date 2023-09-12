@@ -1,4 +1,4 @@
-package com.example.secondminiproject.ui;
+package com.example.secondminiproject.ui.home;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.dto.Board;
-import com.example.secondminiproject.dto.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
     private List<Board> boardList = new ArrayList<>();
 
-    private ProductAdapter.OnItemClickListener onItemClickListener;
+    private OnItemClickListener onItemClickListener;
 
     @NonNull
     @Override

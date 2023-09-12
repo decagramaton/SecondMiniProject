@@ -1,4 +1,4 @@
-package com.example.secondminiproject.ui;
+package com.example.secondminiproject.ui.home;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -10,10 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.dto.Board;
-import com.example.secondminiproject.dto.Product;
 import com.example.secondminiproject.dto.Review;
 import com.example.secondminiproject.service.ProductService;
-import com.example.secondminiproject.service.ServiceProvider;
 
 import java.text.DecimalFormat;
 import java.util.Currency;

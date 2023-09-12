@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Lifecycle;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -19,21 +18,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.secondminiproject.MainActivity;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentHomeBinding;
 import com.example.secondminiproject.datastore.AppKeyValueStore;
 import com.example.secondminiproject.dto.Board;
-import com.example.secondminiproject.dto.Product;
 import com.example.secondminiproject.service.ProductService;
 import com.example.secondminiproject.service.ServiceProvider;
 import com.example.secondminiproject.ui.ProductAdapter;
-import com.example.secondminiproject.ui.home.HomeAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.List;
-import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -54,6 +49,9 @@ public class HomeFragment extends Fragment {
 
         // 추천 여행 상품 목록 출력
         initRecyclerView();
+
+        //배너
+        initPagerView();
 
 
         //카테고리(나라별)
@@ -187,7 +185,20 @@ public class HomeFragment extends Fragment {
                 Log.i(TAG, t.toString());
             }
         });
+    }
+    private void initPagerView() {
+        HomeBannerAdapter homeBannerAdapter = new HomeBannerAdapter(getActivity());
+        binding.homeBanner.setAdapter(homeBannerAdapter);
 
+        /*//이게 있어야 배너광고의 점이 보임
+        TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(
+                binding.tabLayout, binding.viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+
+            }
+        });
+        tabLayoutMediator.attach();*/
     }
 
 }

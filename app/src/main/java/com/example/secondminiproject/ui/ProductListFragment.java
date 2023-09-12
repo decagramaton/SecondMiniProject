@@ -7,23 +7,17 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentProductListBinding;
 import com.example.secondminiproject.dto.Board;
-import com.example.secondminiproject.dto.Product;
 import com.example.secondminiproject.service.ProductService;
 import com.example.secondminiproject.service.ServiceProvider;
-import com.example.secondminiproject.ui.home.HomeAdapter;
 
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
