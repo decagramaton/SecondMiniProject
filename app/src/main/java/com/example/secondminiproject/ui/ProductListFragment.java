@@ -39,24 +39,15 @@ public class ProductListFragment extends Fragment {
         binding = FragmentProductListBinding.inflate(getLayoutInflater());
         navController = NavHostFragment.findNavController(this);
 
-        initBtnProductDetail();
-        initBtnHome();
+
         initRecyclerView();
 
         return binding.getRoot();
     }
 
-    private void initBtnProductDetail() {
-        binding.btnProductListProductDetail.setOnClickListener(v->{
-            navController.navigate(R.id.action_dest_product_list_to_dest_product_detail);
-        });
-    }
 
-    private void initBtnHome() {
-        binding.btnProductListHome.setOnClickListener(v->{
-            navController.popBackStack();
-        });
-    }
+
+
 
     private void initRecyclerView() {
         // Step1. 수직방향으로 1라인에 1개의 ViewHolder가 들어가도록 설정
