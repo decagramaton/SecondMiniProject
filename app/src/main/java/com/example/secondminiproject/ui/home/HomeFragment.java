@@ -1,10 +1,11 @@
-package com.example.secondminiproject.ui;
+package com.example.secondminiproject.ui.home;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Lifecycle;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -17,10 +18,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.secondminiproject.MainActivity;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentHomeBinding;
 import com.example.secondminiproject.datastore.AppKeyValueStore;
 import com.example.secondminiproject.dto.Product;
+import com.example.secondminiproject.ui.ProductAdapter;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.Random;
 
@@ -40,9 +45,14 @@ public class HomeFragment extends Fragment {
         // 추천 여행 상품 목록 출력
         initRecyclerView();
 
+        //상단 배너
+        initPagerView();
+
 
         return binding.getRoot();
     }
+
+
 
     private void initHeaderMenu() {
         MenuProvider menuProvider = new MenuProvider() {
@@ -120,7 +130,20 @@ public class HomeFragment extends Fragment {
         binding.recyclerView.setAdapter(productAdapter);
     }
 
+    private void initPagerView() {
+        HomeBannerAdapter homeBannerAdapter = new HomeBannerAdapter(this.getActivity());
+        binding.homeBanner.setAdapter(homeBannerAdapter);
 
+        //이게 있어야 배너광고의 점이 보임
+       /* TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(
+                binding.tabLayout, binding.homeBanner, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+
+            }
+        });
+        tabLayoutMediator.attach();*/
+    }
 
 
 }

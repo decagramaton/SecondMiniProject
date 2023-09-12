@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dest_home"
-        android:name="com.example.secondminiproject.ui.HomeFragment"
+        android:name="com.example.secondminiproject.ui.home.HomeFragment"
         android:label="홈화면"
         tools:layout="@layout/fragment_home" >
         <action
