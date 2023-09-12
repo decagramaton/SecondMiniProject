@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
-    private static final String TAG = "ProductAdapter";
-
     private List<Board> boardList = new ArrayList<>();
 
     private OnItemClickListener onItemClickListener;
@@ -29,8 +27,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         View itemView = layoutInflater.inflate(R.layout.fragment_product_list2, parent, false);
         ProductViewHolder productViewHolder = new ProductViewHolder(itemView, onItemClickListener);
 
-        Log.i(TAG, "ProductViewHolder onCreateViewHolder run");
-
         return productViewHolder;
     }
 
@@ -38,7 +34,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Board board = boardList.get(position);
         holder.setData(board);
-        Log.i(TAG, "onBindViewHolder run");
     }
 
     @Override

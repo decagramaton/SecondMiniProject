@@ -32,20 +32,16 @@ public class PageFragment extends Fragment {
     }
 
     private void initUIByPageNo(int pageNo) {
-        for(int i=0; i<pageNo;i++){
-            if(i==0){
-                binding.imageView3.setImageResource(R.drawable.ggomong);
-            }else if(i==1){
-                binding.imageView3.setImageResource(R.drawable.banner1);
-            }else if(i==2){
-                binding.imageView3.setImageResource(R.drawable.banner2);
-            }else if(i==3){
-                binding.imageView3.setImageResource(R.drawable.banner3);
-            }else if(i==4){
-                binding.imageView3.setImageResource(R.drawable.banner4);
-            }
+        if(pageNo==0){
+            binding.imageView3.setImageResource(R.drawable.ggomong);
+        }else if(pageNo==1){
+            binding.imageView3.setImageResource(R.drawable.banner1);
+        }else if(pageNo==2){
+            binding.imageView3.setImageResource(R.drawable.banner2);
+        }else if(pageNo==3){
+            binding.imageView3.setImageResource(R.drawable.banner3);
+        }else if(pageNo==4) {
+            binding.imageView3.setImageResource(R.drawable.banner4);
         }
-
     }
-
 }

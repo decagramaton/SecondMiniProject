@@ -170,7 +170,6 @@ public class HomeFragment extends Fragment {
         call.enqueue(new Callback<List<Board>>() {
             @Override
             public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
-                Log.i(TAG, "onResponse() ");
                 List<Board> BoardList = response.body();
 
                 productAdapter.setList(BoardList);
@@ -179,7 +178,6 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Board>> call, Throwable t) {
-                Log.i(TAG, "onFailure() ");
                 Log.i(TAG, t.toString());
             }
         });
@@ -188,13 +186,12 @@ public class HomeFragment extends Fragment {
         productAdapter.setOnItemClickListener(new com.example.secondminiproject.ui.home.ProductAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
-                Log.i(TAG, position + "빔 항목 클릭 됨 ");
-                //해당 포지션의 아이템을 boardAdapter을 통해 받아온다.
+
                 Board board = productAdapter.getItem(position);
-                Log.i(TAG, board.toString()); //
+
                 Bundle args = new Bundle();
-                //Board 객체를 전달해야하기때문에 (Board 객체에는 Serializable 이 임플먼트 되잇어야한다)
                 args.putSerializable("board", board);
+
                 navController.navigate(R.id.dest_product_detail,args);
             }
         });

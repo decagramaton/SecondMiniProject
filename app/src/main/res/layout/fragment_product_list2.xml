@@ -35,11 +35,12 @@
 
                 <CheckBox
                     android:id="@+id/checkbox"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
                     android:layout_margin="10dp"
                     android:background="@drawable/wish_list_checkbox"
                     android:button="@android:color/transparent"
+
                     android:checked="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -105,7 +106,9 @@
                 android:layout_weight="1"
                 android:text="visitPlace"
                 android:textAppearance="?attr/textAppearanceBody1"
-                android:textColor="?android:attr/textColorSecondary" />
+                android:textColor="?android:attr/textColorSecondary"
+                android:maxLines="2"
+                android:ellipsize="end"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
