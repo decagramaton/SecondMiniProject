@@ -1,6 +1,8 @@
 package com.example.secondminiproject.dto;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     private int pno;
     private int image;
     private String title;

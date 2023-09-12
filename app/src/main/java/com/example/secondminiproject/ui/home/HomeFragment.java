@@ -11,6 +11,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,7 +24,7 @@ import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentHomeBinding;
 import com.example.secondminiproject.datastore.AppKeyValueStore;
 import com.example.secondminiproject.dto.Product;
-import com.example.secondminiproject.ui.ProductAdapter;
+import com.example.secondminiproject.ui.home.HomeAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -48,10 +49,60 @@ public class HomeFragment extends Fragment {
         //상단 배너
         initPagerView();
 
+        //카테고리(나라별)
+        initCategoryJapan();
+        initCategoryHongkong();
+        initCategoryTaiwan();
+        initCategoryMongolia();
+        initCategoryNorway();
+        initCategoryGreece();
+        initCategoryKeyna();
+
 
         return binding.getRoot();
     }
 
+    private void initCategoryJapan() {
+        binding.btnHomeCategoryJapan.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryHongkong() {
+        binding.btnHomeCategoryHongkong.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryTaiwan() {
+        binding.btnHomeCategoryTaiwan.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryMongolia() {
+        binding.btnHomeCategoryMongolia.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryNorway() {
+        binding.btnHomeCategoryNorway.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryGreece() {
+        binding.btnHomeCategoryGreece.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryKeyna() {
+        binding.btnHomeCategoryKenya.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
 
 
     private void initHeaderMenu() {
@@ -104,11 +155,11 @@ public class HomeFragment extends Fragment {
 
     private void initRecyclerView() {
         // Step1. 수직방향으로 1라인에 1개의 ViewHolder가 들어가도록 설정
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         binding.recyclerView.setLayoutManager(linearLayoutManager);
 
         // Step2. 어샙터 생성
-        ProductAdapter productAdapter = new ProductAdapter();
+        HomeAdapter homeAdapter = new HomeAdapter();
 
         // Step3. Data를 얻고, Adapter에 설정
         // 향후, DB 코드로 변환 필요, 지금은 실습을 위해 더미 데이터 생성
@@ -123,11 +174,25 @@ public class HomeFragment extends Fragment {
             product.setPrice(1000 * (random.nextInt(10)+1));
             product.setRating(random.nextInt(5)+1);
             product.setRatingCountByProduct(10 * (random.nextInt(10)+1));
-            productAdapter.addProduct(product);
+            homeAdapter.addProduct(product);
         }
 
         // Step4. RecyclerView에 Adapter 설정
-        binding.recyclerView.setAdapter(productAdapter);
+        binding.recyclerView.setAdapter(homeAdapter);
+
+        //항목을 클릭했을때 콜백 객체를 등록
+        homeAdapter.setOnItemClickListener(new HomeAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View itemView, int position) {
+                Log.i(TAG, position + "빔 항목 클릭 됨 ");
+                //해당 포지션의 아이템을 boardAdapter을 통해 받아온다.
+                Product recommendProduct = homeAdapter.getItem(position);
+                Bundle args = new Bundle();
+                //Board 객체를 전달해야하기때문에 (Board 객체에는 Serializable 이 임플먼트 되잇어야한다)
+                args.putSerializable("recommendProduct", recommendProduct);
+                navController.navigate(R.id.dest_product_detail,args);
+            }
+        });
     }
 
     private void initPagerView() {
