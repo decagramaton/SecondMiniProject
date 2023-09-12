@@ -122,7 +122,7 @@
     </fragment>
     <fragment
         android:id="@+id/dest_product_detail"
-        android:name="com.example.secondminiproject.ui.ProductDetailFragment"
+        android:name="com.example.secondminiproject.ui.productDetail.ProductDetailFragment"
         android:label="상품 상세"
         tools:layout="@layout/fragment_product_detail" >
         <action
