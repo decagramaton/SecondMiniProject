@@ -195,7 +195,7 @@ public class HomeFragment extends Fragment {
                 Bundle args = new Bundle();
                 //Board 객체를 전달해야하기때문에 (Board 객체에는 Serializable 이 임플먼트 되잇어야한다)
                 args.putSerializable("board", board);
-                navController.navigate(R.id.action_dest_home_to_dest_product_list,args);
+                navController.navigate(R.id.dest_product_detail,args);
             }
         });
     }
