@@ -8,19 +8,26 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <LinearLayout
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
-
+            android:orientation="horizontal"
+            android:layout_marginBottom="15dp">
 
             <ImageView
                 android:id="@+id/wish_product_image"
                 android:layout_width="170dp"
-                android:layout_height="120dp"
-                app:srcCompat="@drawable/photo15" />
+                android:layout_height="130dp"
+                app:srcCompat="@drawable/photo15"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,7 +41,7 @@
                     android:layout_margin="10dp"
                     android:text="[부산 해운대] 부산 요트 투어 더 요트"
 
-                    android:textSize="15dp"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -58,7 +65,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="end"
                     android:orientation="horizontal">
 
@@ -66,39 +73,39 @@
                         android:id="@+id/wish_product_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginEnd="10dp"
                         android:text="420,000"
                         android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:layout_gravity="center_vertical"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginEnd="20dp"
                         android:gravity="end"
                         android:text="원"
                         android:textSize="17dp"
-                        android:textStyle="bold"
-                        android:layout_gravity="center_vertical"/>
+                        android:textStyle="bold" />
 
                     <Button
                         style="?attr/materialButtonOutlinedStyle"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_gravity="end"
                         android:layout_marginEnd="10dp"
                         android:text="삭제하기"
-                        android:textStyle="bold"
                         android:textColor="#FF6F0F"
-                        android:textSize="10sp"
+                        android:textSize="11dp"
+                        android:textStyle="bold"
                         app:strokeColor="#00FF6F0F" />
 
                 </LinearLayout>
 
-
-
             </LinearLayout>
+
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

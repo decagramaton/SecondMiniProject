@@ -9,10 +9,12 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentProductDetailBinding;
 import com.example.secondminiproject.databinding.FragmentProductListBinding;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 
 public class ProductDetailFragment extends Fragment {
@@ -20,6 +22,7 @@ public class ProductDetailFragment extends Fragment {
     private static final String TAG = "ProductDetailFragment";
     private FragmentProductDetailBinding binding;
     private NavController navController;
+    private BottomSheetDialogFragment bottomSheet;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentProductDetailBinding.inflate(getLayoutInflater());
@@ -27,13 +30,15 @@ public class ProductDetailFragment extends Fragment {
 
         initBtnMakeReservation();
 
-
         return binding.getRoot();
     }
 
     private void initBtnMakeReservation() {
+
         binding.btnProductDetailPayment.setOnClickListener(v -> {
-            navController.navigate(R.id.dest_payment);
+            //navController.navigate(R.id.dest_payment);
+           ProductDetailBottomSheetFragment productDetailBottomSheetFragment = new ProductDetailBottomSheetFragment();
+           productDetailBottomSheetFragment.show(getActivity().getSupportFragmentManager(), "productDetailBottomSheetFragment");
         });
     }
 
