@@ -61,4 +61,6 @@ dependencies {
             replacedBy("org.jetbrains.kotlin:kotlin-stdlib", "kotlin-stdlib-jdk8 is now part of kotlin-stdlib")
         }
     }
+    //이미지 선택 도구 의존 설정
+    implementation("androidx.activity:activity:1.7.2")
 }

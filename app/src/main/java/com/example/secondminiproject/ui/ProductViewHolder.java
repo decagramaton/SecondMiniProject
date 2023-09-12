@@ -1,5 +1,6 @@
 package com.example.secondminiproject.ui;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -15,6 +16,7 @@ import java.text.DecimalFormat;
 import java.util.Currency;
 
 public class ProductViewHolder extends RecyclerView.ViewHolder {
+    private static final String TAG = "ProductViewHolder";
     private int pno;
     private ImageView image;
     private TextView title;
@@ -26,7 +28,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
     private TextView ratingCountByProduct;
 
 
-    public ProductViewHolder(@NonNull View itemView) {
+    public ProductViewHolder(@NonNull View itemView, ProductAdapter.OnItemClickListener onItemClickListener) {
         super(itemView);
         this.image = itemView.findViewById(R.id.image);
         this.title = itemView.findViewById(R.id.title);
@@ -36,10 +38,14 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         this.rating = itemView.findViewById(R.id.rating);
         this.ratingScore = itemView.findViewById(R.id.rating_score);
         this.ratingCountByProduct = itemView.findViewById(R.id.rating_count_by_product);
+
+        itemView.setOnClickListener(v -> {
+            onItemClickListener.onItemClick(v, getAdapterPosition());
+        });
     }
 
     public void setData(Product product){
-        this.pno = pno;
+        this.pno = product.getPno();
         this.image.setImageResource(product.getImage());
         this.title.setText(product.getTitle());
         this.subTitle.setText(product.getSubTitle());
@@ -54,4 +60,25 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         this.ratingCountByProduct.setText("(" + product.getRatingCountByProduct() + ")");
     }
 }
+
+/*    public BoardViewHolder(@NonNull View itemView) {
+        super(itemView);
+
+        //아이템 UI 얻기
+        battach = (ImageView) itemView.findViewById(R.id.battach);
+        btitle = (TextView) itemView.findViewById(R.id.btitle);
+        mid = (TextView)itemView.findViewById(R.id.mid);
+        bdate = (TextView)itemView.findViewById(R.id.bdate);
+        bcontent = (TextView)itemView.findViewById(R.id.bcontent);
+
+    }
+
+    public void setData(Board board) {
+        BoardService.loadImage(board.getBno(), battach);
+        btitle.setText(board.getBtitle());
+        mid.setText(board.getMid());
+        bdate.setText(board.getBdate());
+        bcontent.setText(board.getBcontent());
+    }
+}*/
 

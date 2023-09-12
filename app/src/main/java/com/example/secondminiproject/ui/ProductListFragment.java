@@ -7,6 +7,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentProductListBinding;
 import com.example.secondminiproject.dto.Product;
+import com.example.secondminiproject.ui.home.HomeAdapter;
 
 
 import java.util.Random;
@@ -42,7 +44,7 @@ public class ProductListFragment extends Fragment {
     }
 
     private void initBtnHome() {
-        binding.btnProductListHome.setOnClickListener(v->{
+        binding.btnProductListHome.setOnClickListener(v-> {
             navController.popBackStack();
         });
     }
@@ -73,5 +75,15 @@ public class ProductListFragment extends Fragment {
 
         // Step4. RecyclerView에 Adapter 설정
         binding.recyclerView.setAdapter(productAdapter);
+
+        productAdapter.setOnItemClickListener(new ProductAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View itemView, int position) {
+                Product recommendProduct = productAdapter.getItem(position);
+                Bundle args = new Bundle();
+                args.putSerializable("recommendProduct", recommendProduct);
+                navController.navigate(R.id.dest_product_detail,args);
+            }
+        });
     }
 }

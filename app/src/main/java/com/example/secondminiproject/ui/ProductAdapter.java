@@ -17,6 +17,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
     private List<Product> productList = new ArrayList<>();
 
+    private ProductAdapter.OnItemClickListener onItemClickListener;
+
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -24,7 +26,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         // inflate를 정적으로 얻는 방법을 사용하여 객체를 얻음
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View itemView = layoutInflater.inflate(R.layout.fragment_product_list2, parent, false);
-        ProductViewHolder productViewHolder = new ProductViewHolder(itemView);
+        ProductViewHolder productViewHolder = new ProductViewHolder(itemView, onItemClickListener);
 
         return productViewHolder;
     }
@@ -48,5 +50,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         this.productList.add(product);
     }
 
+    public interface OnItemClickListener{
+        void onItemClick(View itemView, int position);
+    }
+
+    public Product getItem(int position) {
+        return productList.get(position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
 
 }
