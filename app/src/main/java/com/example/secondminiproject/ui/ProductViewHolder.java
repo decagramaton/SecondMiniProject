@@ -79,3 +79,24 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
     }
 }
 
+/*    public BoardViewHolder(@NonNull View itemView) {
+        super(itemView);
+
+        //아이템 UI 얻기
+        battach = (ImageView) itemView.findViewById(R.id.battach);
+        btitle = (TextView) itemView.findViewById(R.id.btitle);
+        mid = (TextView)itemView.findViewById(R.id.mid);
+        bdate = (TextView)itemView.findViewById(R.id.bdate);
+        bcontent = (TextView)itemView.findViewById(R.id.bcontent);
+
+    }
+
+    public void setData(Board board) {
+        BoardService.loadImage(board.getBno(), battach);
+        btitle.setText(board.getBtitle());
+        mid.setText(board.getMid());
+        bdate.setText(board.getBdate());
+        bcontent.setText(board.getBcontent());
+    }
+}*/
+

@@ -18,6 +18,7 @@ import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.dto.Product;
 import com.example.secondminiproject.service.ProductService;
 import com.example.secondminiproject.service.ServiceProvider;
+import com.example.secondminiproject.ui.home.HomeAdapter;
 
 
 import java.util.ArrayList;
@@ -58,9 +59,11 @@ public class ProductListFragment extends Fragment {
     }
 
     private void initRecyclerView() {
+        // Step1. 수직방향으로 1라인에 1개의 ViewHolder가 들어가도록 설정
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         binding.recyclerView.setLayoutManager(linearLayoutManager);
 
+        // Step2. 어샙터 생성
         ProductAdapter productAdapter = new ProductAdapter();
 
         ProductService productService = ServiceProvider.getProductService(getContext());
@@ -86,5 +89,6 @@ public class ProductListFragment extends Fragment {
 
         // Step4. RecyclerView에 Adapter 설정
         binding.recyclerView.setAdapter(productAdapter);
+
     }
 }

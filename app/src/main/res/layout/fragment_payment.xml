@@ -181,7 +181,6 @@
                         android:layout_marginLeft="10dp"
                         android:gravity="center_vertical"
                         android:text="(한국 출발) 2023년 10월 06(금) \n11:55 \n(현지 도착) 2023년 10월 03일(화)" />
-                    />
 
                 </LinearLayout>
 
@@ -231,14 +230,15 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/reservation_name"
                         android:layout_width="210dp"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_marginLeft="10dp"
-                        android:background="@drawable/border"
-                        android:text="" />
+                        android:padding="12dp"
+                        android:background="@null"
+                        android:hint="홍길동" />
 
 
                 </LinearLayout>
@@ -263,14 +263,15 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/reservation_birth"
                         android:layout_width="210dp"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_marginLeft="10dp"
-                        android:background="@drawable/border"
-                        android:text="" />
+                        android:padding="12dp"
+                        android:background="@null"
+                        android:hint="1985.01.01" />
 
                 </LinearLayout>
 
@@ -303,12 +304,12 @@
 
                         <RadioButton
                             android:layout_width="100dp"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
                             android:text="남" />
 
                         <RadioButton
                             android:layout_width="100dp"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
                             android:text="여" />
                     </RadioGroup>
                 </LinearLayout>
@@ -326,28 +327,21 @@
                     <TextView
                         android:layout_width="130dp"
                         android:layout_height="50dp"
-                        android:background="#10000000"
+                        android:background="#20FF6F0F"
                         android:gravity="center"
                         android:text="이름(영문)"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/reservation_EN_FamilyName"
-                        android:layout_width="80dp"
-                        android:layout_height="40dp"
+                        android:layout_width="230dp"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/border"
-                        android:text="" />
-                    <TextView
-                        android:id="@+id/reservation_EN_LastName"
-                        android:layout_width="120dp"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/border"
-                        android:text="" />
+                        android:padding="12dp"
+                        android:background="@null"
+                        android:hint="HONG GIL DONG" />
 
                 </LinearLayout>
 
@@ -364,20 +358,21 @@
                     <TextView
                         android:layout_width="130dp"
                         android:layout_height="50dp"
-                        android:background="#10000000"
+                        android:background="#30FF8400"
                         android:gravity="center"
                         android:text="휴대폰 번호"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/reservation_phone"
-                        android:layout_width="210dp"
-                        android:layout_height="40dp"
+                        android:layout_width="230dp"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/border"
-                        android:text="" />
+                        android:padding="12dp"
+                        android:background="@null"
+                        android:hint="휴대폰 번호를 입력하세요."/>
 
 
                 </LinearLayout>
@@ -557,12 +552,13 @@
 
                 </LinearLayout>
                 <Button
-                    android:layout_width="match_parent"
+                    android:layout_width="320dp"
                     android:layout_height="60dp"
-                    android:backgroundTint="#FF6F0F"
-                    android:text="예약하기"
+                    android:backgroundTint="#FF8400"
+                    android:text="@string/reservation_btn"
                     android:textSize="20dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

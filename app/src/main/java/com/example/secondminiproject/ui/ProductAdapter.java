@@ -20,12 +20,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
     private List<Board> boardList = new ArrayList<>();
 
+    private ProductAdapter.OnItemClickListener onItemClickListener;
+
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View itemView = layoutInflater.inflate(R.layout.fragment_product_list2, parent, false);
-        ProductViewHolder productViewHolder = new ProductViewHolder(itemView);
+        ProductViewHolder productViewHolder = new ProductViewHolder(itemView, onItemClickListener);
 
         Log.i(TAG, "ProductViewHolder onCreateViewHolder run");
 
@@ -51,4 +53,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     public void addProduct(Board board){
         this.boardList.add(board);
     }
+
+    public interface OnItemClickListener{
+        void onItemClick(View itemView, int position);
+    }
+
+    public Product getItem(int position) {
+        return productList.get(position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
 }

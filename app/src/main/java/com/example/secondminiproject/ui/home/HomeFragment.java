@@ -1,10 +1,11 @@
-package com.example.secondminiproject.ui;
+package com.example.secondminiproject.ui.home;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Lifecycle;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -18,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.secondminiproject.MainActivity;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentHomeBinding;
 import com.example.secondminiproject.datastore.AppKeyValueStore;
@@ -25,6 +27,10 @@ import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.dto.Product;
 import com.example.secondminiproject.service.ProductService;
 import com.example.secondminiproject.service.ServiceProvider;
+import com.example.secondminiproject.ui.ProductAdapter;
+import com.example.secondminiproject.ui.home.HomeAdapter;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.List;
 import java.util.Random;
@@ -50,8 +56,61 @@ public class HomeFragment extends Fragment {
         initRecyclerView();
 
 
+        //카테고리(나라별)
+        initCategoryJapan();
+        initCategoryHongkong();
+        initCategoryTaiwan();
+        initCategoryMongolia();
+        initCategoryNorway();
+        initCategoryGreece();
+        initCategoryKeyna();
+
+
         return binding.getRoot();
     }
+
+    private void initCategoryJapan() {
+        binding.btnHomeCategoryJapan.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryHongkong() {
+        binding.btnHomeCategoryHongkong.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryTaiwan() {
+        binding.btnHomeCategoryTaiwan.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryMongolia() {
+        binding.btnHomeCategoryMongolia.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryNorway() {
+        binding.btnHomeCategoryNorway.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryGreece() {
+        binding.btnHomeCategoryGreece.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryKeyna() {
+        binding.btnHomeCategoryKenya.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
 
     private void initHeaderMenu() {
         MenuProvider menuProvider = new MenuProvider() {
@@ -129,13 +188,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        // Step4. RecyclerView에 Adapter 설정
-        binding.recyclerView.setAdapter(productAdapter);
     }
-
-
-
-
-
 
 }
