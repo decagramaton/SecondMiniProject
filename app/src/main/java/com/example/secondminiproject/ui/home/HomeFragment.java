@@ -24,9 +24,7 @@ import com.example.secondminiproject.datastore.AppKeyValueStore;
 import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.service.ProductService;
 import com.example.secondminiproject.service.ServiceProvider;
-import com.example.secondminiproject.ui.ProductAdapter;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
+import com.example.secondminiproject.ui.home.ProductAdapter;
 
 import java.util.List;
 
@@ -183,6 +181,21 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<List<Board>> call, Throwable t) {
                 Log.i(TAG, "onFailure() ");
                 Log.i(TAG, t.toString());
+            }
+        });
+
+        //항목을 클릭했을때 콜백 객체를 등록
+        productAdapter.setOnItemClickListener(new com.example.secondminiproject.ui.home.ProductAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View itemView, int position) {
+                Log.i(TAG, position + "빔 항목 클릭 됨 ");
+                //해당 포지션의 아이템을 boardAdapter을 통해 받아온다.
+                Board board = productAdapter.getItem(position);
+                Log.i(TAG, board.toString()); //
+                Bundle args = new Bundle();
+                //Board 객체를 전달해야하기때문에 (Board 객체에는 Serializable 이 임플먼트 되잇어야한다)
+                args.putSerializable("board", board);
+                navController.navigate(R.id.action_dest_home_to_dest_product_list,args);
             }
         });
     }
