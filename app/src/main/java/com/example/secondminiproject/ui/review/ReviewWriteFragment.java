@@ -25,14 +25,7 @@ public class ReviewWriteFragment extends Fragment {
 
         binding = FragmentReviewWriteBinding.inflate(inflater);
 
-        initBtnReviewList();
         // Inflate the layout for this fragment
         return binding.getRoot();
-    }
-
-    private void initBtnReviewList() {
-        binding.btnReviewWriteReviewList.setOnClickListener(v -> {
-            navController.popBackStack();
-        });
     }
 }

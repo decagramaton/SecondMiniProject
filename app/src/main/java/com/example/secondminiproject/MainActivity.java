@@ -10,10 +10,12 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.secondminiproject.databinding.ActivityMainBinding;
 
@@ -38,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         initHeaderAppBar();
 
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
+
+        //getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
     }
 
     private void initHeaderAppBar() {
