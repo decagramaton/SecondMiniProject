@@ -115,17 +115,6 @@ public class HomeFragment extends Fragment {
                 // Step1. Menu Layout 인플레이션화.
                 menuInflater.inflate(R.menu.home_head_menu, menu);
 
-                String mid = AppKeyValueStore.getValue(getContext(), "mid");
-                if(mid == null) {
-                    menu.findItem(R.id.item_home_login).setVisible(true);
-                    menu.findItem(R.id.item_home_logout).setVisible(false);
-                    menu.findItem(R.id.item_home_my_page).setVisible(false);
-                } else {
-                    menu.findItem(R.id.item_home_login).setVisible(false);
-                    menu.findItem(R.id.item_home_logout).setVisible(true);
-                    menu.findItem(R.id.item_home_my_page).setVisible(true);
-                }
-
 
             }
 
@@ -134,17 +123,6 @@ public class HomeFragment extends Fragment {
                 // Step2. 아이콘 별 이벤트 처리
                 if(menuItem.getItemId() == R.id.item_home_search){
 
-                    return true;
-                } else if (menuItem.getItemId() == R.id.item_home_login) {
-                    navController.navigate(R.id.action_dest_home_to_dest_login);
-                    return true;
-                } else if (menuItem.getItemId() == R.id.item_home_logout) {
-                    AppKeyValueStore.remove(getContext(), "mid");
-                    AppKeyValueStore.remove(getContext(), "mpassword");
-                    getActivity().invalidateMenu();
-                    return true;
-                } else if (menuItem.getItemId() == R.id.item_home_my_page) {
-                    navController.navigate(R.id.action_dest_home_to_dest_my_page);
                     return true;
                 }
 

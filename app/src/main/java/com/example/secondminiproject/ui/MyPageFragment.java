@@ -6,12 +6,14 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentMyPageBinding;
+import com.example.secondminiproject.datastore.AppKeyValueStore;
 
 
 public class MyPageFragment extends Fragment {
@@ -38,6 +40,33 @@ public class MyPageFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i(TAG, "onResume 실행");
+        settingLoginLogout();
+    }
+
+    private void settingLoginLogout() {
+
+        String mid = AppKeyValueStore.getValue(getContext(), "mid");
+        Log.i(TAG, "settingLoginLogout: " + mid);
+        if(mid == null){
+            binding.btnMyPageLoginLogout.setText("로그인");
+
+            binding.btnMyPageLoginLogout.setOnClickListener(v -> {
+                navController.navigate(R.id.dest_login);
+            });
+        } else {
+            binding.btnMyPageLoginLogout.setText("로그아웃");
+            AppKeyValueStore.remove(getContext(), "mid");
+            AppKeyValueStore.remove(getContext(), "mpassword");
+
+            binding.btnMyPageLoginLogout.setOnClickListener(v -> {
+                navController.popBackStack(R.id.dest_home, false);
+            });
+        }
+    }
 
     private void initBtnReviewList() {
         binding.btnMyPageReviewList.setOnClickListener(v -> {
