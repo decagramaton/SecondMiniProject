@@ -11,12 +11,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentWishListBinding;
 import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.dto.Wish;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class WishListFragment extends Fragment {
@@ -24,6 +26,9 @@ public class WishListFragment extends Fragment {
     private static final String TAG = "WishListFragment";
     private FragmentWishListBinding binding;
     private NavController navController;
+    ArrayList<Wish> wishProducts = new ArrayList<>();
+
+    boolean position_flag = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,6 +39,7 @@ public class WishListFragment extends Fragment {
         initRecyclerView();
         initBtnProductListImsi();
         initBtnProductDetailImsi();
+
 
 
         return binding.getRoot();
@@ -74,6 +80,8 @@ public class WishListFragment extends Fragment {
             wishProduct.setProductPrice(100000 * (random.nextInt(10)+1)); //10 -> 0~9 , 10 + 1 -> 1~10
 
             wishAdapter.addWishProduct(wishProduct);
+
+            wishProducts.add(wishProduct);
         }
 
         //리사이클러뷰에 어댑터 설정
@@ -92,6 +100,22 @@ public class WishListFragment extends Fragment {
                 navController.navigate(R.id.action_dest_wish_list_to_dest_product_detail,args);
             }
         });
+
+        binding.recyclerViewWish.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+
+            if((!v.canScrollVertically(-1))){
+                binding.btnWishGoListTop.hide();
+            }else {
+                binding.btnWishGoListTop.show();
+            }
+            position_flag = false;
+
+        });
+
+        binding.btnWishGoListTop.setOnClickListener(v -> {
+            binding.recyclerViewWish.scrollToPosition(0);
+        });
+
 
     }
 

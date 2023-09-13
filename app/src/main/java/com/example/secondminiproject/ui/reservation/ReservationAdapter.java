@@ -4,8 +4,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
@@ -20,15 +23,18 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationViewHold
 
     private OnItemClickListener onItemClickListener;
 
+    private NavController navController;
+
     @NonNull
     @Override
     //데이터들을 가지고오는거
     public ReservationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         //레이아웃 인플레이터 받는법
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View dateView = layoutInflater.inflate(R.layout.fragment_reservation_list_date, parent, false);
         //괄호안에 inflater 넣어야함
-        ReservationViewHolder reservationViewHolder = new ReservationViewHolder(dateView,onItemClickListener);
+        ReservationViewHolder reservationViewHolder = new ReservationViewHolder(dateView,onItemClickListener, navController);
 
         return reservationViewHolder;
     }
@@ -51,12 +57,14 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationViewHold
     }
 
     public void addReservation(Reservation reservation){
+        this.navController = reservation.getReservationNavController();
         reservationList.add(reservation);
     }
 
     public Reservation getItem(int position){
         return reservationList.get(position);
     }
+
 
     public interface OnItemClickListener{
         void onItemClick(View itemView, int position);
@@ -65,4 +73,5 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationViewHold
     public void setOnItemClickListener(OnItemClickListener onItemClickListener){
         this.onItemClickListener = onItemClickListener;
     }
+
 }

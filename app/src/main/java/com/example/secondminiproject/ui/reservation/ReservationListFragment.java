@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentReservationListBinding;
@@ -34,8 +35,12 @@ public class ReservationListFragment extends Fragment {
         initRecyclerView();
 
 
+
         return binding.getRoot();
     }
+
+
+
     private void initRecyclerView() {
         //수직방향으로 1라인에 1개의 viewHolder가 들어가는 레이아웃 설정
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
@@ -61,6 +66,7 @@ public class ReservationListFragment extends Fragment {
             reservation.setReservationState(1);
             /*reservation.setReservationAdultNumber(random.nextInt(3)+1);
             reservation.setReservationChildNumber(random.nextInt(2)+1);*/
+            reservation.setReservationNavController(navController);
 
             //productAdapter.addProduct(product);
             reservationAdapter.addReservation(reservation);
@@ -68,6 +74,7 @@ public class ReservationListFragment extends Fragment {
 
         //리사이클러뷰에 어댑터 설정
         binding.recyclerView.setAdapter(reservationAdapter);
+
 
         //항목을 클릭했을때 콜백 객체를 등록
         reservationAdapter.setOnItemClickListener(new ReservationAdapter.OnItemClickListener() {

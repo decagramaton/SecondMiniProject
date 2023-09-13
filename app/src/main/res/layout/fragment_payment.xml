@@ -552,6 +552,7 @@
 
                 </LinearLayout>
                 <Button
+                    android:id="@+id/btn_payment_make_reservation"
                     android:layout_width="320dp"
                     android:layout_height="60dp"
                     android:backgroundTint="#FF8400"

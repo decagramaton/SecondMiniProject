@@ -2,6 +2,8 @@ package com.example.secondminiproject.dto;
 
 import android.provider.ContactsContract;
 
+import androidx.navigation.NavController;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -21,6 +23,8 @@ public class Reservation implements Serializable {
     private String startDate;
     private String imsiReservationDate;
 
+    private NavController reservationNavController;
+
     @Override
     public String toString() {
         return "Reservation{" +
@@ -35,7 +39,16 @@ public class Reservation implements Serializable {
                 ", reservationImage=" + reservationImage +
                 ", startDate='" + startDate + '\'' +
                 ", imsiReservationDate='" + imsiReservationDate + '\'' +
+                ", reservationNavController=" + reservationNavController +
                 '}';
+    }
+
+    public NavController getReservationNavController() {
+        return reservationNavController;
+    }
+
+    public void setReservationNavController(NavController reservationNavController) {
+        this.reservationNavController = reservationNavController;
     }
 
     public String getStartDate() {

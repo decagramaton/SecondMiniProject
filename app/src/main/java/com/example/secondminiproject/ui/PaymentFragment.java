@@ -26,8 +26,15 @@ public class PaymentFragment extends Fragment {
         navController = NavHostFragment.findNavController(this);
 
       /*  initBtnProductDetail();*/
+        initBtnPayFinish();
 
         return binding.getRoot();
+    }
+
+    private void initBtnPayFinish() {
+        binding.btnPaymentMakeReservation.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_reservation_list);
+        });
     }
 
     /*private void initBtnProductDetail() {

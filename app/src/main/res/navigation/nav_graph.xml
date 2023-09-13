@@ -59,6 +59,9 @@
         <action
             android:id="@+id/action_dest_reservation_list_to_reservationDetailFragment"
             app:destination="@id/dest_reservation_detail" />
+        <action
+            android:id="@+id/action_dest_reservation_list_to_dest_review_write"
+            app:destination="@id/dest_review_write" />
     </fragment>
     <fragment
         android:id="@+id/dest_reservation_detail"
