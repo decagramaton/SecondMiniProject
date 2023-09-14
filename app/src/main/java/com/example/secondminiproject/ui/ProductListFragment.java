@@ -17,7 +17,6 @@ import com.example.secondminiproject.databinding.FragmentProductListBinding;
 import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.service.ProductService;
 import com.example.secondminiproject.service.ServiceProvider;
-import com.example.secondminiproject.ui.ProductAdapter;
 
 
 import java.util.List;
@@ -31,6 +30,9 @@ public class ProductListFragment extends Fragment {
     private static final String TAG = "ProductListFragment";
     private FragmentProductListBinding binding;
     private NavController navController;
+
+    private ProductAdapter productAdapter = new ProductAdapter();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentProductListBinding.inflate(getLayoutInflater());
@@ -51,32 +53,18 @@ public class ProductListFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         binding.recyclerView.setLayoutManager(linearLayoutManager);
 
-        // Step2. 어샙터 생성
-        ProductAdapter productAdapter = new ProductAdapter();
+        // Step2. 어댑터 생성
+        Bundle bundle = getArguments();
+        if(bundle != null) {
+            String searchKeyword = bundle.getString("searchKeyword");
 
-        ProductService productService = ServiceProvider.getProductService(getContext());
-        Call<List<Board>> call = productService.getProductList();
-        call.enqueue(new Callback<List<Board>>() {
-             @Override
-             public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
-                 List<Board> BoardList = response.body();
-
-                 //어댑터에 데이터 세팅
-                 productAdapter.setList(BoardList);
-
-                 //RecyclerView에 어댑터 세팅
-                 binding.recyclerView.setAdapter(productAdapter);
-             }
-
-             @Override
-             public void onFailure(Call<List<Board>> call, Throwable t) {
-
-             }
-         });
-
-
-        // Step4. RecyclerView에 Adapter 설정
-        binding.recyclerView.setAdapter(productAdapter);
+            if(searchKeyword != null) {
+                settingProductAdapterData(searchKeyword);
+                bundle.remove("searchKeyword");
+            }
+        } else {
+            initProductAdapterData();
+        }
 
         //항목을 클릭했을때 콜백 객체를 등록
         productAdapter.setOnItemClickListener(new ProductAdapter.OnItemClickListener() {
@@ -91,5 +79,47 @@ public class ProductListFragment extends Fragment {
             }
         });
 
+    }
+
+    private void settingProductAdapterData(String searchKeyword) {
+        ProductService productService = ServiceProvider.getProductService(getContext());
+        Call<List<Board>> call = productService.getProductListBySearchKeyword(searchKeyword);
+
+        call.enqueue(new Callback<List<Board>>() {
+            @Override
+            public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
+                List<Board> boardList = response.body();
+                Log.i(TAG, "검색 목록을 조회하는 callBack 호출 - settingProductAdapterData()");
+                productAdapter.setList(boardList);
+                binding.recyclerView.setAdapter(productAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Board>> call, Throwable t) {
+                Log.i(TAG, "검색 결과 통신 실패 이벤트 호출");
+            }
+        });
+    }
+
+    private void initProductAdapterData(){
+        ProductService productService = ServiceProvider.getProductService(getContext());
+        Call<List<Board>> call = productService.getProductList();
+        call.enqueue(new Callback<List<Board>>() {
+            @Override
+            public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
+                List<Board> BoardList = response.body();
+                Log.i(TAG, "전체 목록을 조회하는 callBack 호출 - initRecyclerView()");
+                //어댑터에 데이터 세팅
+                productAdapter.setList(BoardList);
+
+                //RecyclerView에 어댑터 세팅
+                binding.recyclerView.setAdapter(productAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Board>> call, Throwable t) {
+
+            }
+        });
     }
 }

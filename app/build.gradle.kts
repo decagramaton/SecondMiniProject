@@ -32,6 +32,13 @@ android {
     }
 }
 
+allprojects {
+    repositories {
+        maven (url ="https://jitpack.io")
+    }
+}
+
+
 dependencies {
 
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -63,4 +70,7 @@ dependencies {
     }
     //이미지 선택 도구 의존 설정
     implementation("androidx.activity:activity:1.7.2")
+
+
+    implementation("com.github.yalantis:jellytoolbar:v1.0")
 }

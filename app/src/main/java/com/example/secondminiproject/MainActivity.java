@@ -1,23 +1,32 @@
 package com.example.secondminiproject;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.MenuProvider;
-import androidx.lifecycle.Lifecycle;
+
+import android.app.Service;
+import android.content.Intent;
+import android.util.Log;
+import androidx.appcompat.widget.SearchView;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
-import android.annotation.SuppressLint;
+import android.app.SearchManager;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
 
 import com.example.secondminiproject.databinding.ActivityMainBinding;
+import com.example.secondminiproject.dto.Board;
+import com.example.secondminiproject.service.ProductService;
+import com.example.secondminiproject.service.ServiceProvider;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,6 +52,62 @@ public class MainActivity extends AppCompatActivity {
 
         //getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.search_main).getActionView();
+        searchView.setQueryHint("검색 내용을 입력하세요");
+        searchView.setIconifiedByDefault(false);
+        searchView.setBackgroundColor(990099);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.i(TAG, "검색 키워드 : " + query);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("searchKeyword", query);
+                navController.navigate(R.id.dest_product_list, bundle);
+
+                /*ProductService productService = ServiceProvider.getProductService(getApplicationContext());
+                Call<List<Board>> call = productService.getProductListBySearchKeyword(query);
+
+                call.enqueue(new Callback<List<Board>>() {
+                    @Override
+                    public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
+                        List<Board> boardList = response.body();
+
+                        Intent intent = new Intent();
+                        intent.putExtra("searchResultBoardList", boardList);
+                        bundle.putParcelableArray("searchResultBoardList", boardList);
+                        Log.i(TAG, "검색 버튼 클릭 이벤트 호출");
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Board>> call, Throwable t) {
+                        Log.i(TAG, "검색 버튼 클릭 이벤트 호출");
+                    }
+                });*/
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.i(TAG, "검색창 텍스트 바뀌는 이벤트 호출");
+                return true;
+            }
+        });
+
+
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+        return true;
     }
 
     private void initHeaderAppBar() {

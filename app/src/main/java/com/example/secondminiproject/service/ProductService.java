@@ -10,11 +10,14 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface ProductService {
         @GET("product/getProductList")
         Call<List<Board>> getProductList();
 
+        @GET("product/getProductListBySearchKeyword")
+        Call<List<Board>> getProductListBySearchKeyword(@Query("searchKeyword") String searchKeyword);
 
         static void loadImage(int productNo, ImageView imageView) {
                 String url = NetworkInfo.BASE_URL + "product/fileDownload?productNo=" + productNo;
