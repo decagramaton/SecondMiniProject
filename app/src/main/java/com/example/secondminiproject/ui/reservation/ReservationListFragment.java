@@ -56,7 +56,7 @@ public class ReservationListFragment extends Fragment {
 
         //데이터 받아와서 어뎁터에 설정
         Random random = new Random();
-        for(int i=1; i <=5; i++){
+        for(int i=1; i <=2; i++){
             Reservation reservation = new Reservation();
             reservation.setReservationNo(i);
             reservation.setProductName(i+ "번째 상품의 상품명이 들어간다.");
@@ -93,20 +93,6 @@ public class ReservationListFragment extends Fragment {
 
         //리사이클러뷰에 어댑터 설정
         binding.recyclerViewReservationList.setAdapter(reservationAdapter);
-
-        //항목을 클릭했을때 콜백 객체를 등록
-        /*reservationDetailAdapter.setOnItemClickListener(new ReservationDetailAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View itemView, int position) {
-                Log.i(TAG, position + "빔 항목 클릭 됨 ");
-                //해당 포지션의 아이템을 boardAdapter을 통해 받아온다.
-                Reservation reservation = reservationDetailAdapter.getItem(position);
-                Bundle args = new Bundle();
-                //Board 객체를 전달해야하기때문에 (Board 객체에는 Serializable 이 임플먼트 되잇어야한다)
-                args.putSerializable("reservation", reservation);
-                navController.navigate(R.id.action_dest_reservation_list_to_reservationDetailFragment,args);
-            }
-        });*/
 
         binding.recyclerViewReservationList.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
 

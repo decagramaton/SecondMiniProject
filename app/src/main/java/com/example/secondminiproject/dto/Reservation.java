@@ -21,9 +21,7 @@ public class Reservation implements Serializable {
     private String productName;
     private int reservationImage;
     private String startDate;
-    private String imsiReservationDate;
-
-    private NavController reservationNavController;
+    private String endDate;
 
     @Override
     public String toString() {
@@ -38,10 +36,23 @@ public class Reservation implements Serializable {
                 ", productName='" + productName + '\'' +
                 ", reservationImage=" + reservationImage +
                 ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
                 ", imsiReservationDate='" + imsiReservationDate + '\'' +
                 ", reservationNavController=" + reservationNavController +
                 '}';
     }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    private String imsiReservationDate;
+
+    private NavController reservationNavController;
 
     public NavController getReservationNavController() {
         return reservationNavController;

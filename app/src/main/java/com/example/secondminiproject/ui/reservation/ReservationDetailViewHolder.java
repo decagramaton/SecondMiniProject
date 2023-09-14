@@ -66,7 +66,6 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
             reservationState ="취소완료";
         }
         this.reservationListReservationState.setText(reservationState);
-        Log.i(TAG, "예약상세 데이터 세팅완료됫나?:  "+reservationState);
     }
 
 

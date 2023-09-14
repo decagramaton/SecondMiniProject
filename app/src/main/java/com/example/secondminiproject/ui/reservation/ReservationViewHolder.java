@@ -35,8 +35,7 @@ public class ReservationViewHolder extends RecyclerView.ViewHolder {
 
 
     public void setData(String reservationDate){
-        Log.i(TAG, "예약 뷰홀더의 예약 날짜 : "+reservationDate);
+
         reservationListDay.setText(reservationDate);
-        Log.i(TAG, "예약 날짜 세팅하고 여긴 실행되?");
     }
 }

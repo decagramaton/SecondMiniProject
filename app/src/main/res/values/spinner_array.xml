@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="review_card_array">
+        <item>리뷰 수정하기</item>
+        <item>리뷰 삭제하기</item>
+    </string-array>
+</resources>

@@ -12,6 +12,41 @@ public class Review {
     private long reviewDate;
     private int reviewRating;
 
+    //----임시데이터
+    private String startDate;
+    private String endDate;
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "reviewNo=" + reviewNo +
+                ", productNo=" + productNo +
+                ", reservationNo=" + reservationNo +
+                ", userNo=" + userNo +
+                ", reviewTitle='" + reviewTitle + '\'' +
+                ", reviewContent='" + reviewContent + '\'' +
+                ", reviewDate=" + reviewDate +
+                ", reviewRating=" + reviewRating +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                '}';
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
 
     public int getReviewNo() {
         return reviewNo;

@@ -25,7 +25,6 @@ public class WishViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         this.wishProductImage = itemView.findViewById(R.id.wish_product_image);
         this.wishProductName = itemView.findViewById(R.id.wish_product_name);
-        this.wishTourDays = itemView.findViewById(R.id.wish_tour_days);
         this.wishProductPrice = itemView.findViewById(R.id.wish_product_price);
 
         //클릭 이벤트 처리
@@ -37,7 +36,6 @@ public class WishViewHolder extends RecyclerView.ViewHolder {
     public void setData(Wish wishProduct){
         this.wishProductImage.setImageResource(wishProduct.getProductImage());
         this.wishProductName.setText(wishProduct.getProductName());
-        this.wishTourDays.setText(wishProduct.getTourDays());
         this.wishProductPrice.setText(String.valueOf(wishProduct.getProductPrice()));
 
        /* String currencySymbol = Currency.getInstance("KRW").getSymbol();

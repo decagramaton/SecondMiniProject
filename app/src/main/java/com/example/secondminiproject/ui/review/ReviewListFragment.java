@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentReviewListBinding;
 import com.example.secondminiproject.dto.Reservation;
+import com.example.secondminiproject.dto.Review;
 import com.example.secondminiproject.ui.reservation.ReservationAdapter;
 
 import java.util.Random;
@@ -59,13 +60,16 @@ public class ReviewListFragment extends Fragment {
 
         //데이터 받아와서 어뎁터에 설정
         Random random = new Random();
-        for(int i=1; i <=17; i++){
-            Reservation reservation = new Reservation();
-
-            reservation.setImsiReservationDate("23.09.08");
+        for(int i=1; i <=9; i++){
+            Review review = new Review();
+            review.setReviewTitle( i + " 번 [상품명] 이 들어갈 곳");
+            review.setStartDate("23.06.0"+i);
+            review.setEndDate("23.06.1"+i);
+            review.setReviewRating(i%5+1);
+            review.setReviewContent(i +" 번 상품 리뷰에 대한 리뷰 내용");
 
             //productAdapter.addProduct(product);
-            reviewAdapter.addReservation(reservation);
+            reviewAdapter.addReview(review);
         }
 
         //리사이클러뷰에 어댑터 설정

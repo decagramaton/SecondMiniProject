@@ -24,7 +24,6 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationViewHold
     private List<Reservation> reservationList = new ArrayList<>();
     private List<String> dateList = new ArrayList<>();
     private NavController navController;
-
     @NonNull
     @Override
     //데이터들을 가지고오는거
@@ -43,9 +42,9 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationViewHold
     public void onBindViewHolder(@NonNull ReservationViewHolder holder, int position) {
         //리스트로부터 데이터를 불러오는것 (position 으로 0 -> 1 - 2 순으로 프로덕트를 가져와서 세팅한다)
         Reservation reservation = reservationList.get(position);
-        Log.i(TAG, "온바인드뷰홀더의 reservation : "+reservation );
-        Log.i(TAG, "온바인드뷰홀더의 reservation의 임시 예약 날짜 : "+reservation.getImsiReservationDate() );
+
         String dateLists = reservation.getImsiReservationDate();
+
         //홀더에 데이터를 세팅해준다.
         holder.setData(dateLists);
 
