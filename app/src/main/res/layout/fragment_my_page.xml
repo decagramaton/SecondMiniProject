@@ -4,29 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MyPageFragment">
+    tools:context=".ui.MyPageFragment"
+    >
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="horizontal">
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/border_mypage"
+                android:orientation="horizontal"
+                android:elevation="8dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profile_image"
                     android:layout_width="10dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/photo8" />
+                    android:src="@drawable/ic_product_list_paris_24dp"
+                    />
 
                 <TextView
                     android:id="@+id/textView11"
@@ -34,10 +43,11 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="해군3대장님"
+                    android:text="로그인 ID or 이름 나오는 곳"
                     android:textAlignment="center"
-                    android:textSize="25dp"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -45,75 +55,216 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/border_mypage"
+                    android:elevation="8dp"
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btn_my_page_login_logout"
+                    <ImageView
+                        android:id="@+id/image_mypage_login"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="8dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_mypage_login" />
+
+                    <Button
+                        android:id="@+id/btn_my_page_login_logout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:backgroundTint="@color/white"
+                        android:gravity="start"
+                        android:padding="10dp"
+                        android:text="로그인"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:background="@drawable/border_mypage"
+                    android:elevation="8dp"
+                    android:layout_margin="10dp">
+
+                    <ImageView
+                        android:id="@+id/image_mypage_info"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="8dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_mypage_info" />
+
+                    <Button
+                        android:id="@+id/btn_my_page_user_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:backgroundTint="@color/white"
+                        android:padding="10dp"
+                        android:textSize="16dp"
+                        android:text="회원 정보"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:gravity="start"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#FFFFFF"
-                    android:padding="25dp"
-                    android:text="로그인"
-                    android:textColor="@android:color/black"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
+                    android:layout_margin="10dp"
+                    android:background="@drawable/border_mypage"
+                    android:elevation="8dp"
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btn_my_page_review_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#FFFFFF"
-                    android:padding="25dp"
-                    android:text="리뷰리스트로"
-                    android:textColor="@android:color/black"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
+                    <FrameLayout
+                        android:id="@+id/frameLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:background="#FFFFFF">
 
-                <Button
-                    android:id="@+id/btn_my_page_reservation_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#FFFFFF"
-                    android:padding="25dp"
-                    android:text="예약 내역"
-                    android:textColor="@android:color/black"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
+                        <androidx.viewpager2.widget.ViewPager2
+                            android:id="@+id/home_banner"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp" />
+                    </FrameLayout>
 
-                <Button
-                    android:id="@+id/btn_my_page_wish_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#FFFFFF"
-                    android:padding="25dp"
-                    android:text="찜 목록"
-                    android:textColor="@android:color/black"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
+                </LinearLayout>
 
-                <Button
-                    android:id="@+id/btn_my_page_user_info"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#FFFFFF"
-                    android:padding="25dp"
-                    android:text="회원 정보"
-                    android:textColor="@android:color/black"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@drawable/border_mypage"
+                    android:elevation="8dp"
+                    android:layout_margin="10dp">
 
-                <Button
-                    android:id="@+id/btn_my_page_recent_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#FFFFFF"
-                    android:padding="25dp"
-                    android:text="최근 본 내역"
-                    android:textColor="@android:color/black"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/image_mypage_wish"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="8dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_mypage_wish" />
+
+                        <Button
+                            android:id="@+id/btn_my_page_wish_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:backgroundTint="@color/white"
+                            android:padding="10dp"
+                            android:text="찜 목록"
+                            android:textColor="@android:color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:gravity="start"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/image_mypage_review"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="8dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_mypage_review" />
+
+                        <Button
+                            android:id="@+id/btn_my_page_review_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:backgroundTint="@color/white"
+                            android:padding="10dp"
+                            android:text="리뷰 내역"
+                            android:textColor="@android:color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:gravity="start"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/image_mypage_reservation"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="8dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_mypage_reservation" />
+
+                        <Button
+                            android:id="@+id/btn_my_page_reservation_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:backgroundTint="@color/white"
+                            android:padding="10dp"
+                            android:text="예약 내역"
+                            android:textColor="@android:color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:gravity="start"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/image_mypage_receent"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="8dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_mypage_recent" />
+
+                        <Button
+                            android:id="@+id/btn_my_page_recent_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:backgroundTint="@color/white"
+                            android:padding="10dp"
+                            android:text="최근 본 상품"
+                            android:textColor="@android:color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:gravity="start"/>
+                    </LinearLayout>
+                </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
+
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

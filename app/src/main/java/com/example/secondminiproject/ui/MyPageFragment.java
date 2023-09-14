@@ -94,7 +94,7 @@ public class MyPageFragment extends Fragment {
 
     private void initBtnRecentList() {
         binding.btnMyPageRecentList.setOnClickListener(v -> {
-            navController.navigate(R.id.action_dest_product_list_to_dest_product_detail);
+            navController.navigate(R.id.action_dest_my_page_to_dest_recent_list);
         });
     }
 }
