@@ -8,11 +8,24 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recycler_view_reservation_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_reservation_list_go_list_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#D6E4F0"
+        android:clickable="true"
+        android:src="@drawable/baseline_keyboard_arrow_up_24"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler_view_reservation_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="40dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

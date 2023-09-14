@@ -28,8 +28,6 @@ public class WishListFragment extends Fragment {
     private NavController navController;
     ArrayList<Wish> wishProducts = new ArrayList<>();
 
-    boolean position_flag = true;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -37,25 +35,10 @@ public class WishListFragment extends Fragment {
         navController = NavHostFragment.findNavController(this);
 
         initRecyclerView();
-        initBtnProductListImsi();
-        initBtnProductDetailImsi();
-
-
 
         return binding.getRoot();
     }
 
-    private void initBtnProductListImsi() {
-        binding.btnToProductListImsi.setOnClickListener(v -> {
-            navController.navigate(R.id.dest_product_list);
-        });
-    }
-
-    private void initBtnProductDetailImsi() {
-        binding.btnToProductDetailImsi.setOnClickListener(v -> {
-            navController.navigate(R.id.dest_product_detail);
-        });
-    }
 
     private void initRecyclerView() {
         //수직방향으로 1라인에 1개의 viewHolder가 들어가는 레이아웃 설정
@@ -108,7 +91,6 @@ public class WishListFragment extends Fragment {
             }else {
                 binding.btnWishGoListTop.show();
             }
-            position_flag = false;
 
         });
 

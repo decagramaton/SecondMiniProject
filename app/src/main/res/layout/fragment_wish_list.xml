@@ -10,7 +10,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_wish"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -19,25 +20,14 @@
         android:id="@+id/btn_wish_go_list_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#D6E4F0"
+        app:maxImageSize="40dp"
+        app:fabSize="mini"
         android:clickable="true"
-        android:src="@android:drawable/arrow_up_float"
+        android:src="@drawable/baseline_keyboard_arrow_up_24"
         app:layout_constraintBottom_toBottomOf="@+id/recycler_view_wish"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/btn_to_product_list_imsi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:text="상품리스트로"
-        app:layout_constraintBottom_toBottomOf="@+id/recycler_view_wish"
-        app:layout_constraintEnd_toStartOf="@+id/btn_wish_go_list_top" />
-
-    <Button
-        android:id="@+id/btn_to_product_detail_imsi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="상품상세"
-        app:layout_constraintBottom_toBottomOf="@+id/recycler_view_wish"
-        app:layout_constraintEnd_toStartOf="@+id/btn_to_product_list_imsi" />
 </androidx.constraintlayout.widget.ConstraintLayout>

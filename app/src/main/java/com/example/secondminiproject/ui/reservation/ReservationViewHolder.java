@@ -24,55 +24,19 @@ public class ReservationViewHolder extends RecyclerView.ViewHolder {
     private NavController navController;
 
     private TextView reservationListDay;
-    private TextView reservationListTitle;
-    private TextView reservationListNumber;
-    private TextView reservationListReservationDay;
-    private TextView reservationListStartDay;
-    private Button reservationListReservationState;
-
-    private Button reservationListWriteReview;
+    public RecyclerView recyclerViewReservationListDate;
 
 
-    public ReservationViewHolder(@NonNull View itemView, ReservationAdapter.OnItemClickListener onItemClickListener, NavController reservationNavController) {
+    public ReservationViewHolder(@NonNull View itemView) {
         super(itemView);
-        this.reservationListDay = itemView.findViewById(R.id.reservation_list_day);
-        this.reservationListTitle = itemView.findViewById(R.id.reservation_list_title);
-        this.reservationListNumber = itemView.findViewById(R.id.reservation_list_number);
-        this.reservationListReservationDay = itemView.findViewById(R.id.reservation_list_reservation_day);
-        this.reservationListStartDay = itemView.findViewById(R.id.reservation_list_start_day);
-        this.reservationListReservationState = itemView.findViewById(R.id.reservation_list_reservation_state);
-
-        itemView.setOnClickListener(v -> {
-            onItemClickListener.onItemClick(v,getAdapterPosition());
-        });
-
-        navController = reservationNavController;
-
-        this.reservationListWriteReview = itemView.findViewById(R.id.btn_reservation_list_write_review);
-        this.reservationListWriteReview.setOnClickListener(v -> {
-            Log.i(TAG, "리뷰 작성 버튼 클릭 로그");
-
-            navController.navigate(R.id.action_dest_reservation_list_to_dest_review_write);
-        });
+        reservationListDay = itemView.findViewById(R.id.reservation_list_day);
+        recyclerViewReservationListDate = itemView.findViewById(R.id.recycler_view_reservation_list_date);
     }
 
 
-    public void setData(Reservation reservation){
-        this.reservationListDay.setText(reservation.getImsiReservationDate());
-        this.reservationListTitle.setText(reservation.getProductName());
-        this.reservationListNumber.setText(String.valueOf(reservation.getReservationNo()));
-        this.reservationListReservationDay.setText(reservation.getImsiReservationDate());
-        this.reservationListStartDay.setText(reservation.getStartDate());
-        String reservationState=null;
-        if(reservation.getReservationState()==1){
-            reservationState ="발권완료";
-        }else if(reservation.getReservationState()==2){
-            reservationState ="예약완료";
-        }else if(reservation.getReservationState()==3){
-            reservationState ="취소중";
-        }else if(reservation.getReservationState()==3){
-            reservationState ="취소완료";
-        }
-        this.reservationListReservationState.setText(reservationState);
+    public void setData(String reservationDate){
+        Log.i(TAG, "예약 뷰홀더의 예약 날짜 : "+reservationDate);
+        reservationListDay.setText(reservationDate);
+        Log.i(TAG, "예약 날짜 세팅하고 여긴 실행되?");
     }
 }
