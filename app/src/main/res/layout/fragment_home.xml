@@ -192,12 +192,12 @@
                             android:text="하와이" />
 
                         <ImageButton
-                            android:id="@+id/btn_home_category_paris"
+                            android:id="@+id/btn_home_category_france"
                             android:layout_width="72dp"
                             android:layout_height="72dp"
                             android:layout_weight="1"
                             android:backgroundTint="#FFFFFF"
-                            android:contentDescription="파리"
+                            android:contentDescription="프랑스"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_product_list_paris_24dp" />
 
@@ -277,7 +277,7 @@
                             android:layout_height="72dp"
                             android:layout_weight="1"
                             android:backgroundTint="#FFFFFF"
-                            android:contentDescription="이태리"
+                            android:contentDescription="이탈리아"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_product_list_italy_24dp" />
 

@@ -19,6 +19,9 @@ public interface ProductService {
         @GET("product/getProductListBySearchKeyword")
         Call<List<Board>> getProductListBySearchKeyword(@Query("searchKeyword") String searchKeyword);
 
+        @GET("product/getProductListByCategory")
+        Call<List<Board>> getProductListByCategory(@Query("category") String category);
+
         static void loadImage(int productNo, ImageView imageView) {
                 String url = NetworkInfo.BASE_URL + "product/fileDownload?productNo=" + productNo;
                 Glide.with(imageView.getContext()).load(url).into(imageView);

@@ -52,11 +52,16 @@ public class ProductListFragment extends Fragment {
         // Step2. 어댑터 생성
         Bundle bundle = getArguments();
         if(bundle != null) {
+
             String searchKeyword = bundle.getString("searchKeyword");
+            String category = bundle.getString("category");
 
             if(searchKeyword != null) {
-                settingProductAdapterData(searchKeyword);
+                settingProductAdapterData("searchKeyword", searchKeyword);
                 bundle.remove("searchKeyword");
+            } else if(category != null) {
+                settingProductAdapterData("category", category);
+                bundle.remove("category");
             }
         } else {
             initProductAdapterData();
@@ -92,24 +97,43 @@ public class ProductListFragment extends Fragment {
 
     }
 
-    private void settingProductAdapterData(String searchKeyword) {
+    private void settingProductAdapterData(String requestType, String value) {
         ProductService productService = ServiceProvider.getProductService(getContext());
-        Call<List<Board>> call = productService.getProductListBySearchKeyword(searchKeyword);
 
-        call.enqueue(new Callback<List<Board>>() {
-            @Override
-            public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
-                List<Board> boardList = response.body();
-                Log.i(TAG, "검색 목록을 조회하는 callBack 호출 - settingProductAdapterData()");
-                productAdapter.setList(boardList);
-                binding.recyclerView.setAdapter(productAdapter);
-            }
+        if(requestType.equals("searchKeyword")) {
+            Call<List<Board>> call = productService.getProductListBySearchKeyword(value);
 
-            @Override
-            public void onFailure(Call<List<Board>> call, Throwable t) {
-                Log.i(TAG, "검색 결과 통신 실패 이벤트 호출");
-            }
-        });
+            call.enqueue(new Callback<List<Board>>() {
+                @Override
+                public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
+                    List<Board> boardList = response.body();
+                    productAdapter.setList(boardList);
+                    binding.recyclerView.setAdapter(productAdapter);
+                }
+
+                @Override
+                public void onFailure(Call<List<Board>> call, Throwable t) {
+                    Log.i(TAG, "검색 결과 통신 실패 이벤트 호출");
+                }
+            });
+
+        } else if (requestType.equals("category")) {
+            Call<List<Board>> call = productService.getProductListByCategory(value);
+
+            call.enqueue(new Callback<List<Board>>() {
+                @Override
+                public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
+                    List<Board> boardList = response.body();
+                    productAdapter.setList(boardList);
+                    binding.recyclerView.setAdapter(productAdapter);
+                }
+
+                @Override
+                public void onFailure(Call<List<Board>> call, Throwable t) {
+                    Log.i(TAG, "검색 결과 통신 실패 이벤트 호출");
+                }
+            });
+        }
     }
 
     private void initProductAdapterData(){

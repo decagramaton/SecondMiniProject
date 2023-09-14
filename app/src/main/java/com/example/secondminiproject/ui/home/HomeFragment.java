@@ -54,16 +54,8 @@ public class HomeFragment extends Fragment {
         //배너
         initPagerView();
 
-
-        //카테고리(나라별)
-        initCategoryJapan();
-        initCategoryHongkong();
-        initCategoryTaiwan();
-        initCategoryMongolia();
-        initCategoryNorway();
-        initCategoryGreece();
-        initCategoryKeyna();
-
+        //카테고리(나라별) 초기화
+        initBtnCategory();
 
         return binding.getRoot();
     }
@@ -75,45 +67,35 @@ public class HomeFragment extends Fragment {
         handler.removeCallbacksAndMessages(null);
     }
 
-    private void initCategoryJapan() {
-        binding.btnHomeCategoryJapan.setOnClickListener(v -> {
-            navController.navigate(R.id.dest_product_list);
-        });
+    private void initBtnCategory() {
+        setCountry(binding.btnHomeCategoryJeju, binding.btnHomeCategoryJeju.getContentDescription().toString());
+        setCountry(binding.btnHomeCategoryHongkong, "홍콩");
+        
+        setCountry(binding.btnHomeCategoryTaipei, "태국");
+        setCountry(binding.btnHomeCategoryJapan, "일본");
+        
+        setCountry(binding.btnHomeCategoryChina, "중국");
+        setCountry(binding.btnHomeCategoryMongol, "몽골");
+        
+        setCountry(binding.btnHomeCategoryHawaii, "하와이");
+        setCountry(binding.btnHomeCategoryFrance, "프랑스");
+
+        setCountry(binding.btnHomeCategoryEngland, "영국");
+        setCountry(binding.btnHomeCategoryNorway, "노르웨이");
+
+        setCountry(binding.btnHomeCategoryGreece, "그리스");
+        setCountry(binding.btnHomeCategoryItaly, "이탈리아");
+
+        setCountry(binding.btnHomeCategoryGermany, "독일");
+        setCountry(binding.btnHomeCategoryKenya, "케냐");
+
     }
 
-    private void initCategoryHongkong() {
-        binding.btnHomeCategoryHongkong.setOnClickListener(v -> {
-            navController.navigate(R.id.dest_product_list);
-        });
-    }
-
-    private void initCategoryTaiwan() {
-        binding.btnHomeCategoryTaipei.setOnClickListener(v -> {
-            navController.navigate(R.id.dest_product_list);
-        });
-    }
-
-    private void initCategoryMongolia() {
-        binding.btnHomeCategoryMongol.setOnClickListener(v -> {
-            navController.navigate(R.id.dest_product_list);
-        });
-    }
-
-    private void initCategoryNorway() {
-        binding.btnHomeCategoryNorway.setOnClickListener(v -> {
-            navController.navigate(R.id.dest_product_list);
-        });
-    }
-
-    private void initCategoryGreece() {
-        binding.btnHomeCategoryGreece.setOnClickListener(v -> {
-            navController.navigate(R.id.dest_product_list);
-        });
-    }
-
-    private void initCategoryKeyna() {
-        binding.btnHomeCategoryKenya.setOnClickListener(v -> {
-            navController.navigate(R.id.dest_product_list);
+    private void setCountry(View view, String country) {
+        view.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("category", country);
+            navController.navigate(R.id.dest_product_list, bundle);
         });
     }
 
