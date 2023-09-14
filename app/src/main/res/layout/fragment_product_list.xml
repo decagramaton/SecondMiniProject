@@ -23,7 +23,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:backgroundTint="@color/white">
 
                 <ImageButton
                     android:id="@+id/imageButton8"
@@ -31,8 +32,8 @@
                     android:layout_height="56dp"
                     android:layout_margin="5dp"
                     android:src="@drawable/ic_product_list_jeju_24dp"
-                    android:backgroundTint="#FFFFFF"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="fitCenter"
+                    android:backgroundTint="#FFFFFF"/>
 
                 <TextView
                     android:id="@+id/textView19"
@@ -43,14 +44,16 @@
                     android:text="제주"
                     android:textAlignment="center"
                     android:textDirection="firstStrongRtl"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:backgroundTint="#FFFFFF"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:backgroundTint="#FFFFFF">
 
                 <ImageButton
                     android:id="@+id/image_button1"
@@ -72,14 +75,16 @@
                     android:text="일본"
                     android:textAlignment="center"
                     android:textDirection="firstStrongRtl"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:backgroundTint="#FFFFFF"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:backgroundTint="#FFFFFF">
 
                 <ImageButton
                     android:id="@+id/imageButton2"
@@ -99,14 +104,16 @@
                     android:text="홍콩"
                     android:textAlignment="center"
                     android:textDirection="firstStrongRtl"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:backgroundTint="#FFFFFF"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:backgroundTint="#FFFFFF">
 
                 <ImageButton
                     android:id="@+id/imageButton3"
@@ -127,14 +134,16 @@
                     android:text="케냐"
                     android:textAlignment="center"
                     android:textDirection="firstStrongRtl"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:backgroundTint="#FFFFFF"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:backgroundTint="#FFFFFF">
 
                 <ImageButton
                     android:id="@+id/imageButton4"
@@ -155,14 +164,16 @@
                     android:text="대만"
                     android:textAlignment="center"
                     android:textDirection="firstStrongRtl"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:backgroundTint="#FFFFFF"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:backgroundTint="#FFFFFF">
 
                 <ImageButton
                     android:id="@+id/imageButton5"
@@ -182,14 +193,16 @@
                     android:text="몽골"
                     android:textAlignment="center"
                     android:textDirection="firstStrongRtl"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:backgroundTint="#FFFFFF"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:backgroundTint="#FFFFFF">
 
                 <ImageButton
                     android:id="@+id/imageButton6"
@@ -209,14 +222,16 @@
                     android:text="노르웨이"
                     android:textAlignment="center"
                     android:textDirection="firstStrongRtl"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:backgroundTint="#FFFFFF"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:backgroundTint="#FFFFFF">
 
                 <ImageButton
                     android:id="@+id/imageButton7"
@@ -236,7 +251,8 @@
                     android:text="그리스"
                     android:textAlignment="center"
                     android:textDirection="firstStrongRtl"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:backgroundTint="#FFFFFF"/>
             </LinearLayout>
 
         </LinearLayout>

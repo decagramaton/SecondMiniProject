@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5dp"
-        android:background="@color/white"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
@@ -104,11 +103,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="2"
                 android:text="visitPlace"
                 android:textAppearance="?attr/textAppearanceBody1"
-                android:textColor="?android:attr/textColorSecondary"
-                android:maxLines="2"
-                android:ellipsize="end"/>
+                android:textColor="?android:attr/textColorSecondary" />
 
             <LinearLayout
                 android:layout_width="match_parent"

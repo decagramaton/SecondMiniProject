@@ -32,24 +32,11 @@ public class ReviewListFragment extends Fragment {
 
         binding = FragmentReviewListBinding.inflate(inflater);
 
-        initBtnMyPage();
-        initBtnReviewWrite();
+
         //initBtnReviewUpdate();
         initRecyclerView();
 
         return binding.getRoot();
-    }
-
-    private void initBtnMyPage() {
-        binding.btnReviewListMyPage.setOnClickListener(v -> {
-            navController.popBackStack();
-        });
-    }
-
-    private void initBtnReviewWrite() {
-        binding.btnReviewListReviewWrite.setOnClickListener(v -> {
-            navController.navigate(R.id.action_dest_review_list_to_dest_review_write);
-        });
     }
 
     /*private void initBtnReviewUpdate() {
