@@ -68,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Log.i(TAG, "검색 키워드 : " + query);
-
                 Bundle bundle = new Bundle();
                 bundle.putString("searchKeyword", query);
                 navController.navigate(R.id.dest_product_list, bundle);
@@ -79,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                Log.i(TAG, "검색창 텍스트 바뀌는 이벤트 호출");
                 return true;
             }
         });
