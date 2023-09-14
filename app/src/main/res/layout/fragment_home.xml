@@ -45,13 +45,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="#FFFFFF" />
+                    android:layout_marginEnd="20dp" />
             </FrameLayout>
 
             <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="100dp" >
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -60,144 +60,284 @@
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTintMode="multiply"
                         android:orientation="vertical">
+
                         <ImageButton
-                            android:id="@+id/btn_home_category_japan"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/btn_home_category_jeju"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#FFFFFF"
-                            android:src="@drawable/ic_japan_64dp"
-                            android:contentDescription="이건 일본"/>
+                            android:backgroundTint="#F6F6F6"
+                            android:contentDescription="제주"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_product_list_jeju_24dp" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="25dp"
                             android:gravity="center_horizontal"
-                            android:text="일본"/>
-                    </LinearLayout>
+                            android:text="제주" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
                         <ImageButton
                             android:id="@+id/btn_home_category_hongkong"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#FFFFFF"
-                            android:src="@drawable/ic_hongkong_64dp"
-                            android:contentDescription="이건 홍콩"/>
+                            android:backgroundTint="#F6F6F6"
+                            android:contentDescription="홍콩"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_product_list_hongkong_24dp" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="25dp"
                             android:gravity="center_horizontal"
-                            android:text="홍콩"/>
+                            android:text="홍콩" />
+
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTintMode="multiply"
                         android:orientation="vertical">
+
                         <ImageButton
-                            android:id="@+id/btn_home_category_taiwan"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/btn_home_category_taipei"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#FFFFFF"
-                            android:adjustViewBounds="true"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/ic_daeman_64dp"
-                            android:contentDescription="요건 대만~"/>
+                            android:backgroundTint="#F6F6F6"
+                            android:contentDescription="태국"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_product_list_taipei_24dp" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="25dp"
                             android:gravity="center_horizontal"
-                            android:text="대만"/>
-                    </LinearLayout>
+                            android:text="태국" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
                         <ImageButton
-                            android:id="@+id/btn_home_category_mongolia"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/btn_home_category_japan"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#FFFFFF"
-                            android:adjustViewBounds="true"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/ic_mongolia_64dp"
-                            android:contentDescription="요친군 몽골이라내"/>
+                            android:backgroundTint="#F6F6F6"
+                            android:contentDescription="일본"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_product_list_japan_24dp" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="25dp"
                             android:gravity="center_horizontal"
-                            android:text="몽골"/>
+                            android:text="일본" />
+
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTintMode="multiply"
                         android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/btn_home_category_china"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#F6F6F6"
+                            android:contentDescription="중국"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_product_list_china_24dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:gravity="center_horizontal"
+                            android:text="중국" />
+
+                        <ImageButton
+                            android:id="@+id/btn_home_category_mongol"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#F6F6F6"
+                            android:contentDescription="몽골"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_product_list_mongol_24dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:gravity="center_horizontal"
+                            android:text="몽골" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTintMode="multiply"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/btn_home_category_hawaii"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#F6F6F6"
+                            android:contentDescription="하와이"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_product_list_hawaii_24dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:gravity="center_horizontal"
+                            android:text="하와이" />
+
+                        <ImageButton
+                            android:id="@+id/btn_home_category_paris"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#F6F6F6"
+                            android:contentDescription="파리"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_product_list_paris_24dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:gravity="center_horizontal"
+                            android:text="프랑스" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTintMode="multiply"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/btn_home_category_england"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#F6F6F6"
+                            android:contentDescription="영국"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_product_list_england_24dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:gravity="center_horizontal"
+                            android:text="영국" />
+
                         <ImageButton
                             android:id="@+id/btn_home_category_norway"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#FFFFFF"
-                            android:adjustViewBounds="true"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/ic_norway_64dp"
-                            android:contentDescription="가라 노르웨이"/>
+                            android:backgroundTint="#F6F6F6"
+                            android:contentDescription="노르웨이"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_product_list_norway_24dp" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="25dp"
                             android:gravity="center_horizontal"
-                            android:text="@string/norway"/>
+                            android:text="노르웨이" />
+
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTintMode="multiply"
                         android:orientation="vertical">
+
                         <ImageButton
                             android:id="@+id/btn_home_category_greece"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#FFFFFF"
-                            android:adjustViewBounds="true"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/ic_greece_64dp" />
+                            android:backgroundTint="#F6F6F6"
+                            android:contentDescription="그리스"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_product_list_greece_24dp" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="25dp"
                             android:gravity="center_horizontal"
-                            android:text="그리스"/>
+                            android:text="그리스" />
+
+                        <ImageButton
+                            android:id="@+id/btn_home_category_italy"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#F6F6F6"
+                            android:contentDescription="이태리"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_product_list_italy_24dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:gravity="center_horizontal"
+                            android:text="이탈리아" />
+
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTintMode="multiply"
                         android:orientation="vertical">
+
                         <ImageButton
-                            android:id="@+id/btn_home_category_kenya"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/btn_home_category_germany"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#FFFFFF"
-                            android:adjustViewBounds="true"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/ic_kenya_64dp" />
+                            android:backgroundTint="#F6F6F6"
+                            android:contentDescription="독일"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_product_list_germany_24dp" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="25dp"
                             android:gravity="center_horizontal"
-                            android:text="케냐"/>
+                            android:text="독일" />
+
+                        <ImageButton
+                            android:id="@+id/btn_home_category_kenya"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#F6F6F6"
+                            android:contentDescription="케냐"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_product_list_kenya_24dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:gravity="center_horizontal"
+                            android:text="케냐" />
+
                     </LinearLayout>
+
 
                 </LinearLayout>
             </HorizontalScrollView>

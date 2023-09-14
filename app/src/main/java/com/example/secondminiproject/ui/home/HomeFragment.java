@@ -53,16 +53,65 @@ public class HomeFragment extends Fragment {
 
 
         //카테고리(나라별)
+        initCategoryJeju();
         initCategoryJapan();
         initCategoryHongkong();
         initCategoryTaiwan();
+        initCategoryChina();
         initCategoryMongolia();
+        initCategoryHawaii();
+        initCategoryParis();
+        initCategoryEngland();
         initCategoryNorway();
         initCategoryGreece();
-        initCategoryKeyna();
+        initCategoryItaly();
+        initCategoryGermany();
+        initCategoryKenya();
 
 
         return binding.getRoot();
+    }
+
+    private void initCategoryGermany() {
+        binding.btnHomeCategoryGermany.setOnClickListener(v ->{
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryItaly() {
+        binding.btnHomeCategoryItaly.setOnClickListener(v ->{
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryEngland() {
+        binding.btnHomeCategoryEngland.setOnClickListener(v ->{
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryParis() {
+        binding.btnHomeCategoryParis.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryHawaii() {
+        binding.btnHomeCategoryHawaii.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryChina() {
+        binding.btnHomeCategoryChina.setOnClickListener(v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
+    }
+
+    private void initCategoryJeju() {
+        binding.btnHomeCategoryJeju.setOnClickListener( v -> {
+            navController.navigate(R.id.dest_product_list);
+        });
     }
 
     private void initCategoryJapan() {
@@ -78,13 +127,13 @@ public class HomeFragment extends Fragment {
     }
 
     private void initCategoryTaiwan() {
-        binding.btnHomeCategoryTaiwan.setOnClickListener(v -> {
+        binding.btnHomeCategoryTaipei.setOnClickListener(v -> {
             navController.navigate(R.id.dest_product_list);
         });
     }
 
     private void initCategoryMongolia() {
-        binding.btnHomeCategoryMongolia.setOnClickListener(v -> {
+        binding.btnHomeCategoryMongol.setOnClickListener(v -> {
             navController.navigate(R.id.dest_product_list);
         });
     }
@@ -101,7 +150,7 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void initCategoryKeyna() {
+    private void initCategoryKenya() {
         binding.btnHomeCategoryKenya.setOnClickListener(v -> {
             navController.navigate(R.id.dest_product_list);
         });

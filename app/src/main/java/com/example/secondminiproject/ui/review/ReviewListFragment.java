@@ -35,7 +35,6 @@ public class ReviewListFragment extends Fragment {
         initBtnMyPage();
         initBtnReviewWrite();
         //initBtnReviewUpdate();
-        // Inflate the layout for this fragment
         initRecyclerView();
 
         return binding.getRoot();

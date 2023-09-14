@@ -58,7 +58,7 @@
                     android:layout_height="56dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_product_list_japen_24dp"
+                    android:src="@drawable/ic_product_list_japan_24dp"
                     android:backgroundTint="#FFFFFF"
                     android:scaleType="fitCenter"
                     />
@@ -250,7 +250,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_product_list_go_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:rotation="0"
+        android:rotationX="0"
+        android:rotationY="0"
+        android:src="@drawable/baseline_keyboard_arrow_up_24"
+        app:backgroundTint="#D6E4F0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
