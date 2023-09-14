@@ -31,16 +31,17 @@ public class PageFragment extends Fragment {
         return binding.getRoot();
     }
 
+
     private void initUIByPageNo(int pageNo) {
-        if(pageNo==0){
+        if(Math.abs(pageNo%5+1)==1){
             binding.imageView3.setImageResource(R.drawable.ggomong);
-        }else if(pageNo==1){
+        }else if(Math.abs(pageNo%5+1)==2){
             binding.imageView3.setImageResource(R.drawable.banner1);
-        }else if(pageNo==2){
+        }else if(Math.abs(pageNo%5+1)==3 ){
             binding.imageView3.setImageResource(R.drawable.banner2);
-        }else if(pageNo==3){
+        }else if(Math.abs(pageNo%5+1)==4 ){
             binding.imageView3.setImageResource(R.drawable.banner3);
-        }else if(pageNo==4) {
+        }else if(Math.abs(pageNo%5+1)==5 ) {
             binding.imageView3.setImageResource(R.drawable.banner4);
         }
     }

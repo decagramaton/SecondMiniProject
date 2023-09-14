@@ -26,6 +26,6 @@ public class HomeBannerAdapter extends FragmentStateAdapter {
     @Override
     public int getItemCount() {
         // 몇개를 돌릴거야? 지금 예시에서는 5개!
-        return 5;
+        return Integer.MAX_VALUE;
     }
 }

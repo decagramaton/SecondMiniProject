@@ -9,25 +9,27 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/border_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        >
+        android:backgroundTint="#FFF5F5F5">
 
         <LinearLayout
-            android:layout_marginTop="15dp"
+            android:id="@+id/linear_layout_wish_card"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginBottom="15dp">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/wish_product_image"
                 android:layout_width="170dp"
                 android:layout_height="130dp"
-                app:srcCompat="@drawable/photo15"
                 android:adjustViewBounds="true"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/photo15" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -106,6 +108,11 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="@drawable/border_bottom" />
 
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
