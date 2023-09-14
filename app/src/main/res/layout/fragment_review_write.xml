@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.review.ReviewWriteFragment">
+    tools:context=".ui.review.ReviewWriteFragment"
+    android:id="@+id/review_write_layout">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -27,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="North Male Atoll, 노르웨이"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -45,7 +46,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:numStars="5" />
+            android:numStars="5"
+            android:progressTint="#FFC107" />
 
         <View
             android:layout_width="match_parent"
@@ -53,12 +55,13 @@
             android:background="?android:attr/listDivider" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/bcontent"
+            android:id="@+id/review_content"
             android:layout_width="390dp"
             android:layout_height="206dp"
             android:layout_margin="10dp"
-            android:backgroundTint="#D6E4F0"
-            android:gravity="top" />
+            android:backgroundTint="#FFFFFF"
+            android:gravity="top"
+            android:hint="후기는 다섯글자 이상 입력해주세요!^^" />
     </LinearLayout>
 
     <LinearLayout
@@ -70,13 +73,17 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btn_review"
             android:layout_width="339dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="#163172"
+            android:clickable="false"
             android:text="등록하기"
-            android:textColor="#f6f6f6" />
+            android:backgroundTint="#D8D8D8"
+            android:textColor="#f6f6f6"
+            android:textStyle="bold"
+            android:singleLine="true"
+            android:imeOptions="actionDone"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

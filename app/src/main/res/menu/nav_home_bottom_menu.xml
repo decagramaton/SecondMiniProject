@@ -8,7 +8,7 @@
         app:showAsAction="always"
         android:icon="@drawable/ic_home_24dp"/>
     <item
-        android:id="@+id/dest_reservation_list"
+        android:id="@+id/dest_product_list"
         android:title="상품 목록"
         app:showAsAction="always"
         android:icon="@drawable/ic_airplane_ticket_24dp"/>

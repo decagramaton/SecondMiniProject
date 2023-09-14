@@ -38,20 +38,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-    <Button
-        android:id="@+id/btn_review_list_my_page"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="마이페이지로 돌아가기"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_review_list_review_write"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="리뷰 작성하기"
-        app:layout_constraintBottom_toTopOf="@+id/btn_review_list_my_page"
-        app:layout_constraintStart_toStartOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

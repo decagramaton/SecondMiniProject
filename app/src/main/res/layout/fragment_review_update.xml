@@ -53,7 +53,7 @@
             android:background="?android:attr/listDivider" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/bcontent"
+            android:id="@+id/review_content"
             android:background="@drawable/border_orange"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

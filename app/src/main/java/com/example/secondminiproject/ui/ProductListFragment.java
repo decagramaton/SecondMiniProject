@@ -30,9 +30,9 @@ public class ProductListFragment extends Fragment {
     private static final String TAG = "ProductListFragment";
     private FragmentProductListBinding binding;
     private NavController navController;
-
     private ProductAdapter productAdapter = new ProductAdapter();
 
+    boolean position_flag = true;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentProductListBinding.inflate(getLayoutInflater());
@@ -43,10 +43,6 @@ public class ProductListFragment extends Fragment {
 
         return binding.getRoot();
     }
-
-
-
-
 
     private void initRecyclerView() {
         // Step1. 수직방향으로 1라인에 1개의 ViewHolder가 들어가도록 설정
@@ -77,6 +73,21 @@ public class ProductListFragment extends Fragment {
 
                 navController.navigate(R.id.action_dest_product_list_to_dest_product_detail,args);
             }
+        });
+
+        binding.recyclerView.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+
+            if((!v.canScrollVertically(-5))){
+                binding.btnProductListGoTop.hide();
+            }else {
+                binding.btnProductListGoTop.show();
+            }
+            position_flag = false;
+
+        });
+
+        binding.btnProductListGoTop.setOnClickListener(v -> {
+            binding.recyclerView.scrollToPosition(0);
         });
 
     }

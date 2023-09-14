@@ -74,26 +74,6 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putString("searchKeyword", query);
                 navController.navigate(R.id.dest_product_list, bundle);
 
-                /*ProductService productService = ServiceProvider.getProductService(getApplicationContext());
-                Call<List<Board>> call = productService.getProductListBySearchKeyword(query);
-
-                call.enqueue(new Callback<List<Board>>() {
-                    @Override
-                    public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
-                        List<Board> boardList = response.body();
-
-                        Intent intent = new Intent();
-                        intent.putExtra("searchResultBoardList", boardList);
-                        bundle.putParcelableArray("searchResultBoardList", boardList);
-                        Log.i(TAG, "검색 버튼 클릭 이벤트 호출");
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<Board>> call, Throwable t) {
-                        Log.i(TAG, "검색 버튼 클릭 이벤트 호출");
-                    }
-                });*/
-
                 return true;
             }
 
