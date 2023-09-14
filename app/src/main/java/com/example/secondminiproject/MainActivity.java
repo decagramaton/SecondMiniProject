@@ -1,12 +1,16 @@
 package com.example.secondminiproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Service;
 import android.content.Intent;
 import android.util.Log;
 import androidx.appcompat.widget.SearchView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -16,11 +20,15 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.example.secondminiproject.databinding.ActivityMainBinding;
 import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.service.ProductService;
 import com.example.secondminiproject.service.ServiceProvider;
+import com.example.secondminiproject.ui.home.HomeFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.List;
 
@@ -48,11 +56,39 @@ public class MainActivity extends AppCompatActivity {
         // Header AppBar 초기 설정
         initHeaderAppBar();
 
-        NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
+        // Bottom Navagation 초기 설정
+        //NavigationUI.setupWithNavController(binding.bottomNavigation, navController);
+        initBottomNav();
+
 
         //getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
     }
+
+    private void initBottomNav() {
+        binding.bottomNavigation.setOnItemSelectedListener(item -> {
+            NavOptions navOptions = new NavOptions.Builder()
+                    //.setPopUpTo(R.id.dest_review, false)
+                    .setLaunchSingleTop(true)
+                    .build();
+
+            if (item.getItemId() == R.id.dest_home) {
+                navController.navigate(R.id.dest_home, null, navOptions);
+                return true;
+            } else if (item.getItemId() == R.id.dest_product_list) {
+                navController.navigate(R.id.dest_product_list, null, navOptions);
+                return true;
+            } else if (item.getItemId() == R.id.dest_wish_list) {
+                navController.navigate(R.id.dest_wish_list, null, navOptions);
+                return true;
+            } else if (item.getItemId() == R.id.dest_my_page) {
+                navController.navigate(R.id.dest_my_page, null, navOptions);
+                return true;
+            }
+            return false;
+        });
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

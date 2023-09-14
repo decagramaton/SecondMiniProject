@@ -60,6 +60,8 @@ dependencies {
     // 둥그런 이미지를 보여주는 라이브러리
     implementation("de.hdodenhof:circleimageview:3.1.0")
 
+    implementation("com.google.android.material:material:1.4.0")
+
     modules {
         module("org.jetbrains.kotlin:kotlin-stdlib-jdk7") {
             replacedBy("org.jetbrains.kotlin:kotlin-stdlib", "kotlin-stdlib-jdk7 is now part of kotlin-stdlib")
