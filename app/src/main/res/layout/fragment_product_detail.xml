@@ -154,7 +154,7 @@
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="7"
-                    android:backgroundTint="#FF8400"
+                    android:backgroundTint="#163172"
                     android:text="예약하기"
                     android:textStyle="bold"/>
 
@@ -178,9 +178,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="여행 기간"
-                    android:textSize="16sp"
+                    android:textSize="17sp"
                     android:textStyle="bold"
-                    android:textColor="#FF8400"
+                    android:textColor="#1E56A0"
                     android:layout_marginStart="30dp"/>
 
                 <TextView
@@ -201,9 +201,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="이용 교통"
-                    android:textSize="16sp"
+                    android:textSize="17sp"
                     android:textStyle="bold"
-                    android:textColor="#FF8400"
+                    android:textColor="#1E56A0"
                     android:layout_marginStart="30dp"/>
 
                 <TextView
@@ -224,9 +224,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="방문 지역"
-                    android:textSize="16sp"
+                    android:textSize="17sp"
                     android:textStyle="bold"
-                    android:textColor="#FF8400"
+                    android:textColor="#1E56A0"
                     android:layout_marginStart="30dp"/>
 
                 <TextView
@@ -247,9 +247,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="예약 현황"
-                    android:textSize="16sp"
+                    android:textSize="17sp"
                     android:textStyle="bold"
-                    android:textColor="#FF8400"
+                    android:textColor="#1E56A0"
                     android:layout_marginStart="30dp"/>
 
                 <TextView

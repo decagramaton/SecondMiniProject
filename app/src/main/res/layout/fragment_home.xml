@@ -336,150 +336,168 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#D6E4F0"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:text="단 7일 특가! 신규 여행 패키지"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:background="#FFFFFF"/>
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_beach_512" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="새로운 경험! 신규 여행지"
+                        android:textSize="20sp"
+                        android:paddingBottom="10dp"
+                        android:textColor="#163172"
+                        android:textStyle="bold"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/new_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:paddingHorizontal="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
                     android:background="#FFFFFF"/>
 
+
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#D6E4F0"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:text="검증된 인기 여행지! 추천 여행 패키지"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:background="#FFFFFF"/>
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_beach_512" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="검증된 인기 여행지! 추천 여행지"
+                        android:textSize="20sp"
+                        android:paddingBottom="10dp"
+                        android:textColor="#163172"
+                        android:textStyle="bold"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recommend_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:paddingHorizontal="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
                     android:background="#FFFFFF"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#D6E4F0"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:text="한정 특가! 타임 세일 여행 패키지"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:background="#FFFFFF"/>
+                <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_beach_512" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="한정 7일 특가! 타임 세일"
+                        android:textSize="20sp"
+                        android:paddingBottom="10dp"
+                        android:textColor="#163172"
+                        android:textStyle="bold"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/time_deal_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:paddingHorizontal="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
                     android:background="#FFFFFF"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#D6E4F0"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:text="지금이 마지막! 빅세일 여행 패키지"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:background="#FFFFFF"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/big_sale_recycler_view"
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="#FFFFFF"/>
+                    android:orientation="horizontal">
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                    <ImageView
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_beach_512" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:text="오랜 역사와 문화를 가진 유럽 여행 패키지"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:background="#FFFFFF"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="함께가서 의미있는 가족 여행"
+                        android:textSize="20sp"
+                        android:paddingBottom="10dp"
+                        android:textColor="#163172"
+                        android:textStyle="bold"/>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/euro_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="#FFFFFF"/>
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:text="함께가서 의미있는 여행! 가족 여행 패키지"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:background="#FFFFFF"/>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/family_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:paddingHorizontal="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
                     android:background="#FFFFFF"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
