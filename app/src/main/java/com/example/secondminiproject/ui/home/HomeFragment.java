@@ -2,10 +2,7 @@ package com.example.secondminiproject.ui.home;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Lifecycle;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,9 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -115,7 +109,7 @@ public class HomeFragment extends Fragment {
         binding.newRecyclerView.setLayoutManager(linearLayoutManager);
 
         // Step2. 어샙터 생성
-        ProductAdapter productAdapter = new ProductAdapter();
+        NewPackageAdapter newPackageAdapter = new NewPackageAdapter();
 
         // Step3. Data를 얻고, Adapter에 설정
         ProductService productService = ServiceProvider.getProductService(getContext());
@@ -125,8 +119,8 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
                 List<Board> BoardList = response.body();
 
-                productAdapter.setList(BoardList);
-                binding.newRecyclerView.setAdapter(productAdapter);
+                newPackageAdapter.setList(BoardList);
+                binding.newRecyclerView.setAdapter(newPackageAdapter);
             }
 
             @Override
@@ -136,11 +130,11 @@ public class HomeFragment extends Fragment {
         });
 
         //항목을 클릭했을때 콜백 객체를 등록
-        productAdapter.setOnItemClickListener(new com.example.secondminiproject.ui.home.ProductAdapter.OnItemClickListener() {
+        newPackageAdapter.setOnItemClickListener(new NewPackageAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
 
-                Board board = productAdapter.getItem(position);
+                Board board = newPackageAdapter.getItem(position);
 
                 Bundle args = new Bundle();
                 args.putSerializable("board", board);
