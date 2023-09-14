@@ -3,11 +3,9 @@ package com.example.secondminiproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Service;
-import android.content.Intent;
-import android.util.Log;
 import androidx.appcompat.widget.SearchView;
-import androidx.fragment.app.Fragment;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.NavOptions;
@@ -21,20 +19,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.Window;
 
 import com.example.secondminiproject.databinding.ActivityMainBinding;
-import com.example.secondminiproject.dto.Board;
-import com.example.secondminiproject.service.ProductService;
-import com.example.secondminiproject.service.ServiceProvider;
-import com.example.secondminiproject.ui.home.HomeFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -137,8 +125,11 @@ public class MainActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 Bundle bundle = new Bundle();
                 bundle.putString("searchKeyword", query);
-                navController.navigate(R.id.dest_product_list, bundle);
 
+                Window window = getWindow();
+                new WindowInsetsControllerCompat(window, window.getDecorView()).hide(WindowInsetsCompat.Type.ime());
+
+                navController.navigate(R.id.dest_product_list, bundle);
                 return true;
             }
 
