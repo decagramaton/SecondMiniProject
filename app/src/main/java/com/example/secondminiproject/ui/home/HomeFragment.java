@@ -151,7 +151,7 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         binding.recommendRecyclerView.setLayoutManager(linearLayoutManager);
 
-        ProductAdapter productAdapter = new ProductAdapter();
+        RecommendPackageAdapter recommendPackageAdapter = new RecommendPackageAdapter();
 
         ProductService productService = ServiceProvider.getProductService(getContext());
         Call<List<Board>> call = productService.getProductList();
@@ -160,8 +160,8 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
                 List<Board> BoardList = response.body();
 
-                productAdapter.setList(BoardList);
-                binding.recommendRecyclerView.setAdapter(productAdapter);
+                recommendPackageAdapter.setList(BoardList);
+                binding.recommendRecyclerView.setAdapter(recommendPackageAdapter);
             }
 
             @Override
@@ -171,11 +171,11 @@ public class HomeFragment extends Fragment {
         });
 
         //항목을 클릭했을때 콜백 객체를 등록
-        productAdapter.setOnItemClickListener(new com.example.secondminiproject.ui.home.ProductAdapter.OnItemClickListener() {
+        recommendPackageAdapter.setOnItemClickListener(new RecommendPackageAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
 
-                Board board = productAdapter.getItem(position);
+                Board board = recommendPackageAdapter.getItem(position);
 
                 Bundle args = new Bundle();
                 args.putSerializable("board", board);
