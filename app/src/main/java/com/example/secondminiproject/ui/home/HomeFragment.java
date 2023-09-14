@@ -49,7 +49,14 @@ public class HomeFragment extends Fragment {
         navController = NavHostFragment.findNavController(this);
 
         // 추천 여행 상품 목록 출력
-        initRecyclerView();
+        initNewRecyclerView();
+        initrecommendRecyclerView();
+        initTimeDealRecyclerView();
+        initBigSaleRecyclerView();
+        initEuroRecyclerView();
+        initFamilyRecyclerView();
+        initHealingRecyclerView();
+
 
         //배너
         initPagerView();
@@ -99,10 +106,13 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void initRecyclerView() {
+    /**
+     * 신규 여행 패키지 목록 메소드
+     */
+    private void initNewRecyclerView() {
         // Step1. 수직방향으로 1라인에 1개의 ViewHolder가 들어가도록 설정
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        binding.recyclerView.setLayoutManager(linearLayoutManager);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        binding.newRecyclerView.setLayoutManager(linearLayoutManager);
 
         // Step2. 어샙터 생성
         ProductAdapter productAdapter = new ProductAdapter();
@@ -116,7 +126,7 @@ public class HomeFragment extends Fragment {
                 List<Board> BoardList = response.body();
 
                 productAdapter.setList(BoardList);
-                binding.recyclerView.setAdapter(productAdapter);
+                binding.newRecyclerView.setAdapter(productAdapter);
             }
 
             @Override
@@ -139,6 +149,252 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
+    /**
+     * 추천 여행 패키지 목록 메소드
+     */
+    private void initrecommendRecyclerView() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        binding.recommendRecyclerView.setLayoutManager(linearLayoutManager);
+
+        ProductAdapter productAdapter = new ProductAdapter();
+
+        ProductService productService = ServiceProvider.getProductService(getContext());
+        Call<List<Board>> call = productService.getProductList();
+        call.enqueue(new Callback<List<Board>>() {
+            @Override
+            public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
+                List<Board> BoardList = response.body();
+
+                productAdapter.setList(BoardList);
+                binding.recommendRecyclerView.setAdapter(productAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Board>> call, Throwable t) {
+                Log.i(TAG, t.toString());
+            }
+        });
+
+        //항목을 클릭했을때 콜백 객체를 등록
+        productAdapter.setOnItemClickListener(new com.example.secondminiproject.ui.home.ProductAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View itemView, int position) {
+
+                Board board = productAdapter.getItem(position);
+
+                Bundle args = new Bundle();
+                args.putSerializable("board", board);
+
+                navController.navigate(R.id.dest_product_detail,args);
+            }
+        });
+    }
+
+
+    /**
+     * 타임 특가 여행 패키지 목록 메소드
+     */
+    private void  initTimeDealRecyclerView() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        binding.timeDealRecyclerView.setLayoutManager(linearLayoutManager);
+
+        ProductAdapter productAdapter = new ProductAdapter();
+
+        ProductService productService = ServiceProvider.getProductService(getContext());
+        Call<List<Board>> call = productService.getProductList();
+        call.enqueue(new Callback<List<Board>>() {
+            @Override
+            public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
+                List<Board> BoardList = response.body();
+
+                productAdapter.setList(BoardList);
+                binding.timeDealRecyclerView.setAdapter(productAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Board>> call, Throwable t) {
+                Log.i(TAG, t.toString());
+            }
+        });
+        
+        productAdapter.setOnItemClickListener(new com.example.secondminiproject.ui.home.ProductAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View itemView, int position) {
+
+                Board board = productAdapter.getItem(position);
+
+                Bundle args = new Bundle();
+                args.putSerializable("board", board);
+
+                navController.navigate(R.id.dest_product_detail,args);
+            }
+        });
+    }
+
+    /**
+     * 큰 할인 여행 패키지 목록 메소드
+     */
+    private void  initBigSaleRecyclerView() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        binding.bigSaleRecyclerView.setLayoutManager(linearLayoutManager);
+
+        ProductAdapter productAdapter = new ProductAdapter();
+
+        ProductService productService = ServiceProvider.getProductService(getContext());
+        Call<List<Board>> call = productService.getProductList();
+        call.enqueue(new Callback<List<Board>>() {
+            @Override
+            public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
+                List<Board> BoardList = response.body();
+
+                productAdapter.setList(BoardList);
+                binding.bigSaleRecyclerView.setAdapter(productAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Board>> call, Throwable t) {
+                Log.i(TAG, t.toString());
+            }
+        });
+
+        productAdapter.setOnItemClickListener(new com.example.secondminiproject.ui.home.ProductAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View itemView, int position) {
+
+                Board board = productAdapter.getItem(position);
+
+                Bundle args = new Bundle();
+                args.putSerializable("board", board);
+
+                navController.navigate(R.id.dest_product_detail,args);
+            }
+        });
+    }
+
+    /**
+     *
+     */
+    private void  initEuroRecyclerView() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        binding.euroRecyclerView.setLayoutManager(linearLayoutManager);
+
+        ProductAdapter productAdapter = new ProductAdapter();
+
+        ProductService productService = ServiceProvider.getProductService(getContext());
+        Call<List<Board>> call = productService.getProductList();
+        call.enqueue(new Callback<List<Board>>() {
+            @Override
+            public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
+                List<Board> BoardList = response.body();
+
+                productAdapter.setList(BoardList);
+                binding.euroRecyclerView.setAdapter(productAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Board>> call, Throwable t) {
+                Log.i(TAG, t.toString());
+            }
+        });
+
+        productAdapter.setOnItemClickListener(new com.example.secondminiproject.ui.home.ProductAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View itemView, int position) {
+
+                Board board = productAdapter.getItem(position);
+
+                Bundle args = new Bundle();
+                args.putSerializable("board", board);
+
+                navController.navigate(R.id.dest_product_detail,args);
+            }
+        });
+    }
+
+    /**
+     *
+     */
+    private void  initFamilyRecyclerView() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        binding.familyRecyclerView.setLayoutManager(linearLayoutManager);
+
+        ProductAdapter productAdapter = new ProductAdapter();
+
+        ProductService productService = ServiceProvider.getProductService(getContext());
+        Call<List<Board>> call = productService.getProductList();
+        call.enqueue(new Callback<List<Board>>() {
+            @Override
+            public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
+                List<Board> BoardList = response.body();
+
+                productAdapter.setList(BoardList);
+                binding.familyRecyclerView.setAdapter(productAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Board>> call, Throwable t) {
+                Log.i(TAG, t.toString());
+            }
+        });
+
+        productAdapter.setOnItemClickListener(new com.example.secondminiproject.ui.home.ProductAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View itemView, int position) {
+
+                Board board = productAdapter.getItem(position);
+
+                Bundle args = new Bundle();
+                args.putSerializable("board", board);
+
+                navController.navigate(R.id.dest_product_detail,args);
+            }
+        });
+    }
+
+    /**
+     *
+     */
+    private void  initHealingRecyclerView() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        binding.timeDealRecyclerView.setLayoutManager(linearLayoutManager);
+
+        ProductAdapter productAdapter = new ProductAdapter();
+
+        ProductService productService = ServiceProvider.getProductService(getContext());
+        Call<List<Board>> call = productService.getProductList();
+        call.enqueue(new Callback<List<Board>>() {
+            @Override
+            public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
+                List<Board> BoardList = response.body();
+
+                productAdapter.setList(BoardList);
+                binding.timeDealRecyclerView.setAdapter(productAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Board>> call, Throwable t) {
+                Log.i(TAG, t.toString());
+            }
+        });
+
+        productAdapter.setOnItemClickListener(new com.example.secondminiproject.ui.home.ProductAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View itemView, int position) {
+
+                Board board = productAdapter.getItem(position);
+
+                Bundle args = new Bundle();
+                args.putSerializable("board", board);
+
+                navController.navigate(R.id.dest_product_detail,args);
+            }
+        });
+    }
+
+
+
+
 
     private void initPagerView() {
         HomeBannerAdapter homeBannerAdapter = new HomeBannerAdapter(getActivity());
