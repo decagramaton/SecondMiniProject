@@ -11,13 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#FFFFFF">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
-            app:cardCornerRadius="20dp">
+            app:cardCornerRadius="20dp"
+            android:backgroundTint="#FFFFFF">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

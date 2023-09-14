@@ -53,8 +53,6 @@ public class ProductDetailBottomSheetFragment extends BottomSheetDialogFragment 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view,savedInstanceState);
-        view.findViewById(R.id.btn_product_detail_bottom_sheet_close).setOnClickListener(v -> {
-            dismiss();
-        });
+
     }
 }

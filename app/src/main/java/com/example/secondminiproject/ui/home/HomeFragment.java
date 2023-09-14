@@ -10,6 +10,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,6 +38,11 @@ public class HomeFragment extends Fragment {
     private static final String TAG = "HomeFragment";
     private FragmentHomeBinding binding;
     private NavController navController;
+
+    private Handler handler= new Handler();
+
+    private TimerTask timerTask;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
@@ -60,6 +66,13 @@ public class HomeFragment extends Fragment {
 
 
         return binding.getRoot();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        timerTask.cancel();
+        handler.removeCallbacksAndMessages(null);
     }
 
     private void initCategoryJapan() {
@@ -169,7 +182,7 @@ public class HomeFragment extends Fragment {
         timer = new Timer();
 
         //Timer를 사용하여 작업을 예약
-        timer.schedule(new TimerTask() {
+        timer.schedule(timerTask =new TimerTask() {
             @Override
             public void run() {
                 getActivity().runOnUiThread(update);

@@ -20,12 +20,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="#FFFFFF">
 
             <FrameLayout
                 android:id="@+id/frameLayout"
                 android:layout_width="match_parent"
-                android:layout_height="220dp">
+                android:layout_height="220dp"
+                android:background="#FFFFFF">
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/home_banner"
@@ -38,7 +40,9 @@
             <HorizontalScrollView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF">
+                android:backgroundTint="#FFFFFF"
+                android:background="#FFFFFF"
+                >
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -56,7 +60,7 @@
                             android:layout_width="72dp"
                             android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#F6F6F6"
+                            android:backgroundTint="#FFFFFF"
                             android:contentDescription="제주"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_product_list_jeju_24dp" />
@@ -72,7 +76,7 @@
                             android:layout_width="72dp"
                             android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#F6F6F6"
+                            android:backgroundTint="#FFFFFF"
                             android:contentDescription="홍콩"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_product_list_hongkong_24dp" />
@@ -96,7 +100,7 @@
                             android:layout_width="72dp"
                             android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#F6F6F6"
+                            android:backgroundTint="#FFFFFF"
                             android:contentDescription="태국"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_product_list_taipei_24dp" />
@@ -112,7 +116,7 @@
                             android:layout_width="72dp"
                             android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#F6F6F6"
+                            android:backgroundTint="#FFFFFF"
                             android:contentDescription="일본"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_product_list_japan_24dp" />
@@ -136,7 +140,7 @@
                             android:layout_width="72dp"
                             android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#F6F6F6"
+                            android:backgroundTint="#FFFFFF"
                             android:contentDescription="중국"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_product_list_china_24dp" />
@@ -152,7 +156,7 @@
                             android:layout_width="72dp"
                             android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#F6F6F6"
+                            android:backgroundTint="#FFFFFF"
                             android:contentDescription="몽골"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_product_list_mongol_24dp" />
@@ -176,7 +180,7 @@
                             android:layout_width="72dp"
                             android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#F6F6F6"
+                            android:backgroundTint="#FFFFFF"
                             android:contentDescription="하와이"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_product_list_hawaii_24dp" />
@@ -192,7 +196,7 @@
                             android:layout_width="72dp"
                             android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#F6F6F6"
+                            android:backgroundTint="#FFFFFF"
                             android:contentDescription="파리"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_product_list_paris_24dp" />
@@ -216,7 +220,7 @@
                             android:layout_width="72dp"
                             android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#F6F6F6"
+                            android:backgroundTint="#FFFFFF"
                             android:contentDescription="영국"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_product_list_england_24dp" />
@@ -232,7 +236,7 @@
                             android:layout_width="72dp"
                             android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#F6F6F6"
+                            android:backgroundTint="#FFFFFF"
                             android:contentDescription="노르웨이"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_product_list_norway_24dp" />
@@ -256,7 +260,7 @@
                             android:layout_width="72dp"
                             android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#F6F6F6"
+                            android:backgroundTint="#FFFFFF"
                             android:contentDescription="그리스"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_product_list_greece_24dp" />
@@ -272,7 +276,7 @@
                             android:layout_width="72dp"
                             android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#F6F6F6"
+                            android:backgroundTint="#FFFFFF"
                             android:contentDescription="이태리"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_product_list_italy_24dp" />
@@ -296,7 +300,7 @@
                             android:layout_width="72dp"
                             android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#F6F6F6"
+                            android:backgroundTint="#FFFFFF"
                             android:contentDescription="독일"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_product_list_germany_24dp" />
@@ -312,7 +316,7 @@
                             android:layout_width="72dp"
                             android:layout_height="72dp"
                             android:layout_weight="1"
-                            android:backgroundTint="#F6F6F6"
+                            android:backgroundTint="#FFFFFF"
                             android:contentDescription="케냐"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_product_list_kenya_24dp" />
@@ -336,7 +340,8 @@
                 android:layout_marginStart="20dp"
                 android:text="추천 여행 패키지"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:background="#FFFFFF"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
@@ -344,7 +349,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp" />
+                android:layout_marginEnd="10dp"
+                android:background="#FFFFFF"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
