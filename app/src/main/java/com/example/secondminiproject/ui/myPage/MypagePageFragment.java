@@ -33,15 +33,15 @@ public class MypagePageFragment extends Fragment {
 
     private void initUIByPageNo(int pageNo) {
         if(Math.abs(pageNo%5+1)==1){
-            binding.imageView33.setImageResource(R.drawable.ggomong);
+            binding.imageView33.setImageResource(R.drawable.ic_mypage_banner1);
         }else if(Math.abs(pageNo%5+1)==2){
-            binding.imageView33.setImageResource(R.drawable.banner1);
+            binding.imageView33.setImageResource(R.drawable.ic_mypage_banner1);
         }else if(Math.abs(pageNo%5+1)==3 ){
-            binding.imageView33.setImageResource(R.drawable.banner2);
+            binding.imageView33.setImageResource(R.drawable.ic_mypage_banner1);
         }else if(Math.abs(pageNo%5+1)==4 ){
-            binding.imageView33.setImageResource(R.drawable.banner3);
+            binding.imageView33.setImageResource(R.drawable.ic_mypage_banner1);
         }else if(Math.abs(pageNo%5+1)==5 ) {
-            binding.imageView33.setImageResource(R.drawable.banner4);
+            binding.imageView33.setImageResource(R.drawable.ic_mypage_banner1);
         }
     }
 }

@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:backgroundTint="#FF6F0F"
+                android:backgroundTint="#163172"
                 android:textStyle="bold"
                 android:text="로그인" />
 
@@ -84,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:backgroundTint="#FF6F0F"
+                android:backgroundTint="#163172"
                 android:textStyle="bold"
                 android:text="취소" />
         </LinearLayout>

@@ -74,7 +74,7 @@ public class WishListFragment extends Fragment {
         wishAdapter.setOnItemClickListener(new WishAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
-                Log.i(TAG, position + "빔 항목 클릭 됨 ");
+                Log.i(TAG, position + "번 항목 클릭 됨 ");
                 //해당 포지션의 아이템을 boardAdapter을 통해 받아온다.
                 Wish wishProduct = wishAdapter.getItem(position);
                 Bundle args = new Bundle();
