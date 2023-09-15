@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/dest_home"
-        android:title="홈"
+        android:id="@+id/dest_category"
+        android:title="카테 고리"
         android:enabled="true"
-        android:icon="@drawable/ic_home_24dp"/>
+        android:icon="@drawable/ic_menu_24dp"/>
     <item
         android:id="@+id/dest_product_list"
         android:title="상품 목록"
         android:enabled="true"
         android:icon="@drawable/ic_airplane_ticket_24dp"/>
     <item
-        android:id="@+id/dest_my_page"
-        android:title="마이페이지"
+        android:id="@+id/dest_home"
+        android:title="홈"
         android:enabled="true"
-        android:icon="@drawable/ic_person_24dp"/>
+        android:icon="@drawable/ic_home_24dp"/>
     <item
         android:id="@+id/dest_wish_list"
         android:title="찜"
         android:enabled="true"
         android:icon="@drawable/ic_wish_list_24dp"/>
+    <item
+        android:id="@+id/dest_my_page"
+        android:title="마이페이지"
+        android:enabled="true"
+        android:icon="@drawable/ic_person_24dp"/>
 </menu>

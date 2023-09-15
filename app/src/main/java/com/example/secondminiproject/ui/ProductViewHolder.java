@@ -25,10 +25,8 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
     private ImageView image;
     private TextView title;
     private TextView visitPlace;
-    private TextView content;
     private TextView price;
     private RatingBar rating;
-    private TextView ratingScore;
     private TextView ratingCountByProduct;
 
 
@@ -37,10 +35,8 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         this.image = itemView.findViewById(R.id.image);
         this.title = itemView.findViewById(R.id.title);
         this.visitPlace = itemView.findViewById(R.id.visitPlace);
-        this.content = itemView.findViewById(R.id.content);
         this.price = itemView.findViewById(R.id.price);
         this.rating = itemView.findViewById(R.id.rating);
-        this.ratingScore = itemView.findViewById(R.id.rating_score);
         this.ratingCountByProduct = itemView.findViewById(R.id.rating_count_by_product);
 
         //클릭 이벤트 처리
@@ -59,7 +55,6 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
 
         this.title.setText(board.getProductTitle());
         this.visitPlace.setText(board.getProductVisitPlace());
-        this.content.setText(board.getProductContent());
 
         String currencySymbol = Currency.getInstance("KRW").getSymbol();
         DecimalFormat df = new DecimalFormat("#,###");
@@ -80,7 +75,6 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         float reviewAverage = (float)(reviewTotalSum/reviewList.size());
 
         this.rating.setRating(reviewAverage);
-        this.ratingScore.setText(String.valueOf(reviewAverage));
         this.ratingCountByProduct.setText("(" + reviewList.size() + ")");
     }
 }

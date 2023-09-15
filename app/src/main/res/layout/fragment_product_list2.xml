@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5dp"
         android:orientation="vertical"
+        android:layout_marginBottom="20dp"
         android:background="#FFFFFF">
 
         <androidx.cardview.widget.CardView
@@ -36,8 +37,8 @@
 
                 <CheckBox
                     android:id="@+id/checkbox"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_margin="10dp"
                     android:background="@drawable/wish_list_checkbox"
                     android:button="@android:color/transparent"
@@ -53,7 +54,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="0dp">
 
             <!-- Title, secondary and supporting text -->
             <LinearLayout
@@ -66,6 +68,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Title"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     android:textSize="18dp" />
 
@@ -74,40 +78,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="15" />
 
-                <RatingBar
-                    android:id="@+id/rating"
-                    style="@style/Widget.AppCompat.RatingBar.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:numStars="5"
-                    android:progressTint="@android:color/primary_text_light_nodisable"
-                    android:rating="3" />
-
-                <TextView
-                    android:id="@+id/rating_score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:text="3.0" />
-
-                <TextView
-                    android:id="@+id/rating_count_by_product"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="1"
-                    android:text="(20)" />
-
             </LinearLayout>
 
             <TextView
                 android:id="@+id/visitPlace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1"
                 android:ellipsize="end"
-                android:maxLines="2"
+                android:maxLines="1"
                 android:text="visitPlace"
                 android:textAppearance="?attr/textAppearanceBody1"
                 android:textColor="?android:attr/textColorSecondary" />
@@ -122,37 +100,48 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_weight="0"
                     android:text="&#8361;1,500,000"
                     android:textAppearance="?attr/textAppearanceBody1"
                     android:textColor="?android:attr/textColorSecondary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/day"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text=" /박"
-                    android:textSize="16sp" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/content"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="7dp"
-                android:text="This is the photo's description. this place is beautiful!"
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="?android:attr/textColorSecondary" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RatingBar
+                    android:id="@+id/rating"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:numStars="5"
+
+                    android:progressTint="@android:color/holo_blue_light"
+                    android:rating="3" />
+
+                <TextView
+                    android:id="@+id/rating_count_by_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:text="(20)" />
+
+            </LinearLayout>
+
+            <!--<View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="?android:attr/listDivider" />-->
 
         </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
 
     </LinearLayout>
 
