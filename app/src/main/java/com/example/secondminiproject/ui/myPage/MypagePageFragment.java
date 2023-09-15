@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentMypagePageBinding;
 
-
 public class MypagePageFragment extends Fragment {
     private static final String TAG = "MypagePageFragment";
     private FragmentMypagePageBinding binding;
@@ -33,15 +32,15 @@ public class MypagePageFragment extends Fragment {
 
     private void initUIByPageNo(int pageNo) {
         if(Math.abs(pageNo%5+1)==1){
-            binding.imageView33.setImageResource(R.drawable.ic_mypage_banner1);
+            binding.imageView33.setImageResource(R.drawable.ic_mypage_banner2);
         }else if(Math.abs(pageNo%5+1)==2){
             binding.imageView33.setImageResource(R.drawable.ic_mypage_banner1);
         }else if(Math.abs(pageNo%5+1)==3 ){
-            binding.imageView33.setImageResource(R.drawable.ic_mypage_banner1);
+            binding.imageView33.setImageResource(R.drawable.ic_mypage_banner3);
         }else if(Math.abs(pageNo%5+1)==4 ){
             binding.imageView33.setImageResource(R.drawable.ic_mypage_banner1);
         }else if(Math.abs(pageNo%5+1)==5 ) {
-            binding.imageView33.setImageResource(R.drawable.ic_mypage_banner1);
+            binding.imageView33.setImageResource(R.drawable.ic_mypage_banner4);
         }
     }
 }
