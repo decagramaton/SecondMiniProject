@@ -28,7 +28,7 @@ public class ReservationDetailAdapter extends RecyclerView.Adapter<ReservationDe
     @Override
     public ReservationDetailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View itemView = layoutInflater.inflate(R.layout.reservation_list_item, parent, false);
+        View itemView = layoutInflater.inflate(R.layout.fragment_recent_list, parent, false);
         ReservationDetailViewHolder reservationDetailViewHolder = new ReservationDetailViewHolder(itemView,onItemClickListener, navController);
 
         return reservationDetailViewHolder;
