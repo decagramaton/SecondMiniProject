@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,11 @@ import android.widget.Button;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentProductDetailBinding;
 import com.example.secondminiproject.databinding.FragmentProductListBinding;
+import com.example.secondminiproject.ui.home.HomeBannerAdapter;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class ProductDetailFragment extends Fragment {
@@ -23,12 +28,15 @@ public class ProductDetailFragment extends Fragment {
     private FragmentProductDetailBinding binding;
     private NavController navController;
     private BottomSheetDialogFragment bottomSheet;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentProductDetailBinding.inflate(getLayoutInflater());
         navController = NavHostFragment.findNavController(this);
 
         initBtnMakeReservation();
+        initPagerView();
 
         return binding.getRoot();
     }
@@ -42,5 +50,10 @@ public class ProductDetailFragment extends Fragment {
         });
     }
 
+
+    private void initPagerView() {
+        DetailBannerAdapter detailBannerAdapter = new DetailBannerAdapter(getActivity());
+        binding.detailBanner.setAdapter(detailBannerAdapter);
+    }
 
 }

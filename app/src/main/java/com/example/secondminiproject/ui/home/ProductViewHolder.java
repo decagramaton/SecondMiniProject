@@ -1,6 +1,7 @@
 package com.example.secondminiproject.ui.home;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -72,6 +73,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         float reviewAverage = (float)(reviewTotalSum/reviewList.size());
         this.rating.setRating(reviewAverage);
         this.ratingCountByProduct.setText("(" + reviewList.size() + ")");
+
     }
 }
 

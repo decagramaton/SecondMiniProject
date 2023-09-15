@@ -2,7 +2,14 @@
     <string name="app_name">SecondMiniProject</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="travel_detail_content">마리앙뚜아네트가 형장의 이슬로 사라진 [콩코드 광장] 차창관광 ▪ 나폴레옹의 전승 기념으로 세워진 [개선문] ▪ 엘리제의 들판이라는 뜻의 [샹제리제 거리] 등 시내관광 ⠀　　 ▶추천선택관광: 파리 에펠탑 2층 전망대  세느강 유람선 야간탑승(110유로) ※ 에펠탑 전망대 등정이 불가할 경우 몽파르나스타워 전망대 등정으로 대체 될 수 있습니다.</string>
+    <string name="travel_detail_content">1. 일본 자유여행 추천지역\n
+        \tBEST4!후쿠오카/오사카/도쿄/마츠야마 100% 완전 자유여행\n
+        2. 9월부터 11월까지 출발일+오사카는 김포출발 선택 가능\n
+        \t추석연휴+10월 황금연휴기간 포함!\n
+        3. 우리끼리만 초특가 찬스! 도쿄 디즈니랜드 / 후쿠오카 1DAY버스투어 특가 구매가능\n
+        4. 오늘만! 오사카 예약 시 햅파이브 관람차 이용권 추가특전! (1인1매)\n
+        5. 오늘만! 도쿄 예약 시 도쿄타워 전망대 입장권 추가특전! (1인1매)
+    </string>
     <string name="reservation_btn">예약하기</string>
     <string name="norway">노르웨이</string>
     <string name="search_title">AppBar 검색</string>
