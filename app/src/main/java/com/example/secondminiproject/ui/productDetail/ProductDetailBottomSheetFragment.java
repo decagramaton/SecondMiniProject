@@ -51,17 +51,11 @@ public class ProductDetailBottomSheetFragment extends BottomSheetDialogFragment 
         navController = NavHostFragment.findNavController(this);
 
         adultNum = binding.productDetailBottomSheetAdultNumber;
-
         changingAdultNum = Integer.parseInt(adultNum.getText().toString());
-
         adultPrice = binding.productDetailBottomSheetAdultPrice;
-
         childNum = binding.productDetailBottomSheetChildNumber;
-
         changingChildNum = Integer.parseInt(childNum.getText().toString());
-
         childPrice =binding.productDetailBottomSheetChildPrice;
-
         totalPrice=binding.productDetailBottomSheetTotalPrice;
 
 
@@ -125,7 +119,13 @@ public class ProductDetailBottomSheetFragment extends BottomSheetDialogFragment 
     private void initBtnMakeReservation() {
         binding.btnProductDetailBottomSheetMakeReservation.setOnClickListener(v -> {
             dismiss();
-            navController.navigate(R.id.dest_payment);
+            Bundle bundle = new Bundle();
+            bundle.putInt("eachAdultPrice",eachAdultPrice);
+            bundle.putInt("eachChildPrice",eachChildPrice);
+            bundle.putInt("adultNumber",changingAdultNum);
+            bundle.putInt("childNumber",changingChildNum);
+            bundle.putInt("totalPrice",calTotalPrice);
+            navController.navigate(R.id.dest_payment,bundle);
         });
     }
 
