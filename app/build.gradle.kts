@@ -62,6 +62,9 @@ dependencies {
 
     implementation("com.google.android.material:material:1.4.0")
 
+    // folding cell 라이브러리
+    implementation("com.ramotion.foldingcell:folding-cell:1.2.3")
+
     modules {
         module("org.jetbrains.kotlin:kotlin-stdlib-jdk7") {
             replacedBy("org.jetbrains.kotlin:kotlin-stdlib", "kotlin-stdlib-jdk7 is now part of kotlin-stdlib")

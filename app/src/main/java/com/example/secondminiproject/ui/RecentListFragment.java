@@ -1,5 +1,6 @@
 package com.example.secondminiproject.ui;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentRecentListBinding;
 import com.example.secondminiproject.databinding.FragmentReservationDetailBinding;
+import com.ramotion.foldingcell.FoldingCell;
 
 public class RecentListFragment extends Fragment {
 
@@ -25,23 +27,22 @@ public class RecentListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentRecentListBinding.inflate(inflater);
-
         navController = NavHostFragment.findNavController(this);
 
-        initBtnRecentListMyPage();
-        initBtnRecentListProductDetail();
+        initFloding();
+
         return binding.getRoot();
     }
 
-    private void initBtnRecentListProductDetail() {
-        binding.btnRecentListProductDetail.setOnClickListener(v -> {
-            navController.navigate(R.id.action_dest_recent_list_to_dest_product_detail);
+    private void initFloding() {
+        binding.foldingCell.initialize(30, 1000, Color.DKGRAY, 2);
+
+        binding.foldingCell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.foldingCell.toggle(false);
+            }
         });
     }
 
-    private void initBtnRecentListMyPage() {
-        binding.btnRecentListMyPage.setOnClickListener(v -> {
-            navController.popBackStack();
-        });
-    }
 }
