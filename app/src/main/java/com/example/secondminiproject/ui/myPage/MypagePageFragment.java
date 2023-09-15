@@ -16,8 +16,7 @@ public class MypagePageFragment extends Fragment {
     private FragmentMypagePageBinding binding;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentMypagePageBinding.inflate(inflater);
 
         //전달 데이터 받기(페이지 번호 받기)

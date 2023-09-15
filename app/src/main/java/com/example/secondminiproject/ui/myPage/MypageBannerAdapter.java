@@ -17,12 +17,12 @@ public class MypageBannerAdapter extends FragmentStateAdapter {
     @Override
     //각 페이지로 넘어갈때의 fragment가 뭐야? 무슨페이지야?
     public Fragment createFragment(int position) {
-        PageFragment pageFragment = new PageFragment();
+        MypagePageFragment mypagePageFragment = new MypagePageFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("pageNo",position+1);
-        pageFragment.setArguments(bundle);
+        mypagePageFragment.setArguments(bundle);
 
-        return pageFragment;
+        return mypagePageFragment;
     }
 
     @Override
