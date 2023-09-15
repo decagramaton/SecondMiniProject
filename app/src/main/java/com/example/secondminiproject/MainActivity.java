@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initBottomNav() {
+        binding.bottomNavigation.setSelectedItemId(R.id.dest_home);
+
         binding.bottomNavigation.setOnItemSelectedListener(item -> {
             NavOptions navOptions = new NavOptions.Builder()
                     //.setPopUpTo(R.id.dest_review, false)
@@ -75,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
+
+
     }
 
 
