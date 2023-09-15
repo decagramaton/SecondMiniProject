@@ -38,7 +38,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|end"
                 android:paddingTop="10dp"
-                android:text="769,000"
+                android:text="769000"
                 android:textColor="#163172"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -76,7 +76,7 @@
                     android:layout_width="25dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="1"
+                    android:text="0"
                     android:textSize="18dp" />
 
                 <ImageButton
@@ -116,7 +116,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|end"
                 android:paddingTop="10dp"
-                android:text="749,000"
+                android:text="749000"
                 android:textColor="#163172"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -154,7 +154,7 @@
                     android:layout_width="25dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="1"
+                    android:text="0"
                     android:textSize="18dp" />
 
                 <ImageButton

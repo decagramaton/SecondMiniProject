@@ -51,7 +51,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:titleTextColor="#000000"
                     tools:layout_editor_absoluteY="parent"
-                    app:menu="@menu/review_list_card"/>
+                    app:menu="@menu/review_list_card"
+                    app:theme="@style/reviewListToolbar"/>
 
             </LinearLayout>
 
@@ -69,7 +70,9 @@
                     style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
-                    android:layout_gravity="start" />
+                    android:layout_gravity="start"
+                    android:progressTint="@android:color/holo_blue_light"
+                    />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="wrap_content"
@@ -105,10 +108,10 @@
             <TextView
                 android:id="@+id/review_list_card_review_content"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="60dp"
                 android:layout_margin="15dp"
                 android:padding="10dp"
-                android:background="@drawable/wish_image_border" />
+                />
 
         </LinearLayout>
 

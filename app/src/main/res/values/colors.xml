@@ -8,4 +8,11 @@
     <color name="colorTransparent">#00ffffff</color>
     <color name="colorStart">#cb5ed9</color>
     <color name="colorEnd">#8463d4</color>
+    <style name="reviewListToolbar" parent="Widget.AppCompat.ActionBar.TabBar">
+        <item name="android:tint">#1E56A0</item>
+        <item name="theme">@android:color/holo_blue_light</item>
+        <item name="android:background">#FFFFFF</item>
+        <item name="backgroundColor">@color/white</item>
+
+    </style>
 </resources>
