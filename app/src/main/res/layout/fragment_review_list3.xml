@@ -50,7 +50,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:titleTextColor="#000000"
-                    tools:layout_editor_absoluteY="parent" />
+                    tools:layout_editor_absoluteY="parent"
+                    app:menu="@menu/review_list_card"/>
 
             </LinearLayout>
 

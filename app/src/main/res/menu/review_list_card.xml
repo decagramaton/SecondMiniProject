@@ -7,12 +7,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="리뷰 수정하기"
+        app:showAsAction="never"
         />
     <item
         android:id="@+id/toolbar_review_list_card_delete_review"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="리뷰 삭제하기"
+        app:showAsAction="never"
  />
 
 </menu>

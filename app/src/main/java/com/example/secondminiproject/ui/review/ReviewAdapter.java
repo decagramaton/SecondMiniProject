@@ -15,6 +15,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
+import com.example.secondminiproject.databinding.FragmentReviewListBinding;
 import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.dto.Review;
 
@@ -24,6 +25,8 @@ import java.util.List;
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewViewHolder> {
     private static final String TAG = "ReviewAdapter";
     private List<Review> reviewList = new ArrayList<>();
+
+    private FragmentReviewListBinding binding;
 
     @NonNull
     @Override
@@ -44,6 +47,8 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewViewHolder> {
         Review review = reviewList.get(position);
         //홀더에 데이터를 세팅해준다.
         holder.setData(review);
+
+
 
 
         MenuProvider menuProvider = new MenuProvider() {

@@ -3,6 +3,7 @@ package com.example.secondminiproject.ui.review;
 import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,7 +28,6 @@ public class ReviewViewHolder extends RecyclerView.ViewHolder {
         this.reviewStartDate = itemView.findViewById(R.id.review_list_card_travel_start_date);
         this.reviewEndDate = itemView.findViewById(R.id.review_list_card_travel_end_date);
         this.reviewContent =itemView.findViewById(R.id.review_list_card_review_content);
-
 
     }
 

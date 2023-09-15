@@ -2,16 +2,21 @@ package com.example.secondminiproject.ui.review;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.secondminiproject.R;
+import com.example.secondminiproject.databinding.FragmentReviewList3Binding;
 import com.example.secondminiproject.databinding.FragmentReviewListBinding;
 import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.dto.Review;
@@ -33,12 +38,13 @@ public class ReviewListFragment extends Fragment {
 
         binding = FragmentReviewListBinding.inflate(inflater);
 
-
         //initBtnReviewUpdate();
         initRecyclerView();
 
+
         return binding.getRoot();
     }
+
 
     /*private void initBtnReviewUpdate() {
         binding.btnReviewListReviewUpdate.setOnClickListener(v -> {
@@ -53,7 +59,7 @@ public class ReviewListFragment extends Fragment {
         );
         //2d열로 출력할때
         /* GridLayoutManager linearLayoutManager = new GridLayoutManager(this,2);*/
-        binding.recyclerView.setLayoutManager(linearLayoutManager);
+        binding.reviewListRecyclerView.setLayoutManager(linearLayoutManager);
 
         //어뎁터 생성
         ReviewAdapter reviewAdapter = new ReviewAdapter();
@@ -73,6 +79,6 @@ public class ReviewListFragment extends Fragment {
         }
 
         //리사이클러뷰에 어댑터 설정
-        binding.recyclerView.setAdapter(reviewAdapter);
+        binding.reviewListRecyclerView.setAdapter(reviewAdapter);
     }
 }
