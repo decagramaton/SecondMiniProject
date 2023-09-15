@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentProductDetailBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class ProductDetailFragment extends Fragment {
@@ -30,6 +32,8 @@ public class ProductDetailFragment extends Fragment {
         //initVideo();
         initPagerView();
 
+        hideBottomNavigation(true);
+
         return binding.getRoot();
     }
 
@@ -45,6 +49,20 @@ public class ProductDetailFragment extends Fragment {
     private void initPagerView() {
         DetailBannerAdapter detailBannerAdapter = new DetailBannerAdapter(getActivity());
         binding.detailBanner.setAdapter(detailBannerAdapter);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        hideBottomNavigation(false);
+    }
+
+    public void hideBottomNavigation(Boolean bool) {
+        BottomNavigationView bottomNavigation = getActivity().findViewById(R.id.bottom_navigation);
+        if (bool == true)
+            bottomNavigation.setVisibility(View.GONE);
+        else
+            bottomNavigation.setVisibility(View.VISIBLE);
     }
 
 }
