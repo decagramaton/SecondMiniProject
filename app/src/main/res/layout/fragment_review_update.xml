@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="North Male Atoll, 노르웨이"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -45,7 +45,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:numStars="5" />
+            android:numStars="5"
+            android:progressTint="#FFC107"/>
 
         <View
             android:layout_width="match_parent"
@@ -54,9 +55,9 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/review_content"
-            android:background="@drawable/border_orange"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="390dp"
+            android:layout_height="206dp"
+            android:layout_margin="10dp"
             android:gravity="top"/>
     </LinearLayout>
 
@@ -74,7 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="50dp"
             android:layout_weight="1"
-            android:text="취소" />
+            android:text="취소"
+            android:backgroundTint="#163172"/>
 
         <Button
             android:id="@+id/button5"
@@ -82,7 +84,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_weight="1"
-            android:text="수정" />
+            android:text="수정"
+            android:backgroundTint="#163172"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.secondminiproject.ui;
+package com.example.secondminiproject.ui.userInfo;
 
 import android.os.Bundle;
 
@@ -9,13 +9,20 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.secondminiproject.R;
+import com.example.secondminiproject.databinding.FragmentHomeBinding;
+import com.example.secondminiproject.databinding.FragmentMyPageBinding;
 import com.example.secondminiproject.databinding.FragmentUserInfoBinding;
+import com.example.secondminiproject.ui.home.HomeBannerAdapter;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class UserInfoFragment extends Fragment {
@@ -31,7 +38,6 @@ public class UserInfoFragment extends Fragment {
         binding = FragmentUserInfoBinding.inflate(inflater);
 
         initBtnImageChange();
-        initBtnMyPage();
         // Inflate the layout for this fragment
         return binding.getRoot();
     }
@@ -52,12 +58,6 @@ public class UserInfoFragment extends Fragment {
                     .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
                     .build();
             activityResultLauncher.launch(request);
-        });
-    }
-
-    private void initBtnMyPage() {
-        binding.btnUserInfoMyPage.setOnClickListener(v -> {
-            navController.popBackStack();
         });
     }
 }

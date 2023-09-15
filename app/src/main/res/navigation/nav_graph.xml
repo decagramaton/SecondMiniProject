@@ -27,7 +27,7 @@
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/dest_my_page"
-        android:name="com.example.secondminiproject.ui.MyPageFragment"
+        android:name="com.example.secondminiproject.ui.myPage.MyPageFragment"
         android:label="마이페이지"
         tools:layout="@layout/fragment_my_page" >
         <action
@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/dest_user_info"
-        android:name="com.example.secondminiproject.ui.UserInfoFragment"
+        android:name="com.example.secondminiproject.ui.userInfo.UserInfoFragment"
         android:label="회원정보"
         tools:layout="@layout/fragment_user_info" />
     <fragment

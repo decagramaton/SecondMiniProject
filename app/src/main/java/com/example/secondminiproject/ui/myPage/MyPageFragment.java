@@ -1,4 +1,4 @@
-package com.example.secondminiproject.ui;
+package com.example.secondminiproject.ui.myPage;
 
 import android.os.Bundle;
 
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +16,17 @@ import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentMyPageBinding;
 import com.example.secondminiproject.datastore.AppKeyValueStore;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class MyPageFragment extends Fragment {
 
     private static final String TAG = "MyPageFragment";
     private FragmentMyPageBinding binding;
     private NavController navController;
+    private TimerTask timerTask;
+    private Handler handler = new Handler();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,7 +43,47 @@ public class MyPageFragment extends Fragment {
         initBtnUserInfo();
         initBtnRecentList();
 
+        initPagerView();
+
         return binding.getRoot();
+    }
+
+    public void onStop() {
+        super.onStop();
+        timerTask.cancel();
+        handler.removeCallbacksAndMessages(null);
+    }
+
+    private void initPagerView() {
+        MypageBannerAdapter userInfoBannerAdapter = new MypageBannerAdapter(getActivity());
+        binding.mypageBanner.setAdapter(userInfoBannerAdapter);
+
+        // Timer를 사용하여 이미지 자동 슬라이드 시작
+        startAutoSlide();
+    }
+    //Timer: 일정 시간간격으로 작업을 실행하기 위함
+    private Timer timer;
+    //현재 페이지 번호를 받기위함
+    private int currentPage = 0;
+    private void startAutoSlide(){
+        //Runnable update: 타이머가 실행될 때마다 호출되는 Runnable 객체
+        //Runnable 내부에서 현재 페이지 번호를 확인하고, 페이지 번호를 증가시킴
+        final Runnable update = () -> {
+            //현재 페이지가 5에 도달하면 다시 0으로 초기화
+            if(currentPage == 5){
+                currentPage = 0;
+            }
+            binding.mypageBanner.setCurrentItem(currentPage++, true);
+        };
+        timer = new Timer();
+
+        //Timer를 사용하여 작업을 예약
+        timer.schedule(timerTask =new TimerTask() {
+            @Override
+            public void run() {
+                getActivity().runOnUiThread(update);
+            }
+        },3000,3000);
     }
 
     @Override

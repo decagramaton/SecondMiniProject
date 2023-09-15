@@ -74,7 +74,7 @@
 
         <Button
             android:id="@+id/btn_review"
-            android:layout_width="339dp"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:clickable="false"

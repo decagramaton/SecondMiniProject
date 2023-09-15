@@ -71,4 +71,6 @@ dependencies {
         }
     }
     //이미지 선택 도구 의존 설정
+    runtimeOnly("androidx.activity:activity:1.7.2")
+
 }
