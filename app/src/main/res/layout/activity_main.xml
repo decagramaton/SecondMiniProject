@@ -18,8 +18,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"
-            app:title="Home" />
+            android:minHeight="?attr/actionBarSize" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

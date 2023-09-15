@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         // Header AppBar 초기 설정
         initHeaderAppBar();
 
+        //ToolBar title 이미지로 변경
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.ic_mainlogo_neomutour);
+
         // Bottom Navagation 초기 설정
         //NavigationUI.setupWithNavController(binding.bottomNavigation, navController);
         initBottomNav();
