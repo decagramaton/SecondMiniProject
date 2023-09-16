@@ -19,6 +19,8 @@ import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentProductDetailBottomSheetBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import java.text.DecimalFormat;
+
 
 public class ProductDetailBottomSheetFragment extends BottomSheetDialogFragment {
 

@@ -284,9 +284,11 @@
         android:rotationX="0"
         android:rotationY="0"
         android:src="@drawable/baseline_keyboard_arrow_up_24"
-        app:backgroundTint="#D6E4F0"
+        app:backgroundTint="#FFFFFF"
+        app:maxImageSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:shapeAppearanceOverlay="?attr/shapeAppearanceCornerExtraLarge"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

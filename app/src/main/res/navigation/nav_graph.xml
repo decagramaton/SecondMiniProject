@@ -42,6 +42,12 @@
         <action
             android:id="@+id/action_dest_my_page_to_dest_review_list"
             app:destination="@id/dest_review_list" />
+        <action
+            android:id="@+id/action_dest_my_page_to_tabLayoutMainFragment2"
+            app:destination="@id/tabLayoutMainFragment" />
+        <action
+            android:id="@+id/action_dest_my_page_to_recentProductListFragment"
+            app:destination="@id/recentProductListFragment" />
     </fragment>
     <fragment
         android:id="@+id/dest_user_info"
@@ -127,4 +133,17 @@
             android:id="@+id/action_dest_payment_to_dest_reservation_list"
             app:destination="@id/dest_reservation_list" />
     </fragment>
+    <fragment
+        android:id="@+id/tabLayoutMainFragment"
+        android:name="com.example.secondminiproject.TabLayoutMainFragment"
+        tools:layout="@layout/fragment_tab_layout_main">
+        <action
+            android:id="@+id/action_tabLayoutMainFragment_to_dest_product_detail2"
+            app:destination="@id/dest_product_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/recentProductListFragment"
+        android:name="com.example.secondminiproject.ui.RecentProduct.RecentProductListFragment"
+        android:label="fragment_recent_product_list"
+        tools:layout="@layout/fragment_recent_product_list" />
 </navigation>

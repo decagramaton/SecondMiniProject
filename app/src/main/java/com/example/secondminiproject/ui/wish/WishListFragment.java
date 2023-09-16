@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -56,7 +57,7 @@ public class WishListFragment extends Fragment {
         Random random = new Random();
         for(int i=1; i <=17; i++){
             Wish wishProduct = new Wish();
-            wishProduct.setProductName("Title "+i);
+            wishProduct.setProductName("우당탕탕 이것이 여행의 진수다. 황홀한 풍경과 달달구리한 과일! 다양한 액티비티가 넘처 흐르는 여행 패키지 제 "+i +" 번! 상품!");
 
             //이미지명, resource의 어디에있는지, 패키지명("com.example.myapplication"  or getApplication().getPackageName() ) 을 넣어야함.
             wishProduct.setProductImage(getResources().getIdentifier("photo" +(random.nextInt(17)+1), "drawable","com.example.secondminiproject"));
@@ -80,7 +81,8 @@ public class WishListFragment extends Fragment {
                 Bundle args = new Bundle();
                 //Board 객체를 전달해야하기때문에 (Board 객체에는 Serializable 이 임플먼트 되잇어야한다)
                 args.putSerializable("wishProduct", wishProduct);
-                navController.navigate(R.id.action_dest_wish_list_to_dest_product_detail,args);
+
+                navController.navigate(R.id.action_tabLayoutMainFragment_to_dest_product_detail2,args,null);
             }
         });
 

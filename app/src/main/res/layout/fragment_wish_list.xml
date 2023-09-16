@@ -13,8 +13,10 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_wish_go_list_top"
@@ -22,12 +24,13 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="#D6E4F0"
-        app:maxImageSize="40dp"
+        android:backgroundTint="#FFFFFF"
+        app:maxImageSize="30dp"
         app:fabSize="mini"
         android:clickable="true"
         android:src="@drawable/baseline_keyboard_arrow_up_24"
         app:layout_constraintBottom_toBottomOf="@+id/recycler_view_wish"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:shapeAppearanceOverlay="?attr/shapeAppearanceCornerExtraLarge"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,31 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.reservation.ReservationListFragment">
-
+    tools:context=".ui.RecentProduct.RecentProductListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_reservation_list"
+        android:id="@+id/recycler_view_recent_product_list"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_reservation_list_go_list_top"
+        android:id="@+id/btn_recent_product_go_list_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="#FFFFFF"
-        android:background="@drawable/circle"
+        app:maxImageSize="30dp"
+        app:fabSize="mini"
         android:clickable="true"
         android:src="@drawable/baseline_keyboard_arrow_up_24"
-        app:fabSize="mini"
-        app:layout_constraintBottom_toBottomOf="@+id/recycler_view_reservation_list"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler_view_recent_product_list"
         app:layout_constraintEnd_toEndOf="parent"
-        app:maxImageSize="30dp"
-        app:shapeAppearanceOverlay="?attr/shapeAppearanceCornerExtraLarge"
-        />
+        app:shapeAppearanceOverlay="?attr/shapeAppearanceCornerExtraLarge"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

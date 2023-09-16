@@ -43,9 +43,18 @@ public class MyPageFragment extends Fragment {
         initBtnUserInfo();
         initBtnRecentList();
 
+
+        initBtnTabsTest();
+
         initPagerView();
 
         return binding.getRoot();
+    }
+
+    private void initBtnTabsTest() {
+        binding.btnMypageTestTabs.setOnClickListener(v -> {
+            navController.navigate(R.id.action_dest_my_page_to_tabLayoutMainFragment2);
+        });
     }
 
     public void onStop() {
@@ -140,7 +149,7 @@ public class MyPageFragment extends Fragment {
 
     private void initBtnRecentList() {
         binding.btnMyPageRecentList.setOnClickListener(v -> {
-            navController.navigate(R.id.action_dest_my_page_to_dest_recent_list);
+            navController.navigate(R.id.action_dest_my_page_to_recentProductListFragment);
         });
     }
 }

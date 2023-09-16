@@ -76,4 +76,7 @@ dependencies {
     //이미지 선택 도구 의존 설정
     runtimeOnly("androidx.activity:activity:1.7.2")
 
+    //탭 레이아웃을 사용하기 위한 의존성 주입
+    implementation ("com.google.android.material:material:1.1.0")
+
 }

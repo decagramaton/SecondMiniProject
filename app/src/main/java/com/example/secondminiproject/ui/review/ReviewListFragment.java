@@ -80,5 +80,19 @@ public class ReviewListFragment extends Fragment {
 
         //리사이클러뷰에 어댑터 설정
         binding.reviewListRecyclerView.setAdapter(reviewAdapter);
+
+        binding.reviewListRecyclerView.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+
+            if((!v.canScrollVertically(-1))){
+                binding.btnReviewListGoListTop.hide();
+            }else {
+                binding.btnReviewListGoListTop.show();
+            }
+
+        });
+
+        binding.btnReviewListGoListTop.setOnClickListener(v -> {
+            binding.reviewListRecyclerView.scrollToPosition(0);
+        });
     }
 }
