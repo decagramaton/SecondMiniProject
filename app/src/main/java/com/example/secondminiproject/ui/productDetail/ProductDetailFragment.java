@@ -41,7 +41,9 @@ public class ProductDetailFragment extends Fragment {
         hideBottomNavigation(true);
 
         return binding.getRoot();
+
     }
+
 
     private void initBtnWish() {
         binding.btnProductDetailWish.setOnClickListener(v -> {

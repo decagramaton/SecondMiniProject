@@ -24,7 +24,7 @@ import java.text.DecimalFormat;
 
 public class ProductDetailBottomSheetFragment extends BottomSheetDialogFragment {
 
-    private static final String TAG = "ProductDetailBottomShee";
+    private static final String TAG = "ProductDetailBottomSheet";
     //초기 변수 설정
     private View view;
     //인터페이스 변수
