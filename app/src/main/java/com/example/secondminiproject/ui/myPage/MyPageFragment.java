@@ -44,17 +44,9 @@ public class MyPageFragment extends Fragment {
         initBtnRecentList();
 
 
-        initBtnTabsTest();
-
         initPagerView();
 
         return binding.getRoot();
-    }
-
-    private void initBtnTabsTest() {
-        binding.btnMypageTestTabs.setOnClickListener(v -> {
-            navController.navigate(R.id.action_dest_my_page_to_tabLayoutMainFragment2);
-        });
     }
 
     public void onStop() {
@@ -137,7 +129,9 @@ public class MyPageFragment extends Fragment {
 
     private void initBtnWishList() {
         binding.btnMyPageWishList.setOnClickListener(v -> {
-            navController.navigate(R.id.action_dest_my_page_to_dest_wish_list);
+            Bundle bundle = new Bundle();
+            bundle.putInt("startPage",1);
+            navController.navigate(R.id.action_dest_my_page_to_tabLayoutMainFragment2,bundle);
         });
     }
 
@@ -149,7 +143,9 @@ public class MyPageFragment extends Fragment {
 
     private void initBtnRecentList() {
         binding.btnMyPageRecentList.setOnClickListener(v -> {
-            navController.navigate(R.id.action_dest_my_page_to_recentProductListFragment);
+            Bundle bundle = new Bundle();
+            bundle.putInt("startPage",2);
+            navController.navigate(R.id.action_dest_my_page_to_tabLayoutMainFragment2,bundle);
         });
     }
 }
