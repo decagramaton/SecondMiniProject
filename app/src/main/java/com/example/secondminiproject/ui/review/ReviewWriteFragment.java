@@ -10,6 +10,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,7 @@ public class ReviewWriteFragment extends Fragment {
             }
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Log.i(TAG, "텍스트가 변경됨: " + charSequence.toString());
                     // 텍스트가 변경될 때 실행되는 부분
                 if (charSequence.length() > 5) {
                     // 텍스트가 입력되면 버튼을 활성화

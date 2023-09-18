@@ -71,7 +71,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="8dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/ic_mypage_login" />
+                        android:src="@drawable/ic_mypage_login_24dp" />
 
                     <Button
                         android:id="@+id/btn_my_page_login_logout"
@@ -102,7 +102,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="8dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/ic_mypage_info" />
+                        android:src="@drawable/ic_mypage_info_24dp" />
 
                     <Button
                         android:id="@+id/btn_my_page_user_info"
@@ -160,7 +160,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="8dp"
                             android:scaleType="fitCenter"
-                            android:src="@drawable/ic_mypage_wish" />
+                            android:src="@drawable/ic_mypage_wish_24dp" />
 
                         <Button
                             android:id="@+id/btn_my_page_wish_list"
@@ -188,7 +188,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="8dp"
                             android:scaleType="fitCenter"
-                            android:src="@drawable/ic_mypage_review" />
+                            android:src="@drawable/ic_review_class_24px" />
 
                         <Button
                             android:id="@+id/btn_my_page_review_list"
@@ -216,7 +216,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="8dp"
                             android:scaleType="fitCenter"
-                            android:src="@drawable/ic_mypage_reservation" />
+                            android:src="@drawable/ic_airplane_ticket_24dp" />
 
                         <Button
                             android:id="@+id/btn_my_page_reservation_list"
@@ -244,7 +244,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="8dp"
                             android:scaleType="fitCenter"
-                            android:src="@drawable/ic_mypage_recent" />
+                            android:src="@drawable/ic_mypage_recent_24dp" />
 
                         <Button
                             android:id="@+id/btn_my_page_recent_list"

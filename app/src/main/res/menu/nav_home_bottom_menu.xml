@@ -9,7 +9,7 @@
         android:id="@+id/dest_product_list"
         android:title="상품 목록"
         android:enabled="true"
-        android:icon="@drawable/ic_airplane_ticket_24dp"/>
+        android:icon="@drawable/ic_product_list_24dp" />
     <item
         android:id="@+id/dest_home"
         android:title="홈"
