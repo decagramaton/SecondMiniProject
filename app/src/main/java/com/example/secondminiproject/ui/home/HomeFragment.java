@@ -232,7 +232,7 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         binding.familyRecyclerView.setLayoutManager(linearLayoutManager);
 
-        ProductAdapter productAdapter = new ProductAdapter();
+        NewPackageAdapter newPackageAdapter = new NewPackageAdapter();
 
         ProductService productService = ServiceProvider.getProductService(getContext());
         Call<List<Board>> call = productService.getProductList();
@@ -241,8 +241,8 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
                 List<Board> BoardList = response.body();
 
-                productAdapter.setList(BoardList);
-                binding.familyRecyclerView.setAdapter(productAdapter);
+                newPackageAdapter.setList(BoardList);
+                binding.familyRecyclerView.setAdapter(newPackageAdapter);
             }
 
             @Override
@@ -251,11 +251,11 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        productAdapter.setOnItemClickListener(new com.example.secondminiproject.ui.home.ProductAdapter.OnItemClickListener() {
+        newPackageAdapter.setOnItemClickListener(new NewPackageAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
 
-                Board board = productAdapter.getItem(position);
+                Board board = newPackageAdapter.getItem(position);
 
                 Bundle args = new Bundle();
                 args.putSerializable("board", board);
@@ -272,7 +272,7 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         binding.timeDealRecyclerView.setLayoutManager(linearLayoutManager);
 
-        ProductAdapter productAdapter = new ProductAdapter();
+        NewPackageAdapter newPackageAdapter = new NewPackageAdapter();
 
         ProductService productService = ServiceProvider.getProductService(getContext());
         Call<List<Board>> call = productService.getProductList();
@@ -281,8 +281,8 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
                 List<Board> BoardList = response.body();
 
-                productAdapter.setList(BoardList);
-                binding.timeDealRecyclerView.setAdapter(productAdapter);
+                newPackageAdapter.setList(BoardList);
+                binding.timeDealRecyclerView.setAdapter(newPackageAdapter);
             }
 
             @Override
@@ -291,11 +291,11 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        productAdapter.setOnItemClickListener(new com.example.secondminiproject.ui.home.ProductAdapter.OnItemClickListener() {
+        newPackageAdapter.setOnItemClickListener(new NewPackageAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
 
-                Board board = productAdapter.getItem(position);
+                Board board = newPackageAdapter.getItem(position);
 
                 Bundle args = new Bundle();
                 args.putSerializable("board", board);
