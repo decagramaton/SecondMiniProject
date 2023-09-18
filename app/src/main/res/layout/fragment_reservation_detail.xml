@@ -36,6 +36,12 @@
                 android:orientation="vertical">
 
 
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#30000000" />
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -53,9 +59,14 @@
                         android:layout_width="280dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp" />
+                        android:paddingLeft="10dp" />
 
                 </LinearLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#30000000" />
 
 
                 <LinearLayout
@@ -66,17 +77,19 @@
                     <TextView
                         android:layout_width="130dp"
                         android:layout_height="80dp"
-                        android:background="#10000000"
+                        android:background="#D6E4F0"
                         android:gravity="center"
                         android:text="상품명"
                         android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"  />
 
                     <TextView
                         android:id="@+id/reservation_detail_product_name"
                         android:layout_width="280dp"
                         android:layout_height="80dp"
-                        android:layout_marginLeft="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
                         android:text="상품명이 들어갈 곳" />
 
                 </LinearLayout>
@@ -94,7 +107,7 @@
                     <TextView
                         android:layout_width="130dp"
                         android:layout_height="50dp"
-                        android:background="#10000000"
+                        android:background="#D6E4F0"
                         android:gravity="center"
                         android:text="여행기간"
                         android:textSize="16sp"
@@ -105,8 +118,10 @@
                         android:id="@+id/reservation_detail_tour_days"
                         android:layout_width="280dp"
                         android:layout_height="50dp"
-                        android:layout_marginLeft="10dp"
-                        android:text="3박4일" />
+                        android:paddingLeft="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:text="3박4일"  />
 
                 </LinearLayout>
 
@@ -123,7 +138,7 @@
                     <TextView
                         android:layout_width="130dp"
                         android:layout_height="50dp"
-                        android:background="#10000000"
+                        android:background="#D6E4F0"
                         android:gravity="center"
                         android:text="이용교통"
                         android:textSize="16sp"
@@ -134,14 +149,16 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
+                        android:layout_margin="5dp"
                         android:src="@drawable/ic_korea_24dp" />
 
                     <TextView
                         android:id="@+id/reservation_detail_vehicle"
-                        android:layout_width="280dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:layout_marginLeft="10dp"
+                        android:paddingLeft="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
                         android:text="대한한공" />
 
                 </LinearLayout>
@@ -159,7 +176,7 @@
                     <TextView
                         android:layout_width="130dp"
                         android:layout_height="80dp"
-                        android:background="#10000000"
+                        android:background="#D6E4F0"
                         android:gravity="center"
                         android:text="출발일"
                         android:textSize="16sp"
@@ -170,7 +187,7 @@
                         android:layout_width="280dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
+                        android:paddingLeft="10dp"
                         android:gravity="center_vertical"
                         android:text="(한국 출발) 2023년 10월 03(화) \n(현지 도착) 2023년 10월 03일(화) \n10:45" />
 
@@ -190,7 +207,7 @@
 
                         android:layout_width="130dp"
                         android:layout_height="80dp"
-                        android:background="#10000000"
+                        android:background="#D6E4F0"
                         android:gravity="center"
                         android:text="도착일"
                         android:textSize="16sp"
@@ -201,7 +218,7 @@
                         android:layout_width="280dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
+                        android:paddingLeft="10dp"
                         android:gravity="center_vertical"
                         android:text="(한국 출발) 2023년 10월 06(금) \n11:55 \n(현지 도착) 2023년 10월 03일(화)" />
                     />
@@ -248,7 +265,7 @@
                     <TextView
                         android:layout_width="130dp"
                         android:layout_height="50dp"
-                        android:background="#10000000"
+                        android:background="#D6E4F0"
                         android:gravity="center"
                         android:text="이름(한글)"
                         android:textSize="16sp"
@@ -280,7 +297,7 @@
                     <TextView
                         android:layout_width="130dp"
                         android:layout_height="50dp"
-                        android:background="#10000000"
+                        android:background="#D6E4F0"
                         android:gravity="center"
 
                         android:text="생년월일"
@@ -312,7 +329,7 @@
                     <TextView
                         android:layout_width="130dp"
                         android:layout_height="50dp"
-                        android:background="#10000000"
+                        android:background="#D6E4F0"
                         android:gravity="center"
                         android:text="성별"
                         android:textSize="16sp"
@@ -343,7 +360,7 @@
                     <TextView
                         android:layout_width="130dp"
                         android:layout_height="50dp"
-                        android:background="#10000000"
+                        android:background="#D6E4F0"
                         android:gravity="center"
                         android:text="이름(영문)"
                         android:textSize="16sp"
@@ -373,7 +390,7 @@
                     <TextView
                         android:layout_width="130dp"
                         android:layout_height="50dp"
-                        android:background="#10000000"
+                        android:background="#D6E4F0"
                         android:gravity="center"
                         android:text="휴대폰 번호"
                         android:textSize="16sp"
@@ -551,7 +568,7 @@
                             android:gravity="end|center_vertical"
                             android:text="2,007,000"
                             android:textStyle="bold"
-                            android:textColor="#FF9800"
+                            android:textColor="#1E56A0"
                             android:textSize="20sp" />
                         <TextView
                             android:layout_width="30dp"
@@ -559,7 +576,7 @@
                             android:gravity="end|center_vertical"
                             android:text="원"
                             android:textStyle="bold"
-                            android:textColor="#FF9800"
+                            android:textColor="#1E56A0"
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -568,12 +585,13 @@
 
                 <Button
                     android:id="@+id/btn_reservation_detail_reservation_list"
-                    android:layout_width="match_parent"
+                    android:layout_width="320dp"
                     android:layout_height="60dp"
-                    android:backgroundTint="#FF6F0F"
-                    android:text="예약 목록으로 돌아가기"
+                    android:backgroundTint="#163172"
+                    android:text="예약목록으로 돌아가기"
                     android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

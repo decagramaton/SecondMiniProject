@@ -60,7 +60,7 @@
                         android:layout_width="280dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp" />
+                        android:paddingLeft="10dp" />
 
                 </LinearLayout>
 
@@ -116,7 +116,9 @@
                     <TextView
                         android:layout_width="280dp"
                         android:layout_height="50dp"
-                        android:layout_marginLeft="10dp"
+                        android:paddingLeft="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
                         android:text="3박4일" />
 
                 </LinearLayout>
@@ -149,9 +151,11 @@
                         android:src="@drawable/ic_korea_24dp" />
 
                     <TextView
-                        android:layout_width="280dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:layout_marginLeft="10dp"
+                        android:paddingLeft="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
                         android:text="대한한공" />
 
                 </LinearLayout>
@@ -179,7 +183,7 @@
                         android:layout_width="280dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
+                        android:paddingLeft="10dp"
                         android:gravity="center_vertical"
                         android:text="(한국 출발) 2023년 10월 03(화) \n(현지 도착) 2023년 10월 03일(화) \n10:45" />
 
@@ -208,7 +212,7 @@
                         android:layout_width="280dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
+                        android:paddingLeft="10dp"
                         android:gravity="center_vertical"
                         android:text="(한국 출발) 2023년 10월 06(금) \n11:55 \n(현지 도착) 2023년 10월 03일(화)" />
 
@@ -233,10 +237,10 @@
                         android:textStyle="bold"/>
 
                     <TextView
-                        android:layout_width="280dp"
-                        android:layout_height="50dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp" />
+                        android:paddingLeft="10dp" />
 
                 </LinearLayout>
 
@@ -264,7 +268,7 @@
                         android:layout_width="210dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
+                        android:paddingLeft="10dp"
                         android:padding="12dp"
                         android:background="@null"
                         android:hint="홍길동" />
@@ -297,7 +301,7 @@
                         android:layout_width="210dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
+                        android:paddingLeft="10dp"
                         android:padding="12dp"
                         android:background="@null"
                         android:hint="1985.01.01" />
@@ -366,7 +370,7 @@
                         android:id="@+id/reservation_EN_FamilyName"
                         android:layout_width="230dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
+                        android:paddingLeft="10dp"
                         android:layout_gravity="center"
                         android:padding="12dp"
                         android:background="@null"
@@ -397,7 +401,7 @@
                         android:id="@+id/reservation_phone"
                         android:layout_width="230dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
+                        android:paddingLeft="10dp"
                         android:layout_gravity="center"
                         android:padding="12dp"
                         android:background="@null"
@@ -428,7 +432,7 @@
                         android:layout_width="280dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp" />
+                        android:paddingLeft="10dp" />
 
                 </LinearLayout>
 

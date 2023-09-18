@@ -260,12 +260,6 @@
                             android:gravity="start"/>
                     </LinearLayout>
 
-                    <Button
-                        android:id="@+id/btn_mypage_test_tabs"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="탭스연습!" />
-
                 </LinearLayout>
 
             </LinearLayout>
