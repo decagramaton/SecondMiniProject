@@ -314,16 +314,17 @@
         app:layout_constraintEnd_toEndOf="parent">
 
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_product_detail_payment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginHorizontal="30dp"
+
             android:layout_weight="7"
             android:background="@drawable/corner_rectangle"
             android:backgroundTint="#163172"
             android:text="예약하기"
+            android:textColor="#ffffff"
             android:textStyle="bold" />
 
         <CheckBox
@@ -331,7 +332,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="center"
-            android:layout_marginRight="20dp"
+            android:layout_marginHorizontal="20dp"
             android:background="@drawable/wish_list_checkbox"
             android:button="@android:color/transparent"
             android:checked="false"

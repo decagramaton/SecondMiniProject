@@ -2,12 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <!--<color name="colorPrimary">#7e6fe2</color>
+    <color name="colorPrimary">#7e6fe2</color>
     <color name="colorPrimaryDark">#8a53cf</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorTransparent">#00ffffff</color>
     <color name="colorStart">#cb5ed9</color>
-    <color name="colorEnd">#8463d4</color>-->
+    <color name="colorEnd">#8463d4</color>
     <style name="reviewListToolbar" parent="Widget.AppCompat.ActionBar.TabBar">
         <item name="android:tint">#1E56A0</item>
         <item name="theme">@android:color/holo_blue_light</item>
