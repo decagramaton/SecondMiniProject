@@ -33,7 +33,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/black"
+
                 android:orientation="vertical">
 
                 <TextView
@@ -47,7 +47,6 @@
                     android:text="[일본 오사카] 도돈보리 중앙 관광지역"
                     android:maxLines="1"
                     android:ellipsize="end"
-                    android:textColor="@android:color/white"
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
@@ -64,7 +63,6 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="5dp"
-                        android:textColor="@android:color/white"
                         android:text="420,000"
                         android:textSize="17dp"
                         android:textStyle="bold" />
@@ -75,7 +73,6 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginEnd="20dp"
                         android:gravity="end"
-                        android:textColor="@android:color/white"
                         android:text="원"
                         android:textSize="17dp"
                         android:textStyle="bold" />

@@ -98,9 +98,9 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
 
 
     public void setData(Reservation reservation){
-        this.foldingTitleImageview.setImageResource(R.drawable.osaka_4);
+        this.foldingTitleImageview.setImageResource(R.drawable.osaka_2);
         this.foldingTitleName.setText(reservation.getProductName());
-        this.foldingTitleProductPrice.setText("1,000,000 원");
+        this.foldingTitleProductPrice.setText("1,000,000");
 
         this.foldingContentImage.setImageResource(R.drawable.osaka_3);
         this.foldingContentTitle.setText(reservation.getProductName());

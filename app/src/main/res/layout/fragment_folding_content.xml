@@ -12,8 +12,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeWidth="1dp"
-        app:strokeColor="#163172"
         app:cardCornerRadius="0dp">
 
         <LinearLayout
