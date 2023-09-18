@@ -275,6 +275,40 @@
                     android:textColor="@android:color/background_dark"
                     android:layout_marginStart="50dp"/>
             </LinearLayout>
+            
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#30000000"
+                android:layout_marginTop="20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="여행 상세 정보"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="280dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp" />
+
+            </LinearLayout>
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/video_view"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:autoPlay="false"
+                app:videoId="WErYiEUdPec" />
 
             <TextView
                 android:id="@+id/travel_content"
@@ -283,7 +317,7 @@
                 android:text="@string/travel_detail_content"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:layout_marginTop="20dp"
+                android:layout_marginVertical="20dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="20dp"/>
 
