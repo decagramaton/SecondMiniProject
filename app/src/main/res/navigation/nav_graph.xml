@@ -144,6 +144,5 @@
     <fragment
         android:id="@+id/recentProductListFragment"
         android:name="com.example.secondminiproject.ui.RecentProduct.RecentProductListFragment"
-        android:label="fragment_recent_product_list"
         tools:layout="@layout/fragment_recent_product_list" />
 </navigation>

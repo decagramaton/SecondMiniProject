@@ -9,6 +9,10 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.CheckBox;
+import android.widget.ImageButton;
 
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentProductDetailBinding;
@@ -32,9 +36,24 @@ public class ProductDetailFragment extends Fragment {
         //initVideo();
         initPagerView();
 
+        initBtnWish();
+
         hideBottomNavigation(true);
 
         return binding.getRoot();
+    }
+
+    private void initBtnWish() {
+        binding.btnProductDetailWish.setOnClickListener(v -> {
+            startShakeAnimation();
+        });
+    }
+
+    private void startShakeAnimation() {
+        Animation shake = AnimationUtils.loadAnimation(requireContext(), R.anim.shake);
+        // 이미지 버튼에 애니메이션을 적용합니다.
+        CheckBox productDetailwish = binding.btnProductDetailWish;
+        productDetailwish.startAnimation(shake);
     }
 
     private void initBtnMakeReservation() {

@@ -23,8 +23,6 @@ public class TabLayoutMainFragment extends Fragment {
     private FragmentTabLayoutMainBinding binding;
 
     private TabLayout tabs;
-    private TabLayoutTestFragment tabLayoutTestFragment;
-    private TabLayoutTest2Fragment tabLayoutTest2Fragment;
     private WishListFragment wishListFragment;
     private RecentProductListFragment recentProductListFragment;
 
@@ -34,9 +32,6 @@ public class TabLayoutMainFragment extends Fragment {
         binding = FragmentTabLayoutMainBinding.inflate(inflater);
 
         navController = NavHostFragment.findNavController(this);
-
-        tabLayoutTestFragment = new TabLayoutTestFragment();
-        tabLayoutTest2Fragment = new TabLayoutTest2Fragment();
         wishListFragment = new WishListFragment();
         recentProductListFragment = new RecentProductListFragment();
 
