@@ -56,6 +56,8 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
     public ReservationDetailViewHolder(@NonNull View itemView, ReservationDetailAdapter.OnItemClickListener onItemClickListener, NavController reservationNavController) {
         super(itemView);
 
+        this.navController = reservationNavController;
+
 
         this.foldingTitleImageview = itemView.findViewById(R.id.folding_title_imageview);
         this.foldingTitleName = itemView.findViewById(R.id.folding_title_name);
@@ -113,7 +115,7 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
             Log.i(TAG, "예약 취소 이벤트 호출 발생");
         });
         this.foldingContentReviewWrite.setOnClickListener(v->{
-            navController.navigate(R.id.dest_review_write);
+            this.navController.navigate(R.id.dest_review_write);
         });
 
 

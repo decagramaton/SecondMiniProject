@@ -43,15 +43,9 @@ public class ReservationListFragment extends Fragment {
 
 
     private void initRecyclerView() {
-        //수직방향으로 1라인에 1개의 viewHolder가 들어가는 레이아웃 설정
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
-                getContext(), LinearLayoutManager.VERTICAL, false
-        );
-        //2d열로 출력할때
-        /* GridLayoutManager linearLayoutManager = new GridLayoutManager(this,2);*/
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         binding.recyclerViewReservationList.setLayoutManager(linearLayoutManager);
 
-        //어뎁터 생성
         ReservationAdapter reservationAdapter = new ReservationAdapter();
 
         //데이터 받아와서 어뎁터에 설정

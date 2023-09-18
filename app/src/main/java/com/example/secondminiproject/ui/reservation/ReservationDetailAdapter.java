@@ -17,11 +17,16 @@ import java.util.List;
 
 public class ReservationDetailAdapter extends RecyclerView.Adapter<ReservationDetailViewHolder> {
     private static final String TAG = "ReservationDetailAdapter";
-    private List<Reservation> reservationList = new ArrayList<>();
+    private List<Reservation> reservationList;
 
     private OnItemClickListener onItemClickListener;
-
     private NavController navController;
+
+
+    public ReservationDetailAdapter(List<Reservation> reservationList, NavController navController) {
+        this.reservationList = reservationList;
+        this.navController = navController;
+    }
 
 
     @NonNull
@@ -43,11 +48,6 @@ public class ReservationDetailAdapter extends RecyclerView.Adapter<ReservationDe
     @Override
     public int getItemCount() {
         return reservationList.size();
-    }
-
-    public ReservationDetailAdapter(List<Reservation> reservationList) {
-        Log.i(TAG, "예약상세어뎁터의 예약 내역들: "+reservationList);
-        this.reservationList = reservationList;
     }
 
     public Reservation getItem(int position){

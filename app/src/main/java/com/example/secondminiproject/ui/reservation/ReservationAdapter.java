@@ -26,13 +26,10 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationViewHold
     private NavController navController;
     @NonNull
     @Override
-    //데이터들을 가지고오는거
     public ReservationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        //레이아웃 인플레이터 받는법
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View dateView = layoutInflater.inflate(R.layout.fragment_reservation_list_date, parent, false);
-        //괄호안에 inflater 넣어야함
         ReservationViewHolder reservationViewHolder = new ReservationViewHolder(dateView);
 
         return reservationViewHolder;
@@ -40,23 +37,19 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ReservationViewHolder holder, int position) {
-        //리스트로부터 데이터를 불러오는것 (position 으로 0 -> 1 - 2 순으로 프로덕트를 가져와서 세팅한다)
+        
+        // Step1. 1차 배열 데이터 설정 - 날짜 별 목록
         Reservation reservation = reservationList.get(position);
-
         String dateLists = reservation.getImsiReservationDate();
-
-        //홀더에 데이터를 세팅해준다.
         holder.setData(dateLists);
+        
+        
 
-        Log.i(TAG, "홀더에 데이터 세팅하고 여기 실행되?");
+        // Step2. 2차 배열 전용 초기 레이아웃 설정 - 예약 내역 목록
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(holder.itemView.getContext(), LinearLayoutManager.VERTICAL, false);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
-                holder.itemView.getContext(), LinearLayoutManager.VERTICAL, false
-        );
-        List<Reservation> reservations = reservationList;
-        Log.i(TAG, "onBindViewHolder의 reservationList 는? :" +reservations);
-
-        ReservationDetailAdapter reservationDetailAdapter = new ReservationDetailAdapter(reservations);
+        // Step3. 2차 배열 전용 리싸이클 뷰 어댑터 설정 - 예약 내역 목록
+        ReservationDetailAdapter reservationDetailAdapter = new ReservationDetailAdapter(reservationList, navController);
         holder.recyclerViewReservationListDate.setLayoutManager(linearLayoutManager);
         holder.recyclerViewReservationListDate.setAdapter(reservationDetailAdapter);
 

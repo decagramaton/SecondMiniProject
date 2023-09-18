@@ -29,8 +29,8 @@ public class ReservationViewHolder extends RecyclerView.ViewHolder {
 
     public ReservationViewHolder(@NonNull View itemView) {
         super(itemView);
-        reservationListDay = itemView.findViewById(R.id.reservation_list_day);
-        recyclerViewReservationListDate = itemView.findViewById(R.id.recycler_view_reservation_list_date);
+        this.reservationListDay = itemView.findViewById(R.id.reservation_list_day);
+        this.recyclerViewReservationListDate = itemView.findViewById(R.id.recycler_view_reservation_list_date);
     }
 
 
