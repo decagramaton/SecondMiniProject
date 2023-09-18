@@ -9,7 +9,8 @@
     <ScrollView
         android:id="@+id/product_detail_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -71,9 +72,9 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:contentDescription="리뷰 수"
                         android:scaleType="center"
-                        app:srcCompat="@drawable/ic_chat_24dp"
-                        android:contentDescription="리뷰 수"/>
+                        app:srcCompat="@drawable/ic_chat_24dp" />
 
                     <TextView
                         android:id="@+id/rating_count_by_product"
@@ -99,9 +100,9 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:contentDescription="예약 수"
                         android:scaleType="center"
-                        app:srcCompat="@drawable/ic_airplane_ticket_24dp"
-                        android:contentDescription="예약 수"/>
+                        app:srcCompat="@drawable/ic_airplane_ticket_24dp" />
 
                     <TextView
                         android:id="@+id/orderCountByProduct"
@@ -124,10 +125,10 @@
                 android:id="@+id/product_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:text="[MD강력추천] 오사카패키지의 정석"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginStart="30dp"/>
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -135,124 +136,131 @@
                 android:layout_marginTop="5dp">
 
 
-
                 <TextView
                     android:id="@+id/product_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
                     android:text="589,870"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
                     android:textColor="@android:color/holo_red_dark"
-                    android:layout_marginStart="30dp"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
                     android:text="원"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
                     android:textColor="@android:color/holo_red_dark"
-                    android:layout_marginStart="2dp"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
                     android:text="여행 기간"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
                     android:textColor="#1E56A0"
-                    android:layout_marginStart="30dp"/>
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/travel_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
                     android:text="4박 5일"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
                     android:textColor="@android:color/background_dark"
-                    android:layout_marginStart="50dp"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
                     android:text="이용 교통"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
                     android:textColor="#1E56A0"
-                    android:layout_marginStart="30dp"/>
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/travel_transportation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
                     android:text="아시아나 항공"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
                     android:textColor="@android:color/background_dark"
-                    android:layout_marginStart="50dp"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
                     android:text="방문 지역"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
                     android:textColor="#1E56A0"
-                    android:layout_marginStart="30dp"/>
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/travel_area"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
                     android:text="일본 오사카"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
                     android:textColor="@android:color/background_dark"
-                    android:layout_marginStart="50dp"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
                     android:text="예약 현황"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
                     android:textColor="#1E56A0"
-                    android:layout_marginStart="30dp"/>
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/travel_ticket"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
                     android:text="3개 남음"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
                     android:textColor="@android:color/background_dark"
-                    android:layout_marginStart="50dp"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
-            
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#30000000"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:background="#30000000" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -265,7 +273,7 @@
                     android:gravity="center"
                     android:text="여행 상세 정보"
                     android:textSize="20sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="280dp"
@@ -286,23 +294,24 @@
                 android:id="@+id/travel_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/travel_detail_content"
-                android:textSize="14sp"
-                android:textStyle="bold"
                 android:layout_marginVertical="20dp"
                 android:layout_marginStart="30dp"
-                android:layout_marginEnd="20dp"/>
+                android:layout_marginEnd="20dp"
+                android:text="@string/travel_detail_content"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
     </ScrollView>
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/white">
+        app:layout_constraintEnd_toEndOf="parent">
 
 
         <Button
@@ -312,6 +321,7 @@
             android:layout_gravity="center"
             android:layout_marginHorizontal="30dp"
             android:layout_weight="7"
+            android:background="@drawable/corner_rectangle"
             android:backgroundTint="#163172"
             android:text="예약하기"
             android:textStyle="bold" />
