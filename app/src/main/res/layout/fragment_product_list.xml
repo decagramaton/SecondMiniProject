@@ -28,7 +28,7 @@
                 android:backgroundTint="@color/white">
 
                 <ImageButton
-                    android:id="@+id/imageButton8"
+                    android:id="@+id/product_list_jeju"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_margin="5dp"
@@ -57,7 +57,7 @@
                 android:backgroundTint="#FFFFFF">
 
                 <ImageButton
-                    android:id="@+id/image_button1"
+                    android:id="@+id/product_list_japen"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_margin="5dp"
@@ -88,7 +88,7 @@
                 android:backgroundTint="#FFFFFF">
 
                 <ImageButton
-                    android:id="@+id/imageButton2"
+                    android:id="@+id/product_list_hongkong"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_margin="5dp"
@@ -117,7 +117,7 @@
                 android:backgroundTint="#FFFFFF">
 
                 <ImageButton
-                    android:id="@+id/imageButton3"
+                    android:id="@+id/product_list_kenya"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_margin="5dp"
@@ -147,7 +147,7 @@
                 android:backgroundTint="#FFFFFF">
 
                 <ImageButton
-                    android:id="@+id/imageButton4"
+                    android:id="@+id/product_list_taiwan"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_margin="5dp"
@@ -177,7 +177,7 @@
                 android:backgroundTint="#FFFFFF">
 
                 <ImageButton
-                    android:id="@+id/imageButton5"
+                    android:id="@+id/product_list_mongol"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_margin="5dp"
@@ -206,7 +206,7 @@
                 android:backgroundTint="#FFFFFF">
 
                 <ImageButton
-                    android:id="@+id/imageButton6"
+                    android:id="@+id/product_list_norway"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_margin="5dp"
@@ -235,7 +235,7 @@
                 android:backgroundTint="#FFFFFF">
 
                 <ImageButton
-                    android:id="@+id/imageButton7"
+                    android:id="@+id/product_list_greece"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_margin="5dp"

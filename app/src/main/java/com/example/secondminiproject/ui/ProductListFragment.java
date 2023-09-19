@@ -41,7 +41,31 @@ public class ProductListFragment extends Fragment {
 
         initRecyclerView();
 
+        initBtnCategory();
+
         return binding.getRoot();
+    }
+
+    private void initBtnCategory() {
+        setCountry(binding.productListJeju, "제주");
+        setCountry(binding.productListJapen, "일본");
+
+        setCountry(binding.productListHongkong, "홍콩");
+        setCountry(binding.productListKenya, "케냐");
+
+        setCountry(binding.productListTaiwan, "대만");
+        setCountry(binding.productListMongol, "몽골");
+
+        setCountry(binding.productListNorway, "노르웨이");
+        setCountry(binding.productListGreece, "그리스");
+    }
+
+    private void setCountry(View view, String country) {
+        view.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("category", country);
+            navController.navigate(R.id.dest_product_list, bundle);
+        });
     }
 
     private void initRecyclerView() {
