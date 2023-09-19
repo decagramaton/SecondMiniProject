@@ -28,7 +28,7 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profile_image"
-                    android:layout_width="10dp"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:paddingTop="5dp"
@@ -38,12 +38,12 @@
                     />
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/userName"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="로그인 ID"
+                    android:text="유저 이름"
                     android:textAlignment="textStart"
                     android:textSize="20dp"
                     android:textStyle="bold"

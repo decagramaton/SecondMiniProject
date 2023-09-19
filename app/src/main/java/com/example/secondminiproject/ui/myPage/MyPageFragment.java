@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentMyPageBinding;
 import com.example.secondminiproject.datastore.AppKeyValueStore;
+import com.example.secondminiproject.service.UserService;
 
 import java.util.Date;
 import java.util.Timer;
@@ -107,6 +108,9 @@ public class MyPageFragment extends Fragment {
                 navController.navigate(R.id.dest_login);
             });
         } else {
+            UserService.loadUserProfileImage(Integer.parseInt(AppKeyValueStore.getValue(getContext(),"userNo")), binding.profileImage);
+            binding.userName.setText(AppKeyValueStore.getValue(getContext(),"userKoName"));
+
             binding.btnMyPageLoginLogout.setText("로그아웃");
             binding.btnMyPageLoginLogout.setOnClickListener(v -> {
                 AppKeyValueStore.remove(getContext(), "userNo");
