@@ -9,10 +9,13 @@ import com.example.secondminiproject.dto.UserInfo;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface UserService {
@@ -34,5 +37,9 @@ public interface UserService {
         String url = NetworkInfo.BASE_URL + "userInfo/fileDownload?userNo=" + userNo;
         Glide.with(imageView.getContext()).load(url).into(imageView);
     }
+
+    @POST("userInfo/setUserProfileImage")
+    @Multipart
+    Call<Void> setUserProfileImage(@Part MultipartBody.Part userProfileImage, @Part MultipartBody.Part userNo);
     
 }
