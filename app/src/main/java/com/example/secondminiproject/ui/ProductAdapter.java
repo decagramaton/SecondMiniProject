@@ -18,13 +18,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
     private OnItemClickListener onItemClickListener;
 
+    private OnBtnWishClickListener onBtnWishClickListener;
+
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View itemView = layoutInflater.inflate(R.layout.fragment_product_list2, parent, false);
-        ProductViewHolder productViewHolder = new ProductViewHolder(itemView, onItemClickListener);
-
+        ProductViewHolder productViewHolder = new ProductViewHolder(itemView, onItemClickListener, onBtnWishClickListener);
         return productViewHolder;
     }
 
@@ -51,6 +52,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         void onItemClick(View itemView, int position);
     }
 
+    //찜버튼 클릭 - 어떤뷰가 클릭되었는지, 클릭된 뷰의 위치, 클릭된 아이템의 productNo - 3개를 사용
+    public interface OnBtnWishClickListener{
+        void onItemClick(View itemView, int position, int productNo);
+    }
+
     public Board getItem(int position) {
         return boardList.get(position);
     }
@@ -59,4 +65,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         this.onItemClickListener = onItemClickListener;
     }
 
+    public void setOnBtnWishClickListener(OnBtnWishClickListener onBtnWishClickListener) {
+        this.onBtnWishClickListener = onBtnWishClickListener;
+    }
 }

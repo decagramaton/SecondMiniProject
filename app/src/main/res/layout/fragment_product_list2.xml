@@ -36,7 +36,7 @@
                     app:srcCompat="@drawable/photo5" />
 
                 <CheckBox
-                    android:id="@+id/checkbox"
+                    android:id="@+id/btn_wish"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_margin="10dp"
