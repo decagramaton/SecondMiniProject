@@ -63,7 +63,7 @@ public class LoginFragment extends Fragment {
 
                     if(loginResult.getResult().equals("success")){
                         getUserInfo(userId);
-                        navController.popBackStack();
+                        navController.popBackStack(R.id.dest_home, false);
                     } else if(loginResult.getResult().equals("fail_user_id")){
                         Log.i(TAG, "ID가 안맞는다,");
                     } else if(loginResult.getResult().equals("fail_user_password")){

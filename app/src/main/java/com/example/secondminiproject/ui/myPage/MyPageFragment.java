@@ -3,6 +3,7 @@ package com.example.secondminiproject.ui.myPage;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -47,6 +48,7 @@ public class MyPageFragment extends Fragment {
 
 
         initPagerView();
+        settingLoginLogout();
 
         return binding.getRoot();
     }
@@ -92,15 +94,13 @@ public class MyPageFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.i(TAG, "onResume 실행");
         settingLoginLogout();
     }
 
     private void settingLoginLogout() {
 
-        String mid = AppKeyValueStore.getValue(getContext(), "mid");
-        Log.i(TAG, "settingLoginLogout: " + mid);
-        if(mid == null){
+        String userNo = AppKeyValueStore.getValue(getContext(), "userNo");
+        if(userNo == null){
             binding.btnMyPageLoginLogout.setText("로그인");
 
             binding.btnMyPageLoginLogout.setOnClickListener(v -> {
@@ -108,18 +108,17 @@ public class MyPageFragment extends Fragment {
             });
         } else {
             binding.btnMyPageLoginLogout.setText("로그아웃");
-
-            AppKeyValueStore.remove(getContext(), "userNo");
-            AppKeyValueStore.remove(getContext(), "userKoName");
-            AppKeyValueStore.remove(getContext(), "userId");
-            AppKeyValueStore.remove(getContext(), "userPassword");
-            AppKeyValueStore.remove(getContext(), "userBirth");
-            AppKeyValueStore.remove(getContext(), "userPhone");
-            AppKeyValueStore.remove(getContext(), "userGender");
-            AppKeyValueStore.remove(getContext(), "userEnName");
-            AppKeyValueStore.remove(getContext(), "userEmail");
-
             binding.btnMyPageLoginLogout.setOnClickListener(v -> {
+                AppKeyValueStore.remove(getContext(), "userNo");
+                AppKeyValueStore.remove(getContext(), "userKoName");
+                AppKeyValueStore.remove(getContext(), "userId");
+                AppKeyValueStore.remove(getContext(), "userPassword");
+                AppKeyValueStore.remove(getContext(), "userBirth");
+                AppKeyValueStore.remove(getContext(), "userPhone");
+                AppKeyValueStore.remove(getContext(), "userGender");
+                AppKeyValueStore.remove(getContext(), "userEnName");
+                AppKeyValueStore.remove(getContext(), "userEmail");
+
                 navController.popBackStack(R.id.dest_home, false);
             });
         }
