@@ -31,5 +31,8 @@ public class ServiceProvider {
         return getRetrofit(context).create(UserService.class);
     }
 
+    public static ReservationService getReservationService(Context context) {
+        return getRetrofit(context).create(ReservationService.class);
+    }
 
 }

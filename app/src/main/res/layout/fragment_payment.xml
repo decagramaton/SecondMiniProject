@@ -309,7 +309,7 @@
                         android:paddingLeft="10dp"
                         android:padding="12dp"
                         android:background="@null"
-                        android:hint="1985.01.01" />
+                        android:hint="01/31/1985" />
 
                 </LinearLayout>
 
@@ -341,11 +341,13 @@
                         android:orientation="horizontal">
 
                         <RadioButton
+                            android:id="@+id/reservation_sex_male"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:text="남" />
 
                         <RadioButton
+                            android:id="@+id/reservation_sex_female"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:text="여" />
@@ -372,7 +374,7 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/reservation_EN_FamilyName"
+                        android:id="@+id/reservation_EN_Name"
                         android:layout_width="230dp"
                         android:layout_height="match_parent"
                         android:paddingLeft="10dp"

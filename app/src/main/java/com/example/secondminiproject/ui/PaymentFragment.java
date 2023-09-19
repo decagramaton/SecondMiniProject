@@ -2,6 +2,7 @@ package com.example.secondminiproject.ui;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -14,9 +15,11 @@ import android.view.ViewGroup;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentPaymentBinding;
 import com.example.secondminiproject.databinding.FragmentProductDetailBinding;
+import com.example.secondminiproject.datastore.AppKeyValueStore;
 import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.service.ProductService;
+import com.example.secondminiproject.service.ReservationService;
 import com.example.secondminiproject.service.ServiceProvider;
 
 import java.text.DecimalFormat;
@@ -37,6 +40,9 @@ public class PaymentFragment extends Fragment {
     private FragmentPaymentBinding binding;
     private NavController navController;
     private int productNo;
+    private int userNo;
+    private int adultNumber;
+    private int childrenNumber;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentPaymentBinding.inflate(getLayoutInflater());
@@ -44,6 +50,7 @@ public class PaymentFragment extends Fragment {
 
 
         initProductDataSetting();
+        initUserDataSetting();
         initReservationInfo();
       /*  initBtnProductDetail();*/
         initBtnPayFinish();
@@ -51,9 +58,36 @@ public class PaymentFragment extends Fragment {
         return binding.getRoot();
     }
 
+    private void initUserDataSetting() {
+        this.userNo =Integer.parseInt(AppKeyValueStore.getValue(getContext(),"userNo")) ;
+        Log.i(TAG, "userNo 유저번호는? : "+ userNo);
+        //이름(한글)
+        String userName = AppKeyValueStore.getValue(getContext(),"userKoName");
+        binding.reservationName.setText(userName);
+        //생년월일
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY.MM.dd");
+        String userBirth = AppKeyValueStore.getValue(getContext(),"userBirth");
+        binding.reservationBirth.setText(userBirth);
+        //성별 체크
+        String userGender = AppKeyValueStore.getValue(getContext(),"userGender");
+        if(userGender.equals("남자") || userGender.equals("상남자")){
+            binding.reservationSex.check(R.id.reservation_sex_male);
+        }else{
+            binding.reservationSex.check(R.id.reservation_sex_female);
+        }
+        //이름(영문)
+        String userEnName = AppKeyValueStore.getValue(getContext(),"userEnName");
+        binding.reservationENName.setText(userEnName);
+        //휴대폰 번호
+        String userPhone = AppKeyValueStore.getValue(getContext(),"userPhone");
+        binding.reservationPhone.setText(userPhone);
+
+    }
+
     private void initProductDataSetting() {
         Bundle bundle = getArguments();
         this.productNo = bundle.getInt("productNo");
+        Log.i(TAG, "productNo 상품번호는? : "+ productNo);
         ProductService productService = ServiceProvider.getProductService(getContext());
         Call< Board> call = productService.getProductByProductNo(productNo);
         call.enqueue(new Callback<Board>() {
@@ -87,32 +121,37 @@ public class PaymentFragment extends Fragment {
         DecimalFormat df = new DecimalFormat("#,###");
         binding.reservationAdultPrice.setText(String.valueOf(df.format(bundle.getInt("eachAdultPrice"))));
         binding.reservationChildPrice.setText(String.valueOf(df.format(bundle.getInt("eachChildPrice"))));
-        binding.reservationAdultNumber.setText(String.valueOf(bundle.getInt("adultNumber")));
-        binding.reservationChildNumber.setText(String.valueOf(bundle.getInt("childNumber")));
+        this.adultNumber =bundle.getInt("adultNumber");
+        binding.reservationAdultNumber.setText(String.valueOf(adultNumber));
+        Log.i(TAG, "adultNumber 어른 숫자는? : "+ adultNumber);
+        this.childrenNumber =bundle.getInt("childNumber");
+        binding.reservationChildNumber.setText(String.valueOf(childrenNumber));
+        Log.i(TAG, "childrenNumber 아이 숫자는? : "+ childrenNumber);
         binding.reservationTotalPrice.setText(String.valueOf(df.format(bundle.getInt("totalPrice"))));
     }
 
     private void initBtnPayFinish() {
         binding.btnPaymentMakeReservation.setOnClickListener(v -> {
-            /*Reservation reservation = new Reservation();
-            String reservationName = binding.reservationName.getText().toString();
-            reservation.setreser
-            SimpleDateFormat sdf = new SimpleDateFormat("YYYY년 MM월 dd일 (E)", Locale.KOREAN);
-            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-            try {
-                String reservationBirth = String.valueOf(sdf.parse(binding.reservationBirth.getText().toString()));
-                Log.i(TAG, "예약자 생년월일 : " + reservationBirth);
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }*/
+            ReservationService reservationService = ServiceProvider.getReservationService(getContext());
+            Call<Void> call = reservationService.setNewReservationInfo(userNo,productNo,adultNumber,childrenNumber);
+            call.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    AlertDialog alertDialog = new AlertDialog.Builder(v.getContext())
+                            .setTitle("예약이 완료 되었습니다.")
+                            .setMessage("즐거운 여행이 되시길 바랍니다.")
+                            .setPositiveButton("확인",((dialog, which) -> navController.navigate(R.id.dest_reservation_list)))
+                            .create();
+                    alertDialog.show();
+                }
 
-            navController.navigate(R.id.dest_reservation_list);
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+
+                }
+            });
+
+            //navController.navigate(R.id.dest_reservation_list);
         });
     }
-
-    /*private void initBtnProductDetail() {
-        binding.btnPaymentProductDetail.setOnClickListener(v->{
-            navController.popBackStack();
-        });
-    }*/
 }
