@@ -68,26 +68,19 @@ public class ProductDetailFragment extends Fragment {
         call.enqueue(new Callback<Board>() {
             @Override
             public void onResponse(Call<Board> call, Response<Board> response) {
-                Log.i(TAG, "콜백함수에는 들어오는가?");
-                Board productInfo = response.body(); //상품의 정보를 받아와 저장.
-                Log.i(TAG, "상품 정보는 잘들어오는가?" + productInfo);
-
+                Board productInfo = response.body();
                 //binding.productDetailRating.setRating(Math.round(productInfo.getAverageRating()));
                 binding.productDetailReviewCount.setText(String.valueOf(productInfo.getReviewList().size()));
                 binding.productDetailReservationCount.setText(String.valueOf(productInfo.getProductReservationNumber()));
                 binding.productDetailTitle.setText(productInfo.getProductTitle());
                 binding.productDetailPrice.setText(String.valueOf(productInfo.getProductAdultPrice()));
-                //ㅁ박 ㅁ일 형식으로하기위해
                 int days = (int) (productInfo.getTourEndDate()/100000000-productInfo.getTourStartDate()/100000000);
-                Log.i(TAG, "시작일 :" +productInfo.getTourStartDate()/100000000 );
-                Log.i(TAG, "종료일 :" +productInfo.getTourEndDate()/100000000 );
                 binding.productDetailTravelDays.setText(days-1+"박 "+days+"일");
                 binding.productDetailTravelTransportation.setText(productInfo.getProductVehicle());
                 binding.productDetailTravelArea.setText(productInfo.getProductVisitPlace());
                 binding.productDetailLeftTicket.setText("몇장?");
                 binding.productDetailTravelContent.setText(productInfo.getProductContent());
                 String videoId = productInfo.getProductVideoUrl();
-                Log.i(TAG, "영상 url :" + videoId);
                 binding.productDetailVideoView.addYouTubePlayerListener(new AbstractYouTubePlayerListener(){
                     @Override
                     public void onReady(@NotNull YouTubePlayer youTubePlayer) {

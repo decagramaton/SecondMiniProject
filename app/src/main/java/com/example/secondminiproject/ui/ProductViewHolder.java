@@ -50,7 +50,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         
         
         // Image 다운 필요
-        ProductService.loadImage(this.productNo, image);
+        ProductService.loadImageByMediaName(this.productNo, "main",image);
 
 
         this.title.setText(board.getProductTitle());

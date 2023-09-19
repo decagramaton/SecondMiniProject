@@ -37,7 +37,7 @@ public class NewPackageViewHolder extends RecyclerView.ViewHolder {
     public void setData(Board board){
         this.productNo = board.getProductNo();
         this.title.setText(board.getProductTitle());
-        ProductService.loadImage(this.productNo, image);
+        ProductService.loadImageByMediaName(this.productNo,"main", image);
 
         String currencySymbol = Currency.getInstance("KRW").getSymbol();
         DecimalFormat df = new DecimalFormat("#,###");

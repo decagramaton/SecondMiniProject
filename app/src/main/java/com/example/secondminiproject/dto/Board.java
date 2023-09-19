@@ -19,7 +19,6 @@ public class Board implements Serializable {
     private String productContent;
     private String productCategory;
     List<Review> reviewList;
-    private float averageRating;
     private String productVideoUrl;
 
     @Override
@@ -37,7 +36,6 @@ public class Board implements Serializable {
                 ", productContent='" + productContent + '\'' +
                 ", productCategory='" + productCategory + '\'' +
                 ", reviewList=" + reviewList +
-                ", averageRating=" + averageRating +
                 ", productVideoUrl='" + productVideoUrl + '\'' +
                 '}';
     }
@@ -48,14 +46,6 @@ public class Board implements Serializable {
 
     public void setProductVideoUrl(String productVideoUrl) {
         this.productVideoUrl = productVideoUrl;
-    }
-
-    public float getAverageRating() {
-        return averageRating;
-    }
-
-    public void setAverageRating(float averageRating) {
-        this.averageRating = averageRating;
     }
 
     public int getProductNo() {

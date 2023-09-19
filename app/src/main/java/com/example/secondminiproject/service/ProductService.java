@@ -25,11 +25,6 @@ public interface ProductService {
         @GET("product/getProductByProductNo")
         Call<Board> getProductByProductNo(@Query("productNo") int productNo);
 
-        static void loadImage(int productNo, ImageView imageView) {
-                String url = NetworkInfo.BASE_URL + "product/fileDownload?productNo=" + productNo;
-                Glide.with(imageView.getContext()).load(url).into(imageView);
-        }
-
         static void loadImageByMediaName(int productNo ,String mediaName, ImageView imageView) {
                 String url = NetworkInfo.BASE_URL + "product/fileDownload?productNo=" + productNo+"&mediaName="+mediaName;
                 Glide.with(imageView.getContext()).load(url).into(imageView);
