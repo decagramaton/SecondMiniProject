@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentProductDetailBinding;
 import com.example.secondminiproject.dto.Board;
+import com.example.secondminiproject.dto.Review;
 import com.example.secondminiproject.service.ProductService;
 import com.example.secondminiproject.service.ServiceProvider;
 import com.example.secondminiproject.service.WishService;
@@ -27,6 +28,8 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
