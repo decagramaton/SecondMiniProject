@@ -19,6 +19,7 @@ import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentHomeBinding;
 import com.example.secondminiproject.databinding.FragmentMyPageBinding;
 import com.example.secondminiproject.databinding.FragmentUserInfoBinding;
+import com.example.secondminiproject.datastore.AppKeyValueStore;
 import com.example.secondminiproject.ui.home.HomeBannerAdapter;
 
 import java.util.Timer;
@@ -38,7 +39,9 @@ public class UserInfoFragment extends Fragment {
         binding = FragmentUserInfoBinding.inflate(inflater);
 
         initBtnImageChange();
-        // Inflate the layout for this fragment
+
+        initUserInformation();
+
         return binding.getRoot();
     }
 
@@ -59,5 +62,13 @@ public class UserInfoFragment extends Fragment {
                     .build();
             activityResultLauncher.launch(request);
         });
+    }
+
+    private void initUserInformation() {
+        binding.userName.setText(AppKeyValueStore.getValue(getContext(),"userKoName"));
+        binding.email.setText(AppKeyValueStore.getValue(getContext(),"userEmail"));
+        binding.enName.setText(AppKeyValueStore.getValue(getContext(),"userEnName"));
+        binding.phoneNo.setText(AppKeyValueStore.getValue(getContext(),"userPhone"));
+        binding.birthday.setText(AppKeyValueStore.getValue(getContext(),"userBirth"));
     }
 }
