@@ -17,7 +17,7 @@ public class ReviewViewHolder extends RecyclerView.ViewHolder {
     private TextView reviewTitle;
     private RatingBar reviewRatingScore;
     private TextView reviewStartDate;
-    private TextView reviewEndDate;
+    //private TextView reviewEndDate;
     private TextView reviewContent;
 
 
@@ -26,7 +26,7 @@ public class ReviewViewHolder extends RecyclerView.ViewHolder {
         this.reviewTitle = itemView.findViewById(R.id.review_list_card_review_title);
         this.reviewRatingScore = itemView.findViewById(R.id.review_list_card_star_rate);
         this.reviewStartDate = itemView.findViewById(R.id.review_list_card_travel_start_date);
-        this.reviewEndDate = itemView.findViewById(R.id.review_list_card_travel_end_date);
+        //this.reviewEndDate = itemView.findViewById(R.id.review_list_card_travel_end_date);
         this.reviewContent =itemView.findViewById(R.id.review_list_card_review_content);
 
     }
@@ -35,7 +35,7 @@ public class ReviewViewHolder extends RecyclerView.ViewHolder {
         this.reviewTitle.setText(review.getReviewTitle());
         this.reviewRatingScore.setRating((int)review.getReviewRating());
         this.reviewStartDate.setText(review.getStartDate());
-        this.reviewEndDate.setText(review.getEndDate());
+        //this.reviewEndDate.setText(review.getEndDate());
         this.reviewContent.setText(review.getReviewContent());
 
        /* String currencySymbol = Currency.getInstance("KRW").getSymbol();
