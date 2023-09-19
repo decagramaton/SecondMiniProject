@@ -1,5 +1,8 @@
 package com.example.secondminiproject.service;
 
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 import com.example.secondminiproject.dto.LoginResult;
 import com.example.secondminiproject.dto.Review;
 import com.example.secondminiproject.dto.UserInfo;
@@ -25,6 +28,11 @@ public interface UserService {
 
     @GET("userInfo/getUserInfo")
     Call<UserInfo> getUserInfo(@Query("userId") String userId);
-    
+
+
+    static void loadUserProfileImage(int userNo, ImageView imageView) {
+        String url = NetworkInfo.BASE_URL + "userInfo/fileDownload?userNo=" + userNo;
+        Glide.with(imageView.getContext()).load(url).into(imageView);
+    }
     
 }

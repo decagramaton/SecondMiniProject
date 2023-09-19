@@ -20,6 +20,8 @@ import com.example.secondminiproject.databinding.FragmentHomeBinding;
 import com.example.secondminiproject.databinding.FragmentMyPageBinding;
 import com.example.secondminiproject.databinding.FragmentUserInfoBinding;
 import com.example.secondminiproject.datastore.AppKeyValueStore;
+import com.example.secondminiproject.service.ServiceProvider;
+import com.example.secondminiproject.service.UserService;
 import com.example.secondminiproject.ui.home.HomeBannerAdapter;
 
 import java.util.Timer;
@@ -65,6 +67,7 @@ public class UserInfoFragment extends Fragment {
     }
 
     private void initUserInformation() {
+        UserService.loadUserProfileImage(Integer.parseInt(AppKeyValueStore.getValue(getContext(),"userNo")), binding.profileImage);
         binding.userName.setText(AppKeyValueStore.getValue(getContext(),"userKoName"));
         binding.email.setText(AppKeyValueStore.getValue(getContext(),"userEmail"));
         binding.enName.setText(AppKeyValueStore.getValue(getContext(),"userEnName"));
