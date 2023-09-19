@@ -157,6 +157,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
                 List<Board> BoardList = response.body();
+                Log.i(TAG, "보드 리스트 : "+ BoardList);
 
                 recommendPackageAdapter.setList(BoardList);
                 binding.recommendRecyclerView.setAdapter(recommendPackageAdapter);

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 // Product DB DTO + Review DB DTO 통합용 DTO입니다.
+// 상품상세
 public class Board implements Serializable {
     private int productNo;
     private String productTitle;
@@ -18,7 +19,44 @@ public class Board implements Serializable {
     private String productContent;
     private String productCategory;
     List<Review> reviewList;
+    private float averageRating;
+    private String productVideoUrl;
 
+    @Override
+    public String toString() {
+        return "Board{" +
+                "productNo=" + productNo +
+                ", productTitle='" + productTitle + '\'' +
+                ", productAdultPrice=" + productAdultPrice +
+                ", productChildPrice=" + productChildPrice +
+                ", tourStartDate=" + tourStartDate +
+                ", tourEndDate=" + tourEndDate +
+                ", productVehicle='" + productVehicle + '\'' +
+                ", productVisitPlace='" + productVisitPlace + '\'' +
+                ", productReservationNumber=" + productReservationNumber +
+                ", productContent='" + productContent + '\'' +
+                ", productCategory='" + productCategory + '\'' +
+                ", reviewList=" + reviewList +
+                ", averageRating=" + averageRating +
+                ", productVideoUrl='" + productVideoUrl + '\'' +
+                '}';
+    }
+
+    public String getProductVideoUrl() {
+        return productVideoUrl;
+    }
+
+    public void setProductVideoUrl(String productVideoUrl) {
+        this.productVideoUrl = productVideoUrl;
+    }
+
+    public float getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(float averageRating) {
+        this.averageRating = averageRating;
+    }
 
     public int getProductNo() {
         return productNo;

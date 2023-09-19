@@ -1,6 +1,7 @@
 package com.example.secondminiproject.ui.productDetail;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,10 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.secondminiproject.ui.home.PageFragment;
 
 public class DetailBannerAdapter extends FragmentStateAdapter {
+    private static final String TAG = "DetailBannerAdapter";
+
+    private int productNo;
+
     public DetailBannerAdapter(@NonNull FragmentActivity fragmentActivity){
         super(fragmentActivity);
     }
@@ -20,6 +25,8 @@ public class DetailBannerAdapter extends FragmentStateAdapter {
         DetailMediaFragment detailMediaFragment = new DetailMediaFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("pageNo",position+1);
+        bundle.putInt("productNo",productNo);
+        Log.i(TAG, "배너 어뎁터에서의 상품번호: "+productNo);
         detailMediaFragment.setArguments(bundle);
 
         return detailMediaFragment;
@@ -29,5 +36,9 @@ public class DetailBannerAdapter extends FragmentStateAdapter {
     public int getItemCount() {
         // 몇개를 돌릴거야? 지금 예시에서는 5개!
         return Integer.MAX_VALUE;
+    }
+
+    public void setProductNo(int productNo){
+        this.productNo = productNo;
     }
 }

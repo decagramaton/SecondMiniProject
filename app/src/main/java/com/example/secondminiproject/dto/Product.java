@@ -7,14 +7,40 @@ public class Product {
     private String productTitle;
     private int productAdultPrice;
     private int productChildPrice;
-    private Date tourStartDate;
-    private Date tourEndDate;
+    private long tourStartDate;
+    private long tourEndDate;
     private String productVehicle;
     private String productVisitPlace;
     private int productReservationNumber;
     private String productContent;
     private String productCategory;
+    private String productVideoUrl;
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productNo=" + productNo +
+                ", productTitle='" + productTitle + '\'' +
+                ", productAdultPrice=" + productAdultPrice +
+                ", productChildPrice=" + productChildPrice +
+                ", tourStartDate=" + tourStartDate +
+                ", tourEndDate=" + tourEndDate +
+                ", productVehicle='" + productVehicle + '\'' +
+                ", productVisitPlace='" + productVisitPlace + '\'' +
+                ", productReservationNumber=" + productReservationNumber +
+                ", productContent='" + productContent + '\'' +
+                ", productCategory='" + productCategory + '\'' +
+                ", productVideoUrl='" + productVideoUrl + '\'' +
+                '}';
+    }
+
+    public String getProductVideoUrl() {
+        return productVideoUrl;
+    }
+
+    public void setProductVideoUrl(String productVideoUrl) {
+        this.productVideoUrl = productVideoUrl;
+    }
 
     public int getProductNo() {
         return productNo;
@@ -48,19 +74,19 @@ public class Product {
         this.productChildPrice = productChildPrice;
     }
 
-    public Date getTourStartDate() {
+    public long getTourStartDate() {
         return tourStartDate;
     }
 
-    public void setTourStartDate(Date tourStartDate) {
+    public void setTourStartDate(long tourStartDate) {
         this.tourStartDate = tourStartDate;
     }
 
-    public Date getTourEndDate() {
+    public long getTourEndDate() {
         return tourEndDate;
     }
 
-    public void setTourEndDate(Date tourEndDate) {
+    public void setTourEndDate(long tourEndDate) {
         this.tourEndDate = tourEndDate;
     }
 
