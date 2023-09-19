@@ -37,19 +37,14 @@ public class DetailMediaFragment extends Fragment {
 
     private void initUIByPageNo(int pageNo) {
         if(Math.abs(pageNo%5+1)==1){
-            //binding.imageView3.setImageResource(R.drawable.osaka_1);
             ProductService.loadImageByMediaName( this.productNo, "name_main" ,binding.imageView3);
         }else if(Math.abs(pageNo%5+1)==2){
-            //binding.imageView3.setImageResource(R.drawable.osaka_2);
             ProductService.loadImageByMediaName( this.productNo, "name_thumbnail" ,binding.imageView3);
         }else if(Math.abs(pageNo%5+1)==3 ){
-            //binding.imageView3.setImageResource(R.drawable.osaka_3);
             ProductService.loadImageByMediaName( this.productNo, "name_sub_1" ,binding.imageView3);
         }else if(Math.abs(pageNo%5+1)==4 ){
-            //binding.imageView3.setImageResource(R.drawable.osaka_4);
             ProductService.loadImageByMediaName( this.productNo, "name_sub_2" ,binding.imageView3);
         }else if(Math.abs(pageNo%5+1)==5 ) {
-            //binding.imageView3.setImageResource(R.drawable.osaka_5);
             ProductService.loadImageByMediaName( this.productNo, "name_sub_3" ,binding.imageView3);
         }
     }
