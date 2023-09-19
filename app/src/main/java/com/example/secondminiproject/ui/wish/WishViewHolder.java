@@ -11,15 +11,15 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
+import com.example.secondminiproject.dto.Product;
 import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.dto.Wish;
+import com.example.secondminiproject.service.ProductService;
 
 public class WishViewHolder extends RecyclerView.ViewHolder {
     private static final String TAG = "WishViewHolder";
-
     private ImageView wishProductImage;
     private TextView wishProductName;
-    private TextView wishTourDays;
     private TextView wishProductPrice;
 
     private ImageButton btnRemoveWish;
@@ -38,10 +38,10 @@ public class WishViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void setData(Wish wishProduct){
-        this.wishProductImage.setImageResource(wishProduct.getProductImage());
-        this.wishProductName.setText(wishProduct.getProductName());
-        this.wishProductPrice.setText(String.valueOf(wishProduct.getProductPrice()));
+    public void setData(Product wishProduct, int productNo){
+        ProductService.loadImageByMediaName(productNo, "thumbnail",this.wishProductImage);
+        this.wishProductName.setText(wishProduct.getProductTitle());
+        this.wishProductPrice.setText(String.valueOf(wishProduct.getProductAdultPrice()));
         this.btnRemoveWish.setOnClickListener(v->{
             Log.i(TAG, "다이얼로그가 실행이 되나요?");
             AlertDialog alertDialog = new AlertDialog.Builder(v.getContext())

@@ -16,11 +16,22 @@ import android.widget.Button;
 
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentWishListBinding;
+import com.example.secondminiproject.datastore.AppKeyValueStore;
+import com.example.secondminiproject.dto.Board;
+import com.example.secondminiproject.dto.Product;
 import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.dto.Wish;
+import com.example.secondminiproject.service.ProductService;
+import com.example.secondminiproject.service.ServiceProvider;
+import com.example.secondminiproject.service.WishService;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class WishListFragment extends Fragment {
 
@@ -53,7 +64,27 @@ public class WishListFragment extends Fragment {
         //어뎁터 생성
         WishAdapter wishAdapter = new WishAdapter();
 
-        //데이터 받아와서 어뎁터에 설정
+
+        WishService wishService = ServiceProvider.getWishService(getContext());
+
+        Call<List<Product>> call = wishService.getWishListByUserNo(Integer.parseInt(AppKeyValueStore.getValue(getContext(), "userNo")));
+
+        call.enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                List<Product> productList = response.body();
+                wishAdapter.setWishList(productList);
+                binding.recyclerViewWish.setAdapter(wishAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                Log.i(TAG, "검색 결과 통신 실패 이벤트 호출");
+            }
+        });
+
+
+        /*//데이터 받아와서 어뎁터에 설정
         Random random = new Random();
         for(int i=1; i <=17; i++){
             Wish wishProduct = new Wish();
@@ -66,7 +97,7 @@ public class WishListFragment extends Fragment {
             wishAdapter.addWishProduct(wishProduct);
 
             wishProducts.add(wishProduct);
-        }
+        }*/
 
         //리사이클러뷰에 어댑터 설정
         binding.recyclerViewWish.setAdapter(wishAdapter);
@@ -77,12 +108,12 @@ public class WishListFragment extends Fragment {
             public void onItemClick(View itemView, int position) {
                 Log.i(TAG, position + "번 항목 클릭 됨 ");
                 //해당 포지션의 아이템을 boardAdapter을 통해 받아온다.
-                Wish wishProduct = wishAdapter.getItem(position);
+                Product wishProduct = wishAdapter.getItem(position);
                 Bundle args = new Bundle();
                 //Board 객체를 전달해야하기때문에 (Board 객체에는 Serializable 이 임플먼트 되잇어야한다)
-                args.putSerializable("wishProduct", wishProduct);
+                args.putSerializable("productNo", wishProduct.getProductNo());
 
-                navController.navigate(R.id.action_tabLayoutMainFragment_to_dest_product_detail2,args,null);
+                navController.navigate(R.id.dest_product_detail, args,null);
             }
         });
 

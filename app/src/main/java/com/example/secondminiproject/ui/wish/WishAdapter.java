@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
+import com.example.secondminiproject.dto.Product;
 import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.dto.Wish;
 import com.example.secondminiproject.ui.review.ReviewViewHolder;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WishAdapter extends RecyclerView.Adapter<WishViewHolder> {
-    private List<Wish> wishList = new ArrayList<>();
+    private List<Product> wishList = new ArrayList<>();
 
     private OnItemClickListener onItemClickListener;
 
@@ -36,12 +37,12 @@ public class WishAdapter extends RecyclerView.Adapter<WishViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull WishViewHolder holder, int position) {
         //리스트로부터 데이터를 불러오는것 (position 으로 0 -> 1 - 2 순으로 프로덕트를 가져와서 세팅한다)
-        Wish wishProduct = wishList.get(position);
+        Product wishProduct = wishList.get(position);
         //홀더에 데이터를 세팅해준다.
-        holder.setData(wishProduct);
+        holder.setData(wishProduct, wishProduct.getProductNo());
     }
 
-    public void setWishList(List<Wish> WishList) {
+    public void setWishList(List<Product> WishList) {
         this.wishList = WishList;
     }
 
@@ -49,11 +50,11 @@ public class WishAdapter extends RecyclerView.Adapter<WishViewHolder> {
     public int getItemCount() {
         return wishList.size();
     }
-    public Wish getItem(int position){
+    public Product getItem(int position){
         return wishList.get(position);
     }
 
-    public void addWishProduct(Wish wishProduct){
+    public void addWishProduct(Product wishProduct){
         wishList.add(wishProduct);
     }
 

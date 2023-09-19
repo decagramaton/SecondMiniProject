@@ -18,12 +18,13 @@ import com.example.secondminiproject.databinding.FragmentWishCardBinding;
 public class WishCardFragment extends Fragment {
     private FragmentWishCardBinding binding;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentWishCardBinding.inflate(getLayoutInflater());
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wish_card, container, false);
 
+
+
+
+        return inflater.inflate(R.layout.fragment_wish_card, container, false);
     }
 
 }
