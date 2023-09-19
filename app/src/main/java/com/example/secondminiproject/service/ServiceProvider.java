@@ -16,18 +16,19 @@ public class ServiceProvider {
     }
 
     public static ProductService getProductService(Context context) {
-        ProductService productService = getRetrofit(context).create(ProductService.class);
-        return productService;
+        return getRetrofit(context).create(ProductService.class);
     }
 
     public static WishService getWishService(Context context) {
-        WishService wishService = getRetrofit(context).create(WishService.class);
-        return wishService;
+        return getRetrofit(context).create(WishService.class);
     }
 
     public static ReviewService getReviewService(Context context) {
-        ReviewService reviewService = getRetrofit(context).create(ReviewService.class);
-        return reviewService;
+        return getRetrofit(context).create(ReviewService.class);
+    }
+
+    public static UserService getUserService(Context context) {
+        return getRetrofit(context).create(UserService.class);
     }
 
 

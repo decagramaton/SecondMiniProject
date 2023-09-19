@@ -7,6 +7,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.os.Handler;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentMyPageBinding;
 import com.example.secondminiproject.datastore.AppKeyValueStore;
 
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -106,8 +108,16 @@ public class MyPageFragment extends Fragment {
             });
         } else {
             binding.btnMyPageLoginLogout.setText("로그아웃");
-            AppKeyValueStore.remove(getContext(), "mid");
-            AppKeyValueStore.remove(getContext(), "mpassword");
+
+            AppKeyValueStore.remove(getContext(), "userNo");
+            AppKeyValueStore.remove(getContext(), "userKoName");
+            AppKeyValueStore.remove(getContext(), "userId");
+            AppKeyValueStore.remove(getContext(), "userPassword");
+            AppKeyValueStore.remove(getContext(), "userBirth");
+            AppKeyValueStore.remove(getContext(), "userPhone");
+            AppKeyValueStore.remove(getContext(), "userGender");
+            AppKeyValueStore.remove(getContext(), "userEnName");
+            AppKeyValueStore.remove(getContext(), "userEmail");
 
             binding.btnMyPageLoginLogout.setOnClickListener(v -> {
                 navController.popBackStack(R.id.dest_home, false);
