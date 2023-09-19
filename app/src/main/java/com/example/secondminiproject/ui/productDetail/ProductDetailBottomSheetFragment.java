@@ -17,9 +17,16 @@ import android.widget.TextView;
 
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentProductDetailBottomSheetBinding;
+import com.example.secondminiproject.dto.Board;
+import com.example.secondminiproject.service.ProductService;
+import com.example.secondminiproject.service.ServiceProvider;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.text.DecimalFormat;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ProductDetailBottomSheetFragment extends BottomSheetDialogFragment {
@@ -43,6 +50,7 @@ public class ProductDetailBottomSheetFragment extends BottomSheetDialogFragment 
     int calTotalPrice = 0;
     int eachAdultPrice=0;
     int eachChildPrice=0;
+    private int productNo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,6 +59,8 @@ public class ProductDetailBottomSheetFragment extends BottomSheetDialogFragment 
         view = binding.getRoot();
 
         navController = NavHostFragment.findNavController(this);
+
+        initSetData();
 
         adultNum = binding.productDetailBottomSheetAdultNumber;
         changingAdultNum = Integer.parseInt(adultNum.getText().toString());
@@ -70,9 +80,28 @@ public class ProductDetailBottomSheetFragment extends BottomSheetDialogFragment 
         return view;
     }
 
+    private void initSetData() {
+        ProductService productService = ServiceProvider.getProductService(getContext());
+        Call<Board> call = productService.getProductByProductNo(productNo);
+        call.enqueue(new Callback<Board>() {
+            @Override
+            public void onResponse(Call<Board> call, Response<Board> response) {
+                Board productInfo = response.body();
+                DecimalFormat df = new DecimalFormat("#,###");
+                eachAdultPrice = productInfo.getProductAdultPrice();
+                binding.productDetailBottomSheetAdultPrice.setText(String.valueOf(df.format(eachAdultPrice)));
+                eachChildPrice = productInfo.getProductChildPrice();
+                binding.productDetailBottomSheetChildPrice.setText(String.valueOf(df.format(eachChildPrice)));
+            }
+
+            @Override
+            public void onFailure(Call<Board> call, Throwable t) {
+
+            }
+        });
+    }
+
     private void initBtnChangeQuantity() {
-        eachAdultPrice = Integer.parseInt(adultPrice.getText().toString());
-        eachChildPrice = Integer.parseInt(childPrice.getText().toString());
 
         binding.btnProductDetailBottomSheetAdultMinus.setOnClickListener(v -> {
 
@@ -115,7 +144,8 @@ public class ProductDetailBottomSheetFragment extends BottomSheetDialogFragment 
 
     private void calculateTotalPrice() {
         calTotalPrice = calAdultPrice+calChildPrice;
-        totalPrice.setText(String.valueOf(calTotalPrice));
+        DecimalFormat df = new DecimalFormat("#,###");
+        totalPrice.setText(String.valueOf(df.format(calTotalPrice)));
     }
 
     private void initBtnMakeReservation() {
@@ -127,6 +157,7 @@ public class ProductDetailBottomSheetFragment extends BottomSheetDialogFragment 
             bundle.putInt("adultNumber",changingAdultNum);
             bundle.putInt("childNumber",changingChildNum);
             bundle.putInt("totalPrice",calTotalPrice);
+            bundle.putInt("productNo",productNo);
             navController.navigate(R.id.dest_payment,bundle);
         });
     }
@@ -135,5 +166,9 @@ public class ProductDetailBottomSheetFragment extends BottomSheetDialogFragment 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view,savedInstanceState);
 
+    }
+
+    public void getProductNo(int productNo){
+        this.productNo = productNo;
     }
 }

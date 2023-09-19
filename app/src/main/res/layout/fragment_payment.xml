@@ -84,6 +84,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/payment_product_title"
                         android:layout_width="280dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center_vertical"
@@ -114,6 +115,7 @@
 
 
                     <TextView
+                        android:id="@+id/payment_product_travel_days"
                         android:layout_width="280dp"
                         android:layout_height="50dp"
                         android:paddingLeft="10dp"
@@ -151,6 +153,7 @@
                         android:src="@drawable/ic_korea_24dp" />
 
                     <TextView
+                        android:id="@+id/payment_product_transportation"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:paddingLeft="10dp"
@@ -180,6 +183,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/payment_travel_start_date"
                         android:layout_width="280dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center"
@@ -209,6 +213,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/payment_travel_end_date"
                         android:layout_width="280dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center"

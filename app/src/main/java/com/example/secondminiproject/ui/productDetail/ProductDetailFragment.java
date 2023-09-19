@@ -29,6 +29,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import retrofit2.Call;
@@ -50,6 +51,7 @@ public class ProductDetailFragment extends Fragment {
         navController = NavHostFragment.findNavController(this);
 
         initSetData();
+        initSetWish();
 
         initBtnMakeReservation();
         //initVideo();
@@ -63,9 +65,42 @@ public class ProductDetailFragment extends Fragment {
 
     }
 
+    private void initSetWish() {
+        WishService wishService = ServiceProvider.getWishService(getContext());
+        //추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자
+        //추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자
+        //추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자
+        //추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자
+        //추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자
+        //추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자
+        //추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자
+        Call<Integer> call1 = wishService.checkWishByUserNoAndProductNo(1,1); //추후 DB연결되면 번들이랑 AppDataStore로 받아오자
+        call1.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                Integer isWish = response.body();
+                if(isWish ==0){
+                    binding.btnProductDetailWish.setChecked(false);
+                } else if (isWish ==1) {
+                    binding.btnProductDetailWish.setChecked(true);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
+            }
+        });
+    }
+
     private void initSetData() {
         ProductService productService = ServiceProvider.getProductService(getContext());
         Bundle bundle = getArguments();
+        //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함.
+        //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함.
+        //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함.
+        //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함.
+        //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함.
         Call<Board> call = productService.getProductByProductNo(1); //나중에는 번들로 상품번호 받아와야함.
         this.productNo = 1; //나중엔 번들로부터 상품번호 받아와야함
         call.enqueue(new Callback<Board>() {
@@ -76,7 +111,8 @@ public class ProductDetailFragment extends Fragment {
                 binding.productDetailReviewCount.setText(String.valueOf(productInfo.getReviewList().size()));
                 binding.productDetailReservationCount.setText(String.valueOf(productInfo.getProductReservationNumber()));
                 binding.productDetailTitle.setText(productInfo.getProductTitle());
-                binding.productDetailPrice.setText(String.valueOf(productInfo.getProductAdultPrice()));
+                DecimalFormat df = new DecimalFormat("#,###");
+                binding.productDetailPrice.setText(String.valueOf(df.format(productInfo.getProductAdultPrice())));
                 int days = (int) (productInfo.getTourEndDate()/100000000-productInfo.getTourStartDate()/100000000);
                 binding.productDetailTravelDays.setText(days-1+"박 "+days+"일");
                 binding.productDetailTravelTransportation.setText(productInfo.getProductVehicle());
@@ -99,36 +135,35 @@ public class ProductDetailFragment extends Fragment {
             }
         });
 
-        /*WishService wishService = ServiceProvider.getWishService(getContext());
-        Call<Integer> call1 = wishService.checkWishByUserNoAndProductNo(1,1); //추후 DB연결되면 번들이랑 AppDataStore로 받아오자
-        call1.enqueue(new Callback<Integer>() {
-            @Override
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                int isWish = response.body();
-                if(isWish ==0){
-                    binding.btnProductDetailWish.setChecked(false);
-                } else if (isWish ==1) {
-                    binding.btnProductDetailWish.setChecked(true);
-                }
-            }
 
-            @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
-
-            }
-        });*/
     }
 
 
     private void initBtnWish() {
         binding.btnProductDetailWish.setOnClickListener(v -> {
             startShakeAnimation();
+            WishService wishService = ServiceProvider.getWishService(getContext());
+            //추후에 올바른 정보 삽입
+            Call<Void> call =  wishService.clickWishBtn(1,1);
+            call.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    Log.i(TAG, "찜 상태가 변화했을까? ");
+                    //하트 여부를 다시 출력
+                    initSetWish();
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+
+                }
+            });
         });
     }
 
     private void startShakeAnimation() {
         Animation shake = AnimationUtils.loadAnimation(requireContext(), R.anim.shake);
-        // 이미지 버튼에 애니메이션을 적용합니다.
+        // 이미지 버튼에 애니메이션을 적용.
         CheckBox productDetailwish = binding.btnProductDetailWish;
         productDetailwish.startAnimation(shake);
     }
@@ -137,8 +172,10 @@ public class ProductDetailFragment extends Fragment {
 
         binding.btnProductDetailPayment.setOnClickListener(v -> {
             //navController.navigate(R.id.dest_payment);
-           ProductDetailBottomSheetFragment productDetailBottomSheetFragment = new ProductDetailBottomSheetFragment();
-           productDetailBottomSheetFragment.show(getActivity().getSupportFragmentManager(), "productDetailBottomSheetFragment");
+            ProductDetailBottomSheetFragment productDetailBottomSheetFragment = new ProductDetailBottomSheetFragment();
+            //추후 상품 번호 들어오면 번들로 받자.
+            productDetailBottomSheetFragment.getProductNo(1);
+            productDetailBottomSheetFragment.show(getActivity().getSupportFragmentManager(), "productDetailBottomSheetFragment");
         });
     }
 
