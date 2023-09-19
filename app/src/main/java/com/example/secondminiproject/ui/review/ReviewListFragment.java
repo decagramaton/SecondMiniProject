@@ -20,9 +20,17 @@ import com.example.secondminiproject.databinding.FragmentReviewList3Binding;
 import com.example.secondminiproject.databinding.FragmentReviewListBinding;
 import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.dto.Review;
+import com.example.secondminiproject.service.ReviewService;
+import com.example.secondminiproject.service.ServiceProvider;
 import com.example.secondminiproject.ui.reservation.ReservationAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ReviewListFragment extends Fragment {
@@ -65,7 +73,25 @@ public class ReviewListFragment extends Fragment {
         ReviewAdapter reviewAdapter = new ReviewAdapter();
 
         //데이터 받아와서 어뎁터에 설정
-        Random random = new Random();
+        ReviewService reviewService = ServiceProvider.getReviewService(getContext());
+        //로그인 연결시 DB랑 연동
+        Call<List<Review>> call = reviewService.getReviewListByUserNo(3);
+
+        call.enqueue(new Callback<List<Review>>() {
+            @Override
+            public void onResponse(Call<List<Review>> call, Response<List<Review>> response) {
+                List<Review> ReviewList = response.body();
+
+                reviewAdapter.setList(ReviewList);
+                binding.reviewListRecyclerView.setAdapter(reviewAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Review>> call, Throwable t) {
+
+            }
+        });
+        /*Random random = new Random();
         for(int i=1; i <=9; i++){
             Review review = new Review();
             review.setReviewTitle( i + " 번 [상품명] 이 들어갈 곳");
@@ -76,7 +102,7 @@ public class ReviewListFragment extends Fragment {
 
             //productAdapter.addProduct(product);
             reviewAdapter.addReview(review);
-        }
+        }*/
 
         //리사이클러뷰에 어댑터 설정
         binding.reviewListRecyclerView.setAdapter(reviewAdapter);

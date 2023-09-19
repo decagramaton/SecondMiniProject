@@ -48,9 +48,6 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewViewHolder> {
         //홀더에 데이터를 세팅해준다.
         holder.setData(review);
 
-
-
-
         MenuProvider menuProvider = new MenuProvider() {
             @Override
             public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
@@ -73,6 +70,8 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewViewHolder> {
 
         /*addMenuProvider(menuProvider, this, Lifecycle.State.RESUMED );*/
     }
+
+    public void setList(List<Review> reviewList) {this.reviewList = reviewList;}
 
     public void setReviewList(List<Review> reviewList) {
         this.reviewList = reviewList;
