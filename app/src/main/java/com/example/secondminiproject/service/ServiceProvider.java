@@ -25,4 +25,10 @@ public class ServiceProvider {
         return wishService;
     }
 
+    public static ReviewService getReviewService(Context context) {
+        ReviewService reviewService = getRetrofit(context).create(ReviewService.class);
+        return reviewService;
+    }
+
+
 }

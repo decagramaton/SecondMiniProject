@@ -1,6 +1,5 @@
 package com.example.secondminiproject.ui;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.dto.Board;
-import com.example.secondminiproject.dto.Product;
 
 import java.util.ArrayList;
 import java.util.List;

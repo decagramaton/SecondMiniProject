@@ -12,14 +12,20 @@ import androidx.navigation.NavOptions;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 
 import com.example.secondminiproject.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
@@ -41,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host);
         navController = navHostFragment.getNavController();
 
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        boolean isInit = sharedPreferences.getBoolean("isInit", false);
+        if(!isInit) {
+            showAdvertiseDialog();
+            Log.i(TAG,"최초실행");
+        }
+
         // Header AppBar 초기 설정
         initHeaderAppBar();
 
@@ -51,10 +64,27 @@ public class MainActivity extends AppCompatActivity {
         // Bottom Navagation 초기 설정
         //NavigationUI.setupWithNavController(binding.bottomNavigation, navController);
         initBottomNav();
+        //showAdvertiseDialog();
 
 
         //getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
+    } 
+
+    //최초 실행시 광고창 실행
+    private void showAdvertiseDialog(){
+
+        View view = getLayoutInflater().inflate(R.layout.advertisement_main, null);
+
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setView(view)
+                .create();
+        alertDialog.show();
+
+        Button btnAdClose = view.findViewById(R.id.btn_ad_close);
+        btnAdClose.setOnClickListener(v -> {
+            alertDialog.dismiss();
+        });
     }
 
     private void initBottomNav() {
