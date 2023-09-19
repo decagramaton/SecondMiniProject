@@ -146,7 +146,12 @@ public class MyPageFragment extends Fragment {
 
     private void initBtnUserInfo() {
         binding.btnMyPageUserInfo.setOnClickListener(v -> {
-            navController.navigate(R.id.action_dest_my_page_to_dest_user_info);
+
+            if(AppKeyValueStore.getValue(getContext(), "userNo") == null) {
+                navController.navigate(R.id.dest_login);
+            } else {
+                navController.navigate(R.id.action_dest_my_page_to_dest_user_info);
+            }
         });
     }
 
