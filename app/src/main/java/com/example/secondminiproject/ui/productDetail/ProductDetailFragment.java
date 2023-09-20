@@ -71,8 +71,7 @@ public class ProductDetailFragment extends Fragment {
     private void initSetWish() {
         WishService wishService = ServiceProvider.getWishService(getContext());
         Bundle bundle = getArguments();
-        Board board = (Board) bundle.getSerializable("board");
-        this.productNo = board.getProductNo();
+        this.productNo = bundle.getInt("productNo");
         int userNo = Integer.parseInt(AppKeyValueStore.getValue(getContext(),"userNo"));
         Call<Integer> call1 = wishService.checkWishByUserNoAndProductNo(productNo,userNo); //추후 DB연결되면 번들이랑 AppDataStore로 받아오자
         call1.enqueue(new Callback<Integer>() {

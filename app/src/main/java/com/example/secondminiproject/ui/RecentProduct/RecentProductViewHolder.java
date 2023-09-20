@@ -14,7 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.dto.RecentProduct;
 import com.example.secondminiproject.dto.Wish;
+import com.example.secondminiproject.service.ProductService;
 import com.example.secondminiproject.ui.wish.WishAdapter;
+
+import java.text.DecimalFormat;
+import java.util.Currency;
 
 public class RecentProductViewHolder extends RecyclerView.ViewHolder {
     private static final String TAG = "RecentProductViewHolder";
@@ -41,9 +45,15 @@ public class RecentProductViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setData(RecentProduct recentProduct){
-        this.recentProductImage.setImageResource(recentProduct.getProductImage());
+
+        Log.i(TAG, "최근본 상품 ViewHolder 호출 이벤트 실행");
+        ProductService.loadImageByMediaName(recentProduct.getProductNo(), "main", this.recentProductImage);
         this.recentProductName.setText(recentProduct.getProductName());
-        this.recentProductPrice.setText(String.valueOf(recentProduct.getProductPrice()));
+
+        String currencySymbol = Currency.getInstance("KRW").getSymbol();
+        DecimalFormat df = new DecimalFormat("#,###");
+        this.recentProductPrice.setText(currencySymbol + " " + df.format(recentProduct.getProductPrice()));
+
         this.recentProductRating.setRating(recentProduct.getProductRating());
         this.recentProductReviewNumber.setText(String.valueOf(recentProduct.getReviewNumber()));
 

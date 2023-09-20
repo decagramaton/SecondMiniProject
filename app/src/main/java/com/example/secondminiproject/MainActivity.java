@@ -33,6 +33,7 @@ import com.example.secondminiproject.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private NavController navController;
     private SharedPreferences SPreferences;
-
-    // SharedPreferences 접근 이름, 저장 데이터 초기화
+    private Bundle bundle;
     private final String NameSPreferences = "Day";
     private String strSDFormatDay = "0";
 
@@ -52,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        bundle = new Bundle();
+        bundle.putStringArrayList("recentProductList", new ArrayList<String>());
 
         // '오늘 그만 보기' 기능을 위한 날짜 획득
         long CurrentTime = System.currentTimeMillis(); // 현재 시간을 msec 단위로 얻음
@@ -90,7 +93,15 @@ public class MainActivity extends AppCompatActivity {
 
         //getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
-    } 
+    }
+
+    public Bundle getBundle() {
+        return this.bundle;
+    }
+
+    public void setBundle(Bundle bundle) {
+        this.bundle = bundle;
+    }
 
     //최초 실행시 광고창 실행
     private void showAdvertiseDialog(){

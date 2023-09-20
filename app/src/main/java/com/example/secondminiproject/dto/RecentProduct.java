@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class RecentProduct implements Serializable {
     private String productName;
     private int reviewNumber;
-    private int productImage;
+    private int productNo;
     private int productPrice;
     private float productRating;
 
@@ -16,7 +16,7 @@ public class RecentProduct implements Serializable {
         return "RecentProduct{" +
                 "productName='" + productName + '\'' +
                 ", reviewNumber='" + reviewNumber + '\'' +
-                ", productImage=" + productImage +
+                ", productNo=" + productNo +
                 ", productPrice=" + productPrice +
                 ", productRating=" + productRating +
                 '}';
@@ -46,12 +46,12 @@ public class RecentProduct implements Serializable {
         this.productName = productName;
     }
 
-    public int getProductImage() {
-        return productImage;
+    public int getProductNo() {
+        return productNo;
     }
 
-    public void setProductImage(int productImage) {
-        this.productImage = productImage;
+    public void setProductNo(int productNo) {
+        this.productNo = productNo;
     }
 
     public int getProductPrice() {

@@ -13,12 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.secondminiproject.MainActivity;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentHomeBinding;
 import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.service.ProductService;
 import com.example.secondminiproject.service.ServiceProvider;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -65,7 +67,6 @@ public class HomeFragment extends Fragment {
         timerTask.cancel();
         handler.removeCallbacksAndMessages(null);
     }
-
     private void initBtnCategory() {
         setCountry(binding.btnHomeCategoryJeju, binding.btnHomeCategoryJeju.getContentDescription().toString());
         setCountry(binding.btnHomeCategoryHongkong, "홍콩");
@@ -133,9 +134,16 @@ public class HomeFragment extends Fragment {
             public void onItemClick(View itemView, int position) {
 
                 Board board = newPackageAdapter.getItem(position);
-
                 Bundle args = new Bundle();
-                args.putSerializable("board", board);
+                args.putInt("productNo", board.getProductNo());
+
+                Bundle bundle = ((MainActivity)getActivity()).getBundle();
+                ArrayList<String> recentProductList = bundle.getStringArrayList("recentProductList");
+                recentProductList.add(String.valueOf(board.getProductNo()));
+                bundle.remove("recentProductList");
+                Log.i(TAG, "newPackageAdapter 클릭 이벤트 시, 최근본 상품 목록 추가 확인 : "+ recentProductList);
+                bundle.putStringArrayList("recentProductList", recentProductList);
+                ((MainActivity)getActivity()).setBundle(bundle);
 
                 navController.navigate(R.id.dest_product_detail,args);
             }
@@ -174,9 +182,16 @@ public class HomeFragment extends Fragment {
             public void onItemClick(View itemView, int position) {
 
                 Board board = recommendPackageAdapter.getItem(position);
-
                 Bundle args = new Bundle();
-                args.putSerializable("board", board);
+                args.putInt("productNo", board.getProductNo());
+
+                Bundle bundle = ((MainActivity)getActivity()).getBundle();
+                ArrayList<String> recentProductList = bundle.getStringArrayList("recentProductList");
+                recentProductList.add(String.valueOf(board.getProductNo()));
+                bundle.remove("recentProductList");
+                Log.i(TAG, "newPackageAdapter 클릭 이벤트 시, 최근본 상품 목록 추가 확인 : "+ recentProductList);
+                bundle.putStringArrayList("recentProductList", recentProductList);
+                ((MainActivity)getActivity()).setBundle(bundle);
 
                 navController.navigate(R.id.dest_product_detail,args);
             }
@@ -215,9 +230,16 @@ public class HomeFragment extends Fragment {
             public void onItemClick(View itemView, int position) {
 
                 Board board = timeDealPackageAdapter.getItem(position);
-
                 Bundle args = new Bundle();
-                args.putSerializable("board", board);
+                args.putInt("productNo", board.getProductNo());
+
+                Bundle bundle = ((MainActivity)getActivity()).getBundle();
+                ArrayList<String> recentProductList = bundle.getStringArrayList("recentProductList");
+                recentProductList.add(String.valueOf(board.getProductNo()));
+                bundle.remove("recentProductList");
+                Log.i(TAG, "newPackageAdapter 클릭 이벤트 시, 최근본 상품 목록 추가 확인 : "+ recentProductList);
+                bundle.putStringArrayList("recentProductList", recentProductList);
+                ((MainActivity)getActivity()).setBundle(bundle);
 
                 navController.navigate(R.id.dest_product_detail,args);
             }
@@ -254,11 +276,17 @@ public class HomeFragment extends Fragment {
         newPackageAdapter.setOnItemClickListener(new NewPackageAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
-
                 Board board = newPackageAdapter.getItem(position);
-
                 Bundle args = new Bundle();
-                args.putSerializable("board", board);
+                args.putInt("productNo", board.getProductNo());
+
+                Bundle bundle = ((MainActivity)getActivity()).getBundle();
+                ArrayList<String> recentProductList = bundle.getStringArrayList("recentProductList");
+                recentProductList.add(String.valueOf(board.getProductNo()));
+                bundle.remove("recentProductList");
+                Log.i(TAG, "newPackageAdapter 클릭 이벤트 시, 최근본 상품 목록 추가 확인 : "+ recentProductList);
+                bundle.putStringArrayList("recentProductList", recentProductList);
+                ((MainActivity)getActivity()).setBundle(bundle);
 
                 navController.navigate(R.id.dest_product_detail,args);
             }
