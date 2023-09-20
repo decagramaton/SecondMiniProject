@@ -99,14 +99,20 @@ public class UserInfoFragment extends Fragment {
      * 나는 능이버섯이다.
      */
     private void saveUserProfileImageToDB() {
-        // Step1. ImageView의 이미지 데이터 얻기
+        // Step1. ImageView의 이미지 데이터를 BitMap으로 변환
         BitmapDrawable bitmapDrawable = (BitmapDrawable) binding.profileImage.getDrawable();
         Bitmap bitmap = bitmapDrawable.getBitmap();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+        // Step2. BitMap의 데이터 형식과 byte[] 형태로 변환
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);       // ( 이미지 확장자 설정, 원본 비율(100%), byte[] )
         byte[] bytes = baos.toByteArray();
+
+        // Step3. MultiPart 사용을 위한 requestBody 전처리
         String fileName = new Date().getTime() + ".jpg";
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/jpeg"), bytes);
+
+        // Step4. Multipart의 Part 설정
         MultipartBody.Part battach = MultipartBody.Part.createFormData("battach", fileName, requestBody);
         MultipartBody.Part userNo = MultipartBody.Part.createFormData("userNo", AppKeyValueStore.getValue(getContext(),"userNo"));
         
@@ -123,7 +129,7 @@ public class UserInfoFragment extends Fragment {
         //위 과정을 순차적으로 해결하게 해주는 메서드
         String userProfileImage = bitmapToByteArray(bitmap);*/
 
-        // Step4. 서버로 String 기반 이미지 데이터 전송
+        // Step5. MultipartBody 데이터를 서버에 전달
         UserService userService = ServiceProvider.getUserService(getContext());
         Call<Void> call = userService.setUserProfileImage(battach, userNo);
         call.enqueue(new Callback<Void>() {

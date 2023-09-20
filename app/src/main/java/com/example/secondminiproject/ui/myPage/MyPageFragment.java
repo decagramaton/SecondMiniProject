@@ -99,7 +99,6 @@ public class MyPageFragment extends Fragment {
     }
 
     private void settingLoginLogout() {
-
         String userNo = AppKeyValueStore.getValue(getContext(), "userNo");
         if(userNo == null){
             binding.btnMyPageLoginLogout.setText("로그인");
