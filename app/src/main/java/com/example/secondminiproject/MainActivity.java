@@ -16,9 +16,11 @@ import androidx.navigation.ui.NavigationUI;
 import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,11 +32,19 @@ import android.widget.Button;
 import com.example.secondminiproject.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private ActivityMainBinding binding;
     private NavController navController;
+    private SharedPreferences SPreferences;
+
+    // SharedPreferences 접근 이름, 저장 데이터 초기화
+    private final String NameSPreferences = "Day";
+    private String strSDFormatDay = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +53,18 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // '오늘 그만 보기' 기능을 위한 날짜 획득
+        long CurrentTime = System.currentTimeMillis(); // 현재 시간을 msec 단위로 얻음
+        Date TodayDate = new Date(CurrentTime); // 현재 시간 Date 변수에 저장
+        SimpleDateFormat SDFormat = new SimpleDateFormat("dd");
+        strSDFormatDay = SDFormat.format(TodayDate); // 'dd' 형태로 포맷 변경
+
+        // SharedPreferences 획득
+        SharedPreferences SPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String strSPreferencesDay = SPreferences.getString(NameSPreferences, "0");
+        if((Integer.parseInt(strSDFormatDay) - Integer.parseInt(strSPreferencesDay)) != 0)
+            showAdvertiseDialog();
+
         // NavController 설정
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host);
         navController = navHostFragment.getNavController();
@@ -50,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         boolean isInit = sharedPreferences.getBoolean("isInit", false);
         if(!isInit) {
-            showAdvertiseDialog();
             Log.i(TAG,"최초실행");
         }
 
@@ -79,7 +100,16 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setView(view)
                 .create();
-        alertDialog.show();
+                alertDialog.show();
+
+        Button btnAdDayClose = view.findViewById(R.id.btn_ad_day_close);
+        btnAdDayClose.setOnClickListener(v -> {
+            SharedPreferences.Editor SPreferencesEditor = SPreferences.edit();
+            SPreferencesEditor.putString(NameSPreferences, strSDFormatDay); // 오늘 '일(day)' 저장
+            SPreferencesEditor.commit(); // important to save the preference
+            Log.d(TAG, "Close for a day");
+            alertDialog.dismiss();
+        });
 
         Button btnAdClose = view.findViewById(R.id.btn_ad_close);
         btnAdClose.setOnClickListener(v -> {

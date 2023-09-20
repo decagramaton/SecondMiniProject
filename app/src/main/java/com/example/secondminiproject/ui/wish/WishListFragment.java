@@ -130,8 +130,5 @@ public class WishListFragment extends Fragment {
         binding.btnWishGoListTop.setOnClickListener(v -> {
             binding.recyclerViewWish.scrollToPosition(0);
         });
-
-
     }
-
 }

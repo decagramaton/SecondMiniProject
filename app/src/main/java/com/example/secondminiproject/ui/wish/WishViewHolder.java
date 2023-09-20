@@ -23,6 +23,7 @@ public class WishViewHolder extends RecyclerView.ViewHolder {
     private TextView wishProductPrice;
 
     private ImageButton btnRemoveWish;
+    private OnDeleteWishListener onDeleteWishListener;
 
 
     public WishViewHolder(@NonNull View itemView, WishAdapter.OnItemClickListener onItemClickListener) {
@@ -31,6 +32,7 @@ public class WishViewHolder extends RecyclerView.ViewHolder {
         this.wishProductName = itemView.findViewById(R.id.wish_product_name);
         this.wishProductPrice = itemView.findViewById(R.id.wish_product_price);
         this.btnRemoveWish = itemView.findViewById(R.id.btnRemoveWish);
+        this.onDeleteWishListener = onDeleteWishListener;
 
         //클릭 이벤트 처리
         itemView.setOnClickListener(v -> {
@@ -38,26 +40,25 @@ public class WishViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
+    public interface OnDeleteWishListener {
+        void onDeleteWish(int productNo);
+    }
+
     public void setData(Product wishProduct, int productNo){
         ProductService.loadImageByMediaName(productNo, "thumbnail",this.wishProductImage);
         this.wishProductName.setText(wishProduct.getProductTitle());
         this.wishProductPrice.setText(String.valueOf(wishProduct.getProductAdultPrice()));
         this.btnRemoveWish.setOnClickListener(v->{
-            Log.i(TAG, "다이얼로그가 실행이 되나요?");
             AlertDialog alertDialog = new AlertDialog.Builder(v.getContext())
                     .setTitle("삭제하시겠습니까?")
-                    .setIcon(R.drawable.ic_earth)
-                    .setMessage("          진짜 지울거야?")
-                    .setPositiveButton("삭제", (dialog, which) -> Log.i(TAG, "삭제 버튼이 클릭됨"))
+                    .setIcon(R.drawable.ic_wish_list_delete_24dp)
+                    .setMessage("진짜 지울거야?")
+                    .setPositiveButton("삭제", (dialog, which) -> {
+                                Log.i(TAG, "삭제 버튼이 클릭됨");
+                                onDeleteWishListener.onDeleteWish(productNo);})
                     .setNegativeButton("취소", (dialog, which) -> Log.i(TAG, "취소 버튼이 클릭됨"))
                     .create();
             alertDialog.show();
         });
-
-       /* String currencySymbol = Currency.getInstance("KRW").getSymbol();
-        DecimalFormat df = new DecimalFormat("#,###");
-        this.price.setText(currencySymbol + " " +df.format(product.getPrice()));*/
-
-
     }
 }

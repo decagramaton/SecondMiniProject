@@ -126,7 +126,6 @@ public class ProductDetailFragment extends Fragment {
                         youTubePlayer.loadVideo(videoId,0);
                     }
                 });
-
             }
 
             @Override
@@ -134,8 +133,6 @@ public class ProductDetailFragment extends Fragment {
 
             }
         });
-
-
     }
 
 
