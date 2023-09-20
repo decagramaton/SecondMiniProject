@@ -74,6 +74,7 @@ public class WishListFragment extends Fragment {
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 List<Product> productList = response.body();
                 wishAdapter.setWishList(productList);
+                wishAdapter.setNavController(navController);
                 binding.recyclerViewWish.setAdapter(wishAdapter);
             }
 
@@ -114,6 +115,7 @@ public class WishListFragment extends Fragment {
                 args.putSerializable("productNo", wishProduct.getProductNo());
 
                 navController.navigate(R.id.dest_product_detail, args,null);
+
             }
         });
 

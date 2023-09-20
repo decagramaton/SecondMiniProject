@@ -17,4 +17,7 @@ public interface WishService {
 
     @GET("wish/getWishListByUserNo")
     Call<List<Product>> getWishListByUserNo(@Query("userNo") int userNo);
+
+    @GET("wish/deleteWish")
+    Call<Void> deleteWish(@Query("productNo") int productNo,@Query("userNo") int userNo);
 }
