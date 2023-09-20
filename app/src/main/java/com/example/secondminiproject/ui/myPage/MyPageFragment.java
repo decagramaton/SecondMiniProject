@@ -3,13 +3,10 @@ package com.example.secondminiproject.ui.myPage;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.os.Handler;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +16,6 @@ import com.example.secondminiproject.databinding.FragmentMyPageBinding;
 import com.example.secondminiproject.datastore.AppKeyValueStore;
 import com.example.secondminiproject.service.UserService;
 
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -143,7 +139,7 @@ public class MyPageFragment extends Fragment {
         binding.btnMyPageWishList.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putInt("startPage",1);
-            navController.navigate(R.id.action_dest_my_page_to_tabLayoutMainFragment2,bundle);
+            navController.navigate(R.id.action_dest_my_page_to_dest_tabs_wish_recent_list,bundle);
         });
     }
 
@@ -162,7 +158,7 @@ public class MyPageFragment extends Fragment {
         binding.btnMyPageRecentList.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putInt("startPage",2);
-            navController.navigate(R.id.action_dest_my_page_to_tabLayoutMainFragment2,bundle);
+            navController.navigate(R.id.action_dest_my_page_to_dest_tabs_wish_recent_list,bundle);
         });
     }
 }

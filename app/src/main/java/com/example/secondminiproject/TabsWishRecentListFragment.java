@@ -11,28 +11,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.secondminiproject.databinding.FragmentTabLayoutMainBinding;
+import com.example.secondminiproject.databinding.FragmentTabsWishRecentListBinding;
 import com.example.secondminiproject.ui.RecentProduct.RecentProductListFragment;
 import com.example.secondminiproject.ui.wish.WishListFragment;
 import com.google.android.material.tabs.TabLayout;
 
 
-public class TabLayoutMainFragment extends Fragment {
+public class TabsWishRecentListFragment extends Fragment {
     private static final String TAG = "TabLayoutMainFragment";
 
     private NavController navController;
-    private FragmentTabLayoutMainBinding binding;
+    private FragmentTabsWishRecentListBinding binding;
 
     private TabLayout tabs;
     private WishListFragment wishListFragment;
     private RecentProductListFragment recentProductListFragment;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = FragmentTabLayoutMainBinding.inflate(inflater);
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmentTabsWishRecentListBinding.inflate(inflater);
         navController = NavHostFragment.findNavController(this);
+
         wishListFragment = new WishListFragment();
         recentProductListFragment = new RecentProductListFragment();
 

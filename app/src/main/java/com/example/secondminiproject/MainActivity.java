@@ -133,7 +133,9 @@ public class MainActivity extends AppCompatActivity {
                 navController.navigate(R.id.dest_product_list, null, navOptions);
                 return true;
             } else if (item.getItemId() == R.id.dest_wish_list) {
-                navController.navigate(R.id.dest_wish_list, null, navOptions);
+                Bundle bundle = new Bundle();
+                bundle.putInt("startPage", 1);
+                navController.navigate(R.id.dest_tabs_wish_recent_list, bundle, navOptions);
                 return true;
             } else if (item.getItemId() == R.id.dest_my_page) {
                 navController.navigate(R.id.dest_my_page, null, navOptions);
