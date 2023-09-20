@@ -140,36 +140,56 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
         this.foldingContentReservationStartDate.setText(sdf.format(startdate));
         Date enddate = new Date(productInfo.getTourEndDate());
         this.foldingContentReservationEndDate.setText(sdf.format(enddate));
-        this.foldingContentReservationCancel.setOnClickListener(v->{
-            AlertDialog alertDialog =new AlertDialog.Builder(v.getContext())
-                    .setTitle("예약을 취소하시겠습니까?")
-                    .setMessage("눙물이 납니다.")
-                    .setPositiveButton("예약취소",((dialog, which) -> {
-                        Log.i(TAG, "예약 취소 버튼 클릭 ");
-                        ReservationService reservationService = ServiceProvider.getReservationService(navController.getContext());
-                        Call<Void> call = reservationService.reservationCancel(reservation.getReservationNo(),Integer.parseInt(AppKeyValueStore.getValue(navController.getContext(), "userNo")));
-                        call.enqueue(new Callback<Void>() {
-                            @Override
-                            public void onResponse(Call<Void> call, Response<Void> response) {
-                                foldingContentReservationState.setText("취소중");
-                            }
+        if(reservation.getReservationState()!=1){
+            this.foldingContentReservationCancel.setEnabled(false);
+            this.foldingContentReservationCancel.setTextColor(Color.GRAY);
+        }else{
+            this.foldingContentReservationCancel.setTextColor(Color.argb(250,30,86,160));
+            this.foldingContentReservationCancel.setOnClickListener(v->{
+                AlertDialog alertDialog =new AlertDialog.Builder(v.getContext())
+                        .setTitle("예약을 취소하시겠습니까?")
+                        .setMessage("눙물이 납니다.")
+                        .setNegativeButton("취소",((dialog, which) -> {
+                            Log.i(TAG, "예약 취소를 취소하는 이벤트 호출 ");
+                        }))
+                        .setPositiveButton("예약취소",((dialog, which) -> {
+                            Log.i(TAG, "예약 취소 버튼 클릭 ");
+                            ReservationService reservationService = ServiceProvider.getReservationService(navController.getContext());
+                            Call<Void> call = reservationService.reservationCancel(reservation.getReservationNo(),Integer.parseInt(AppKeyValueStore.getValue(navController.getContext(), "userNo")));
+                            call.enqueue(new Callback<Void>() {
+                                @Override
+                                public void onResponse(Call<Void> call, Response<Void> response) {
+                                    foldingContentReservationState.setText("취소중");
+                                    foldingContentReservationCancel.setTextColor(Color.GRAY);
+                                    foldingContentReservationCancel.setEnabled(false);
+                                }
 
-                            @Override
-                            public void onFailure(Call<Void> call, Throwable t) {
+                                @Override
+                                public void onFailure(Call<Void> call, Throwable t) {
 
-                            }
-                        });
-                    }))
-                    .create();
-            alertDialog.show();
-        });
+                                }
+                            });
+                        }))
+                        .create();
+                alertDialog.show();
+            });
+        }
+
         Bundle bundle = new Bundle();
         bundle.putInt("productNo",productInfo.getProductNo());
         this.foldingContentReviewWrite.setOnClickListener(v->{
-            this.navController.navigate(R.id.dest_review_write,bundle);
+                if(reservation.getReservationState()==3 || reservation.getReservationState()==4){
+                    AlertDialog alertDialog = new AlertDialog.Builder(itemView.getContext())
+                            .setTitle("예약 취소시 리뷰 작성이 불가합니다.")
+                            .setPositiveButton("닫기",((dialog, which) -> {
+                                Log.i(TAG, "리뷰 작성 불가 메세지 출력 ");
+                            }))
+                            .create();
+                    alertDialog.show();
+                }else {
+                    this.navController.navigate(R.id.dest_review_write, bundle);
+                }
         });
-
-
 
 
 /*        this.navController = reservation.getReservationNavController();

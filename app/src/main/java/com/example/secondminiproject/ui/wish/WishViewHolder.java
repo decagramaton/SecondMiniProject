@@ -1,5 +1,6 @@
 package com.example.secondminiproject.ui.wish;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,8 +64,8 @@ public class WishViewHolder extends RecyclerView.ViewHolder {
         this.navController = navController;
         ProductService.loadImageByMediaName(productNo, "thumbnail",this.wishProductImage);
         this.wishProductName.setText(wishProduct.getProductTitle());
-        this.wishProductPrice.setText(String.valueOf(wishProduct.getProductAdultPrice()));
         DecimalFormat df = new DecimalFormat("#,###");
+        this.wishProductPrice.setText(String.valueOf(df.format(wishProduct.getProductAdultPrice())));
         this.btnRemoveWish.setOnClickListener(v->{
             AlertDialog alertDialog = new AlertDialog.Builder(v.getContext())
                     .setTitle("삭제하시겠습니까?")
@@ -81,10 +82,9 @@ public class WishViewHolder extends RecyclerView.ViewHolder {
                                     public void onResponse(Call<Void> call, Response<Void> response) {
                                         Log.i(TAG, "proNo: " + productNo);
 
-                                        itemView.setVisibility(View.GONE);
-                                        //navController.navigate(R.id.action_dest_tabs_wish_recent_list_self);
-
-
+                                        Bundle bundle = new Bundle();
+                                        bundle.putInt("startPage",1);
+                                        navController.navigate(R.id.dest_tabs_wish_recent_list,bundle);
                                     }
 
                                     @Override
