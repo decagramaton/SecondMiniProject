@@ -19,6 +19,7 @@ import android.widget.ImageButton;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentProductDetailBinding;
 import com.example.secondminiproject.datastore.AppKeyValueStore;
+import com.example.secondminiproject.datastore.AppKeyValueStore;
 import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.dto.Review;
 import com.example.secondminiproject.service.ProductService;
@@ -147,8 +148,6 @@ public class ProductDetailFragment extends Fragment {
 
             }
         });
-
-
     }
 
 

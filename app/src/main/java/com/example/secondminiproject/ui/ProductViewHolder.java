@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
+import com.example.secondminiproject.datastore.AppKeyValueStore;
 import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.dto.Product;
 import com.example.secondminiproject.dto.Review;
@@ -91,6 +92,20 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
 
         this.rating.setRating(reviewAverage);
         this.ratingCountByProduct.setText("(" + reviewList.size() + ")");
+
+        // 게시글의 찜 버튼 활성화/비활성화 처리 로직
+        if(board.getWishUserNo() != null) {
+            Log.i(TAG, "상품의 찜 유저 정보 존재");
+            for(Integer userNo : board.getWishUserNo()){
+                if(userNo == Integer.parseInt(AppKeyValueStore.getValue(btnWish.getContext(), "userNo"))){
+                    Log.i(TAG, "찜 활성화 이벤트 호출");
+                    this.btnWish.setChecked(true);
+                    break;
+                } else {
+                    this.btnWish.setChecked(false);
+                }
+            }
+        }
     }
 }
 

@@ -19,6 +19,7 @@ public class Board implements Serializable {
     private String productContent;
     private String productCategory;
     List<Review> reviewList;
+    List<Integer> wishUserNo;
     private String productVideoUrl;
 
     @Override
@@ -36,8 +37,17 @@ public class Board implements Serializable {
                 ", productContent='" + productContent + '\'' +
                 ", productCategory='" + productCategory + '\'' +
                 ", reviewList=" + reviewList +
+                ", wishUserNo=" + wishUserNo +
                 ", productVideoUrl='" + productVideoUrl + '\'' +
                 '}';
+    }
+
+    public List<Integer> getWishUserNo() {
+        return wishUserNo;
+    }
+
+    public void setWishUserNo(List<Integer> wishUserNo) {
+        this.wishUserNo = wishUserNo;
     }
 
     public String getProductVideoUrl() {
