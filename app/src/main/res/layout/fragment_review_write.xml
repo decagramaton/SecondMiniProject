@@ -17,14 +17,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/review_write_image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/photo1" />
 
         <TextView
-            android:id="@+id/textView21"
+            android:id="@+id/review_write_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="North Male Atoll, 노르웨이"
@@ -42,12 +42,12 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <RatingBar
-            android:id="@+id/ratingBar2"
+            android:id="@+id/review_write_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:numStars="5"
-            android:progressTint="@android:color/holo_blue_light"/>
+            android:progressTint="@android:color/holo_blue_light" />
 
         <View
             android:layout_width="match_parent"
@@ -55,7 +55,7 @@
             android:background="?android:attr/listDivider" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/review_content"
+            android:id="@+id/review_write_content"
             android:layout_width="390dp"
             android:layout_height="206dp"
             android:layout_margin="10dp"
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <Button
-            android:id="@+id/btn_review"
+            android:id="@+id/btn_review_write_register"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

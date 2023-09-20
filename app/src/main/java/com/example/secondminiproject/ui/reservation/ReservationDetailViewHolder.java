@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -19,7 +20,10 @@ import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.service.ProductService;
 import com.example.secondminiproject.service.ReservationService;
+import com.example.secondminiproject.service.ReviewService;
 import com.example.secondminiproject.service.ServiceProvider;
+
+import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -50,6 +54,9 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
     private TextView foldingContentReservationEndDate;
     private Button foldingContentReservationCancel;
     private Button foldingContentReviewWrite;
+    private TextView foldingContentAdultNumber;
+    private TextView foldingContentChildNumber;
+
 
     // folding cell
     private com.ramotion.foldingcell.FoldingCell foldingCell;
@@ -86,6 +93,8 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
         this.foldingContentReservationEndDate = itemView.findViewById(R.id.folding_content_reservation_end_date);
         this.foldingContentReservationCancel = itemView.findViewById(R.id.folding_content_reservation_cancel);
         this.foldingContentReviewWrite = itemView.findViewById(R.id.folding_content_review_write);
+        this.foldingContentAdultNumber = itemView.findViewById(R.id.folding_content_adult_number);
+        this.foldingContentChildNumber = itemView.findViewById(R.id.folding_content_child_number);
 
         this.foldingCell = itemView.findViewById(R.id.folding_cell);
 
@@ -134,6 +143,8 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
         }
         this.foldingContentReservationState.setText(reservationState);
         this.foldingContentReservationNo.setText(String.valueOf(reservation.getReservationNo()));
+        this.foldingContentAdultNumber.setText(String.valueOf(reservation.getReservationAdultNumber()));
+        this.foldingContentChildNumber.setText(String.valueOf(reservation.getReservationChildNumber()));
 
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY년 MM월 dd일 (E)", Locale.KOREAN);
         Date startdate = new Date(productInfo.getTourStartDate());
@@ -176,6 +187,7 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
         }
 
         Bundle bundle = new Bundle();
+        Log.i(TAG, "예약번호가 잇는가??: "+reservation.getReservationNo());
         bundle.putInt("productNo",productInfo.getProductNo());
         this.foldingContentReviewWrite.setOnClickListener(v->{
                 if(reservation.getReservationState()==3 || reservation.getReservationState()==4){
@@ -187,7 +199,37 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
                             .create();
                     alertDialog.show();
                 }else {
-                    this.navController.navigate(R.id.dest_review_write, bundle);
+                    ReviewService reviewService = ServiceProvider.getReviewService(navController.getContext());
+                    Call<Integer> call = reviewService.checkReview(reservation.getReservationNo());
+                    call.enqueue(new Callback<Integer>() {
+                        @Override
+                        public void onResponse(Call<Integer> call, Response<Integer> response) {
+                            Integer reviewCount = response.body();
+                            Log.i(TAG, "리뷰 개수는 ?? : "+reviewCount);
+                            if(reviewCount == 0){
+                                Toast toast = new Toast(navController.getContext());
+                                toast.setText("리뷰작성페이지로 이동합니다");
+                                toast.show();
+                                bundle.putInt("reservationNo",reservation.getReservationNo());
+                                navController.navigate(R.id.dest_review_write, bundle);
+                            } else if (reviewCount ==1 ) {
+                                AlertDialog alertDialog = new AlertDialog.Builder(v.getContext())
+                                        .setTitle("이미 작성한 리뷰가 있습니다.")
+                                        .setMessage("수고연~")
+                                        .setPositiveButton("확인",(dialog, which) -> {
+                                            Log.i(TAG, "onResponse: 굳");
+                                        })
+                                        .create();
+                                alertDialog.show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Integer> call, Throwable t) {
+
+                        }
+                    });
+
                 }
         });
 

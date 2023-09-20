@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentReviewList3Binding;
 import com.example.secondminiproject.databinding.FragmentReviewListBinding;
+import com.example.secondminiproject.datastore.AppKeyValueStore;
 import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.dto.Review;
 import com.example.secondminiproject.service.ReviewService;
@@ -75,7 +76,7 @@ public class ReviewListFragment extends Fragment {
         //데이터 받아와서 어뎁터에 설정
         ReviewService reviewService = ServiceProvider.getReviewService(getContext());
         //로그인 연결시 DB랑 연동
-        Call<List<Review>> call = reviewService.getReviewListByUserNo(3);
+        Call<List<Review>> call = reviewService.getReviewListByUserNo(Integer.parseInt(AppKeyValueStore.getValue(getContext(),"userNo")));
 
         call.enqueue(new Callback<List<Review>>() {
             @Override

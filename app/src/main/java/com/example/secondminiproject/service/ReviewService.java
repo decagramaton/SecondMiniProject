@@ -16,4 +16,10 @@ public interface ReviewService {
         @GET("review/getReviewListByUserNo")
         Call<List<Review>> getReviewListByUserNo(@Query("userNo") int userNo);
 
+        @GET("review/addReview")
+        Call<Void> addReview(@Query("title") String title, @Query("rating") int rating, @Query("content") String content,
+                             @Query("reservationNo") int reservationNo, @Query("userNo") int userNo, @Query("productNo") int productNo);
+
+        @GET("review/checkReview")
+        Call<Integer> checkReview(@Query("reservationNo") int reservationNo);
 }
