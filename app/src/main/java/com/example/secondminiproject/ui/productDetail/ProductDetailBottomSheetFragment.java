@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -149,16 +150,26 @@ public class ProductDetailBottomSheetFragment extends BottomSheetDialogFragment 
     }
 
     private void initBtnMakeReservation() {
+
         binding.btnProductDetailBottomSheetMakeReservation.setOnClickListener(v -> {
-            dismiss();
-            Bundle bundle = new Bundle();
-            bundle.putInt("eachAdultPrice",eachAdultPrice);
-            bundle.putInt("eachChildPrice",eachChildPrice);
-            bundle.putInt("adultNumber",changingAdultNum);
-            bundle.putInt("childNumber",changingChildNum);
-            bundle.putInt("totalPrice",calTotalPrice);
-            bundle.putInt("productNo",productNo);
-            navController.navigate(R.id.dest_payment,bundle);
+            if(changingAdultNum == 0 && changingChildNum == 0){
+                AlertDialog alertDialog = new AlertDialog.Builder(view.getContext())
+                        .setTitle("인원을 선택해 주세요")
+                        .setMessage("최소 1명 이상 결제 해야 합니다.")
+                        .setPositiveButton("확인",(dialog, which) -> Log.i(TAG, "initBtnMakeReservation: "))
+                        .create();
+                alertDialog.show();
+            }else {
+                dismiss();
+                Bundle bundle = new Bundle();
+                bundle.putInt("eachAdultPrice", eachAdultPrice);
+                bundle.putInt("eachChildPrice", eachChildPrice);
+                bundle.putInt("adultNumber", changingAdultNum);
+                bundle.putInt("childNumber", changingChildNum);
+                bundle.putInt("totalPrice", calTotalPrice);
+                bundle.putInt("productNo", productNo);
+                navController.navigate(R.id.dest_payment, bundle);
+            }
         });
     }
 

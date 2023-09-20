@@ -3,6 +3,7 @@ package com.example.secondminiproject.service;
 import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.dto.Review;
 
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -15,5 +16,11 @@ public interface ReservationService {
         @GET("reservation/setNewReservationInfo")
         Call<Void> setNewReservationInfo(@Query("userNo") int userNo, @Query("productNo") int productNo,
                                          @Query("adultNumber") int adultNumber, @Query("childNumber") int childrenNumber);
+
+        @GET("reservation/getReservationDayList")
+        Call<List<Long>> getReservationDayList(@Query("userNo") int userNo);
+
+        @GET("reservation/getReservationListByDay")
+        Call<List<Reservation>> getReservationListByDay(@Query("reservationDate") Date reservationDate, @Query("userNo") int userNo);
 
 }

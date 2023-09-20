@@ -14,7 +14,7 @@ public class Reservation implements Serializable {
     private int productNo;
     private int reservationAdultNumber;
     private int reservationChildNumber;
-    private Date reservationDate;
+    private long reservationDate;
     private int reservationState;
 
     //-------------DB 얻기 전까지 임시로
@@ -134,11 +134,11 @@ public class Reservation implements Serializable {
         this.reservationChildNumber = reservationChildNumber;
     }
 
-    public Date getReservationDate() {
+    public long getReservationDate() {
         return reservationDate;
     }
 
-    public void setReservationDate(Date reservationDate) {
+    public void setReservationDate(long reservationDate) {
         this.reservationDate = reservationDate;
     }
 

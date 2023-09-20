@@ -99,6 +99,7 @@ public class ProductListFragment extends Fragment {
             @Override
             public void onItemClick(View itemView, int position) {
                 Board board = productAdapter.getItem(position);
+                Log.i(TAG, "보드에 데이터가 담기긴하나? :+"+  board);
 
                 Bundle args = new Bundle();
                 args.putSerializable("board", board);

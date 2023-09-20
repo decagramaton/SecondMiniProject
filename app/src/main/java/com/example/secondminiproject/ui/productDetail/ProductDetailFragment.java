@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.telephony.ClosedSubscriberGroupInfo;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.ImageButton;
 
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentProductDetailBinding;
+import com.example.secondminiproject.datastore.AppKeyValueStore;
 import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.dto.Review;
 import com.example.secondminiproject.service.ProductService;
@@ -50,9 +52,9 @@ public class ProductDetailFragment extends Fragment {
         binding = FragmentProductDetailBinding.inflate(getLayoutInflater());
         navController = NavHostFragment.findNavController(this);
 
-        initSetData();
-        initSetWish();
 
+        initSetWish();
+        initSetData();
         initBtnMakeReservation();
         //initVideo();
         initPagerView();
@@ -67,14 +69,11 @@ public class ProductDetailFragment extends Fragment {
 
     private void initSetWish() {
         WishService wishService = ServiceProvider.getWishService(getContext());
-        //추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자
-        //추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자
-        //추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자
-        //추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자
-        //추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자
-        //추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자
-        //추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자//추후 DB연결되면 번들이랑 AppDataStore로 받아오자
-        Call<Integer> call1 = wishService.checkWishByUserNoAndProductNo(1,1); //추후 DB연결되면 번들이랑 AppDataStore로 받아오자
+        Bundle bundle = getArguments();
+        Board board = (Board) bundle.getSerializable("board");
+        this.productNo = board.getProductNo();
+        int userNo = Integer.parseInt(AppKeyValueStore.getValue(getContext(),"userNo"));
+        Call<Integer> call1 = wishService.checkWishByUserNoAndProductNo(productNo,userNo); //추후 DB연결되면 번들이랑 AppDataStore로 받아오자
         call1.enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
@@ -96,36 +95,50 @@ public class ProductDetailFragment extends Fragment {
     private void initSetData() {
         ProductService productService = ServiceProvider.getProductService(getContext());
         Bundle bundle = getArguments();
-        //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함.
-        //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함.
-        //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함.
-        //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함.
-        //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함. //나중에는 번들로 상품번호 받아와야함.
-        Call<Board> call = productService.getProductByProductNo(1); //나중에는 번들로 상품번호 받아와야함.
-        this.productNo = 1; //나중엔 번들로부터 상품번호 받아와야함
+        Log.i(TAG, "여기에 들어가는 productNo  상품번호는 :  "+ productNo);
+        Call<Board> call = productService.getProductByProductNo(productNo);
         call.enqueue(new Callback<Board>() {
+            private static final String TAG = "ProductDetailFragment";
             @Override
             public void onResponse(Call<Board> call, Response<Board> response) {
+                Log.i(TAG, " 받아오는 상품 번호 : "+ productNo);
                 Board productInfo = response.body();
                 //binding.productDetailRating.setRating(Math.round(productInfo.getAverageRating()));
-                binding.productDetailReviewCount.setText(String.valueOf(productInfo.getReviewList().size()));
+                Log.i(TAG, "productInfo.getReviewList() : "+productInfo.getReviewList());
+                if(productInfo.getReviewList()==null){
+                    binding.productDetailReviewCount.setText(String.valueOf(0));
+                }else {
+                    binding.productDetailReviewCount.setText(String.valueOf(productInfo.getReviewList().size()));
+                }
                 binding.productDetailReservationCount.setText(String.valueOf(productInfo.getProductReservationNumber()));
                 binding.productDetailTitle.setText(productInfo.getProductTitle());
                 DecimalFormat df = new DecimalFormat("#,###");
                 binding.productDetailPrice.setText(String.valueOf(df.format(productInfo.getProductAdultPrice())));
                 int days = (int) (productInfo.getTourEndDate()/100000000-productInfo.getTourStartDate()/100000000);
-                binding.productDetailTravelDays.setText(days-1+"박 "+days+"일");
+                binding.productDetailTravelDays.setText(days+"박 "+(days+1)+"일");
                 binding.productDetailTravelTransportation.setText(productInfo.getProductVehicle());
                 binding.productDetailTravelArea.setText(productInfo.getProductVisitPlace());
                 binding.productDetailLeftTicket.setText("몇장?");
                 binding.productDetailTravelContent.setText(productInfo.getProductContent());
-                String videoId = productInfo.getProductVideoUrl();
-                binding.productDetailVideoView.addYouTubePlayerListener(new AbstractYouTubePlayerListener(){
-                    @Override
-                    public void onReady(@NotNull YouTubePlayer youTubePlayer) {
-                        youTubePlayer.loadVideo(videoId,0);
-                    }
-                });
+                Log.i(TAG, "비디오 url : "+productInfo.getProductVideoUrl());
+                if(productInfo.getProductVideoUrl()==null){
+                    binding.productDetailVideoView.addYouTubePlayerListener(new AbstractYouTubePlayerListener(){
+                        @Override
+                        public void onReady(@NotNull YouTubePlayer youTubePlayer) {
+                            youTubePlayer.loadVideo("uCvqPcqdxFA",0);
+                        }
+                    });
+                }else{
+                    String videoId =productInfo.getProductVideoUrl();
+                    binding.productDetailVideoView.addYouTubePlayerListener(new AbstractYouTubePlayerListener(){
+                        @Override
+                        public void onReady(@NotNull YouTubePlayer youTubePlayer) {
+                            youTubePlayer.loadVideo(videoId,0);
+                        }
+                    });
+
+                }
+
 
             }
 
@@ -143,8 +156,9 @@ public class ProductDetailFragment extends Fragment {
         binding.btnProductDetailWish.setOnClickListener(v -> {
             startShakeAnimation();
             WishService wishService = ServiceProvider.getWishService(getContext());
+            int userNo =Integer.parseInt( AppKeyValueStore.getValue(getContext(),"userNo"));
             //추후에 올바른 정보 삽입
-            Call<Void> call =  wishService.clickWishBtn(1,1);
+            Call<Void> call =  wishService.clickWishBtn(productNo,userNo);
             call.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
@@ -174,7 +188,7 @@ public class ProductDetailFragment extends Fragment {
             //navController.navigate(R.id.dest_payment);
             ProductDetailBottomSheetFragment productDetailBottomSheetFragment = new ProductDetailBottomSheetFragment();
             //추후 상품 번호 들어오면 번들로 받자.
-            productDetailBottomSheetFragment.getProductNo(1);
+            productDetailBottomSheetFragment.getProductNo(productNo);
             productDetailBottomSheetFragment.show(getActivity().getSupportFragmentManager(), "productDetailBottomSheetFragment");
         });
     }

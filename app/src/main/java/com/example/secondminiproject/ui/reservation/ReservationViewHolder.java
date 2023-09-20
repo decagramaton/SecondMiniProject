@@ -17,7 +17,9 @@ import com.example.secondminiproject.databinding.FragmentReservationListDateBind
 import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.ui.home.HomeFragment;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class ReservationViewHolder extends RecyclerView.ViewHolder {
     private static final String TAG = "ReservationViewHolder";
@@ -34,8 +36,9 @@ public class ReservationViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    public void setData(String reservationDate){
-
-        reservationListDay.setText(reservationDate);
+    public void setData(Long reservationDay){
+        Date reservationDate = new Date(reservationDay);
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY년 MM월 dd일 (E)", Locale.KOREAN);
+        reservationListDay.setText(sdf.format(reservationDate));
     }
 }

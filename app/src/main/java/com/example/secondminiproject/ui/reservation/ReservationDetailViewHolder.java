@@ -1,6 +1,7 @@
 package com.example.secondminiproject.ui.reservation;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +13,14 @@ import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
+import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.dto.Reservation;
+import com.example.secondminiproject.service.ProductService;
+
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
     private static final String TAG = "ReservationViewHolder";
@@ -75,7 +83,7 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
 
         this.foldingCell = itemView.findViewById(R.id.folding_cell);
 
-        initFloding();
+        initFolding();
 
 
         /*this.reservationListTitle = itemView.findViewById(R.id.reservation_list_title);
@@ -99,23 +107,42 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    public void setData(Reservation reservation){
-        this.foldingTitleImageview.setImageResource(R.drawable.osaka_2);
-        this.foldingTitleName.setText(reservation.getProductName());
-        this.foldingTitleProductPrice.setText("1,000,000");
-
-        this.foldingContentImage.setImageResource(R.drawable.osaka_3);
-        this.foldingContentTitle.setText(reservation.getProductName());
-        this.foldingContentReservationState.setText("발권완료");
+    public void setData(Reservation reservation, Board productInfo){
+        ProductService.loadImageByMediaName(productInfo.getProductNo(),"name_main",this.foldingTitleImageview);
+        //this.foldingTitleImageview.setImageResource(R.drawable.osaka_2);
+        this.foldingTitleName.setText(productInfo.getProductTitle());
+        DecimalFormat df = new DecimalFormat("#,###");
+        this.foldingTitleProductPrice.setText(String.valueOf(df.format(productInfo.getProductAdultPrice())));
+        ProductService.loadImageByMediaName(productInfo.getProductNo(),"name_thumbnail",this.foldingContentImage);
+        //this.foldingContentImage.setImageResource(R.drawable.osaka_3);
+        this.foldingContentTitle.setText(productInfo.getProductTitle());
+        String reservationState=null;
+        if(reservation.getReservationState()==1){
+            reservationState ="발권완료";
+        }else if(reservation.getReservationState()==2){
+            reservationState ="예약완료";
+        }else if(reservation.getReservationState()==3){
+            reservationState ="취소중";
+        }else if(reservation.getReservationState()==3){
+            reservationState ="취소완료";
+        }
+        this.foldingContentReservationState.setText(reservationState);
         this.foldingContentReservationNo.setText(String.valueOf(reservation.getReservationNo()));
-        this.foldingContentReservationDate.setText(reservation.getImsiReservationDate());
-        this.foldingContentReservationStartDate.setText(reservation.getStartDate());
-        this.foldingContentReservationEndDate.setText(reservation.getEndDate());
+
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY년 MM월 dd일 (E)", Locale.KOREAN);
+        Date reservationdate = new Date(reservation.getReservationDate());
+        this.foldingContentReservationDate.setText(sdf.format(reservationdate));
+        Date startdate = new Date(productInfo.getTourStartDate());
+        this.foldingContentReservationStartDate.setText(sdf.format(startdate));
+        Date enddate = new Date(productInfo.getTourEndDate());
+        this.foldingContentReservationEndDate.setText(sdf.format(enddate));
         this.foldingContentReservationCancel.setOnClickListener(v->{
             Log.i(TAG, "예약 취소 이벤트 호출 발생");
         });
+        Bundle bundle = new Bundle();
+        bundle.putInt("productNo",productInfo.getProductNo());
         this.foldingContentReviewWrite.setOnClickListener(v->{
-            this.navController.navigate(R.id.dest_review_write);
+            this.navController.navigate(R.id.dest_review_write,bundle);
         });
 
 
@@ -140,7 +167,7 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    private void initFloding() {
+    private void initFolding() {
         foldingCell.initialize(30, 1000, Color.DKGRAY, 2);
 
         foldingCell.setOnClickListener(new View.OnClickListener() {

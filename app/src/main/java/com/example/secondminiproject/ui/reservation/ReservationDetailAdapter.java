@@ -10,10 +10,17 @@ import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
+import com.example.secondminiproject.dto.Board;
+import com.example.secondminiproject.dto.Product;
 import com.example.secondminiproject.dto.Reservation;
+import com.example.secondminiproject.service.ProductService;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ReservationDetailAdapter extends RecyclerView.Adapter<ReservationDetailViewHolder> {
     private static final String TAG = "ReservationDetailAdapter";
@@ -21,11 +28,13 @@ public class ReservationDetailAdapter extends RecyclerView.Adapter<ReservationDe
 
     private OnItemClickListener onItemClickListener;
     private NavController navController;
+    private ProductService productService;
 
 
-    public ReservationDetailAdapter(List<Reservation> reservationList, NavController navController) {
+    public ReservationDetailAdapter(List<Reservation> reservationList, NavController navController, ProductService productService) {
         this.reservationList = reservationList;
         this.navController = navController;
+        this.productService = productService;
     }
 
 
@@ -42,7 +51,21 @@ public class ReservationDetailAdapter extends RecyclerView.Adapter<ReservationDe
     @Override
     public void onBindViewHolder(@NonNull ReservationDetailViewHolder holder, int position) {
         Reservation reservation = reservationList.get(position);
-        holder.setData(reservation);
+        Call<Board> call = productService.getProductByProductNo(reservation.getProductNo());
+        call.enqueue(new Callback<Board>() {
+            @Override
+            public void onResponse(Call<Board> call, Response<Board> response) {
+                Board productInfo = response.body();
+
+                holder.setData(reservation, productInfo);
+            }
+
+            @Override
+            public void onFailure(Call<Board> call, Throwable t) {
+
+            }
+        });
+
     }
 
     @Override

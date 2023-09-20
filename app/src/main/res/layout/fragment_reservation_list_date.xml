@@ -30,16 +30,6 @@
                 android:textColor="#163172"
                 android:textSize="16dp"
                 android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/reservation_list_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:textColor="#163172"
-                android:text="(금)"
-                android:textSize="16dp"
-                android:textStyle="bold" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView

@@ -1,5 +1,6 @@
 package com.example.secondminiproject.ui.reservation;
 
+import android.app.Service;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,11 +16,20 @@ import android.view.ViewGroup;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentReservationListBinding;
 import com.example.secondminiproject.databinding.FragmentReservationListDateBinding;
+import com.example.secondminiproject.datastore.AppKeyValueStore;
 import com.example.secondminiproject.dto.Reservation;
+import com.example.secondminiproject.service.ProductService;
+import com.example.secondminiproject.service.ReservationService;
+import com.example.secondminiproject.service.ServiceProvider;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ReservationListFragment extends Fragment {
 
@@ -46,61 +56,53 @@ public class ReservationListFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         binding.recyclerViewReservationList.setLayoutManager(linearLayoutManager);
 
+        //어뎁터 생성
         ReservationAdapter reservationAdapter = new ReservationAdapter();
 
-        //데이터 받아와서 어뎁터에 설정
-        Random random = new Random();
-        for(int i=1; i <=2; i++){
-            Reservation reservation = new Reservation();
-            reservation.setReservationNo(i);
-            reservation.setProductName(i+ "번째 상품의 상품명이 들어간다.");
-            //이미지명, resource의 어디에있는지, 패키지명("com.example.myapplication"  or getApplication().getPackageName() ) 을 넣어야함.
-            reservation.setReservationImage(getResources().getIdentifier("photo" +(random.nextInt(17)+1), "drawable","com.example.secondminiproject"));
-            reservation.setImsiReservationDate("23.09.08");
-            reservation.setStartDate("23.09.23");
-            reservation.setReservationState(1);
-            /*reservation.setReservationAdultNumber(random.nextInt(3)+1);
-            reservation.setReservationChildNumber(random.nextInt(2)+1);*/
-            reservation.setReservationNavController(navController);
+        //회원 번호 받아오기
+        int userNo = Integer.parseInt(AppKeyValueStore.getValue(getContext(),"userNo"));
+        Log.i(TAG, "프레그먼트의 회원번호 : "+userNo);
 
-            //productAdapter.addProduct(product);
-            reservationAdapter.addReservation(reservation);
+        //
+        ProductService productService = ServiceProvider.getProductService(getContext());
+        ReservationService reservationService = ServiceProvider.getReservationService(getContext());
+        Call<List<Long>> call = reservationService.getReservationDayList(userNo);
+        call.enqueue(new Callback<List<Long>>() {
+            @Override
+            public void onResponse(Call<List<Long>> call, Response<List<Long>> response) {
+                //날짜 리스트 받아오기
+                List<Long> reservationDays = response.body();
+                Log.i(TAG, "콜백함수의 reservationDays : "+reservationDays);
 
-        }
-        for(int i=1; i <=2; i++){
-            Reservation reservation = new Reservation();
-            reservation.setReservationNo(i);
-            reservation.setProductName(i+ "번째 상품의 상품명이 들어간다.");
-            //이미지명, resource의 어디에있는지, 패키지명("com.example.myapplication"  or getApplication().getPackageName() ) 을 넣어야함.
-            reservation.setReservationImage(getResources().getIdentifier("photo" +(random.nextInt(17)+1), "drawable","com.example.secondminiproject"));
-            reservation.setImsiReservationDate("23.09.13");
-            reservation.setStartDate("23.09.30");
-            reservation.setReservationState(2);
-            /*reservation.setReservationAdultNumber(random.nextInt(3)+1);
-            reservation.setReservationChildNumber(random.nextInt(2)+1);*/
-            reservation.setReservationNavController(navController);
+                //어뎁터에 설정
+                reservationAdapter.setReservationDayListAndServiceAndUserNo(reservationDays,reservationService,productService,userNo);
+                reservationAdapter.setNavController(navController);
 
-            //productAdapter.addProduct(product);
-            reservationAdapter.addReservation(reservation);
+                //리사이클러뷰에 어댑터 설정
+                binding.recyclerViewReservationList.setAdapter(reservationAdapter);
 
-        }
+                binding.recyclerViewReservationList.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
 
-        //리사이클러뷰에 어댑터 설정
-        binding.recyclerViewReservationList.setAdapter(reservationAdapter);
+                    if((!v.canScrollVertically(-1))){
+                        binding.btnReservationListGoListTop.hide();
+                    }else {
+                        binding.btnReservationListGoListTop.show();
+                    }
 
-        binding.recyclerViewReservationList.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+                });
 
-            if((!v.canScrollVertically(-1))){
-                binding.btnReservationListGoListTop.hide();
-            }else {
-                binding.btnReservationListGoListTop.show();
+                binding.btnReservationListGoListTop.setOnClickListener(v -> {
+                    binding.recyclerViewReservationList.scrollToPosition(0);
+                });
             }
 
+            @Override
+            public void onFailure(Call<List<Long>> call, Throwable t) {
+
+            }
         });
 
-        binding.btnReservationListGoListTop.setOnClickListener(v -> {
-            binding.recyclerViewReservationList.scrollToPosition(0);
-        });
+
     }
 
     public void setOnItemClickListener(ReservationDetailAdapter.OnItemClickListener onItemClickListener) {
