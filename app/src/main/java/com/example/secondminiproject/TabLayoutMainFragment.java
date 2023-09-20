@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.secondminiproject.databinding.FragmentTabLayoutMainBinding;
-import com.example.secondminiproject.ui.RecentListFragment;
 import com.example.secondminiproject.ui.RecentProduct.RecentProductListFragment;
 import com.example.secondminiproject.ui.wish.WishListFragment;
 import com.google.android.material.tabs.TabLayout;

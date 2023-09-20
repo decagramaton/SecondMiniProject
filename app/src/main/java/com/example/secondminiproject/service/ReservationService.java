@@ -23,4 +23,7 @@ public interface ReservationService {
         @GET("reservation/getReservationListByDay")
         Call<List<Reservation>> getReservationListByDay(@Query("reservationDate") Date reservationDate, @Query("userNo") int userNo);
 
+        @GET("reservation/reservationCancel")
+        Call<Void> reservationCancel(@Query("reservationNo") int reservationNo, @Query("userNo") int userNo);
+
 }

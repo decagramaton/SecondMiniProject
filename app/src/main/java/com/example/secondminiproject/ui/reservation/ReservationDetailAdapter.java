@@ -1,6 +1,5 @@
 package com.example.secondminiproject.ui.reservation;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.dto.Board;
-import com.example.secondminiproject.dto.Product;
 import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.service.ProductService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -42,7 +39,7 @@ public class ReservationDetailAdapter extends RecyclerView.Adapter<ReservationDe
     @Override
     public ReservationDetailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View itemView = layoutInflater.inflate(R.layout.fragment_recent_list, parent, false);
+        View itemView = layoutInflater.inflate(R.layout.fragment_reservation_list_folding_cell, parent, false);
         ReservationDetailViewHolder reservationDetailViewHolder = new ReservationDetailViewHolder(itemView,onItemClickListener, navController);
 
         return reservationDetailViewHolder;

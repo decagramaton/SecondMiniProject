@@ -28,9 +28,9 @@
                 android:scaleType="centerCrop"/>
 
             <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -47,6 +47,7 @@
                         android:maxLines="1"
                         android:ellipsize="end"
                         android:textSize="18dp"
+                        android:textColor="#163172"
                         android:textStyle="bold" />
 
                     <TextView
@@ -85,35 +86,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="15dp"
                         android:text="11932154"
-                        android:textSize="18dp"
-                        android:textColor="#163172"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="90dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:text="예약 일자 : "
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:textSize="18dp"
-                        android:textColor="#163172"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/folding_content_reservation_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        android:text="2023.09.07"
                         android:textSize="18dp"
                         android:textColor="#163172"
                         android:textStyle="bold" />
@@ -173,6 +145,76 @@
                         android:layout_marginEnd="15dp"
                         android:text="2023.09.18"
                         android:textSize="18dp"
+                        android:textColor="#163172"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/folding_title_product_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="5dp"
+                        android:text="420,000"
+                        android:textSize="17dp"
+                        android:textColor="#163172"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="20dp"
+                        android:gravity="end"
+                        android:text="원"
+                        android:textSize="17dp"
+                        android:textColor="#163172"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="성인 : "
+                        android:textColor="#163172"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/folding_title_adult_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="2"
+                        android:textSize="17dp"
+                        android:textColor="#163172"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="20dp"
+                        android:text="아동 : "
+                        android:textSize="17dp"
+                        android:textColor="#163172"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/folding_title_child_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="1"
+                        android:textSize="17dp"
                         android:textColor="#163172"
                         android:textStyle="bold" />
 

@@ -9,18 +9,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
+import com.example.secondminiproject.datastore.AppKeyValueStore;
 import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.service.ProductService;
+import com.example.secondminiproject.service.ReservationService;
+import com.example.secondminiproject.service.ServiceProvider;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
     private static final String TAG = "ReservationViewHolder";
@@ -38,7 +46,6 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
     private TextView foldingContentTitle;
     private TextView foldingContentReservationState;
     private TextView foldingContentReservationNo;
-    private TextView foldingContentReservationDate;
     private TextView foldingContentReservationStartDate;
     private TextView foldingContentReservationEndDate;
     private Button foldingContentReservationCancel;
@@ -75,7 +82,6 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
         this.foldingContentTitle = itemView.findViewById(R.id.folding_content_title);
         this.foldingContentReservationState = itemView.findViewById(R.id.folding_content_reservation_state);
         this.foldingContentReservationNo = itemView.findViewById(R.id.folding_content_reservation_no);
-        this.foldingContentReservationDate = itemView.findViewById(R.id.folding_content_reservation_date);
         this.foldingContentReservationStartDate = itemView.findViewById(R.id.folding_content_reservation_start_date);
         this.foldingContentReservationEndDate = itemView.findViewById(R.id.folding_content_reservation_end_date);
         this.foldingContentReservationCancel = itemView.findViewById(R.id.folding_content_reservation_cancel);
@@ -118,26 +124,44 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
         this.foldingContentTitle.setText(productInfo.getProductTitle());
         String reservationState=null;
         if(reservation.getReservationState()==1){
-            reservationState ="발권완료";
-        }else if(reservation.getReservationState()==2){
             reservationState ="예약완료";
+        }else if(reservation.getReservationState()==2){
+            reservationState ="발권완료";
         }else if(reservation.getReservationState()==3){
             reservationState ="취소중";
-        }else if(reservation.getReservationState()==3){
+        }else if(reservation.getReservationState()==4){
             reservationState ="취소완료";
         }
         this.foldingContentReservationState.setText(reservationState);
         this.foldingContentReservationNo.setText(String.valueOf(reservation.getReservationNo()));
 
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY년 MM월 dd일 (E)", Locale.KOREAN);
-        Date reservationdate = new Date(reservation.getReservationDate());
-        this.foldingContentReservationDate.setText(sdf.format(reservationdate));
         Date startdate = new Date(productInfo.getTourStartDate());
         this.foldingContentReservationStartDate.setText(sdf.format(startdate));
         Date enddate = new Date(productInfo.getTourEndDate());
         this.foldingContentReservationEndDate.setText(sdf.format(enddate));
         this.foldingContentReservationCancel.setOnClickListener(v->{
-            Log.i(TAG, "예약 취소 이벤트 호출 발생");
+            AlertDialog alertDialog =new AlertDialog.Builder(v.getContext())
+                    .setTitle("예약을 취소하시겠습니까?")
+                    .setMessage("눙물이 납니다.")
+                    .setPositiveButton("예약취소",((dialog, which) -> {
+                        Log.i(TAG, "예약 취소 버튼 클릭 ");
+                        ReservationService reservationService = ServiceProvider.getReservationService(navController.getContext());
+                        Call<Void> call = reservationService.reservationCancel(reservation.getReservationNo(),Integer.parseInt(AppKeyValueStore.getValue(navController.getContext(), "userNo")));
+                        call.enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                foldingContentReservationState.setText("취소중");
+                            }
+
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+
+                            }
+                        });
+                    }))
+                    .create();
+            alertDialog.show();
         });
         Bundle bundle = new Bundle();
         bundle.putInt("productNo",productInfo.getProductNo());
