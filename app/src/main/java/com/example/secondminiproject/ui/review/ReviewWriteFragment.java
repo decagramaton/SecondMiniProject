@@ -51,7 +51,6 @@ public class ReviewWriteFragment extends Fragment {
         initSetData();
         initBtnReviewWrite();
 
-
         // TextInputEditText에 TextWatcher 추가
         textInputEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -83,7 +82,6 @@ public class ReviewWriteFragment extends Fragment {
             InputMethodManager inputMethodManager = (InputMethodManager) requireContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(binding.reviewWriteContent.getWindowToken(), 0);
         });
-
 
         return binding.getRoot();
     }

@@ -192,9 +192,7 @@ public class ProductDetailFragment extends Fragment {
     }
 
     private void initBtnMakeReservation() {
-
         binding.btnProductDetailPayment.setOnClickListener(v -> {
-
             if(AppKeyValueStore.getValue(getContext(), "userNo") == null) {
                 navController.navigate(R.id.dest_login);
             } else {
