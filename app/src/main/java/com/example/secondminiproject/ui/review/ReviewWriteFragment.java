@@ -40,6 +40,7 @@ public class ReviewWriteFragment extends Fragment {
     private TextInputEditText textInputEditText;
     int enableButtonColor = Color.rgb(22, 49, 114);
     int disableButtonColor = Color.rgb(216, 216, 216);
+    private int reviewNo;
     private int reservationNo;
     private  int productNo;
     @Override
@@ -93,8 +94,8 @@ public class ReviewWriteFragment extends Fragment {
 
         Bundle bundle = getArguments();
         productNo = bundle.getInt("productNo");
-        reservationNo = bundle.getInt("reservationNo");
-        Log.i(TAG, "리뷰작성에서의 예약번호 : "+reservationNo);;
+        reviewNo = bundle.getInt("reviewNo");
+        Log.i(TAG, "리뷰작성에서의 예약번호 : "+reviewNo);
 
         ProductService productService = ServiceProvider.getProductService(getContext());
         Call<Board> call = productService.getProductByProductNo(productNo);
