@@ -34,8 +34,6 @@ public class RecentProductListFragment extends Fragment {
     private static final String TAG = "RecentProductListFragme";
     private FragmentRecentProductListBinding binding;
     private NavController navController;
-    private List<RecentProduct> recentProducts = new ArrayList<>();
-
     private RecentProductAdapter recentProductAdapter;
 
     @Override
@@ -114,21 +112,6 @@ public class RecentProductListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
-        this.recentProductAdapter = new RecentProductAdapter();
-        this.recentProductAdapter.setRecentProductList(this.recentProducts);
-        this.recentProductAdapter.setOnItemClickListener(new RecentProductAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View itemView, int position) {
-                RecentProduct recentProduct = recentProductAdapter.getItem(position);
-                Log.i(TAG, "position : "+ position);
-                Log.i(TAG, "recentProduct: "+ recentProduct.toString());
-                Bundle args = new Bundle();
-                args.putInt("productNo", recentProduct.getProductNo());
-                navController.navigate(R.id.dest_product_detail,args,null);
-            }
-        });
-
         binding.recyclerViewRecentProductList.setAdapter(this.recentProductAdapter);
     }
 }
