@@ -43,10 +43,8 @@ public class ProductListFragment extends Fragment {
         binding = FragmentProductListBinding.inflate(getLayoutInflater());
         navController = NavHostFragment.findNavController(this);
 
-
         initRecyclerView();
         initBtnCategory();
-        initSetWish();
 
         return binding.getRoot();
     }
@@ -135,13 +133,9 @@ public class ProductListFragment extends Fragment {
                 call.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        //하트 색깔 여부를 다시 출력
-                        initSetWish();
                     }
-
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
-
                     }
                 });
             }
@@ -216,26 +210,6 @@ public class ProductListFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Board>> call, Throwable t) {
-
-            }
-        });
-    }
-    private void initSetWish() {
-        WishService wishService = ServiceProvider.getWishService(getContext());
-        Call<Integer> call1 = wishService.checkWishByUserNoAndProductNo(1,1); //추후 DB연결되면 번들이랑 AppDataStore로 받아오자
-        call1.enqueue(new Callback<Integer>() {
-            @Override
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                Integer isWish = response.body();
-                /*if(isWish ==0){
-                    binding.btnWish.setChecked(false);
-                } else if (isWish ==1) {
-                    binding.btnWish.setChecked(true);
-                }*/
-            }
-
-            @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
 
             }
         });

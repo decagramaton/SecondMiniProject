@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host);
         navController = navHostFragment.getNavController();
 
+        //최초 앱 실행 확인
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         boolean isInit = sharedPreferences.getBoolean("isInit", false);
         if(!isInit) {
