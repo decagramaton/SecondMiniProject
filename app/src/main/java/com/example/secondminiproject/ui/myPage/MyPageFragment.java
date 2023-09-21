@@ -125,21 +125,33 @@ public class MyPageFragment extends Fragment {
 
     private void initBtnReviewList() {
         binding.btnMyPageReviewList.setOnClickListener(v -> {
-            navController.navigate(R.id.action_dest_my_page_to_dest_review_list);
+            if(AppKeyValueStore.getValue(getContext(), "userNo") == null) {
+                navController.navigate(R.id.dest_login);
+            } else {
+                navController.navigate(R.id.action_dest_my_page_to_dest_review_list);
+            }
         });
     }
 
     private void initBtnReservationList() {
         binding.btnMyPageReservationList.setOnClickListener(v -> {
-            navController.navigate(R.id.action_dest_my_page_to_dest_reservation_list);
+            if(AppKeyValueStore.getValue(getContext(), "userNo") == null) {
+                navController.navigate(R.id.dest_login);
+            } else {
+                navController.navigate(R.id.action_dest_my_page_to_dest_reservation_list);
+            }
         });
     }
 
     private void initBtnWishList() {
         binding.btnMyPageWishList.setOnClickListener(v -> {
-            Bundle bundle = new Bundle();
-            bundle.putInt("startPage",1);
-            navController.navigate(R.id.action_dest_my_page_to_dest_tabs_wish_recent_list,bundle);
+            if(AppKeyValueStore.getValue(getContext(), "userNo") == null) {
+                navController.navigate(R.id.dest_login);
+            } else {
+                Bundle bundle = new Bundle();
+                bundle.putInt("startPage",1);
+                navController.navigate(R.id.action_dest_my_page_to_dest_tabs_wish_recent_list,bundle);
+            }
         });
     }
 
@@ -156,9 +168,13 @@ public class MyPageFragment extends Fragment {
 
     private void initBtnRecentList() {
         binding.btnMyPageRecentList.setOnClickListener(v -> {
-            Bundle bundle = new Bundle();
-            bundle.putInt("startPage",2);
-            navController.navigate(R.id.action_dest_my_page_to_dest_tabs_wish_recent_list,bundle);
+            if(AppKeyValueStore.getValue(getContext(), "userNo") == null) {
+                navController.navigate(R.id.dest_login);
+            } else {
+                Bundle bundle = new Bundle();
+                bundle.putInt("startPage",2);
+                navController.navigate(R.id.action_dest_my_page_to_dest_tabs_wish_recent_list,bundle);
+            }
         });
     }
 }

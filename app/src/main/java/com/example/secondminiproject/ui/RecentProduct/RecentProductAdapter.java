@@ -52,7 +52,6 @@ public class RecentProductAdapter extends RecyclerView.Adapter<RecentProductView
     }
 
     public void addRecentProduct(RecentProduct recentProduct){
-        Log.i(TAG, "최근본 상품 Adapter에 최근상품 추가 호출 이벤트 실행");
         recentProductList.add(recentProduct);
     }
 
