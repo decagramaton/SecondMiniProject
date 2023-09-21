@@ -72,24 +72,32 @@ public class ProductDetailFragment extends Fragment {
         WishService wishService = ServiceProvider.getWishService(getContext());
         Bundle bundle = getArguments();
         this.productNo = bundle.getInt("productNo");
-        int userNo = Integer.parseInt(AppKeyValueStore.getValue(getContext(),"userNo"));
-        Call<Integer> call1 = wishService.checkWishByUserNoAndProductNo(productNo,userNo); //추후 DB연결되면 번들이랑 AppDataStore로 받아오자
-        call1.enqueue(new Callback<Integer>() {
-            @Override
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                Integer isWish = response.body();
-                if(isWish ==0){
-                    binding.btnProductDetailWish.setChecked(false);
-                } else if (isWish ==1) {
-                    binding.btnProductDetailWish.setChecked(true);
+
+        String targetUserNo = AppKeyValueStore.getValue(getContext(),"userNo");
+
+        if(targetUserNo != null){
+            int userNo = Integer.parseInt(targetUserNo);
+            Call<Integer> call1 = wishService.checkWishByUserNoAndProductNo(productNo,userNo); //추후 DB연결되면 번들이랑 AppDataStore로 받아오자
+            call1.enqueue(new Callback<Integer>() {
+                @Override
+                public void onResponse(Call<Integer> call, Response<Integer> response) {
+                    Integer isWish = response.body();
+                    if(isWish ==0){
+                        binding.btnProductDetailWish.setChecked(false);
+                    } else if (isWish ==1) {
+                        binding.btnProductDetailWish.setChecked(true);
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
+                @Override
+                public void onFailure(Call<Integer> call, Throwable t) {
 
-            }
-        });
+                }
+            });
+        } else {
+            binding.btnProductDetailWish.setChecked(false);
+        }
+
     }
 
     private void initSetData() {
@@ -160,8 +168,6 @@ public class ProductDetailFragment extends Fragment {
             call.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
-                    Log.i(TAG, "찜 상태가 변화했을까? ");
-                    //하트 여부를 다시 출력
                     initSetWish();
                 }
 
@@ -183,18 +189,21 @@ public class ProductDetailFragment extends Fragment {
     private void initBtnMakeReservation() {
 
         binding.btnProductDetailPayment.setOnClickListener(v -> {
-            //navController.navigate(R.id.dest_payment);
-            ProductDetailBottomSheetFragment productDetailBottomSheetFragment = new ProductDetailBottomSheetFragment();
-            //추후 상품 번호 들어오면 번들로 받자.
-            productDetailBottomSheetFragment.getProductNo(productNo);
-            productDetailBottomSheetFragment.show(getActivity().getSupportFragmentManager(), "productDetailBottomSheetFragment");
+
+            if(AppKeyValueStore.getValue(getContext(), "userNo") == null) {
+                navController.navigate(R.id.dest_login);
+            } else {
+                ProductDetailBottomSheetFragment productDetailBottomSheetFragment = new ProductDetailBottomSheetFragment();
+                //추후 상품 번호 들어오면 번들로 받자.
+                productDetailBottomSheetFragment.getProductNo(productNo);
+                productDetailBottomSheetFragment.show(getActivity().getSupportFragmentManager(), "productDetailBottomSheetFragment");
+            }
         });
     }
 
     private void initPagerView() {
         DetailBannerAdapter detailBannerAdapter = new DetailBannerAdapter(getActivity());
         detailBannerAdapter.setProductNo(productNo);
-        Log.i(TAG, "프레그먼트에서 상품번호: " + productNo);
         binding.detailBanner.setAdapter(detailBannerAdapter);
     }
 

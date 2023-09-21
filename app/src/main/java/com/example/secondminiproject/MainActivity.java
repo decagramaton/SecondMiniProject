@@ -30,6 +30,7 @@ import android.view.Window;
 import android.widget.Button;
 
 import com.example.secondminiproject.databinding.ActivityMainBinding;
+import com.example.secondminiproject.datastore.AppKeyValueStore;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.text.SimpleDateFormat;
@@ -144,9 +145,13 @@ public class MainActivity extends AppCompatActivity {
                 navController.navigate(R.id.dest_product_list, null, navOptions);
                 return true;
             } else if (item.getItemId() == R.id.dest_wish_list) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("startPage", 1);
-                navController.navigate(R.id.dest_tabs_wish_recent_list, bundle, navOptions);
+                if(AppKeyValueStore.getValue(getBaseContext(), "userNo") == null) {
+                    navController.navigate(R.id.dest_login);
+                } else {
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("startPage", 1);
+                    navController.navigate(R.id.dest_tabs_wish_recent_list, bundle, navOptions);
+                }
                 return true;
             } else if (item.getItemId() == R.id.dest_my_page) {
                 navController.navigate(R.id.dest_my_page, null, navOptions);

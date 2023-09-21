@@ -97,13 +97,21 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         if(board.getWishUserNo() != null) {
             Log.i(TAG, "상품의 찜 유저 정보 존재");
             for(Integer userNo : board.getWishUserNo()){
-                if(userNo == Integer.parseInt(AppKeyValueStore.getValue(btnWish.getContext(), "userNo"))){
-                    Log.i(TAG, "찜 활성화 이벤트 호출");
-                    this.btnWish.setChecked(true);
-                    break;
+
+                String targetUserNo = AppKeyValueStore.getValue(btnWish.getContext(),"userNo");
+
+                if(targetUserNo != null){
+                    if(userNo == Integer.parseInt(targetUserNo)){
+                        Log.i(TAG, "찜 활성화 이벤트 호출");
+                        this.btnWish.setChecked(true);
+                        break;
+                    } else {
+                        this.btnWish.setChecked(false);
+                    }
                 } else {
                     this.btnWish.setChecked(false);
                 }
+
             }
         }
     }
