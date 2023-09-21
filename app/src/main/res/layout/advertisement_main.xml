@@ -52,7 +52,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
+    <!--<Button
         android:id="@+id/btn_ad_day_close"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
@@ -63,6 +63,6 @@
         android:text="하루동안 보지않기"
         android:textColor="#1E56A0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_ad_close" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_ad_close" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

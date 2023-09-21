@@ -113,14 +113,14 @@ public class MainActivity extends AppCompatActivity {
                 .create();
                 alertDialog.show();
 
-        Button btnAdDayClose = view.findViewById(R.id.btn_ad_day_close);
+        /*Button btnAdDayClose = view.findViewById(R.id.btn_ad_day_close);
         btnAdDayClose.setOnClickListener(v -> {
             SharedPreferences.Editor SPreferencesEditor = SPreferences.edit();
             SPreferencesEditor.putString(NameSPreferences, strSDFormatDay); // 오늘 '일(day)' 저장
             SPreferencesEditor.commit(); // important to save the preference
             Log.d(TAG, "Close for a day");
             alertDialog.dismiss();
-        });
+        });*/
 
         Button btnAdClose = view.findViewById(R.id.btn_ad_close);
         btnAdClose.setOnClickListener(v -> {
