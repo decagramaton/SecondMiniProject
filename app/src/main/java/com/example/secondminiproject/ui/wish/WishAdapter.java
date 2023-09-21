@@ -22,6 +22,7 @@ public class WishAdapter extends RecyclerView.Adapter<WishViewHolder> {
 
     private OnItemClickListener onItemClickListener;
     private NavController navController;
+    private WishAdapter wishAdapter;
 
     @NonNull
     @Override
@@ -41,7 +42,7 @@ public class WishAdapter extends RecyclerView.Adapter<WishViewHolder> {
         //리스트로부터 데이터를 불러오는것 (position 으로 0 -> 1 - 2 순으로 프로덕트를 가져와서 세팅한다)
         Product wishProduct = wishList.get(position);
         //홀더에 데이터를 세팅해준다.
-        holder.setData(wishProduct, wishProduct.getProductNo(), navController);
+        holder.setData(wishProduct, wishProduct.getProductNo(), navController,position);
     }
 
     public void setWishList(List<Product> WishList) {
@@ -71,4 +72,9 @@ public class WishAdapter extends RecyclerView.Adapter<WishViewHolder> {
     public void setNavController(NavController navController){
         this.navController = navController;
     };
+
+    public void deleteWishItem(int position){
+        wishList.remove(position);
+        notifyItemRemoved(position);
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.secondminiproject.ui.review;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -7,11 +8,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuProvider;
 import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.secondminiproject.R;
@@ -25,8 +33,11 @@ import java.util.List;
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewViewHolder> {
     private static final String TAG = "ReviewAdapter";
     private List<Review> reviewList = new ArrayList<>();
-
-    private FragmentReviewListBinding binding;
+    private androidx.fragment.app.FragmentActivity reviewActivity;
+    private androidx.appcompat.widget.Toolbar reviewToolbar;
+    private View reviewView;
+    private NavController navController;
+    private LifecycleOwner lifecycleOwner;
 
     @NonNull
     @Override
@@ -34,9 +45,9 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewViewHolder> {
     public ReviewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //레이아웃 인플레이터 받는법
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View reviewView = layoutInflater.inflate(R.layout.fragment_review_list3, parent, false);
+        this.reviewView = layoutInflater.inflate(R.layout.fragment_review_list3, parent, false);
         //괄호안에 inflater 넣어야함
-        ReviewViewHolder reviewViewHolder = new ReviewViewHolder(reviewView);
+        ReviewViewHolder reviewViewHolder = new ReviewViewHolder(reviewView,reviewActivity,navController,lifecycleOwner);
 
         return reviewViewHolder;
     }
@@ -48,28 +59,10 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewViewHolder> {
         //홀더에 데이터를 세팅해준다.
         holder.setData(review);
 
-        MenuProvider menuProvider = new MenuProvider() {
-            @Override
-            public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
-                //인플레이션에서 앞의것을 뒤에것에 부착하겟다는 뜻.
-                menuInflater.inflate(R.menu.review_list_card, menu);
-            }
-
-            @Override
-            public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
-                if(menuItem.getItemId()==R.id.toolbar_review_list_card_modify_review){
-                    Log.i(TAG, "리뷰 수정 버튼 클릭됨");
-                    return true;
-                }else if(menuItem.getItemId()==R.id.toolbar_review_list_card_delete_review){
-                    Log.i(TAG, "리뷰 삭제 버튼 클릭됨");
-                    return true;
-                }
-                return false;
-            }
-        };
-
-        /*addMenuProvider(menuProvider, this, Lifecycle.State.RESUMED );*/
     }
+
+
+
 
     public void setList(List<Review> reviewList) {this.reviewList = reviewList;}
 
@@ -84,5 +77,10 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewViewHolder> {
 
     public void addReview(Review review){
         reviewList.add(review);
+    }
+    public void setAppCompatActivityAndNavcontroller(androidx.fragment.app.FragmentActivity activity, NavController navController, LifecycleOwner lifecycleOwner){
+        this.reviewActivity = activity;
+        this.navController = navController;
+        this.lifecycleOwner = lifecycleOwner;
     }
 }

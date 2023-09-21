@@ -4,7 +4,9 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -37,29 +40,28 @@ import retrofit2.Response;
 public class ReviewListFragment extends Fragment {
 
     private static final String TAG = "ReviewListFragment";
-    private FragmentReviewListBinding binding;
+    private FragmentReviewListBinding fragmentReviewListBinding;
     private NavController navController;
+    private  androidx.fragment.app.FragmentActivity reviewActivity;
+    private LifecycleOwner lifecycleOwner;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         navController = NavHostFragment.findNavController(this);
 
-        binding = FragmentReviewListBinding.inflate(inflater);
+        fragmentReviewListBinding = FragmentReviewListBinding.inflate(inflater);
 
-        //initBtnReviewUpdate();
         initRecyclerView();
 
+        reviewActivity = getActivity();
 
-        return binding.getRoot();
+        this.lifecycleOwner = getViewLifecycleOwner();
+
+
+        return fragmentReviewListBinding.getRoot();
     }
 
-
-    /*private void initBtnReviewUpdate() {
-        binding.btnReviewListReviewUpdate.setOnClickListener(v -> {
-            navController.navigate(R.id.action_dest_review_list_to_dest_review_update);
-        });
-    }*/
 
     private void initRecyclerView() {
         //수직방향으로 1라인에 1개의 viewHolder가 들어가는 레이아웃 설정
@@ -68,10 +70,11 @@ public class ReviewListFragment extends Fragment {
         );
         //2d열로 출력할때
         /* GridLayoutManager linearLayoutManager = new GridLayoutManager(this,2);*/
-        binding.reviewListRecyclerView.setLayoutManager(linearLayoutManager);
+        fragmentReviewListBinding.reviewListRecyclerView.setLayoutManager(linearLayoutManager);
 
         //어뎁터 생성
         ReviewAdapter reviewAdapter = new ReviewAdapter();
+        reviewAdapter.setAppCompatActivityAndNavcontroller(reviewActivity,navController,lifecycleOwner);
 
         //데이터 받아와서 어뎁터에 설정
         ReviewService reviewService = ServiceProvider.getReviewService(getContext());
@@ -84,7 +87,7 @@ public class ReviewListFragment extends Fragment {
                 List<Review> ReviewList = response.body();
 
                 reviewAdapter.setList(ReviewList);
-                binding.reviewListRecyclerView.setAdapter(reviewAdapter);
+                fragmentReviewListBinding.reviewListRecyclerView.setAdapter(reviewAdapter);
             }
 
             @Override
@@ -92,34 +95,25 @@ public class ReviewListFragment extends Fragment {
 
             }
         });
-        /*Random random = new Random();
-        for(int i=1; i <=9; i++){
-            Review review = new Review();
-            review.setReviewTitle( i + " 번 [상품명] 이 들어갈 곳");
-            review.setStartDate("23.06.0"+i);
-            review.setEndDate("23.06.1"+i);
-            review.setReviewRating(i%5+1);
-            review.setReviewContent(i +" 번 상품 리뷰에 대한 리뷰 내용");
-
-            //productAdapter.addProduct(product);
-            reviewAdapter.addReview(review);
-        }*/
 
         //리사이클러뷰에 어댑터 설정
-        binding.reviewListRecyclerView.setAdapter(reviewAdapter);
+        fragmentReviewListBinding.reviewListRecyclerView.setAdapter(reviewAdapter);
 
-        binding.reviewListRecyclerView.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+        fragmentReviewListBinding.reviewListRecyclerView.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
 
             if((!v.canScrollVertically(-1))){
-                binding.btnReviewListGoListTop.hide();
+                fragmentReviewListBinding.btnReviewListGoListTop.hide();
             }else {
-                binding.btnReviewListGoListTop.show();
+                fragmentReviewListBinding.btnReviewListGoListTop.show();
             }
 
         });
 
-        binding.btnReviewListGoListTop.setOnClickListener(v -> {
-            binding.reviewListRecyclerView.scrollToPosition(0);
+        fragmentReviewListBinding.btnReviewListGoListTop.setOnClickListener(v -> {
+            fragmentReviewListBinding.reviewListRecyclerView.scrollToPosition(0);
         });
+
+
     }
+
 }

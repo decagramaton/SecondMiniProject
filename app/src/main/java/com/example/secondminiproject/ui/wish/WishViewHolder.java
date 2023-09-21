@@ -41,6 +41,7 @@ public class WishViewHolder extends RecyclerView.ViewHolder {
     private NavController navController;
 
 
+
     public WishViewHolder(@NonNull View itemView, WishAdapter.OnItemClickListener onItemClickListener) {
         super(itemView);
         this.onItemClickListener = onItemClickListener;
@@ -60,7 +61,7 @@ public class WishViewHolder extends RecyclerView.ViewHolder {
         void onDeleteWish(int productNo);
     }
 
-    public void setData(Product wishProduct, int productNo, NavController navController){
+    public void setData(Product wishProduct, int productNo, NavController navController, int position){
         this.navController = navController;
         ProductService.loadImageByMediaName(productNo, "thumbnail",this.wishProductImage);
         this.wishProductName.setText(wishProduct.getProductTitle());
@@ -81,10 +82,12 @@ public class WishViewHolder extends RecyclerView.ViewHolder {
                                     @Override
                                     public void onResponse(Call<Void> call, Response<Void> response) {
                                         Log.i(TAG, "proNo: " + productNo);
+                                        Log.i(TAG, "position: " + position);
 
                                         Bundle bundle = new Bundle();
                                         bundle.putInt("startPage",1);
                                         navController.navigate(R.id.dest_tabs_wish_recent_list,bundle);
+
                                     }
 
                                     @Override

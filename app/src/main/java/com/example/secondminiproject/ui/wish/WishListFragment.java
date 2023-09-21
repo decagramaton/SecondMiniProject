@@ -85,21 +85,6 @@ public class WishListFragment extends Fragment {
         });
 
 
-        /*//데이터 받아와서 어뎁터에 설정
-        Random random = new Random();
-        for(int i=1; i <=17; i++){
-            Wish wishProduct = new Wish();
-            wishProduct.setProductName("우당탕탕 이것이 여행의 진수다. 황홀한 풍경과 달달구리한 과일! 다양한 액티비티가 넘처 흐르는 여행 패키지 제 "+i +" 번! 상품!");
-
-            //이미지명, resource의 어디에있는지, 패키지명("com.example.myapplication"  or getApplication().getPackageName() ) 을 넣어야함.
-            wishProduct.setProductImage(getResources().getIdentifier("photo" +(random.nextInt(17)+1), "drawable","com.example.secondminiproject"));
-            wishProduct.setProductPrice(100000 * (random.nextInt(10)+1)); //10 -> 0~9 , 10 + 1 -> 1~10
-
-            wishAdapter.addWishProduct(wishProduct);
-
-            wishProducts.add(wishProduct);
-        }*/
-
         //리사이클러뷰에 어댑터 설정
         binding.recyclerViewWish.setAdapter(wishAdapter);
 
