@@ -112,6 +112,7 @@ public class RecentProductListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
         binding.recyclerViewRecentProductList.setAdapter(this.recentProductAdapter);
     }
 }
