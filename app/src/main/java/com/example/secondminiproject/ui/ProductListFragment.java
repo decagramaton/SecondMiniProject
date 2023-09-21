@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.secondminiproject.MainActivity;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentProductListBinding;
 import com.example.secondminiproject.datastore.AppKeyValueStore;
@@ -23,6 +24,7 @@ import com.example.secondminiproject.service.WishService;
 import com.example.secondminiproject.ui.wish.WishAdapter;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -99,11 +101,16 @@ public class ProductListFragment extends Fragment {
             @Override
             public void onItemClick(View itemView, int position) {
                 Board board = productAdapter.getItem(position);
-                Log.i(TAG, "보드에 데이터가 담기긴하나? :+"+  board);
-
-
                 Bundle args = new Bundle();
                 args.putInt("productNo", board.getProductNo());
+
+                Bundle bundle = ((MainActivity)getActivity()).getBundle();
+                ArrayList<String> recentProductList = bundle.getStringArrayList("recentProductList");
+                recentProductList.add(String.valueOf(board.getProductNo()));
+                bundle.remove("recentProductList");
+                bundle.putStringArrayList("recentProductList", recentProductList);
+                ((MainActivity)getActivity()).setBundle(bundle);
+
                 navController.navigate(R.id.action_dest_product_list_to_dest_product_detail,args);
             }
         });
