@@ -55,6 +55,15 @@ public class ProductListFragment extends Fragment {
         setCountry(binding.productListJeju, "제주");
         setCountry(binding.productListJapen, "일본");
 
+        setCountry(binding.productListGermany, "독일");
+        setCountry(binding.productListChina, "중국");
+
+        setCountry(binding.productListHawaii, "하와이");
+        setCountry(binding.productListFrance, "프랑스");
+
+        setCountry(binding.productListEngland, "영국");
+        setCountry(binding.productListItaly, "이탈리아");
+
         setCountry(binding.productListHongkong, "홍콩");
         setCountry(binding.productListKenya, "케냐");
 
