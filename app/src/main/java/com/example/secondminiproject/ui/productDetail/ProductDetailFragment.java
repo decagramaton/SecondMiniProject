@@ -160,22 +160,27 @@ public class ProductDetailFragment extends Fragment {
 
     private void initBtnWish() {
         binding.btnProductDetailWish.setOnClickListener(v -> {
-            startShakeAnimation();
-            WishService wishService = ServiceProvider.getWishService(getContext());
-            int userNo =Integer.parseInt( AppKeyValueStore.getValue(getContext(),"userNo"));
-            //추후에 올바른 정보 삽입
-            Call<Void> call =  wishService.clickWishBtn(productNo,userNo);
-            call.enqueue(new Callback<Void>() {
-                @Override
-                public void onResponse(Call<Void> call, Response<Void> response) {
-                    initSetWish();
-                }
 
-                @Override
-                public void onFailure(Call<Void> call, Throwable t) {
+            if(AppKeyValueStore.getValue(getContext(), "userNo") == null) {
+                navController.navigate(R.id.dest_login);
+            } else {
+                startShakeAnimation();
+                WishService wishService = ServiceProvider.getWishService(getContext());
+                int userNo =Integer.parseInt( AppKeyValueStore.getValue(getContext(),"userNo"));
+                //추후에 올바른 정보 삽입
+                Call<Void> call =  wishService.clickWishBtn(productNo,userNo);
+                call.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        initSetWish();
+                    }
 
-                }
-            });
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+
+                    }
+                });
+            }
         });
     }
 
