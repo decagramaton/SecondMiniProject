@@ -101,9 +101,9 @@ public class ProductListFragment extends Fragment {
                 Board board = productAdapter.getItem(position);
                 Log.i(TAG, "보드에 데이터가 담기긴하나? :+"+  board);
 
-                Bundle args = new Bundle();
-                args.putSerializable("board", board);
 
+                Bundle args = new Bundle();
+                args.putInt("productNo", board.getProductNo());
                 navController.navigate(R.id.action_dest_product_list_to_dest_product_detail,args);
             }
         });
