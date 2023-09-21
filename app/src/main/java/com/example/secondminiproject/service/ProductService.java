@@ -14,7 +14,7 @@ import retrofit2.http.Query;
 
 public interface ProductService {
         @GET("product/getProductList")
-        Call<List<Board>> getProductList();
+        Call<List<Board>> getProductList(@Query("requestType") String requestType);
 
         @GET("product/getProductListBySearchKeyword")
         Call<List<Board>> getProductListBySearchKeyword(@Query("searchKeyword") String searchKeyword);

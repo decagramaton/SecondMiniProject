@@ -56,7 +56,7 @@ public class RecentProductListFragment extends Fragment {
 
         Bundle bundle = ((MainActivity)getActivity()).getBundle();
         if(bundle != null) {
-            this.recentProducts.clear();
+            //this.recentProducts.clear();
             ArrayList<String> recentProductList = bundle.getStringArrayList("recentProductList");
 
             for(String item : recentProductList) {
@@ -74,7 +74,8 @@ public class RecentProductListFragment extends Fragment {
                         recentProduct.setReviewNumber(board.getReviewList().size());
                         recentProduct.setProductRating(board.getReviewList().get(0).getReviewRating());
 
-                        recentProducts.add(recentProduct);
+                        recentProductAdapter.addRecentProduct(recentProduct);
+                        recentProductAdapter.notifyItemInserted(recentProductAdapter.getItemCount()-1);
                     }
 
                     @Override

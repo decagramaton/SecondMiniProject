@@ -112,7 +112,7 @@ public class HomeFragment extends Fragment {
 
         // Step3. Data를 얻고, Adapter에 설정
         ProductService productService = ServiceProvider.getProductService(getContext());
-        Call<List<Board>> call = productService.getProductList();
+        Call<List<Board>> call = productService.getProductList("random");
         call.enqueue(new Callback<List<Board>>() {
             @Override
             public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
@@ -160,7 +160,7 @@ public class HomeFragment extends Fragment {
         RecommendPackageAdapter recommendPackageAdapter = new RecommendPackageAdapter();
 
         ProductService productService = ServiceProvider.getProductService(getContext());
-        Call<List<Board>> call = productService.getProductList();
+        Call<List<Board>> call = productService.getProductList("random");
         call.enqueue(new Callback<List<Board>>() {
             @Override
             public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
@@ -209,7 +209,7 @@ public class HomeFragment extends Fragment {
         TimeDealPackageAdapter timeDealPackageAdapter = new TimeDealPackageAdapter();
 
         ProductService productService = ServiceProvider.getProductService(getContext());
-        Call<List<Board>> call = productService.getProductList();
+        Call<List<Board>> call = productService.getProductList("random");
         call.enqueue(new Callback<List<Board>>() {
             @Override
             public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
@@ -257,7 +257,7 @@ public class HomeFragment extends Fragment {
         NewPackageAdapter newPackageAdapter = new NewPackageAdapter();
 
         ProductService productService = ServiceProvider.getProductService(getContext());
-        Call<List<Board>> call = productService.getProductList();
+        Call<List<Board>> call = productService.getProductList("random");
         call.enqueue(new Callback<List<Board>>() {
             @Override
             public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
@@ -303,7 +303,7 @@ public class HomeFragment extends Fragment {
         NewPackageAdapter newPackageAdapter = new NewPackageAdapter();
 
         ProductService productService = ServiceProvider.getProductService(getContext());
-        Call<List<Board>> call = productService.getProductList();
+        Call<List<Board>> call = productService.getProductList("random");
         call.enqueue(new Callback<List<Board>>() {
             @Override
             public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {

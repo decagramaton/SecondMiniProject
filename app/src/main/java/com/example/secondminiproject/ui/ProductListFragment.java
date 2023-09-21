@@ -185,7 +185,7 @@ public class ProductListFragment extends Fragment {
 
     private void initProductAdapterData(){
         ProductService productService = ServiceProvider.getProductService(getContext());
-        Call<List<Board>> call = productService.getProductList();
+        Call<List<Board>> call = productService.getProductList("all");
         call.enqueue(new Callback<List<Board>>() {
             @Override
             public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
