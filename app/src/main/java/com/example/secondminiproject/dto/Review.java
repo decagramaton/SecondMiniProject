@@ -11,10 +11,8 @@ public class Review {
     private String reviewContent;
     private long reviewDate;
     private int reviewRating;
-
-    //----임시데이터
-    private String startDate;
-    private String endDate;
+    private long tourStartDate;
+    private long tourEndDate;
 
     @Override
     public String toString() {
@@ -27,25 +25,25 @@ public class Review {
                 ", reviewContent='" + reviewContent + '\'' +
                 ", reviewDate=" + reviewDate +
                 ", reviewRating=" + reviewRating +
-                ", startDate='" + startDate + '\'' +
-                ", endDate='" + endDate + '\'' +
+                ", tourStartDate='" + tourStartDate + '\'' +
+                ", tourEndDate='" + tourEndDate + '\'' +
                 '}';
     }
 
-    public String getStartDate() {
-        return startDate;
+    public long getTourStartDate() {
+        return tourStartDate;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setTourStartDate(long tourStartDate) {
+        this.tourStartDate = tourStartDate;
     }
 
-    public String getEndDate() {
-        return endDate;
+    public long getTourEndDate() {
+        return tourEndDate;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setTourEndDate(long tourEndDate) {
+        this.tourEndDate = tourEndDate;
     }
 
     public int getReviewNo() {

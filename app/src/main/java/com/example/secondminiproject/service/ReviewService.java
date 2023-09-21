@@ -22,4 +22,7 @@ public interface ReviewService {
 
         @GET("review/checkReview")
         Call<Integer> checkReview(@Query("reservationNo") int reservationNo);
+
+        @GET("review/removeReview")
+        Call<Void> removeReview(@Query("reviewNo") int reviewNo);
 }

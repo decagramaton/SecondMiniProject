@@ -34,7 +34,6 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewViewHolder> {
     private static final String TAG = "ReviewAdapter";
     private List<Review> reviewList = new ArrayList<>();
     private androidx.fragment.app.FragmentActivity reviewActivity;
-    private androidx.appcompat.widget.Toolbar reviewToolbar;
     private View reviewView;
     private NavController navController;
     private LifecycleOwner lifecycleOwner;
@@ -60,15 +59,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewViewHolder> {
         holder.setData(review);
 
     }
-
-
-
-
     public void setList(List<Review> reviewList) {this.reviewList = reviewList;}
-
-    public void setReviewList(List<Review> reviewList) {
-        this.reviewList = reviewList;
-    }
 
     @Override
     public int getItemCount() {
