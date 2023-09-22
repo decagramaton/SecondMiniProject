@@ -112,28 +112,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //최초 실행시 광고창 실행
-    private void showAdvertiseDialog(){
+    private void showAdvertiseDialog() {
+        // 현재 시간 기준으로 2분이 지났는지 확인합니다.
+        if (MySharedPreferences.shouldShowAd(getApplicationContext())) {
+            View view = getLayoutInflater().inflate(R.layout.advertisement_main, null);
 
-        View view = getLayoutInflater().inflate(R.layout.advertisement_main, null);
+            AlertDialog alertDialog = new AlertDialog.Builder(this)
+                    .setView(view)
+                    .create();
 
-        AlertDialog alertDialog = new AlertDialog.Builder(this)
-                .setView(view)
-                .create();
-                alertDialog.show();
+            alertDialog.show();
 
-
-         Button btnAdCloseDay = view.findViewById(R.id.btn_ad_close_day);
+            Button btnAdCloseDay = view.findViewById(R.id.btn_ad_close_day);
             btnAdCloseDay.setOnClickListener(v -> {
-
+                MySharedPreferences.setHideAd(getApplicationContext(), true);
 
                 Log.i(TAG, "showAdvertiseDialog: Close today");
                 alertDialog.dismiss();
             });
 
-        Button btnAdClose = view.findViewById(R.id.btn_ad_close);
-        btnAdClose.setOnClickListener(v -> {
-            alertDialog.dismiss();
-        });
+            Button btnAdClose = view.findViewById(R.id.btn_ad_close);
+            btnAdClose.setOnClickListener(v -> {
+                alertDialog.dismiss();
+            });
+        }
     }
 
     private void initBottomNav() {
