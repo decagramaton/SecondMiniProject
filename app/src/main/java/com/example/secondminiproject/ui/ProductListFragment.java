@@ -4,7 +4,9 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -76,7 +78,12 @@ public class ProductListFragment extends Fragment {
         view.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putString("category", country);
-            navController.navigate(R.id.dest_product_list, bundle);
+            //navController.navigate(R.id.dest_product_list, bundle);*/
+
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.detach(this).attach(this).commit();
+
+            //initRecyclerView();
         });
     }
 

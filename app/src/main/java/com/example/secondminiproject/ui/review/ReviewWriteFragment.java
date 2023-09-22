@@ -37,7 +37,6 @@ public class ReviewWriteFragment extends Fragment {
     private NavController navController;
     int enableButtonColor = Color.rgb(22, 49, 114);
     int disableButtonColor = Color.rgb(216, 216, 216);
-    private  int productNo;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         navController = NavHostFragment.findNavController(this);
@@ -52,7 +51,7 @@ public class ReviewWriteFragment extends Fragment {
         }
 
         initSetData(bundle, productNo);
-        initBtnReviewWrite(bundle, reviewNo);
+        initBtnReviewWrite(bundle, reviewNo, productNo);
 
         binding.reviewWriteContent.addTextChangedListener(new TextWatcher() {
             @Override
@@ -109,7 +108,7 @@ public class ReviewWriteFragment extends Fragment {
 
     }
 
-    private void initBtnReviewWrite(Bundle bundle, int reviewNo) {
+    private void initBtnReviewWrite(Bundle bundle, int reviewNo, int productNo) {
         binding.btnReviewWriteRegister.setOnClickListener(v -> {
             if (isTextValid()) { // 텍스트가 유효한 경우에만 동작
                 // Step1. review 서버 객체 호출
