@@ -21,6 +21,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -57,17 +58,24 @@ public class MainActivity extends AppCompatActivity {
         bundle = new Bundle();
         bundle.putStringArrayList("recentProductList", new ArrayList<String>());
 
-        // '오늘 그만 보기' 기능을 위한 날짜 획득
-        long CurrentTime = System.currentTimeMillis(); // 현재 시간을 msec 단위로 얻음
-        Date TodayDate = new Date(CurrentTime); // 현재 시간 Date 변수에 저장
-        SimpleDateFormat SDFormat = new SimpleDateFormat("dd");
-        strSDFormatDay = SDFormat.format(TodayDate); // 'dd' 형태로 포맷 변경
+        /*//현재시간
+        long today = System.currentTimeMillis();
+        //Date에 저장
+        Date date = new Date(today);
+        //원하는 형식으로 가져오기
+        SimpleDateFormat sdf = new SimpleDateFormat("dd");
+        String getTime = sdf.format(date);
+
+        //현재시간에 하루 더하기
+        long nextDay = System.currentTimeMillis()+ 86400000;
 
         // SharedPreferences 획득
         SharedPreferences SPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String strSPreferencesDay = SPreferences.getString(NameSPreferences, "0");
-        if((Integer.parseInt(strSDFormatDay) - Integer.parseInt(strSPreferencesDay)) != 0)
-            showAdvertiseDialog();
+        String strSPreferencesDay = SPreferences.getString(NameSPreferences, "0");*/
+
+        //광고창 띄우기
+        /*if((Integer.parseInt(getTime) - Integer.parseInt(strSPreferencesDay)) != 0)
+            showAdvertiseDialog();*/
 
         // NavController 설정
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host);
@@ -90,10 +98,8 @@ public class MainActivity extends AppCompatActivity {
         // Bottom Navagation 초기 설정
         //NavigationUI.setupWithNavController(binding.bottomNavigation, navController);
         initBottomNav();
-        //showAdvertiseDialog();
+        showAdvertiseDialog();
 
-
-        //getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
     }
 
@@ -115,14 +121,14 @@ public class MainActivity extends AppCompatActivity {
                 .create();
                 alertDialog.show();
 
-        /*Button btnAdDayClose = view.findViewById(R.id.btn_ad_day_close);
-        btnAdDayClose.setOnClickListener(v -> {
-            SharedPreferences.Editor SPreferencesEditor = SPreferences.edit();
-            SPreferencesEditor.putString(NameSPreferences, strSDFormatDay); // 오늘 '일(day)' 저장
-            SPreferencesEditor.commit(); // important to save the preference
-            Log.d(TAG, "Close for a day");
-            alertDialog.dismiss();
-        });*/
+
+         Button btnAdCloseDay = view.findViewById(R.id.btn_ad_close_day);
+            btnAdCloseDay.setOnClickListener(v -> {
+
+
+                Log.i(TAG, "showAdvertiseDialog: Close today");
+                alertDialog.dismiss();
+            });
 
         Button btnAdClose = view.findViewById(R.id.btn_ad_close);
         btnAdClose.setOnClickListener(v -> {
