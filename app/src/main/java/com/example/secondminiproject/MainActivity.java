@@ -165,6 +165,9 @@ public class MainActivity extends AppCompatActivity {
             } else if (item.getItemId() == R.id.dest_my_page) {
                 navController.navigate(R.id.dest_my_page, null, navOptions);
                 return true;
+            } else if (item.getItemId() == R.id.dest_reservation_list) {
+                navController.navigate(R.id.dest_reservation_list, null, navOptions);
+                return true;
             }
             return false;
         });
@@ -178,7 +181,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId() == R.id.dest_home){
-
                     getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.nav_host, FragmentManager.findFragment(findViewById(R.id.dest_home)))
@@ -197,6 +199,11 @@ public class MainActivity extends AppCompatActivity {
                     getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.nav_host, getSupportFragmentManager().findFragmentById(R.id.dest_wish_list))
+                            .commit();
+                } else if (item.getItemId() == R.id.dest_reservation_list) {
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.nav_host, getSupportFragmentManager().findFragmentById(R.id.dest_reservation_list))
                             .commit();
                 }
                 return true;

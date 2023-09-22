@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/dest_category"
-        android:title="카테 고리"
+        android:id="@+id/dest_product_list"
+        android:title="상품 목록"
         android:enabled="true"
         android:icon="@drawable/ic_menu_24dp"/>
     <item
-        android:id="@+id/dest_product_list"
-        android:title="상품 목록"
+        android:id="@+id/dest_reservation_list"
+        android:title="예약 내역"
         android:enabled="true"
         android:icon="@drawable/ic_product_list_24dp" />
     <item
