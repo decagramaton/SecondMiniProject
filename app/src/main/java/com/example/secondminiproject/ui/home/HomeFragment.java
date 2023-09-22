@@ -339,6 +339,7 @@ public class HomeFragment extends Fragment {
 
     private void initPagerView() {
         HomeBannerAdapter homeBannerAdapter = new HomeBannerAdapter(getActivity());
+        homeBannerAdapter.setNavController(navController);
         binding.homeBanner.setAdapter(homeBannerAdapter);
 
         // Timer를 사용하여 이미지 자동 슬라이드 시작
