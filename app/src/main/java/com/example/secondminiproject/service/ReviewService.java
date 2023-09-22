@@ -10,6 +10,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface ReviewService {
@@ -25,4 +26,9 @@ public interface ReviewService {
 
         @GET("review/removeReview")
         Call<Void> removeReview(@Query("reviewNo") int reviewNo);
+
+        @POST("review/updateReview")
+        Call<Void> updateReview(@Query("reviewNo") int reviewNo,
+                                @Query("rating") int rating,
+                                @Query("content") String content);
 }

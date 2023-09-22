@@ -49,6 +49,7 @@ public class ReviewViewHolder extends RecyclerView.ViewHolder {
     private NavController navController;
     private LifecycleOwner lifecycleOwner;
     private int reviewNo;
+    private int productNo;
 
     public ReviewViewHolder(@NonNull View itemView, androidx.fragment.app.FragmentActivity activity, NavController navController, LifecycleOwner lco) {
         super(itemView);
@@ -68,9 +69,12 @@ public class ReviewViewHolder extends RecyclerView.ViewHolder {
         reviewToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                Log.i(TAG, "툴바는 눌리나?");
                 if (item.getItemId() == R.id.toolbar_review_list_card_modify_review) {
-                    Log.i(TAG, "onMenuItemSelected: 리뷰 수정?");
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("reviewNo", reviewNo);
+                    bundle.putInt("productNo", productNo);
+                    navController.navigate(R.id.dest_review_write, bundle);
+
                     return true;
                 } else if (item.getItemId() == R.id.toolbar_review_list_card_delete_review) {
                     ReviewService reviewService = ServiceProvider.getReviewService(navController.getContext());
@@ -101,11 +105,10 @@ public class ReviewViewHolder extends RecyclerView.ViewHolder {
         Date startDate = new Date(review.getTourStartDate());
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY.MM.dd");
         this.reviewStartDate.setText(sdf.format(startDate));
-        Log.i(TAG, "시작날짜: "+review.getTourStartDate());
         Date endDate = new Date(review.getTourEndDate());
         this.reviewEndDate.setText(sdf.format(endDate));
         this.reviewContent.setText(review.getReviewContent());
-
+        this.productNo = review.getProductNo();
 
 
     }

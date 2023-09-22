@@ -25,7 +25,6 @@ import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.service.ProductService;
 import com.example.secondminiproject.service.ReviewService;
 import com.example.secondminiproject.service.ServiceProvider;
-import com.google.android.material.textfield.TextInputEditText;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,12 +35,8 @@ public class ReviewWriteFragment extends Fragment {
     private static final String TAG = "ReviewWriteFragment";
     private FragmentReviewWriteBinding binding;
     private NavController navController;
-    private Button registerButton;
-    private TextInputEditText textInputEditText;
     int enableButtonColor = Color.rgb(22, 49, 114);
     int disableButtonColor = Color.rgb(216, 216, 216);
-    private int reviewNo;
-    private int reservationNo;
     private  int productNo;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,11 +44,17 @@ public class ReviewWriteFragment extends Fragment {
         binding = FragmentReviewWriteBinding.inflate(inflater);
         View rootView = inflater.inflate(R.layout.fragment_review_write, container, false);
 
-        initSetData();
-        initBtnReviewWrite();
+        Bundle bundle = getArguments();
+        int reviewNo = bundle.getInt("reviewNo");
+        int productNo = bundle.getInt("productNo");
+        if(reviewNo != 0) {
+            binding.btnReviewWriteRegister.setText("수정하기");
+        }
 
-        // TextInputEditText에 TextWatcher 추가
-        textInputEditText.addTextChangedListener(new TextWatcher() {
+        initSetData(bundle, productNo);
+        initBtnReviewWrite(bundle, reviewNo);
+
+        binding.reviewWriteContent.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 // 텍스트 변경 전에 실행되는 부분
@@ -64,12 +65,12 @@ public class ReviewWriteFragment extends Fragment {
                 // 텍스트가 변경될 때 실행되는 부분
                 if (charSequence.length() > 5) {
                     // 텍스트가 입력되면 버튼을 활성화
-                    registerButton.setClickable(true);
-                    registerButton.setBackgroundColor(enableButtonColor);
+                    binding.btnReviewWriteRegister.setClickable(true);
+                    binding.btnReviewWriteRegister.setBackgroundColor(enableButtonColor);
                 } else {
                     // 텍스트가 없으면 버튼을 비활성화
-                    registerButton.setClickable(false);
-                    registerButton.setBackgroundColor(disableButtonColor);
+                    binding.btnReviewWriteRegister.setClickable(false);
+                    binding.btnReviewWriteRegister.setBackgroundColor(disableButtonColor);
                 }
             }
             @Override
@@ -87,16 +88,7 @@ public class ReviewWriteFragment extends Fragment {
         return binding.getRoot();
     }
 
-    private void initSetData() {
-        registerButton = binding.btnReviewWriteRegister;
-        EditText reviewContent = binding.reviewWriteContent;
-        textInputEditText = binding.reviewWriteContent;
-
-        Bundle bundle = getArguments();
-        productNo = bundle.getInt("productNo");
-        reviewNo = bundle.getInt("reviewNo");
-        Log.i(TAG, "리뷰작성에서의 예약번호 : "+reviewNo);
-
+    private void initSetData(Bundle bundle, int productNo) {
         ProductService productService = ServiceProvider.getProductService(getContext());
         Call<Board> call = productService.getProductByProductNo(productNo);
 
@@ -117,17 +109,34 @@ public class ReviewWriteFragment extends Fragment {
 
     }
 
-    private void initBtnReviewWrite() {
+    private void initBtnReviewWrite(Bundle bundle, int reviewNo) {
         binding.btnReviewWriteRegister.setOnClickListener(v -> {
             if (isTextValid()) { // 텍스트가 유효한 경우에만 동작
-                String title = binding.reviewWriteTitle.getText().toString();
-                int rating = Math.round(binding.reviewWriteRating.getRating());
-                Log.i(TAG, "레이팅 점수 : "+Math.round(binding.reviewWriteRating.getRating()));
-                Log.i(TAG, "예약 번호 : "+reservationNo);
-                String content = binding.reviewWriteContent.getText().toString();
-                int userNo = Integer.parseInt(AppKeyValueStore.getValue(getContext(),"userNo"));;
+                // Step1. review 서버 객체 호출
                 ReviewService reviewService = ServiceProvider.getReviewService(getContext());
-                Call<Void> call = reviewService.addReview(title,rating,content,reservationNo,userNo,productNo);
+
+
+                // Step2. 리뷰 작성 유형에 따라 다르게 처리
+                // 리뷰 고유번호 존재 시, 리뷰 수정 작업 처리
+                // 리뷰 고유번호 미 존재 시, 기본 값인 리뷰 등록 작업 처리
+                Call<Void> call = null;
+                if(reviewNo == 0){
+                    int reservationNo = bundle.getInt("reservationNo");
+
+                    String title = binding.reviewWriteTitle.getText().toString();
+                    String content = binding.reviewWriteContent.getText().toString();
+                    int rating = Math.round(binding.reviewWriteRating.getRating());
+                    int userNo = Integer.parseInt(AppKeyValueStore.getValue(getContext(),"userNo"));;
+
+                    call = reviewService.addReview(title,rating,content,reservationNo,userNo,productNo);
+                } else {
+                    String content = binding.reviewWriteContent.getText().toString();
+                    int rating = Math.round(binding.reviewWriteRating.getRating());
+                    
+                    call = reviewService.updateReview(reviewNo, rating, content);
+                }
+
+                // Step3. API 요청 결과 처리
                 call.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
