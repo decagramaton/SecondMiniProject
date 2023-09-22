@@ -51,6 +51,13 @@ public class ProductListFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        initRecyclerView();
+        initBtnCategory();
+    }
+
     private void initBtnCategory() {
         setCountry(binding.productListJeju, "제주");
         setCountry(binding.productListJapen, "일본");
@@ -78,12 +85,7 @@ public class ProductListFragment extends Fragment {
         view.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putString("category", country);
-            //navController.navigate(R.id.dest_product_list, bundle);*/
-
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
-            ft.detach(this).attach(this).commit();
-
-            //initRecyclerView();
+            navController.navigate(R.id.dest_product_list, bundle);
         });
     }
 
@@ -101,10 +103,10 @@ public class ProductListFragment extends Fragment {
 
             if(searchKeyword != null) {
                 settingProductAdapterData("searchKeyword", searchKeyword);
-                bundle.remove("searchKeyword");
+                //bundle.remove("searchKeyword");
             } else if(category != null) {
                 settingProductAdapterData("category", category);
-                bundle.remove("category");
+                //bundle.remove("category");
             }
         } else {
             initProductAdapterData();
