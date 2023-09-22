@@ -5,64 +5,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/imageView10"
-                android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:src="@drawable/ic_mainlogo_neomutour" />
+            <ImageButton
+                android:id="@+id/btn_ad_hawai"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_ad_hawai"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:background="@null"/>
 
-            <ImageView
-                android:id="@+id/imageView11"
-                android:layout_width="match_parent"
-                android:layout_height="679dp"
-                android:layout_gravity=""
-                android:src="@drawable/ic_ad_mainpage" />
+            <ImageButton
+                android:id="@+id/btn_ad_hongkong"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_ad_mainpage"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:background="@null"
+                android:layout_marginBottom="47dp"/>
 
-            <ImageView
-                android:id="@+id/imageView12"
-                android:layout_width="match_parent"
-                android:layout_height="243dp"
-                android:src="@drawable/banner2" />
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
-    <Button
-        android:id="@+id/btn_ad_close"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:backgroundTint="@color/white"
-        android:text="닫기"
-        android:textColor="#1E56A0"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <!--<Button
-        android:id="@+id/btn_ad_day_close"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:backgroundTint="@color/white"
-        android:text="하루동안 보지않기"
-        android:textColor="#1E56A0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_ad_close" />-->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_ad_close_day"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/corner_rectangle"
+            android:backgroundTint="#163172"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="오늘 그만 보기"/>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_ad_close"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/corner_rectangle"
+            android:backgroundTint="#163172"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="닫기"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
