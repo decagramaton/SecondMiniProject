@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.secondminiproject.MainActivity;
 import com.example.secondminiproject.R;
 import com.example.secondminiproject.databinding.FragmentPaymentBinding;
 import com.example.secondminiproject.databinding.FragmentProductDetailBinding;
@@ -21,6 +23,7 @@ import com.example.secondminiproject.dto.Reservation;
 import com.example.secondminiproject.service.ProductService;
 import com.example.secondminiproject.service.ReservationService;
 import com.example.secondminiproject.service.ServiceProvider;
+import com.example.secondminiproject.ui.productDetail.ProductDetailFragment;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -47,7 +50,6 @@ public class PaymentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentPaymentBinding.inflate(getLayoutInflater());
         navController = NavHostFragment.findNavController(this);
-
 
         initProductDataSetting();
         initUserDataSetting();
@@ -137,10 +139,14 @@ public class PaymentFragment extends Fragment {
             call.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
+                    NavOptions navOptions = new NavOptions.Builder()
+                            .setPopUpTo(R.id.dest_payment, true)
+                            .setLaunchSingleTop(true)
+                            .build();
                     AlertDialog alertDialog = new AlertDialog.Builder(v.getContext())
                             .setTitle("예약이 완료 되었습니다.")
                             .setMessage("즐거운 여행이 되시길 바랍니다.")
-                            .setPositiveButton("확인",((dialog, which) -> navController.navigate(R.id.dest_reservation_list)))
+                            .setPositiveButton("확인",((dialog, which) -> navController.navigate(R.id.dest_reservation_list, new Bundle(), navOptions)))
                             .create();
                     alertDialog.show();
                 }

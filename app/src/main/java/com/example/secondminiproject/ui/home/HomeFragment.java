@@ -332,11 +332,6 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
-
-
-
-
     private void initPagerView() {
         HomeBannerAdapter homeBannerAdapter = new HomeBannerAdapter(getActivity());
         homeBannerAdapter.setNavController(navController);

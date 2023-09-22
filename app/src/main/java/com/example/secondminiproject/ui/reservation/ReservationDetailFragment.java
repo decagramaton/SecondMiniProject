@@ -24,7 +24,6 @@ public class ReservationDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentReservationDetailBinding.inflate(inflater);
-
         navController = NavHostFragment.findNavController(this);
 
         initBtnReservationDetailReservationList();

@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.text.Editable;
@@ -139,7 +140,11 @@ public class ReviewWriteFragment extends Fragment {
                 call.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        navController.navigate(R.id.dest_review_list);
+                        NavOptions navOptions = new NavOptions.Builder()
+                                .setPopUpTo(R.id.dest_review_write, true)
+                                .setLaunchSingleTop(true)
+                                .build();
+                        navController.navigate(R.id.dest_review_list, new Bundle(), navOptions);
                     }
 
                     @Override
