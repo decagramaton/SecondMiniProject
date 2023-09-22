@@ -61,7 +61,7 @@
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_margin="5dp"
-                    android:src="@drawable/ic_product_list_jeju_24dp"
+                    android:src="@drawable/ic_product_list_germany_24dp"
                     android:scaleType="fitCenter"
                     android:backgroundTint="#FFFFFF"/>
 
@@ -90,7 +90,7 @@
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_margin="5dp"
-                    android:src="@drawable/ic_product_list_jeju_24dp"
+                    android:src="@drawable/ic_product_list_china_24dp"
                     android:scaleType="fitCenter"
                     android:backgroundTint="#FFFFFF"/>
 
@@ -119,7 +119,7 @@
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_margin="5dp"
-                    android:src="@drawable/ic_product_list_jeju_24dp"
+                    android:src="@drawable/ic_product_list_hawaii_24dp"
                     android:scaleType="fitCenter"
                     android:backgroundTint="#FFFFFF"/>
 
@@ -148,7 +148,7 @@
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_margin="5dp"
-                    android:src="@drawable/ic_product_list_jeju_24dp"
+                    android:src="@drawable/ic_product_list_paris_24dp"
                     android:scaleType="fitCenter"
                     android:backgroundTint="#FFFFFF"/>
 
@@ -238,7 +238,7 @@
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_margin="5dp"
-                    android:src="@drawable/ic_product_list_jeju_24dp"
+                    android:src="@drawable/ic_product_list_italy_24dp"
                     android:scaleType="fitCenter"
                     android:backgroundTint="#FFFFFF"/>
 
@@ -267,7 +267,7 @@
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:layout_margin="5dp"
-                    android:src="@drawable/ic_product_list_jeju_24dp"
+                    android:src="@drawable/ic_product_list_england_24dp"
                     android:scaleType="fitCenter"
                     android:backgroundTint="#FFFFFF"/>
 
@@ -277,7 +277,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingBottom="5dp"
-                    android:text="제주"
+                    android:text="영국"
                     android:textAlignment="center"
                     android:textDirection="firstStrongRtl"
                     android:textStyle="bold"
