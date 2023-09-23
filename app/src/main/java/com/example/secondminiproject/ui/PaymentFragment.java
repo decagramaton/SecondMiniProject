@@ -98,7 +98,7 @@ public class PaymentFragment extends Fragment {
                 Board productInfo = response.body();
                 binding.paymentProductTitle.setText(productInfo.getProductTitle());
                 int days = (int) (productInfo.getTourEndDate()/100000000-productInfo.getTourStartDate()/100000000);
-                binding.paymentProductTravelDays.setText(days-1+"박 "+days+"일");
+                binding.paymentProductTravelDays.setText(days+"박 "+(days+1)+"일");
                 binding.paymentProductTransportation.setText(productInfo.getProductVehicle());
                 Date startDate = new Date(productInfo.getTourStartDate());
                 SimpleDateFormat sdf = new SimpleDateFormat("YYYY년 MM월 dd일 (E)", Locale.KOREAN);

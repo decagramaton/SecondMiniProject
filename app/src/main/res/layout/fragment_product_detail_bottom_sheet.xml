@@ -34,7 +34,8 @@
 
             <TextView
                 android:id="@+id/product_detail_bottom_sheet_adult_price"
-                android:layout_width="150dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|end"
                 android:paddingTop="10dp"
@@ -63,7 +64,7 @@
 
                 <ImageButton
                     android:id="@+id/btn_product_detail_bottom_sheet_adult_minus"
-                    android:layout_width="wrap_content"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:backgroundTint="#FFFFFF"
@@ -81,7 +82,7 @@
 
                 <ImageButton
                     android:id="@+id/btn_product_detail_bottom_sheet_adult_plus"
-                    android:layout_width="wrap_content"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:backgroundTint="#FFFFFF"
@@ -112,7 +113,8 @@
 
             <TextView
                 android:id="@+id/product_detail_bottom_sheet_child_price"
-                android:layout_width="150dp"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|end"
                 android:paddingTop="10dp"
@@ -141,7 +143,7 @@
 
                 <ImageButton
                     android:id="@+id/btn_product_detail_bottom_sheet_child_minus"
-                    android:layout_width="wrap_content"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:backgroundTint="#FFFFFF"
@@ -159,7 +161,7 @@
 
                 <ImageButton
                     android:id="@+id/btn_product_detail_bottom_sheet_child_plus"
-                    android:layout_width="wrap_content"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:backgroundTint="#FFFFFF"

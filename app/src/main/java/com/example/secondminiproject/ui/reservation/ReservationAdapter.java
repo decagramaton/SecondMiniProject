@@ -56,8 +56,11 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationViewHold
         //2차 배열에 세팅할 ReservationList 받아오기
         //long타입을 Date 타입으로 넣어서 서버로 보낸다
         Date date = new Date(reservationDay);
+        Log.i(TAG, "날짜별로 예약 내역 확인 (날짜): "+date);
+        Log.i(TAG, "날짜별로 예약 내역 확인 (유저번호): "+userNo);
 
-        Call<List<Reservation>> call = reservationService.getReservationListByDay(date,userNo);
+        //Call<List<Reservation>> call = reservationService.getReservationListByDay(date,userNo);
+        Call<List<Reservation>> call = reservationService.getReservationListByDay(reservationDay,userNo);
         Log.i(TAG, "여기까지는 굳?");
         call.enqueue(new Callback<List<Reservation>>() {
             @Override

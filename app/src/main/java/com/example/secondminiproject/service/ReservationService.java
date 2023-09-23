@@ -20,8 +20,11 @@ public interface ReservationService {
         @GET("reservation/getReservationDayList")
         Call<List<Long>> getReservationDayList(@Query("userNo") int userNo);
 
+        /*@GET("reservation/getReservationListByDay")
+        Call<List<Reservation>> getReservationListByDay(@Query("reservationDate") Date reservationDate, @Query("userNo") int userNo);*/
+
         @GET("reservation/getReservationListByDay")
-        Call<List<Reservation>> getReservationListByDay(@Query("reservationDate") Date reservationDate, @Query("userNo") int userNo);
+        Call<List<Reservation>> getReservationListByDay(@Query("reservationDate") long reservationDate, @Query("userNo") int userNo);
 
         @GET("reservation/reservationCancel")
         Call<Void> reservationCancel(@Query("reservationNo") int reservationNo, @Query("userNo") int userNo);

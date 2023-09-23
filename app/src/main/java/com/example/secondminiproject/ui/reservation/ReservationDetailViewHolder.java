@@ -159,7 +159,6 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
             this.foldingContentReservationCancel.setOnClickListener(v->{
                 AlertDialog alertDialog =new AlertDialog.Builder(v.getContext())
                         .setTitle("예약을 취소하시겠습니까?")
-                        .setMessage("눙물이 납니다.")
                         .setNegativeButton("취소",((dialog, which) -> {
                             Log.i(TAG, "예약 취소를 취소하는 이벤트 호출 ");
                         }))
