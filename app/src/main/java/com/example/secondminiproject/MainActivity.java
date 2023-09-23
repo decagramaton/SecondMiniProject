@@ -186,10 +186,17 @@ public class MainActivity extends AppCompatActivity {
                             .replace(R.id.nav_host, FragmentManager.findFragment(findViewById(R.id.dest_home)))
                             .commit();
                 } else if (item.getItemId() == R.id.dest_product_list) {
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.nav_host, getSupportFragmentManager().findFragmentById(R.id.dest_product_list))
-                            .commit();
+                    if(AppKeyValueStore.getValue(getBaseContext(),"userNo") == null) {
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.nav_host, getSupportFragmentManager().findFragmentById(R.id.dest_login))
+                                .commit();
+                    } else {
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.nav_host, getSupportFragmentManager().findFragmentById(R.id.dest_product_list))
+                                .commit();
+                    }
                 } else if (item.getItemId() == R.id.dest_my_page) {
                     getSupportFragmentManager()
                             .beginTransaction()
