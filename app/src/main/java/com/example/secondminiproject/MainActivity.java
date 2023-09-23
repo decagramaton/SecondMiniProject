@@ -166,55 +166,14 @@ public class MainActivity extends AppCompatActivity {
                 navController.navigate(R.id.dest_my_page, null, navOptions);
                 return true;
             } else if (item.getItemId() == R.id.dest_reservation_list) {
-                navController.navigate(R.id.dest_reservation_list, null, navOptions);
-                return true;
+                if(AppKeyValueStore.getValue(getBaseContext(), "userNo") == null) {
+                    navController.navigate(R.id.dest_login);
+                } else {
+                    navController.navigate(R.id.dest_reservation_list, null, navOptions);
+                    return true;
+                }
             }
             return false;
-        });
-
-
-    }
-
-
-    private void initBottomNavigation() {
-        binding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.dest_home){
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.nav_host, FragmentManager.findFragment(findViewById(R.id.dest_home)))
-                            .commit();
-                } else if (item.getItemId() == R.id.dest_product_list) {
-                    if(AppKeyValueStore.getValue(getBaseContext(),"userNo") == null) {
-                        getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.nav_host, getSupportFragmentManager().findFragmentById(R.id.dest_login))
-                                .commit();
-                    } else {
-                        getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.nav_host, getSupportFragmentManager().findFragmentById(R.id.dest_product_list))
-                                .commit();
-                    }
-                } else if (item.getItemId() == R.id.dest_my_page) {
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.nav_host, getSupportFragmentManager().findFragmentById(R.id.dest_my_page))
-                            .commit();
-                } else if (item.getItemId() == R.id.dest_wish_list) {
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.nav_host, getSupportFragmentManager().findFragmentById(R.id.dest_wish_list))
-                            .commit();
-                } else if (item.getItemId() == R.id.dest_reservation_list) {
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.nav_host, getSupportFragmentManager().findFragmentById(R.id.dest_reservation_list))
-                            .commit();
-                }
-                return true;
-            }
         });
     }
 

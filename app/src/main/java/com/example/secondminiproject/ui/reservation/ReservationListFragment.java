@@ -56,14 +56,10 @@ public class ReservationListFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         binding.recyclerViewReservationList.setLayoutManager(linearLayoutManager);
 
-        //어뎁터 생성
+        int userNo = Integer.parseInt(AppKeyValueStore.getValue(getContext(),"userNo"));
+
         ReservationAdapter reservationAdapter = new ReservationAdapter();
 
-        //회원 번호 받아오기
-        int userNo = Integer.parseInt(AppKeyValueStore.getValue(getContext(),"userNo"));
-        Log.i(TAG, "프레그먼트의 회원번호 : "+userNo);
-
-        //
         ProductService productService = ServiceProvider.getProductService(getContext());
         ReservationService reservationService = ServiceProvider.getReservationService(getContext());
         Call<List<Long>> call = reservationService.getReservationDayList(userNo);
@@ -101,7 +97,6 @@ public class ReservationListFragment extends Fragment {
 
             }
         });
-
 
     }
 
