@@ -214,7 +214,6 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
                             } else if (reviewCount ==1 ) {
                                 AlertDialog alertDialog = new AlertDialog.Builder(v.getContext())
                                         .setTitle("이미 작성한 리뷰가 있습니다.")
-                                        .setMessage("수고연~")
                                         .setPositiveButton("확인",(dialog, which) -> {
                                             Log.i(TAG, "onResponse: 굳");
                                         })
