@@ -65,7 +65,7 @@ public class LoginFragment extends Fragment {
                         getUserInfo(userId);
                         navController.popBackStack(R.id.dest_home, false);
                     } else if(loginResult.getResult().equals("fail_user_id")){
-                        binding.midLayout.setHelperText("ID가 일치하지 않습니다.");
+                        binding.midLayout.setError("ID가 일치하지 않습니다.");
                     } else if(loginResult.getResult().equals("fail_user_password")){
                         binding.mpasswordLayout.setHelperText("PW가 일치하지 않습니다.");
                     }

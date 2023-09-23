@@ -23,6 +23,8 @@
             android:hint="아이디"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
+            app:errorTextColor="@android:color/holo_red_dark"
+            app:errorIconDrawable="@android:color/transparent"
             app:helperText="아이디를 입력해주세요."
             app:helperTextEnabled="true"
             app:startIconDrawable="@drawable/ic_person_24dp">
