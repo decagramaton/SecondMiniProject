@@ -29,5 +29,6 @@ public interface ReservationService {
         @GET("reservation/reservationCancel")
         Call<Void> reservationCancel(@Query("reservationNo") int reservationNo, @Query("userNo") int userNo);
 
-
+        @GET("reservation/getThisProductReservationsNo")
+        Call<Integer> getThisProductReservationsNo(@Query("productNo") int productNo);
 }

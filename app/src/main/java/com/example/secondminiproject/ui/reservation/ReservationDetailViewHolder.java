@@ -141,6 +141,7 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
         }else if(reservation.getReservationState()==4){
             reservationState ="취소완료";
         }
+        this.foldingTitleProductPrice.setText(productInfo.getProductAdultPrice());
         this.foldingContentReservationState.setText(reservationState);
         this.foldingContentReservationNo.setText(String.valueOf(reservation.getReservationNo()));
         this.foldingContentAdultNumber.setText(String.valueOf(reservation.getReservationAdultNumber()));

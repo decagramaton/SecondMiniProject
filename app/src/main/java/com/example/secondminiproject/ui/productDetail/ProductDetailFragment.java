@@ -23,6 +23,7 @@ import com.example.secondminiproject.datastore.AppKeyValueStore;
 import com.example.secondminiproject.dto.Board;
 import com.example.secondminiproject.dto.Review;
 import com.example.secondminiproject.service.ProductService;
+import com.example.secondminiproject.service.ReservationService;
 import com.example.secondminiproject.service.ServiceProvider;
 import com.example.secondminiproject.service.WishService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -126,6 +127,23 @@ public class ProductDetailFragment extends Fragment {
                 binding.productDetailTravelDays.setText(days+"박 "+(days+1)+"일");
                 binding.productDetailTravelTransportation.setText(productInfo.getProductVehicle());
                 binding.productDetailTravelArea.setText(productInfo.getProductVisitPlace());
+
+                int totalTicketQuantity = productInfo.getProductReservationNumber();
+                ReservationService reservationService = ServiceProvider.getReservationService(getContext());
+                Call<Integer> call2 = reservationService.getThisProductReservationsNo(productInfo.getProductNo());
+                call2.enqueue(new Callback<Integer>() {
+                    @Override
+                    public void onResponse(Call<Integer> call, Response<Integer> response) {
+                        int reservationQuantity = response.body();
+
+                        binding.productDetailLeftTicket.setText(String.valueOf(totalTicketQuantity-reservationQuantity)+" 장 남음");
+                    }
+
+                    @Override
+                    public void onFailure(Call<Integer> call, Throwable t) {
+
+                    }
+                });
                 binding.productDetailLeftTicket.setText("몇장?");
                 binding.productDetailTravelContent.setText(productInfo.getProductContent());
                 Log.i(TAG, "비디오 url : "+productInfo.getProductVideoUrl());
