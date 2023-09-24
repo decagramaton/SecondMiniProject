@@ -56,6 +56,7 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
     private Button foldingContentReviewWrite;
     private TextView foldingContentAdultNumber;
     private TextView foldingContentChildNumber;
+    private TextView foldingContentProductPrice;
 
 
     // folding cell
@@ -85,6 +86,7 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
         this.foldingTitleName = itemView.findViewById(R.id.folding_title_name);
         this.foldingTitleProductPrice = itemView.findViewById(R.id.folding_title_product_price);
 
+        this.foldingContentProductPrice = itemView.findViewById(R.id.folding_content_product_price);
         this.foldingContentImage = itemView.findViewById(R.id.folding_content_image);
         this.foldingContentTitle = itemView.findViewById(R.id.folding_content_title);
         this.foldingContentReservationState = itemView.findViewById(R.id.folding_content_reservation_state);
@@ -141,7 +143,7 @@ public class ReservationDetailViewHolder extends RecyclerView.ViewHolder {
         }else if(reservation.getReservationState()==4){
             reservationState ="취소완료";
         }
-        this.foldingTitleProductPrice.setText(productInfo.getProductAdultPrice());
+        this.foldingContentProductPrice.setText(String.valueOf(df.format(productInfo.getProductAdultPrice())));
         this.foldingContentReservationState.setText(reservationState);
         this.foldingContentReservationNo.setText(String.valueOf(reservation.getReservationNo()));
         this.foldingContentAdultNumber.setText(String.valueOf(reservation.getReservationAdultNumber()));
