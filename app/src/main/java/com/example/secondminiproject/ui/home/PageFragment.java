@@ -39,7 +39,7 @@ public class PageFragment extends Fragment {
 
     private void initUIByPageNo(int pageNo) {
         if(Math.abs(pageNo%5+1)==1){
-            printMainBanner(R.drawable.ggomong, 1);
+            printMainBanner(R.drawable.ggomong2, 1);
         }else if(Math.abs(pageNo%5+1)==2){
             printMainBanner(R.drawable.banner1, 2);
         }else if(Math.abs(pageNo%5+1)==3 ){
